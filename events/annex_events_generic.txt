@@ -1,0 +1,407 @@
+add_namespace = annex_generic
+add_namespace = puppet_generic
+add_namespace = conquer_generic
+
+# Annexation
+# ------------------------------------------------------------------------------
+
+# Generic: Annexation Proposal (requestor side)
+country_event = {
+	id = annex_generic.1
+	title = annex_generic.1.t
+	desc = annex_generic.1.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = annex_generic.1.a
+		log = "[GetDateText]: [This.GetName]: annex_generic.1.a executed"
+
+		event_target:annexation_target_event = {
+			country_event = { id = annex_generic.2 days = 1 }
+		}
+	}
+
+	option = {
+		name = annex_generic.1.b
+		log = "[GetDateText]: [This.GetName]: annex_generic.1.b executed"
+		trigger = {
+			is_ai = no
+			event_target:annexation_target_event = { is_ai = no }
+		}
+		
+		event_target:annexation_target_event = {
+			set_country_flag = annexation_with_terms
+			country_event = { id = annex_generic.2 days = 1 }
+		}
+	}
+}
+
+# Generic: Response to Annexation Proposal (target side)
+country_event = {
+	id = annex_generic.2
+	title = annex_generic.2.t
+	desc = annex_generic.2.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = annex_generic.2.a
+		log = "[GetDateText]: [This.GetName]: annex_generic.2.a executed"
+		
+		ai_chance = {
+			base = 100
+		}
+
+		FROM = {
+			effect_tooltip = {
+				create_wargoal = {
+					type = annex_everything
+					target = ROOT
+				}
+			}
+			country_event = { id = annex_generic.3 days = 1 }
+		}
+	}
+
+	option = {
+		name = annex_generic.2.b
+		log = "[GetDateText]: [This.GetName]: annex_generic.2.b executed"
+		trigger = {
+			has_country_flag = annexation_with_terms
+			is_ai = no
+		}
+
+		# Accept with terms
+		FROM = {
+			effect_tooltip = {
+				change_tag_from = THIS
+				annex_country = {
+					target = ROOT
+					transfer_troops = yes
+				}
+			}
+			country_event = { id = annex_generic.4 days = 1 }
+		}
+		
+		clr_country_flag = annexation_with_terms
+	}
+
+	option = {
+		name = annex_generic.2.c
+		log = "[GetDateText]: [This.GetName]: annex_generic.2.c executed"
+
+		ai_chance = {
+			base = 0
+			modifier = { strength_ratio = { tag = FROM ratio < 0.4 } add = 10 }
+			modifier = { strength_ratio = { tag = FROM ratio < 0.2 } add = 10 }
+			modifier = { strength_ratio = { tag = FROM ratio < 0.1 } add = 10 }
+			modifier = { has_stability < 25 add = 5 }
+			modifier = { has_stability < 50 add = 5 }
+			modifier = { has_war_support < 25 add = 10 }
+			modifier = { has_war_support < 50 add = 10 }
+			modifier = { is_in_faction = yes factor = 0 }
+			modifier = { is_subject = yes factor = 0 }
+			modifier = { is_major = yes factor = 0 }
+			modifier = { any_other_country = { ROOT = { is_guaranteed_by = PREV } } factor = 0 }
+			modifier = { num_subjects > 0 factor = 0 }
+		}
+
+		# Accept without terms
+		FROM = {
+			effect_tooltip = {
+				annex_country = {
+					target = ROOT
+					transfer_troops = yes
+				}
+			}
+			country_event = { id = annex_generic.4 days = 1 }
+		}
+	}
+}
+
+# Generic: Denial Response (requestor side)
+country_event = {
+	id = annex_generic.3
+	title = annex_generic.3.t
+	desc = annex_generic.3.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = annex_generic.3.a
+		log = "[GetDateText]: [This.GetName]: annex_generic.3.a executed"
+		
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+	}
+}
+
+# Generic: Acceptance Response (requestor side)
+country_event = {
+	id = annex_generic.4
+	title = annex_generic.4.t
+	desc = annex_generic.4.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = annex_generic.4.a
+		log = "[GetDateText]: [This.GetName]: annex_generic.4.a executed"
+
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+		
+		clr_country_flag = annexation_with_terms
+	}
+}
+
+# Puppeting
+# ------------------------------------------------------------------------------
+
+# Generic: Puppet Proposal (requestor side)
+country_event = {
+	id = puppet_generic.1
+	title = puppet_generic.1.t
+	desc = puppet_generic.1.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = puppet_generic.1.a
+		log = "[GetDateText]: [This.GetName]: puppet_generic.1.a executed"
+
+		event_target:puppeting_target_event = {
+			country_event = { id = puppet_generic.2 days = 1 }
+		}
+	}
+}
+
+# Generic: Response to Puppet Proposal (target side)
+country_event = {
+	id = puppet_generic.2
+	title = puppet_generic.2.t
+	desc = puppet_generic.2.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	# Deny
+	option = {
+		name = puppet_generic.2.a
+		log = "[GetDateText]: [This.GetName]: puppet_generic.2.a executed"
+		
+		ai_chance = {
+			base = 100
+		}
+
+		FROM = {
+			effect_tooltip = {
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROOT
+				}
+			}
+			country_event = { id = puppet_generic.3 days = 1 }
+		}
+	}
+
+	# Accept
+	option = {
+		name = puppet_generic.2.b
+		log = "[GetDateText]: [This.GetName]: puppet_generic.2.b executed"
+
+		ai_chance = {
+			base = 0
+			modifier = { strength_ratio = { tag = FROM ratio < 0.4 } add = 10 }
+			modifier = { strength_ratio = { tag = FROM ratio < 0.2 } add = 10 }
+			modifier = { strength_ratio = { tag = FROM ratio < 0.1 } add = 10 }
+			modifier = { has_stability < 25 add = 5 }
+			modifier = { has_stability < 50 add = 5 }
+			modifier = { has_war_support < 25 add = 10 }
+			modifier = { has_war_support < 50 add = 10 }
+			modifier = { is_in_faction = yes factor = 0 }
+			modifier = { is_subject = yes factor = 0 }
+			modifier = { is_major = yes factor = 0 }
+			modifier = { any_other_country = { ROOT = { is_guaranteed_by = PREV } } factor = 0 }
+			modifier = { num_subjects > 0 factor = 0 }
+		}
+
+		FROM = {
+			effect_tooltip = {
+				puppet = THIS
+			}
+			country_event = { id = puppet_generic.4 days = 1 }
+		}
+	}
+}
+
+# Generic: Denial Response (requestor side)
+country_event = {
+	id = puppet_generic.3
+	title = puppet_generic.3.t
+	desc = puppet_generic.3.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = puppet_generic.3.a
+		log = "[GetDateText]: [This.GetName]: puppet_generic.3.a executed"
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+	}
+}
+
+# Generic: Acceptance Response (requestor side)
+country_event = {
+	id = puppet_generic.4
+	title = puppet_generic.4.t
+	desc = puppet_generic.4.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = puppet_generic.4.a
+		log = "[GetDateText]: [This.GetName]: puppet_generic.4.a executed"
+
+		puppet = FROM
+	}
+}
+
+# Conquest (annexing specific states)
+# ------------------------------------------------------------------------------
+
+# Generic: Conquest Proposal (requestor side)
+country_event = {
+	id = conquer_generic.1
+	title = conquer_generic.1.t
+	desc = conquer_generic.1.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = conquer_generic.1.a
+		log = "[GetDateText]: [This.GetName]: conquer_generic.1.a executed"
+
+		event_target:conquer_target_event = {
+			country_event = { id = conquer_generic.2 days = 1 }
+		}
+	}
+}
+
+# Generic: Response to Conquest Proposal (target side)
+country_event = {
+	id = conquer_generic.2
+	title = conquer_generic.2.t
+	desc = conquer_generic.2.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = conquer_generic.2.a
+		log = "[GetDateText]: [This.GetName]: conquer_generic.2.a executed"
+		
+		ai_chance = {
+			base = 100
+		}
+
+
+		FROM = {
+			effect_tooltip = {
+				create_wargoal = {
+					type = take_state_focus
+					target = ROOT
+				}
+			}
+			country_event = { id = conquer_generic.3 days = 1 }
+		}
+	}
+
+	option = {
+		name = conquer_generic.2.b
+		log = "[GetDateText]: [This.GetName]: conquer_generic.2.b executed"
+
+		ai_chance = {
+			base = 0
+			modifier = { strength_ratio = { tag = FROM ratio < 0.4 } add = 10 }
+			modifier = { strength_ratio = { tag = FROM ratio < 0.2 } add = 10 }
+			modifier = { strength_ratio = { tag = FROM ratio < 0.1 } add = 10 }
+			modifier = { has_stability < 25 add = 5 }
+			modifier = { has_stability < 50 add = 5 }
+			modifier = { has_war_support < 25 add = 10 }
+			modifier = { has_war_support < 50 add = 10 }
+			modifier = { is_in_faction = yes factor = 0 }
+			modifier = { is_subject = yes factor = 0 }
+			modifier = { is_major = yes factor = 0 }
+			modifier = { any_other_country = { ROOT = { is_guaranteed_by = PREV } } factor = 0 }
+			modifier = { num_subjects > 0 factor = 0 }
+		}
+
+		effect_tooltip = {
+			every_owned_state = {
+				limit = { is_claimed_by = FROM }
+				transfer_state_to = FROM
+			}
+		}
+		FROM = { country_event = { id = conquer_generic.4 days = 1 } }
+	}
+}
+
+# Generic: Denial Response (requestor side)
+country_event = {
+	id = conquer_generic.3
+	title = conquer_generic.3.t
+	desc = conquer_generic.3.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = conquer_generic.3.a
+		log = "[GetDateText]: [This.GetName]: conquer_generic.3.a executed"
+		
+		create_wargoal = {
+			type = take_state_focus
+			target = FROM
+		}
+	}
+}
+
+# Generic: Acceptance Response (requestor side)
+country_event = {
+	id = conquer_generic.4
+	title = conquer_generic.4.t
+	desc = conquer_generic.4.d
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = {
+		name = conquer_generic.4.a
+		log = "[GetDateText]: [This.GetName]: conquer_generic.4.a executed"
+
+		FROM = {
+			every_owned_state = {
+				limit = { is_claimed_by = ROOT }
+				transfer_state_to = ROOT
+			}
+		}
+		
+	}
+}

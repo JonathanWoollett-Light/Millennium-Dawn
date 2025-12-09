@@ -1,0 +1,55 @@
+﻿l_english:
+ annex_generic.1.t: "Proposal for [?var:annexation_target.GetAdjective] Annexation"
+ annex_generic.1.d: "It is time to form a greater nation. We will draft our proposal for [?var:annexation_target.GetAdjective] annexation. Combined with our propaganda their denail will give us the justification we need to invade."
+ annex_generic.1.a: "There will be no terms."
+ annex_generic.1.b: "We will accept terms.\n§gIf [?var:annexation_target.GetName] accepts this will make both players co-op [FROM.GetName].§!"
+
+ annex_generic.2.t: "[FROM.GetName] Demands Our Annexation"
+ annex_generic.2.d: "Today the [FROM.GetAdjective] ambassador has delivered a proposal for the annexation of our nation. The regime in [FROM.GetName] appears to believe they are in a position to mount an invasion if we deny their proposal."
+ annex_generic.2.a: "An absurd proposal."
+ annex_generic.2.b: "We can be greater together."
+ annex_generic.2.c: "We cannot fight them."
+
+ annex_generic.3.t: "[?var:annexation_target.GetName] Denies Our Proposal"
+ annex_generic.3.d: "[?var:annexation_target.GetNameDef] has denied our peaceful proposal."
+ annex_generic.3.a: "And so it begins."
+
+ annex_generic.4.t: "[?var:annexation_target.GetName] Accepts Our Proposal"
+ annex_generic.4.d: "[?var:annexation_target.GetNameDef] have wisely chosen to accept our proposal."
+ annex_generic.4.a: "Towards a greater future."
+
+ puppet_generic.1.t: "Proposal for [?var:puppeting_target.GetAdjective] Subjugation"
+ puppet_generic.1.d: "It is time to expand our sphere. We will draft our proposal for [?var:puppeting_target.GetAdjective] subjugation. Combined with our propaganda their denail will give us the justification we need to invade."
+ puppet_generic.1.a: "The future is [FROM.GetAdjective]."
+
+ puppet_generic.2.t: "[FROM.GetName] Demands Our Subjugation"
+ puppet_generic.2.d: "Today the [FROM.GetAdjective] ambassador has delivered a proposal for the subjugation of our nation. The regime in [FROM.GetName] appears to believe they are in a position to mount an invasion if we deny their proposal."
+ puppet_generic.2.a: "An absurd proposal."
+ puppet_generic.2.b: "We cannot fight them."
+
+ puppet_generic.3.t: "[?var:puppeting_target.GetName] Denies Our Proposal"
+ puppet_generic.3.d: "[?var:puppeting_target.GetNameDef] has denied our peaceful proposal."
+ puppet_generic.3.a: "And so it begins."
+
+ puppet_generic.4.t: "[?var:puppeting_target.GetName] Accepts Our Proposal"
+ puppet_generic.4.d: "[?var:puppeting_target.GetNameDef] have wisely chosen to accept our proposal."
+ puppet_generic.4.a: "Towards a greater future."
+
+ conquer_generic.1.t: "Proposal for Conquest of [?var:conquer_target.GetAdjective] States"
+ conquer_generic.1.d: "It is time to form a greater nation. We will draft our proposal for [?var:conquer_target.GetAdjective] annexation. Combined with our propaganda their denail will give us the justification we need to invade."
+ conquer_generic.1.a: "There will be no terms."
+ conquer_generic.1.b: "We will accept terms.\n§gIf [?var:conquer_target.GetName] accepts this will make both players co-op [FROM.GetName].§!"
+
+ conquer_generic.2.t: "[FROM.GetName] Demands Our Annexation"
+ conquer_generic.2.d: "Today the [FROM.GetAdjective] ambassador has delivered a proposal for the annexation of our nation. The regime in [FROM.GetName] appears to believe they are in a position to mount an invasion if we deny their proposal."
+ conquer_generic.2.a: "An absurd proposal."
+ conquer_generic.2.b: "We can be greater together."
+ conquer_generic.2.c: "We cannot fight them."
+
+ conquer_generic.3.t: "[?var:conquer_target.GetName] Denies Our Proposal"
+ conquer_generic.3.d: "[?var:conquer_target.GetNameDef] has denied our peaceful proposal."
+ conquer_generic.3.a: "And so it begins."
+
+ conquer_generic.4.t: "[?var:conquer_target.GetName] Accepts Our Proposal"
+ conquer_generic.4.d: "[?var:conquer_target.GetNameDef] have wisely chosen to accept our proposal."
+ conquer_generic.4.a: "Towards a greater future."

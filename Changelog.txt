@@ -697,6 +697,7 @@ v1.12.3
   - Changed the German military national spirit to the dynamic modifiers if possible to have it better grouped in the UI
   - Changed all German changing modifiers tooltip for better readability
   - Created default preset for MIOs for SOV and USA
+  - Updates focus trees war goals to be event chains.
 
  Database:
   - Removed the ahistorical "7th MARDIV - 35th Marine Regiment" from the United States

@@ -1,0 +1,77 @@
+# `annex_country` doesn't support `target = var:` so we use `event_target`
+# instead.
+
+annexation_request_effect = {
+	set_temp_variable = { annexation_target = event_target:annexation_target_event }
+	country_event = { id = annex_generic.1 days = 1 }
+
+	if = {
+		limit = { not = { has_variable = hide_results } }
+
+		custom_effect_tooltip = TT_IF_THEY_ACCEPT
+		effect_tooltip = {
+			annex_country = {
+				target = event_target:annexation_target_event
+				transfer_troops = yes
+			}
+		}
+
+		custom_effect_tooltip = TT_IF_THEY_REJECT
+		effect_tooltip = {
+			create_wargoal = {
+				type = annex_everything
+				target = event_target:annexation_target_event
+			}
+		}
+	}
+}
+
+puppeting_request_effect = {
+	set_temp_variable = { puppeting_target = event_target:puppeting_target_event }
+	country_event = { id = puppet_generic.1 days = 1 }
+
+	if = {
+		limit = { not = { has_variable = hide_results } }
+
+		custom_effect_tooltip = TT_IF_THEY_ACCEPT
+		effect_tooltip = {
+			puppet = event_target:puppeting_target_event
+		}
+
+		custom_effect_tooltip = TT_IF_THEY_REJECT
+		effect_tooltip = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = event_target:puppeting_target_event
+			}
+		}
+	}
+	
+}
+
+conquer_request_effect = {
+	set_temp_variable = { conquer_target = event_target:conquer_target_event }
+	country_event = { id = conquer_generic.1 days = 1 }
+
+	if = {
+		limit = { not = { has_variable = hide_results } }
+
+		custom_effect_tooltip = TT_IF_THEY_ACCEPT
+		effect_tooltip = {
+			event_target:conquer_target_event = {
+				every_owned_state = {
+					limit = { has_variable = array:marked_states:@THIS }
+					transfer_state_to = ROOT
+				}
+			}
+		}
+
+		custom_effect_tooltip = TT_IF_THEY_REJECT
+		effect_tooltip = {
+			create_wargoal = {
+				type = take_state_focus
+				target = event_target:conquer_target_event
+			}
+		}
+	}
+}
