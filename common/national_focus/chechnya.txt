@@ -4251,12 +4251,8 @@ focus_tree = {
 		prerequisite = { focus = CHE_meet_with_bin_laden }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHE_biggest_raid_to_georgia"
-			CHE = {
-				create_wargoal = {
-					target = GEO
-					type = annex_everything
-				}
-			}
+			GEO = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {

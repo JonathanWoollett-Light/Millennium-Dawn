@@ -2978,10 +2978,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [THIS.GetName]: focus SOO_invade_iran"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = PER
-			}
+			PER = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -3010,10 +3008,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [THIS.GetName]: focus SOO_strike_turkey"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = TUR
-			}
+			TUR = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {

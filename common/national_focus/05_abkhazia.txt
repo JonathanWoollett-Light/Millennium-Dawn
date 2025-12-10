@@ -2590,10 +2590,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus ABK_georgia_attack"
-			create_wargoal = {
-				type = annex_everything
-				target = GEO
-			}
+			GEO = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {

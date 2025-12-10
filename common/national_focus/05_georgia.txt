@@ -1015,14 +1015,10 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEO_intervene_in_azerbaijan"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = AZE
-			}
-			add_state_core = 712
-			add_state_core = 713
-			add_state_core = 1038
-			add_state_core = 711
+			AZE = { every_core_state = { add_core_of = ROOT } }
+			newline = yes
+			AZE = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -4896,10 +4892,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEO_crush_nat_azeri"
-			create_wargoal = {
-				type = annex_everything
-				target = AZE
-			}
+			AZE = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -4961,10 +4955,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEO_crush_turk"
-			create_wargoal = {
-				type = annex_everything
-				target = TUR
-			}
+			TUR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -4995,10 +4987,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEO_crush_nat_armeni"
-			create_wargoal = {
-				type = annex_everything
-				target = ARM
-			}
+			ARM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -5059,10 +5049,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEO_crush_northcauc"
-			create_wargoal = {
-				type = annex_everything
-				target = SOV
-			}
+			SOV = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -5224,16 +5212,16 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEO_yos_warl_abk_oss"
-			add_state_core = 706
+			
+			newline = yes
 			add_state_core = 705
-			create_wargoal = {
-				type = annex_everything
-				target = SOO
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = ABK
-			}
+			SOO = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+
+			newline = yes
+			add_state_core = 706
+			ABK = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {
