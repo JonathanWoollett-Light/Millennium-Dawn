@@ -17336,10 +17336,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_swiss_incursion"
-			create_wargoal = {
-				target = SWI
-				type = annex_everything
-			}
+			SWI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -18336,17 +18334,13 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_squash_bugs"
-			create_wargoal = {
-				target = LIC
-				type = annex_everything
-			}
 			947 = { add_core_of = ROOT }
+			LIC = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 			newline = yes
-			create_wargoal = {
-				target = LUX
-				type = annex_everything
-			}
 			53 = { add_core_of = ROOT }
+			LUX = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 
 		}
 		ai_will_do = {
@@ -20284,10 +20278,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_reclaim_tanzania"
-			create_wargoal = {
-				target = TNZ
-				type = annex_everything
-			}
+			TNZ = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20318,10 +20310,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_camaroon_invasion"
-			create_wargoal = {
-				target = CAM
-				type = annex_everything
-			}
+			CAM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20353,10 +20343,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_namibian_invasion"
-			create_wargoal = {
-				target = NAM
-				type = annex_everything
-			}
+			NAM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20386,10 +20374,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_togo_invasion"
-			create_wargoal = {
-				target = TOG
-				type = annex_everything
-			}
+			TOG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20419,10 +20405,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_congo_invasion"
-			create_wargoal = {
-				target = DRC
-				type = annex_everything
-			}
+			DRC = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20453,10 +20437,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_new_guinea"
-			create_wargoal = {
-				target = PAP
-				type = annex_everything
-			}
+			PAP = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20487,10 +20469,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_demand_micronesia"
-			create_wargoal = {
-				target = MIC
-				type = annex_everything
-			}
+			MIC = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20603,10 +20583,8 @@ focus_tree = {
 		prerequisite = { focus = GER_german_europe }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_czech_invasion"
-			create_wargoal = {
-				target = CZE
-				type = annex_everything
-			}
+			CZE = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20655,10 +20633,8 @@ focus_tree = {
 		prerequisite = { focus = GER_german_europe }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_austrian_invasion"
-			create_wargoal = {
-				target = AUS
-				type = annex_everything
-			}
+			AUS = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20702,10 +20678,8 @@ focus_tree = {
 		prerequisite = { focus = GER_austrian_invasion }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_belgian_invasion"
-			create_wargoal = {
-				target = BEL
-				type = annex_everything
-			}
+			BEL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20752,10 +20726,8 @@ focus_tree = {
 		prerequisite = { focus = GER_belgian_invasion }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_Italian_invasion"
-			create_wargoal = {
-				target = ITA
-				type = annex_everything
-			}
+			ITA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20799,10 +20771,8 @@ focus_tree = {
 		will_lead_to_war_with = POL
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_polish_invasion"
-			create_wargoal = {
-				target = POL
-				type = annex_everything
-			}
+			POL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20846,10 +20816,8 @@ focus_tree = {
 		will_lead_to_war_with = DEN
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_danish_invasion"
-			create_wargoal = {
-				target = DEN
-				type = annex_everything
-			}
+			DEN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -20900,10 +20868,8 @@ focus_tree = {
 		will_lead_to_war_with = FRA
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_french_invasion"
-			create_wargoal = {
-				target = FRA
-				type = annex_everything
-			}
+			FRA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -21023,10 +20989,8 @@ focus_tree = {
 		prerequisite = { focus = GER_french_invasion }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_no_deals"
-			create_wargoal = {
-				target = UKR
-				type = annex_everything
-			}
+			UKR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -21070,10 +21034,8 @@ focus_tree = {
 		prerequisite = { focus = GER_no_deals }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_russian_invasion"
-			create_wargoal = {
-				target = SOV
-				type = annex_everything
-			}
+			SOV = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -21123,10 +21085,8 @@ focus_tree = {
 		prerequisite = { focus = GER_french_invasion }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_british_invasion"
-			create_wargoal = {
-				target = ENG
-				type = annex_everything
-			}
+			ENG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -21246,10 +21206,8 @@ focus_tree = {
 		prerequisite = { focus = GER_british_invasion }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_canadian_coup"
-			create_wargoal = {
-				target = CAN
-				type = annex_everything
-			}
+			CAN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -21293,10 +21251,8 @@ focus_tree = {
 		prerequisite = { focus = GER_canadian_coup }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_strike_the_eagle"
-			create_wargoal = {
-				target = USA
-				type = annex_everything
-			}
+			USA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1
@@ -21341,10 +21297,8 @@ focus_tree = {
 		prerequisite = { focus = GER_german_irredentism }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GER_chinese_menace"
-			create_wargoal = {
-				target = CHI
-				type = annex_everything
-			}
+			CHI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = {
 			base = 1

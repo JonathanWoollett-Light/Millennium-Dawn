@@ -3572,40 +3572,35 @@ focus_tree = {
 					NOT = { MOR = { is_subject_of = SPR } }
 					country_exists = MOR
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = MOR
-				}
+				MOR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { MAU = { is_subject_of = SPR } }
 					country_exists = MAU
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = MAU
-				}
+				newline = yes
+				MAU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { SHA = { is_subject_of = SPR } }
 					country_exists = SHA
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = SHA
-				}
+				newline = yes
+				SHA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { ALG = { is_subject_of = SPR } }
 					country_exists = ALG
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = ALG
-				}
+				newline = yes
+				ALG = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 		}
 
@@ -3657,10 +3652,8 @@ focus_tree = {
 				}
 			}
 			else = {
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = ARG
-				}
+				ARG = { save_event_target_as = puppeting_target_event }
+				puppeting_request_effect = yes
 			}
 		}
 
@@ -3706,10 +3699,8 @@ focus_tree = {
 					}
 				}
 				else = {
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = CUB
-					}
+					CUB = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 			}
 			else = {
@@ -3774,10 +3765,8 @@ focus_tree = {
 				}
 			}
 			else = {
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = COL
-				}
+				COL = { save_event_target_as = puppeting_target_event }
+				puppeting_request_effect = yes
 			}
 		}
 
@@ -3839,155 +3828,126 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPR_the_crown_jewel"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					NOT = { MEX = { is_subject_of = SPR } }
 					country_exists = MEX
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = MEX
-				}
+				MEX = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { GUA = { is_subject_of = SPR } }
 					country_exists = GUA
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = GUA
-				}
+				GUA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { BLZ = { is_subject_of = SPR } }
 					country_exists = BLZ
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = BLZ
-				}
+				BLZ = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { HON = { is_subject_of = SPR } }
 					country_exists = HON
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = HON
-				}
+				HON = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { ELS = { is_subject_of = SPR } }
 					country_exists = ELS
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = ELS
-				}
+				ELS = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { NIC = { is_subject_of = SPR } }
 					country_exists = NIC
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = NIC
-				}
+				NIC = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { COS = { is_subject_of = SPR } }
 					country_exists = COS
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = COS
-				}
+				COS = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { DOM = { is_subject_of = SPR } }
 					country_exists = DOM
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = DOM
-				}
+				DOM = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { HAI = { is_subject_of = SPR } }
 					country_exists = HAI
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = HAI
-				}
+				HAI = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { VEN = { is_subject_of = SPR } }
 					country_exists = VEN
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = VEN
-				}
+				VEN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { PAN = { is_subject_of = SPR } }
 					country_exists = PAN
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = PAN
-				}
+				PAN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { CHL = { is_subject_of = SPR } }
 					country_exists = CHL
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = CHL
-				}
+				CHL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { PRU = { is_subject_of = SPR } }
 					country_exists = PRU
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = PRU
-				}
+				PRU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { ECU = { is_subject_of = SPR } }
 					country_exists = ECU
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = ECU
-				}
+				ECU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOT = { BOL = { is_subject_of = SPR } }
 					country_exists = BOL
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = BOL
-				}
+				BOL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 		}
 
