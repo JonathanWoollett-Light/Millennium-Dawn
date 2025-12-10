@@ -443,10 +443,8 @@ shared_focus = {
 	will_lead_to_war_with = USA
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus USoE101"
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = USA
-		}
+		USA = { save_event_target_as = puppeting_target_event }
+		puppeting_request_effect = yes
 	}
 
 	ai_will_do = {
@@ -470,10 +468,8 @@ shared_focus = {
 	will_lead_to_war_with = SOV
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus USoE102"
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = SOV
-		}
+		SOV = { save_event_target_as = puppeting_target_event }
+		puppeting_request_effect = yes
 	}
 
 	ai_will_do = {
@@ -497,10 +493,8 @@ shared_focus = {
 	will_lead_to_war_with = CHI
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus USoE103"
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = CHI
-		}
+		CHI = { save_event_target_as = puppeting_target_event }
+		puppeting_request_effect = yes
 	}
 
 	ai_will_do = {
@@ -924,13 +918,24 @@ shared_focus = {
 	will_lead_to_war_with = TUR
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus USoE306"
-		create_wargoal = {
-			type = take_state_focus
-			target = TUR
-			generator = {
-				934 155 156 157 161 992 158
-			}
+		hidden_effect = {
+			add_state_claim = 934
+			add_state_claim = 155
+			add_state_claim = 156
+			add_state_claim = 157
+			add_state_claim = 161
+			add_state_claim = 992
+			add_state_claim = 158
 		}
+		set_temp_variable = { array:marked_states:934 = yes }
+		set_temp_variable = { array:marked_states:155 = yes }
+		set_temp_variable = { array:marked_states:156 = yes }
+		set_temp_variable = { array:marked_states:157 = yes }
+		set_temp_variable = { array:marked_states:161 = yes }
+		set_temp_variable = { array:marked_states:992 = yes }
+		set_temp_variable = { array:marked_states:158 = yes }
+		TUR = { save_event_target_as = conquer_target_event }
+		conquer_request_effect = yes
 	}
 
 	ai_will_do = {
@@ -954,13 +959,22 @@ shared_focus = {
 	will_lead_to_war_with = SYR
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus USoE307"
-		create_wargoal = {
-			type = take_state_focus
-			target = SYR
-			generator = {
-				189 190 575 571 566 188
-			}
+		hidden_effect = {
+			add_state_claim = 189
+			add_state_claim = 190
+			add_state_claim = 575
+			add_state_claim = 571
+			add_state_claim = 566
+			add_state_claim = 188
 		}
+		set_temp_variable = { array:marked_states:189 = yes }
+		set_temp_variable = { array:marked_states:190 = yes }
+		set_temp_variable = { array:marked_states:575 = yes }
+		set_temp_variable = { array:marked_states:571 = yes }
+		set_temp_variable = { array:marked_states:566 = yes }
+		set_temp_variable = { array:marked_states:188 = yes }
+		SYR = { save_event_target_as = conquer_target_event }
+		conquer_request_effect = yes
 	}
 
 	ai_will_do = {
@@ -984,14 +998,11 @@ shared_focus = {
 	will_lead_to_war_with = LEB
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus USoE308"
-		create_wargoal = {
-			type = annex_everything
-			target = LEB
-		}
-		create_wargoal = {
-			type = annex_everything
-			target = HEZ
-		}
+		LEB = { save_event_target_as = annexation_target_event }
+		annexation_request_effect = yes
+		newline = yes
+		HEZ = { save_event_target_as = annexation_target_event }
+		annexation_request_effect = yes
 	}
 
 	ai_will_do = {
@@ -1020,10 +1031,8 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus USoE309"
 		if = { limit = { ROOT = { has_government = democratic } }
 			if = { limit = { ISR = { NOT = { has_government = democratic } } }
-				create_wargoal = {
-					type = annex_everything
-					target = ISR
-				}
+				ISR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			else = {
 				ISR = {
@@ -1034,15 +1043,12 @@ shared_focus = {
 			}
 		}
 		else = {
-			create_wargoal = {
-				type = annex_everything
-				target = ISR
-			}
+			ISR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
-		create_wargoal = {
-			type = annex_everything
-			target = PAL
-		}
+		newline = yes
+		PAL = { save_event_target_as = annexation_target_event }
+		annexation_request_effect = yes
 	}
 
 	ai_will_do = {
@@ -1401,10 +1407,8 @@ shared_focus = {
 	will_lead_to_war_with = SOV
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus USoE325"
-		create_wargoal = {
-			type = annex_everything
-			target = SOV
-		}
+		SOV = { save_event_target_as = annexation_target_event }
+		annexation_request_effect = yes
 	}
 
 	ai_will_do = {

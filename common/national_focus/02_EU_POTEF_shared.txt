@@ -5725,10 +5725,8 @@ shared_focus = {
 	will_lead_to_war_with = CHI
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus POTEF504"
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = CHI
-		}
+		CHI = { save_event_target_as = puppeting_target_event }
+		puppeting_request_effect = yes
 	}
 	ai_will_do = {
 		factor = 1
@@ -6450,10 +6448,8 @@ shared_focus = {
 	will_lead_to_war_with = SOV
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus POTEF554"
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = SOV
-		}
+		SOV = { save_event_target_as = puppeting_target_event }
+		puppeting_request_effect = yes
 	}
 	ai_will_do = {
 		factor = 1
