@@ -2628,14 +2628,13 @@
 						NOT = { NKO = { is_in_array = { ruling_party = 4 } } }
 					}
 				}
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = NKO
-				}
+				newline = yes
 				NKO = {
 					add_popularity = { ideology = communism popularity = 0.05 }
 					recalculate_party = yes
 				}
+				NKO = { save_event_target_as = puppeting_target_event }
+				puppeting_request_effect = yes
 			}
 			if = {
 				limit = {
@@ -2645,14 +2644,13 @@
 						NOT = { KOR = { is_in_array = { ruling_party = 19 } } }
 					}
 				}
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = KOR
-				}
+				newline = yes
 				KOR = {
 					add_popularity = { ideology = communism popularity = 0.05 }
 					recalculate_party = yes
 				}
+				KOR = { save_event_target_as = puppeting_target_event }
+				puppeting_request_effect = yes
 			}
 		}
 
@@ -2972,10 +2970,8 @@
 						NOT = { TAI = { is_in_array = { ruling_party = 4 } } }
 					}
 				}
-				create_wargoal = {
-					target = TAI
-					type = puppet_wargoal_focus
-				}
+				TAI = { save_event_target_as = puppeting_target_event }
+				puppeting_request_effect = yes
 			}
 		}
 
@@ -3008,14 +3004,20 @@
 			add_state_claim = 603 #Hwanghae
 			add_state_claim = 602 #Pyongan
 			add_state_claim = 601 #Hamgyong
-			create_wargoal = {
-				target = KOR
-				type = take_claimed_state
-			}
-			create_wargoal = {
-				target = NKO
-				type = take_claimed_state
-			}
+			newline = yes
+			set_temp_variable = { array:marked_states:608 = yes }
+			set_temp_variable = { array:marked_states:607 = yes }
+			set_temp_variable = { array:marked_states:605 = yes }
+			set_temp_variable = { array:marked_states:606 = yes }
+			set_temp_variable = { array:marked_states:604 = yes }
+			set_temp_variable = { array:marked_states:603 = yes }
+			set_temp_variable = { array:marked_states:602 = yes }
+			set_temp_variable = { array:marked_states:601 = yes }
+			KOR = { save_event_target_as = conquer_target_event }
+			conquer_request_effect = yes
+			newline = yes
+			NKO = { save_event_target_as = conquer_target_event }
+			conquer_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -3046,8 +3048,11 @@
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_subjugate_korea"
-			create_wargoal = { type = puppet_wargoal_focus target = KOR }
-			create_wargoal = { type = puppet_wargoal_focus target = NKO }
+			KOR = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
+			NKO = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -3395,9 +3400,14 @@
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_subjugate_china"
-			create_wargoal = { type = puppet_wargoal_focus target = CHI }
-			create_wargoal = { type = puppet_wargoal_focus target = TAI }
-			create_wargoal = { type = puppet_wargoal_focus target = MON }
+			CHI = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
+			TAI = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
+			MON = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -3547,23 +3557,25 @@
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_revolution_across_asia"
-			every_country = {
-				limit = {
-					is_in_asia = yes
-					OR = {
-						NOT = { is_in_array = { ruling_party = 19 } }
-						NOT = { is_in_array = { ruling_party = 4 } }
+			custom_effect_tooltip = JAP_revolution_across_asia_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						is_in_asia = yes
+						OR = {
+							NOT = { is_in_array = { ruling_party = 19 } }
+							NOT = { is_in_array = { ruling_party = 4 } }
+						}
+						NOT = { tag = JAP }
+						NOT = { is_subject_of = JAP }
 					}
-					NOT = { tag = JAP }
-					NOT = { is_subject_of = JAP }
-				}
-				JAP = {
-					create_wargoal = {
-						target = PREV
-						type = puppet_wargoal_focus
+					JAP = {
+						PREV = { save_event_target_as = puppeting_target_event }
+						puppeting_request_effect = yes
 					}
 				}
 			}
+			
 		}
 
 		ai_will_do = {
@@ -3588,26 +3600,17 @@
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_colonize_south_east_asia"
-			create_wargoal = {
-				target = VIE
-				type = puppet_wargoal_focus
-			}
-			create_wargoal = {
-				target = PHI
-				type = puppet_wargoal_focus
-			}
-			create_wargoal = {
-				target = MAY
-				type = puppet_wargoal_focus
-			}
-			create_wargoal = {
-				target = IND
-				type = puppet_wargoal_focus
-			}
-			create_wargoal = {
-				target = SIN
-				type = puppet_wargoal_focus
-			}
+			set_temp_variable = { hide_results = yes }
+			VIE = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			PHI = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			MAY = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			IND = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			SIN = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
