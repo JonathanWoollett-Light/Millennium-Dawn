@@ -10113,14 +10113,11 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [THIS.GetName]: Focus BRA_crackdown_south_american_socialists"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = VEN
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = BOL
-			}
+			VEN = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
+			BOL = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -10158,10 +10155,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [THIS.GetName]: Focus BRA_the_caribbean_menace"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = CUB
-			}
+			CUB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -11483,10 +11478,9 @@ focus_tree = {
 			}
 			add_state_core = 894
 			add_state_core = 893
-			create_wargoal = {
-				target = URG
-				type = annex_everything
-			}
+			newline = yes
+			URG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 		ai_will_do = {
