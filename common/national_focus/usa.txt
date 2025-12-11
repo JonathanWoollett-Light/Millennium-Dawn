@@ -1,4 +1,4 @@
-﻿# Writers (Luigi IV#8053)
+# Writers (Luigi IV#8053)
 # Coders (Luigi IV#8053)
 # Junior Coders (Maki#0677)
 
@@ -31774,10 +31774,8 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_militarist_securing_southern_interests"
 
 			add_political_power = -150
-			create_wargoal = {
-				target = MEX
-				type = annex_everything
-			}
+			MEX = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -31858,24 +31856,19 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_militarist_securing_atlantic_interests"
-
 			add_political_power = -250
-			create_wargoal = {
-				target = CUB
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = JAM
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = HAI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = DOM
-				type = annex_everything
-			}
+			newline = yes
+			CUB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			JAM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			HAI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			DOM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -31970,10 +31963,8 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_militarist_a_true_leader_of_the_western_world"
 			add_political_power = -500
-			create_wargoal = {
-				target = CAN
-				type = annex_everything
-			}
+			CAN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33248,10 +33239,8 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_pig_bay_two"
 
 			add_political_power = -150
-			create_wargoal = {
-				target = CUB
-				type = annex_everything
-			}
+			CUB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33278,14 +33267,11 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_hispaniola"
 
 			add_political_power = -150
-			create_wargoal = {
-				target = HAI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = DOM
-				type = annex_everything
-			}
+			HAI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			DOM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33312,14 +33298,11 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_makin_me_happy"
 
 			add_political_power = -150
-			create_wargoal = {
-				target = BAH
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = JAM
-				type = annex_everything
-			}
+			BAH = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			JAM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33352,34 +33335,21 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_clean_sweep"
 
 			add_political_power = -250
-			create_wargoal = {
-				target = ANT
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = STK
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = DMI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = STL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = STV
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BAR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GRA
-				type = annex_everything
-			}
+			set_temp_variable = { hide_results = yes }
+			ANT = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			STK = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			DMI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			STL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			STV = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BAR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GRA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33437,10 +33407,8 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_cartel"
 
 			add_political_power = -150
-			create_wargoal = {
-				target = MEX
-				type = annex_everything
-			}
+			MEX = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33473,34 +33441,21 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_fruit_master"
 
 			add_political_power = -250
-			create_wargoal = {
-				target = BLZ
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GUA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = HON
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ELS
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = NIC
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = COS
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = PAN
-				type = annex_everything
-			}
+			set_temp_variable = { hide_results = yes }
+			BLZ = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GUA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			HON = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ELS = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			NIC = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			COS = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			PAN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33533,34 +33488,21 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_gran_colombia"
 
 			add_political_power = -250
-			create_wargoal = {
-				target = TRI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = SUR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GUY
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = VEN
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = COL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ECU
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = PRU
-				type = annex_everything
-			}
+			set_temp_variable = { hide_results = yes }
+			TRI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			SUR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GUY = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			VEN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			COL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ECU = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			PRU = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33587,10 +33529,8 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_amazon"
 
 			add_political_power = -150
-			create_wargoal = {
-				target = BRA
-				type = annex_everything
-			}
+			BRA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33622,26 +33562,17 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_fascist_operation_la_plata"
 
 			add_political_power = -250
-			create_wargoal = {
-				target = BOL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = PAR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = URG
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = CHL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ARG
-				type = annex_everything
-			}
+			set_temp_variable = { hide_results = yes }
+			BOL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			PAR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			URG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			CHL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ARG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -33730,10 +33661,8 @@ focus_tree = {
 
 			add_political_power = -500
 
-			create_wargoal = {
-				target = CAN
-				type = annex_everything
-			}
+			CAN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 		ai_will_do = { base = 1 }
 	}
@@ -36761,11 +36690,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_maple_leaf"
 			add_political_power = -150
-			create_wargoal = {
-				target = CAN
-				type = annex_everything
-			}
-
+			CAN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
 			set_temp_variable = { party_popularity_increase = 0.10 }
@@ -36801,11 +36728,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_cartel_cleanup"
 			add_political_power = -150
-			create_wargoal = {
-				target = MEX
-				type = annex_everything
-			}
-
+			MEX = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
 			set_temp_variable = { party_popularity_increase = 0.10 }
@@ -36841,11 +36766,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_havana"
 			add_political_power = -150
-			create_wargoal = {
-				target = CUB
-				type = annex_everything
-			}
-
+			CUB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
 			set_temp_variable = { party_popularity_increase = 0.10 }
@@ -36881,11 +36804,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_homeward_bound"
 			add_political_power = -150
-			create_wargoal = {
-				target = ENG
-				type = annex_everything
-			}
-
+			ENG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
 			set_temp_variable = { party_popularity_increase = 0.10 }
@@ -36921,11 +36842,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_round_three"
 			add_political_power = -150
-			create_wargoal = {
-				target = GER
-				type = annex_everything
-			}
-
+			GER = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
 			set_temp_variable = { party_popularity_increase = 0.10 }
@@ -36961,11 +36880,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_black_back_hand"
 			add_political_power = -150
-			create_wargoal = {
-				target = SER
-				type = annex_everything
-			}
-
+			SER = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
 			set_temp_variable = { party_popularity_increase = 0.10 }
@@ -37001,11 +36918,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_outback"
 			add_political_power = -150
-			create_wargoal = {
-				target = AST
-				type = annex_everything
-			}
-
+			AST = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
 			set_temp_variable = { party_popularity_increase = 0.10 }
@@ -37041,11 +36956,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_java"
 			add_political_power = -150
-			create_wargoal = {
-				target = IND
-				type = annex_everything
-			}
-
+			IND = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
 			set_temp_variable = { party_popularity_increase = 0.10 }
@@ -37081,10 +36994,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_red_junta_war_plan_great_leap_forward"
 			add_political_power = -150
-			create_wargoal = {
-				target = CHI
-				type = annex_everything
-			}
+			CHI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 6 }
@@ -38022,38 +37934,24 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_marching_south"
-			create_wargoal = {
-				target = MEX
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GUA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BLZ
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = HON
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ELS
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = NIC
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = COS
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = PAN
-				type = annex_everything
-			}
+			set_temp_variable = { hide_results = yes }
+			MEX = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GUA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BLZ = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			HON = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ELS = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			NIC = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			COS = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			PAN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38096,58 +37994,34 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_workers_paradise"
-			create_wargoal = {
-				target = CUB
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BAH
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = JAM
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = HAI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = DOM
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ANT
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = STK
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = DMI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = STL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = STV
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BAR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GRA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = TRI
-				type = annex_everything
-			}
+			set_temp_variable = { hide_results = yes }
+			CUB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BAH = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			JAM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			HAI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			DOM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ANT = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			STK = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			DMI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			STL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			STV = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BAR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GRA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			TRI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38190,54 +38064,32 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_new_world_order"
-			create_wargoal = {
-				target = COL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = VEN
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = SUR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GUY
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ECU
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = PRU
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BRA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BOL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = URG
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = PAR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ARG
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = CHL
-				type = annex_everything
-			}
+			set_temp_variable = { hide_results = yes }
+			COL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			VEN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			SUR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GUY = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ECU = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			PRU = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BRA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BOL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			URG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			PAR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ARG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			CHL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38280,68 +38132,44 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_the_eagle_descends_onto_the_continent"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					SIE = { exists = yes }
 				}
-				create_wargoal = {
-					target = SIE
-					type = annex_everything
-				}
+				SIE = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					AFR = { exists = yes }
 				}
-				create_wargoal = {
-					target = AFR
-					type = annex_everything
-				}
+				AFR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
-			create_wargoal = {
-				target = GUI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = CDI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GAH
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = TOG
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BEN
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BFA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = MAL
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GUB
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GAM
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = SEN
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = MAU
-				type = annex_everything
-			}
+			GUI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			CDI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GAH = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			TOG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BEN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BFA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			MAL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GUB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GAM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			SEN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			MAU = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38383,69 +38211,47 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_the_northern_cleanup"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					SHA = { exists = yes }
 				}
-				create_wargoal = {
-					target = SHA
-					type = annex_everything
-				}
+				SHA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SSU = { exists = yes }
 				}
-				create_wargoal = {
-					target = SSU
-					type = annex_everything
-				}
+				SSU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					DAR = { exists = yes }
 				}
-				create_wargoal = {
-					target = DAR
-					type = annex_everything
-				}
+				DAR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
-			create_wargoal = {
-				target = NIG
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = NGR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = MOR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ALG
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = TUN
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = LBA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = CHA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = EGY
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = SUD
-				type = annex_everything
-			}
+			NIG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			NGR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			MOR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ALG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			TUN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			LBA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			CHA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			EGY = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			SUD = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38487,69 +38293,47 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_congo_cabal"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					DRC = { exists = yes }
 				}
-				create_wargoal = {
-					target = DRC
-					type = annex_everything
-				}
+				DRC = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					RCD = { exists = yes }
 				}
-				create_wargoal = {
-					target = RCD
-					type = annex_everything
-				}
+				RCD = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					MLC = { exists = yes }
 				}
-				create_wargoal = {
-					target = MLC
-					type = annex_everything
-				}
+				MLC = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
-			create_wargoal = {
-				target = CAM
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = CAR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = EGU
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = GAB
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = CNG
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = TNZ
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BUR
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = RWA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = UGA
-				type = annex_everything
-			}
+			CAM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			CAR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			EGU = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GAB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			CNG = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			TNZ = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BUR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			RWA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			UGA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38589,76 +38373,58 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_geographic_horn"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					SML = { exists = yes }
 				}
-				create_wargoal = {
-					target = SML
-					type = annex_everything
-				}
+				SML = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					PUN = { exists = yes }
 				}
-				create_wargoal = {
-					target = PUN
-					type = annex_everything
-				}
+				PUN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SOM = { exists = yes }
 				}
-				create_wargoal = {
-					target = SOM
-					type = annex_everything
-				}
+				SOM = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SNA = { exists = yes }
 				}
-				create_wargoal = {
-					target = SNA
-					type = annex_everything
-				}
+				SNA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SOM = { exists = yes }
 				}
-				create_wargoal = {
-					target = SWS
-					type = annex_everything
-				}
+				SWS = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SOM = { exists = yes }
 				}
-				create_wargoal = {
-					target = JUB
-					type = annex_everything
-				}
+				JUB = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
-			create_wargoal = {
-				target = ERI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = DJI
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ETH
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = KEN
-				type = annex_everything
-			}
+			ERI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			DJI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ETH = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			KEN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38699,60 +38465,40 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_capetown"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					UNI = { exists = yes }
 				}
-				create_wargoal = {
-					target = UNI
-					type = annex_everything
-				}
+				UNI = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					AGL = { exists = yes }
 				}
-				create_wargoal = {
-					target = AGL
-					type = annex_everything
-				}
+				AGL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
-			create_wargoal = {
-				target = ZAM
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = MLW
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = MOZ
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = ZIM
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = BOT
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = NAM
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = SAF
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = LES
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = SWA
-				type = annex_everything
-			}
+			SWA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			MLW = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			MOZ = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ZIM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			BOT = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			NAM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			SAF = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			LES = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			SWA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38803,28 +38549,25 @@ focus_tree = {
 				limit = {
 					CAN = { exists = yes }
 				}
-				create_wargoal = {
-					target = CAN
-					type = annex_everything
-				}
+				CAN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 			if = {
 				limit = {
 					ENG = { exists = yes }
 				}
-				create_wargoal = {
-					target = ENG
-					type = annex_everything
-				}
+				ENG = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 			if = {
 				limit = {
 					IRE = { exists = yes }
 				}
-				create_wargoal = {
-					target = IRE
-					type = annex_everything
-				}
+				IRE = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 
 			custom_effect_tooltip = USA_blank_space_tooltip
@@ -38882,51 +38625,43 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_norse"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					ICE = { exists = yes }
 				}
-				create_wargoal = {
-					target = ICE
-					type = annex_everything
-				}
+				ICE = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					DEN = { exists = yes }
 				}
-				create_wargoal = {
-					target = DEN
-					type = annex_everything
-				}
+				DEN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NOR = { exists = yes }
 				}
-				create_wargoal = {
-					target = NOR
-					type = annex_everything
-				}
+				NOR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SWE = { exists = yes }
 				}
-				create_wargoal = {
-					target = SWE
-					type = annex_everything
-				}
+				SWE = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					FIN = { exists = yes }
 				}
-				create_wargoal = {
-					target = FIN
-					type = annex_everything
-				}
+				FIN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -38988,60 +38723,50 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_west_has_fallen"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					POR = { exists = yes }
 				}
-				create_wargoal = {
-					target = POR
-					type = annex_everything
-				}
+				POR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SPR = { exists = yes }
 				}
-				create_wargoal = {
-					target = SPR
-					type = annex_everything
-				}
+				SPR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					FRA = { exists = yes }
 				}
-				create_wargoal = {
-					target = FRA
-					type = annex_everything
-				}
+				FRA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					LUX = { exists = yes }
 				}
-				create_wargoal = {
-					target = LUX
-					type = annex_everything
-				}
+				LUX = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					BEL = { exists = yes }
 				}
-				create_wargoal = {
-					target = BEL
-					type = annex_everything
-				}
+				BEL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					HOL = { exists = yes }
 				}
-				create_wargoal = {
-					target = HOL
-					type = annex_everything
-				}
+				HOL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -39108,69 +38833,57 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_black_sea"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					EST = { exists = yes }
 				}
-				create_wargoal = {
-					target = EST
-					type = annex_everything
-				}
+				EST = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					LAT = { exists = yes }
 				}
-				create_wargoal = {
-					target = LAT
-					type = annex_everything
-				}
+				LAT = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					LIT = { exists = yes }
 				}
-				create_wargoal = {
-					target = LIT
-					type = annex_everything
-				}
+				LIT = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					BLR = { exists = yes }
 				}
-				create_wargoal = {
-					target = BLR
-					type = annex_everything
-				}
+				BLR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					UKR = { exists = yes }
 				}
-				create_wargoal = {
-					target = UKR
-					type = annex_everything
-				}
+				UKR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					PMR = { exists = yes }
 				}
-				create_wargoal = {
-					target = PMR
-					type = annex_everything
-				}
+				PMR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					MLV = { exists = yes }
 				}
-				create_wargoal = {
-					target = MLV
-					type = annex_everything
-				}
+				MLV = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -39252,96 +38965,78 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_black_sea"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					GER = { exists = yes }
 				}
-				create_wargoal = {
-					target = GER
-					type = annex_everything
-				}
+				GER = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SWI = { exists = yes }
 				}
-				create_wargoal = {
-					target = SWI
-					type = annex_everything
-				}
+				SWI = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					ITA = { exists = yes }
 				}
-				create_wargoal = {
-					target = ITA
-					type = annex_everything
-				}
+				ITA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					HLS = { exists = yes }
 				}
-				create_wargoal = {
-					target = HLS
-					type = annex_everything
-				}
+				HLS = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SLV = { exists = yes }
 				}
-				create_wargoal = {
-					target = SLV
-					type = annex_everything
-				}
+				SLV = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					AUS = { exists = yes }
 				}
-				create_wargoal = {
-					target = AUS
-					type = annex_everything
-				}
+				AUS = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					CZE = { exists = yes }
 				}
-				create_wargoal = {
-					target = CZE
-					type = annex_everything
-				}
+				CZE = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					POL = { exists = yes }
 				}
-				create_wargoal = {
-					target = POL
-					type = annex_everything
-				}
+				POL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					HUN = { exists = yes }
 				}
-				create_wargoal = {
-					target = HUN
-					type = annex_everything
-				}
+				HUN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SLO = { exists = yes }
 				}
-				create_wargoal = {
-					target = SLO
-					type = annex_everything
-				}
+				SLO = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -39451,141 +39146,113 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_cradle"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					YEM = { exists = yes }
 				}
-				create_wargoal = {
-					target = YEM
-					type = annex_everything
-				}
+				YEM = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					OMA = { exists = yes }
 				}
-				create_wargoal = {
-					target = OMA
-					type = annex_everything
-				}
+				OMA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					UAE = { exists = yes }
 				}
-				create_wargoal = {
-					target = UAE
-					type = annex_everything
-				}
+				UAE = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SAU = { exists = yes }
 				}
-				create_wargoal = {
-					target = SAU
-					type = annex_everything
-				}
+				SAU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					QAT = { exists = yes }
 				}
-				create_wargoal = {
-					target = QAT
-					type = annex_everything
-				}
+				QAT = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					KUW = { exists = yes }
 				}
-				create_wargoal = {
-					target = KUW
-					type = annex_everything
-				}
+				KUW = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					IRQ = { exists = yes }
 				}
-				create_wargoal = {
-					target = IRQ
-					type = annex_everything
-				}
+				IRQ = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					JOR = { exists = yes }
 				}
-				create_wargoal = {
-					target = JOR
-					type = annex_everything
-				}
+				JOR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					ISR = { exists = yes }
 				}
-				create_wargoal = {
-					target = ISR
-					type = annex_everything
-				}
+				ISR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					PAL = { exists = yes }
 				}
-				create_wargoal = {
-					target = PAL
-					type = annex_everything
-				}
+				PAL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					HEZ = { exists = yes }
 				}
-				create_wargoal = {
-					target = HEZ
-					type = annex_everything
-				}
+				HEZ = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					LEB = { exists = yes }
 				}
-				create_wargoal = {
-					target = LEB
-					type = annex_everything
-				}
+				LEB = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SYR = { exists = yes }
 				}
-				create_wargoal = {
-					target = SYR
-					type = annex_everything
-				}
+				SYR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					KUR = { exists = yes }
 				}
-				create_wargoal = {
-					target = KUR
-					type = annex_everything
-				}
+				KUR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					TUR = { exists = yes }
 				}
-				create_wargoal = {
-					target = TUR
-					type = annex_everything
-				}
+				TUR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -39670,96 +39337,78 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus USA_american_trotskist_operation_sarajevo"
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					CRO = { exists = yes }
 				}
-				create_wargoal = {
-					target = CRO
-					type = annex_everything
-				}
+				CRO = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					BOS = { exists = yes }
 				}
-				create_wargoal = {
-					target = BOS
-					type = annex_everything
-				}
+				BOS = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					SER = { exists = yes }
 				}
-				create_wargoal = {
-					target = SER
-					type = annex_everything
-				}
+				SER = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					KOS = { exists = yes }
 				}
-				create_wargoal = {
-					target = KOS
-					type = annex_everything
-				}
+				KOS = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					MNT = { exists = yes }
 				}
-				create_wargoal = {
-					target = MNT
-					type = annex_everything
-				}
+				MNT = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					ROM = { exists = yes }
 				}
-				create_wargoal = {
-					target = ROM
-					type = annex_everything
-				}
+				ROM = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					BUL = { exists = yes }
 				}
-				create_wargoal = {
-					target = BUL
-					type = annex_everything
-				}
+				BUL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					FYR = { exists = yes }
 				}
-				create_wargoal = {
-					target = FYR
-					type = annex_everything
-				}
+				FYR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					ALB = { exists = yes }
 				}
-				create_wargoal = {
-					target = ALB
-					type = annex_everything
-				}
+				ALB = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					GRE = { exists = yes }
 				}
-				create_wargoal = {
-					target = GRE
-					type = annex_everything
-				}
+				GRE = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -39801,10 +39450,9 @@ focus_tree = {
 				limit = {
 					SOV = { exists = yes }
 				}
-				create_wargoal = {
-					target = SOV
-					type = annex_everything
-				}
+				SOV = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 
 			custom_effect_tooltip = USA_blank_space_tooltip
@@ -39866,47 +39514,43 @@ focus_tree = {
 				limit = {
 					RAJ = { exists = yes }
 				}
-				create_wargoal = {
-					target = RAJ
-					type = annex_everything
-				}
+				newline = yes
+				RAJ = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					PAK = { exists = yes }
 				}
-				create_wargoal = {
-					target = PAK
-					type = annex_everything
-				}
+				newline = yes
+				PAK = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					BAN = { exists = yes }
 				}
-				create_wargoal = {
-					target = BAN
-					type = annex_everything
-				}
+				newline = yes
+				BAN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					BHU = { exists = yes }
 				}
-				create_wargoal = {
-					target = BHU
-					type = annex_everything
-				}
+				newline = yes
+				BHU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					NEP = { exists = yes }
 				}
-				create_wargoal = {
-					target = NEP
-					type = annex_everything
-				}
+				newline = yes
+				NEP = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
+			newline = yes
 
 			custom_effect_tooltip = USA_blank_space_tooltip
 			set_temp_variable = { party_index = 7 }
@@ -39967,46 +39611,41 @@ focus_tree = {
 				limit = {
 					CHI = { exists = yes }
 				}
-				create_wargoal = {
-					target = CHI
-					type = annex_everything
-				}
+				CHI = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 			if = {
 				limit = {
 					MON = { exists = yes }
 				}
-				create_wargoal = {
-					target = MON
-					type = annex_everything
-				}
+				MON = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 			if = {
 				limit = {
 					NKO = { exists = yes }
 				}
-				create_wargoal = {
-					target = NKO
-					type = annex_everything
-				}
+				NKO = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 			if = {
 				limit = {
 					KOR = { exists = yes }
 				}
-				create_wargoal = {
-					target = KOR
-					type = annex_everything
-				}
+				KOR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 			if = {
 				limit = {
 					TAI = { exists = yes }
 				}
-				create_wargoal = {
-					target = TAI
-					type = annex_everything
-				}
+				TAI = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 
 			custom_effect_tooltip = USA_blank_space_tooltip
