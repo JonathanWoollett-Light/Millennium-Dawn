@@ -5199,11 +5199,10 @@ focus_tree = {
 
 		completion_reward = {
 			CHI = {
-				create_wargoal = {
-					type = annex_everything
-					target = JAP
-				}
+				JAP = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
+			newline = yes
 			country_event = { id = china.27 }
 			log = "[GetDateText]: [This.GetName]: focus CHI_liquidate_the_evil executed"
 		}
@@ -13833,10 +13832,9 @@ focus_tree = {
 		completion_reward = {
 			NKO = {
 				remove_ideas = CHI_war_preparations
-				create_wargoal = {
-					type = annex_everything
-					target = KOR
-				}
+				KOR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 			set_temp_variable = { modify_chinese_aggression = 2 }
 			CHI_modify_chinese_aggression = yes
@@ -15684,10 +15682,9 @@ focus_tree = {
 				annex_country = { target = BHU transfer_troops = yes }
 			}
 			else = {
-				create_wargoal = {
-					type = annex_everything
-					target = BHU
-				}
+				BHU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
+				newline = yes
 			}
 			set_temp_variable = { modify_chinese_aggression = 5 }
 			CHI_modify_chinese_aggression = yes
@@ -15760,16 +15757,14 @@ focus_tree = {
 						active = no
 					}
 				}
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = NEP
-				}
+				NEP = { save_event_target_as = puppeting_target_event }
+				puppeting_request_effect = yes
+				newline = yes
 			}
 			else = {
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = NEP
-				}
+				NEP = { save_event_target_as = puppeting_target_event }
+				puppeting_request_effect = yes
+				newline = yes
 			}
 			set_temp_variable = { modify_chinese_aggression = 5 }
 			CHI_modify_chinese_aggression = yes
@@ -15800,10 +15795,9 @@ focus_tree = {
 		will_lead_to_war_with = RAJ
 
 		completion_reward = {
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = RAJ
-			}
+			RAJ = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			set_temp_variable = { modify_chinese_aggression = 10 }
 			CHI_modify_chinese_aggression = yes
 			log = "[GetDateText]: [This.GetName]: focus CHI_Bring_the_Tiger_to_Heel executed"
