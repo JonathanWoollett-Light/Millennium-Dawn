@@ -2602,10 +2602,8 @@ focus_tree = {
 		will_lead_to_war_with = BLR
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_belarus_strike"
-			create_wargoal = {
-				target = BLR
-				type = puppet_wargoal_focus
-			}
+			BLR = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 			hidden_effect = {
 				country_event = { id = russia.15 days = 1 }
 			}
@@ -3128,10 +3126,9 @@ focus_tree = {
 		will_lead_to_war_with = UKR
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_strike"
-			create_wargoal = {
-				target = UKR
-				type = puppet_wargoal_focus
-			}
+			UKR = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = SOV_sanctions_warning_TT
 			hidden_effect = {
 				country_event = sov_final_strike.1
@@ -3192,10 +3189,9 @@ focus_tree = {
 		will_lead_to_war_with = FIN
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_secret_strike"
-			create_wargoal = {
-				target = FIN
-				type = puppet_wargoal_focus
-			}
+			FIN = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			custom_effect_tooltip = SOV_sanctions_warning_TT
 			hidden_effect = {
 				country_event = { id = russia.15 days = 1 }
@@ -4492,16 +4488,16 @@ focus_tree = {
 		will_lead_to_war_with = USA
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_challenge_nato"
-			create_wargoal = {
-				target = USA
-				type = puppet_wargoal_focus
-			}
-			every_other_country = {
-				limit = { has_idea = EU_member }
-				SOV = {
-					create_wargoal = {
-						target = PREV
-						type = puppet_wargoal_focus
+			set_temp_variable = { hide_results = yes }
+			USA = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			custom_effect_tooltip = SOV_challenge_nato_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = { has_idea = EU_member }
+					SOV = {
+						PREV = { save_event_target_as = puppeting_target_event }
+						puppeting_request_effect = yes
 					}
 				}
 			}
@@ -8491,10 +8487,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_istanbul_is_constantinople"
-			create_wargoal = {
-				target = TUR
-				type = liberate_wargoal
-			}
+			TUR = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -8971,10 +8965,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_end_the_usa"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = USA
-			}
+			USA = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -10021,10 +10013,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_avenge_tsushima"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = JAP
-			}
+			JAP = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -14274,10 +14264,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_avenge_afgan"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = AFG
-			}
+			AFG = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -17315,10 +17303,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RUSSIA_JUST FOCUS_FILTER_RUSSIA_YABLO FOCUS_FILTER_RUSSIA_SPS FOCUS_FILTER_RUSSIA_PARNAS }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_attack_uzb"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = UZB
-			}
+			UZB = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			set_temp_variable = { treasury_change = -2 }
 			modify_treasury_effect = yes
 			add_political_power = -25
@@ -17354,10 +17341,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RUSSIA_JUST FOCUS_FILTER_RUSSIA_YABLO FOCUS_FILTER_RUSSIA_SPS FOCUS_FILTER_RUSSIA_PARNAS }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_attack_kaz"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = KAZ
-			}
+			KAZ = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			set_temp_variable = { treasury_change = -2 }
 			modify_treasury_effect = yes
 			add_political_power = -25
@@ -17393,10 +17379,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RUSSIA_JUST FOCUS_FILTER_RUSSIA_YABLO FOCUS_FILTER_RUSSIA_SPS FOCUS_FILTER_RUSSIA_PARNAS }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_attack_kyr"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = KYR
-			}
+			KYR = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			set_temp_variable = { treasury_change = -2 }
 			modify_treasury_effect = yes
 			add_political_power = -25
@@ -17432,10 +17417,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RUSSIA_JUST FOCUS_FILTER_RUSSIA_YABLO FOCUS_FILTER_RUSSIA_SPS FOCUS_FILTER_RUSSIA_PARNAS }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_attack_taj"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = TAJ
-			}
+			TAJ = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			set_temp_variable = { treasury_change = -2 }
 			modify_treasury_effect = yes
 			add_political_power = -25
@@ -17471,10 +17455,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RUSSIA_JUST FOCUS_FILTER_RUSSIA_YABLO FOCUS_FILTER_RUSSIA_SPS FOCUS_FILTER_RUSSIA_PARNAS }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_attack_trk"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = TRK
-			}
+			TRK = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			set_temp_variable = { treasury_change = -2 }
 			modify_treasury_effect = yes
 			add_political_power = -25
@@ -18304,10 +18287,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RUSSIA_JUST FOCUS_FILTER_RUSSIA_YABLO FOCUS_FILTER_RUSSIA_SPS FOCUS_FILTER_RUSSIA_PARNAS }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SOV_ignite_revolution_in_iran"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = PER
-			}
+			PER = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 		ai_will_do = {
 			base = 155
@@ -19496,14 +19477,12 @@ focus_tree = {
 		will_lead_to_war_with = NKO
 		search_filters = { FOCUS_FILTER_RUSSIA_JUST FOCUS_FILTER_RUSSIA_YABLO FOCUS_FILTER_RUSSIA_SPS FOCUS_FILTER_RUSSIA_PARNAS }
 		completion_reward = {
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = CHI
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = NKO
-			}
+			CHI = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
+			NKO = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
 			TAI = {
 				create_wargoal = {
 					type = take_core_state

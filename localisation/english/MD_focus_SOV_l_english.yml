@@ -158,7 +158,7 @@
  SOV_aggressive_foreign_policy_desc: "With internal opposition subdued, Russia can now take a more assertive stance abroad. Protecting ethnic Russians abroad provides justification for influence and intervention when necessary."
  SOV_challenge_nato: "Challenge NATO"
  SOV_challenge_nato_desc: "NATO stands for North Atlantic Terrorist Organization. We must put an end to their imperialist control and establish our hegemony over Europe."
-
+ SOV_challenge_nato_tt: "For every EU member gets event '§YProposal for Subjugation§!'."
 
  SOV_zov_in_belarus: "Try To Regain Influence In Belarus"
  SOV_zov_in_belarus_desc: "We will try to regain control over Belarus despite the fact that its authorities have adopted a clearly anti-Russian stance. This effort is crucial to restoring our influence and securing our strategic interests in the region."
