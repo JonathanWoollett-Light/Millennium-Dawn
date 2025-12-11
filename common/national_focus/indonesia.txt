@@ -3633,10 +3633,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus IND_purify_philipines"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = PHI
-			}
+			PHI = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -3673,10 +3671,8 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus IND_purify_singapore"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = SIN
-			}
+			SIN = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
@@ -3704,18 +3700,14 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus IND_purify_asia"
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = VIE
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = CBD
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = SIA
-			}
+			VIE = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
+			CBD = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
+			newline = yes
+			SIA = { save_event_target_as = puppeting_target_event }
+			puppeting_request_effect = yes
 		}
 
 		ai_will_do = {
