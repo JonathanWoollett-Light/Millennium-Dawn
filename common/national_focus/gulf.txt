@@ -5057,10 +5057,8 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = ISI
-			}
+			ISI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 			log = "[GetDateText]: [This.GetName]: focus GCC_war_on_daesh executed"
 		}
 
@@ -5087,6 +5085,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					check_variable = { shia_population > 0 }
@@ -5099,110 +5098,88 @@ focus_tree = {
 					country_exists = BHR
 					BHR = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = BHR
-				}
+				BHR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = HEJ
 					HEJ = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = HEJ
-				}
+				HEJ = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = HOU
 					HOU = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = HOU
-				}
+				HOU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = KUW
 					KUW = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = KUW
-				}
+				KUW = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = NEJ
 					NEJ = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = NEJ
-				}
+				NEJ = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = OMA
 					OMA = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = OMA
-				}
+				OMA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = QAT
 					QAT = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = QAT
-				}
+				QAT = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = QTF
 					QTF = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = QTF
-				}
+				QTF = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = SAU
 					SAU = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = SAU
-				}
+				SAU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = UAE
 					UAE = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = UAE
-				}
+				UAE = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = YEM
 					YEM = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = YEM
-				}
+				YEM = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			log = "[GetDateText]: [This.GetName]: focus GCC_jihad_in_arabia executed"
 		}
@@ -5230,6 +5207,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					check_variable = { shia_population > 0 }
@@ -5242,110 +5220,88 @@ focus_tree = {
 					country_exists = FSA
 					FSA = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = FSA
-				}
+				FSA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = IRQ
 					IRQ = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = IRQ
-				}
+				IRQ = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = ISR
 					ISR = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = ISR
-				}
+				ISR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = LEB
 					LEB = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = LEB
-				}
+				LEB = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = JOR
 					JOR = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = JOR
-				}
+				JOR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = KUR
 					KUR = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = KUR
-				}
+				KUR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = PUK
 					PUK = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = PUK
-				}
+				PUK = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = PAL
 					PAL = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = PAL
-				}
+				PAL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = ROJ
 					ROJ = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = ROJ
-				}
+				ROJ = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = SYR
 					SYR = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = SYR
-				}
+				SYR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = DRU
 					DRU = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = DRU
-				}
+				DRU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			log = "[GetDateText]: [This.GetName]: focus GCC_jihad_in_the_levant executed"
 		}
@@ -5373,6 +5329,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					check_variable = { shia_population > 0 }
@@ -5385,90 +5342,72 @@ focus_tree = {
 					country_exists = ALG
 					ALG = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = ALG
-				}
+				ALG = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = EGY
 					EGY = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = EGY
-				}
+				EGY = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = GNA
 					GNA = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = GNA
-				}
+				GNA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = LBA
 					LBA = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = LBA
-				}
+				LBA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = HOR
 					HOR = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = HOR
-				}
+				HOR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = MOR
 					MOR = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = MOR
-				}
+				MOR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = SHA
 					SHA = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = SHA
-				}
+				SHA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = TUA
 					TUA = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = TUA
-				}
+				TUA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = TUN
 					TUN = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = TUN
-				}
+				TUN = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			log = "[GetDateText]: [This.GetName]: focus GCC_jihad_in_the_maghreb executed"
 		}
@@ -5496,6 +5435,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					check_variable = { shia_population > 0 }
@@ -5508,70 +5448,56 @@ focus_tree = {
 					country_exists = BFA
 					BFA = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = BFA
-				}
+				BFA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = CHA
 					CHA = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = CHA
-				}
+				CHA = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = MAL
 					MAL = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = MAL
-				}
+				MAL = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = MAU
 					MAU = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = MAU
-				}
+				MAU = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = NGR
 					NGR = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = NGR
-				}
+				NGR = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = NIG
 					NIG = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = NIG
-				}
+				NIG = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			if = {
 				limit = {
 					country_exists = SUD
 					SUD = { no_jihadist_government = yes }
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = SUD
-				}
+				SUD = { save_event_target_as = annexation_target_event }
+				annexation_request_effect = yes
 			}
 			log = "[GetDateText]: [This.GetName]: focus GCC_jihad_in_west_africa executed"
 		}
@@ -7995,6 +7921,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			set_temp_variable = { hide_results = yes }
 			if = {
 				limit = {
 					NOT = {
@@ -8011,60 +7938,48 @@ focus_tree = {
 						NOT = { original_tag = BHR }
 						BHR = { has_country_flag = rejected_blockade_demands }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = BHR
-					}
+					BHR = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = KUW }
 						KUW = { has_country_flag = rejected_blockade_demands }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = KUW
-					}
+					KUW = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = OMA }
 						OMA = { has_country_flag = rejected_blockade_demands }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = OMA
-					}
+					OMA = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = QAT }
 						QAT = { has_country_flag = rejected_blockade_demands }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = QAT
-					}
+					QAT = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = UAE }
 						UAE = { has_country_flag = rejected_blockade_demands }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = UAE
-					}
+					UAE = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = SAU }
 						SAU = { has_country_flag = rejected_blockade_demands }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = SAU
-					}
+					SAU = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 			}
 			if = {
@@ -8074,60 +7989,48 @@ focus_tree = {
 						NOT = { original_tag = BHR }
 						BHR = { has_completed_focus = GCC_antagonize_iran }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = BHR
-					}
+					BHR = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = KUW }
 						KUW = { has_completed_focus = GCC_antagonize_iran }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = KUW
-					}
+					KUW = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = OMA }
 						OMA = { has_completed_focus = GCC_antagonize_iran }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = OMA
-					}
+					OMA = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = QAT }
 						QAT = { has_completed_focus = GCC_antagonize_iran }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = QAT
-					}
+					QAT = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = UAE }
 						UAE = { has_completed_focus = GCC_antagonize_iran }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = UAE
-					}
+					UAE = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 				if = {
 					limit = {
 						NOT = { original_tag = SAU }
 						SAU = { has_completed_focus = GCC_antagonize_iran }
 					}
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = SAU
-					}
+					SAU = { save_event_target_as = puppeting_target_event }
+					puppeting_request_effect = yes
 				}
 			}
 			if = {
@@ -8386,10 +8289,8 @@ focus_tree = {
 				USA = { country_event = { days = 1 id = gulf.30 } }
 			}
 			else = {
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = PER
-				}
+				PER = { save_event_target_as = puppeting_target_event }
+				puppeting_request_effect = yes
 			}
 		}
 
