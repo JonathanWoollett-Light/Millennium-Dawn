@@ -8769,10 +8769,9 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: RAJ_spit_on_revision"
-			create_wargoal = {
-				type = annex_everything
-				target = CHI
-			}
+			CHI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_spit_on_revision
 				threat = 3
@@ -8968,14 +8967,12 @@ focus_tree = {
 		will_lead_to_war_with = NEP
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: RAJ_crush_nepal_bhutan"
-			create_wargoal = {
-				type = annex_everything
-				target = BHU
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = NEP
-			}
+			BHU = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			NEP = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_crush_nepal_bhutan
 				threat = 3
@@ -11734,10 +11731,9 @@ focus_tree = {
 		will_lead_to_war_with = PAK
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: RAJ_sharpen_the_claws"
-			create_wargoal = {
-				type = annex_everything
-				target = PAK
-			}
+			PAK = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_sharpen_the_claws
 				threat = 5
@@ -14580,11 +14576,10 @@ focus_tree = {
 
 			add_war_support = 0.09
 			add_stability = 0.03
-
-			create_wargoal = {
-				type = annex_everything
-				target = PAK
-			}
+			newline = yes
+			PAK = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_bring_back_kashmir
 				threat = 5
@@ -14662,11 +14657,10 @@ focus_tree = {
 			RAJ_change_hindu_opinion = yes
 			set_temp_variable = { temp_change = -2 }
 			RAJ_change_christian_opinion = yes
-
-			create_wargoal = {
-				type = annex_everything
-				target = NEP
-			}
+			newline = yes
+			NEP = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_nepal_fell_after_all
 				threat = 2
@@ -14696,11 +14690,10 @@ focus_tree = {
 			set_temp_variable = { temp_change = -1 }
 			RAJ_change_hindu_opinion = yes
 			RAJ_change_christian_opinion = yes
-
-			create_wargoal = {
-				type = annex_everything
-				target = BRM
-			}
+			newline = yes
+			BRM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_BRMnmar_what
 				threat = 2
@@ -14730,11 +14723,10 @@ focus_tree = {
 			set_temp_variable = { temp_change = -1 }
 			RAJ_change_hindu_opinion = yes
 			RAJ_change_christian_opinion = yes
-
-			create_wargoal = {
-				type = annex_everything
-				target = BAN
-			}
+			newline = yes
+			BAN = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_bangladesh_independence
 				threat = 2
@@ -15636,11 +15628,10 @@ focus_tree = {
 			RAJ_change_hindu_opinion = yes
 			set_temp_variable = { temp_change = -2 }
 			RAJ_change_christian_opinion = yes
-
-			create_wargoal = {
-				type = annex_everything
-				target = ISR
-			}
+			newline = yes
+			ISR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_troubleshoot_the_map
 				threat = 2
@@ -15685,11 +15676,10 @@ focus_tree = {
 			RAJ_change_hindu_opinion = yes
 			set_temp_variable = { temp_change = -2 }
 			RAJ_change_christian_opinion = yes
-
-			create_wargoal = {
-				type = annex_everything
-				target = CHI
-			}
+			newline = yes
+			CHI = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_to_avenge_the_oppression_of_the_uighurs
 				threat = 3.5
@@ -15729,11 +15719,10 @@ focus_tree = {
 			set_temp_variable = { temp_change = -2 }
 			RAJ_change_hindu_opinion = yes
 			RAJ_change_christian_opinion = yes
-
-			create_wargoal = {
-				type = annex_everything
-				target = PER
-			}
+			newline = yes
+			PER = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_wrong_islam_in_iran
 				threat = 3
@@ -15775,11 +15764,10 @@ focus_tree = {
 			RAJ_change_hindu_opinion = yes
 			set_temp_variable = { temp_change = -2 }
 			RAJ_change_christian_opinion = yes
-
-			create_wargoal = {
-				type = annex_everything
-				target = USA
-			}
+			newline = yes
+			USA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_main_enemy_of_chaliphate
 				threat = 5
@@ -15821,11 +15809,10 @@ focus_tree = {
 			RAJ_change_hindu_opinion = yes
 			set_temp_variable = { temp_change = -1 }
 			RAJ_change_christian_opinion = yes
-
-			create_wargoal = {
-				type = annex_everything
-				target = SOV
-			}
+			newline = yes
+			SOV = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			add_named_threat = {
 				name = RAJ_revenge_for_the_humiliation_of_chechnya
 				threat = 5
