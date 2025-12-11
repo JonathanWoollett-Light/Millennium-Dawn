@@ -8028,10 +8028,8 @@ focus_tree = {
 		will_lead_to_war_with = SAU
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_strike_arabia"
-			create_wargoal = {
-				type = annex_everything
-				target = SAU
-			}
+			SAU = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 
@@ -8067,10 +8065,8 @@ focus_tree = {
 		will_lead_to_war_with = PAK
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_strike_pakistan"
-			create_wargoal = {
-				type = annex_everything
-				target = PAK
-			}
+			PAK = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 
@@ -12917,14 +12913,11 @@ focus_tree = {
 		will_lead_to_war_with = EGY
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_a_new_empire"
-			create_wargoal = {
-				type = annex_everything
-				target = EGY
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = LBA
-			}
+			EGY = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			LBA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	focus = {
@@ -13247,10 +13240,8 @@ focus_tree = {
 		will_lead_to_war_with = BUL
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_campaign_against_athens"
-			create_wargoal = {
-				type = annex_everything
-				target = BUL
-			}
+			BUL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	focus = {
@@ -13365,10 +13356,10 @@ focus_tree = {
 		will_lead_to_war_with = ARM
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_fight_russian_influence"
-			create_wargoal = {
-				type = annex_everything
-				target = ARM
-			}
+			newline = yes
+			ARM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
 			set_temp_variable = { percent_change = 5 }
 			set_temp_variable = { tag_index = TUR }
 			set_temp_variable = { influence_target = SYR }
@@ -13430,10 +13421,9 @@ focus_tree = {
 			country_event = {
 				id = TurkeyFocusEvents.31
 			}
-			create_wargoal = {
-				type = annex_everything
-				target = PER
-			}
+			newline = yes
+			PER = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	#TSK
@@ -13599,10 +13589,8 @@ focus_tree = {
 		will_lead_to_war_with = GEO
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_subdue_kurdish_independence"
-			create_wargoal = {
-				type = annex_everything
-				target = GEO
-			}
+			GEO = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 
 	}
@@ -14489,10 +14477,8 @@ focus_tree = {
 		will_lead_to_war_with = PER
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_take_out_iran"
-			create_wargoal = {
-				type = annex_everything
-				target = PER
-			}
+			PER = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	focus = {
@@ -14526,14 +14512,11 @@ focus_tree = {
 		will_lead_to_war_with = TRK
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_central_asia"
-			create_wargoal = {
-				type = annex_everything
-				target = TRK
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = UZB
-			}
+			TRK = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			UZB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 
@@ -15605,10 +15588,8 @@ focus_tree = {
 		will_lead_to_war_with = IRQ
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_arm_iraqi_shias"
-			create_wargoal = {
-				type = annex_everything
-				target = IRQ
-			}
+			IRQ = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	# Lebonan
@@ -15644,10 +15625,9 @@ focus_tree = {
 			set_temp_variable = { tag_index = TUR }
 			set_temp_variable = { influence_target = HEZ }
 			change_influence_percentage = yes
-			create_wargoal = {
-				type = annex_everything
-				target = LEB
-			}
+			newline = yes
+			LEB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	focus = {
@@ -16212,26 +16192,17 @@ focus_tree = {
 		will_lead_to_war_with = AZE
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_great_east"
-			create_wargoal = {
-				type = annex_everything
-				target = ARM
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = GEO
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = SOO
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = AZE
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = ABK
-			}
+			set_temp_variable = { hide_results = yes }
+			ARM = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			GEO = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			SOO = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			AZE = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ABK = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	focus = {
@@ -16262,38 +16233,23 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_southward"
-			create_wargoal = {
-				type = annex_everything
-				target = SYR
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = IRQ
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = JOR
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = KUR
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = ISR
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = PAL
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = LEB
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = HEZ
-			}
+			set_temp_variable = { hide_results = yes }
+			SYR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			IRQ = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			JOR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			KUR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			ISR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			PAL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			LEB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			HEZ = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	focus = {
@@ -16319,22 +16275,17 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_westard"
-			create_wargoal = {
-				type = annex_everything
-				target = GRE
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = ALB
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = FYR
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = BUL
-			}
+			GRE = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			ALB = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			FYR = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			BUL = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 	focus = {
@@ -16365,18 +16316,14 @@ focus_tree = {
 		will_lead_to_war_with = SUD
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus TUR_african_holdings"
-			create_wargoal = {
-				type = annex_everything
-				target = EGY
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = LBA
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = SUD
-			}
+			EGY = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			LBA = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
+			newline = yes
+			SUD = { save_event_target_as = annexation_target_event }
+			annexation_request_effect = yes
 		}
 	}
 }
