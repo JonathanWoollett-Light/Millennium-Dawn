@@ -38,6 +38,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = {
 			original_tag = CUB
 		}

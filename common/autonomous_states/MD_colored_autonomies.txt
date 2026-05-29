@@ -36,6 +36,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { NOT = { is_in_array = { ruling_party = 11 } } }
 		OVERLORD = { NOT = { has_country_flag = formed_neo_baathist_uar } }
 		OVERLORD = { NOT = { has_country_flag = formed_baathist_uar } }
@@ -88,6 +89,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { NOT = { is_in_array = { ruling_party = 11 } } }
 		OVERLORD = { NOT = { has_country_flag = formed_neo_baathist_uar } }
 		OVERLORD = { NOT = { has_country_flag = formed_baathist_uar } }
@@ -138,6 +140,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { NOT = { is_in_array = { ruling_party = 11 } } }
 		OVERLORD = { NOT = { has_country_flag = formed_neo_baathist_uar } }
 		OVERLORD = { NOT = { has_country_flag = formed_baathist_uar } }
@@ -188,6 +191,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { NOT = { is_in_array = { ruling_party = 11 } } }
 		OVERLORD = { NOT = { has_country_flag = formed_neo_baathist_uar } }
 		OVERLORD = { NOT = { has_country_flag = formed_baathist_uar } }

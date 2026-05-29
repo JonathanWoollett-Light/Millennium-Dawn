@@ -15,3 +15,1223 @@ ENG_inner_circle_is_ascension_cd_over = {
 		}
 	}
 }
+
+# Pax Britannica: an overlord eligible to hold the Dominion/Colony/Puppet subject
+# tiers defined in common/autonomous_states/MD_british_autonomies.txt.
+# ENG_the_empire_strikes_back sets ENG_pax_britannica_unlocked, so the tiers stay
+# locked until the focus is taken.
+pax_subject_overlord = {
+	OVERLORD = {
+		has_country_flag = ENG_pax_britannica_unlocked
+	}
+}
+
+# A subject currently held on one of the three Pax colonial tiers. Used to keep Pax
+# subjects on the Dominion/Colony/Puppet ladder and off the generic MD subject tiers.
+pax_is_pax_subject = {
+	OR = {
+		has_autonomy_state = autonomy_dominion
+		has_autonomy_state = autonomy_dominion_colored
+		has_autonomy_state = autonomy_colony
+		has_autonomy_state = autonomy_colony_colored
+		has_autonomy_state = autonomy_puppet
+		has_autonomy_state = autonomy_puppet_colored
+	}
+}
+
+# Pax Britannica - British Empire regional state lists and helper triggers.
+# is_eng_empire_<region>_state = BE states (claim/cede/highlight).
+# is_<region>_geo_state = whole geographic region (power-presence check).
+
+is_eng_empire_north_africa_state = {
+	OR = {
+		state = 213 # Sinai
+		state = 214 # Suez
+		state = 215 # Cairo
+		state = 216 # Alexandria
+		state = 217 # Nile Valley
+		state = 218 # New Valley
+		state = 219 # Red Sea Coast
+		state = 577 # Western Desert
+		state = 590 # Halaib Triangle
+		state = 1102 # New Cairo
+		state = 1198 # Eastern Desert
+	}
+}
+
+is_eng_empire_west_africa_state = {
+	OR = {
+		state = 332 # Biafra
+		state = 334 # Lagos
+		state = 336 # Benue
+		state = 337 # Abuja
+		state = 338 # Sokoto
+		state = 339 # Kano
+		state = 340 # Borno
+		state = 345 # Volta
+		state = 346 # Coastal Ghana
+		state = 347 # Ashanti
+		state = 348 # Upper Ghana
+		state = 358 # Freetown
+		state = 365 # Gambia
+		state = 1002 # Upper Gambia
+	}
+}
+
+is_eng_empire_east_africa_state = {
+	OR = {
+		state = 220 # Kassala
+		state = 221 # Khartoum
+		state = 222 # Blue Nile
+		state = 223 # North Kordofan
+		state = 224 # Darfur
+		state = 225 # Upper Nile
+		state = 226 # Bahr el Ghazal
+		state = 227 # Equatoria
+		state = 237 # Somaliland
+		state = 241 # Kenyan Coast
+		state = 242 # Central Kenya
+		state = 243 # Nyanza
+		state = 244 # Rift Valley
+		state = 245 # Eastern Kenya
+		state = 246 # Northern Uganda
+		state = 247 # Eastern Uganda
+		state = 248 # Western Uganda
+		state = 249 # Central Uganda
+		state = 252 # Northwest Tanzania
+		state = 253 # Zanzibar
+		state = 254 # Western Tanzania
+		state = 255 # Central Tanzania
+		state = 256 # Kilimanjaro
+		state = 257 # Tanzanian Central Coast
+		state = 258 # Southeast Tanzania
+		state = 576 # Northwest Sudan
+		state = 614 # Northern Darfur
+		state = 923 # Kafia Kingi
+		state = 924 # Jonglei
+		state = 925 # Ilemi
+		state = 926 # Napak
+		state = 927 # Abyei
+		state = 937 # Awdal
+		state = 938 # Khatumo
+		state = 1045 # Mbeya
+		state = 1046 # Njombe
+		state = 1047 # West Ruvuma
+		state = 1048 # East Ruvuma
+		state = 1183 # South Kordofan
+		state = 1184 # White Nile
+	}
+}
+
+is_eng_empire_southern_africa_state = {
+	OR = {
+		state = 259 # Northern Malawi
+		state = 260 # Southern Malawi
+		state = 271 # Swaziland
+		state = 272 # Lesotho
+		state = 273 # Limpopo
+		state = 274 # Mpumalanga
+		state = 275 # Gauteng
+		state = 276 # Northwest South Africa
+		state = 277 # Free State
+		state = 278 # Northern Cape
+		state = 279 # Kwazulu-Natal
+		state = 280 # Eastern Cape
+		state = 281 # Western Cape
+		state = 287 # Botswana Central District
+		state = 288 # Kalahari
+		state = 289 # Matabeleland
+		state = 290 # Mashonaland
+		state = 291 # Masvingo-Manica
+		state = 292 # Lusaka
+		state = 293 # Copperbelt
+		state = 294 # Eastern Zambia
+		state = 295 # Western Zambia
+	}
+}
+
+is_eng_empire_middle_east_state = {
+	OR = {
+		state = 165 # Kirkuk
+		state = 166 # Nineveh
+		state = 167 # Salahuddin
+		state = 168 # Anbar
+		state = 169 # Najaf
+		state = 170 # Diyala
+		state = 171 # Basrah
+		state = 172 # Kuwait
+		state = 179 # Dubai
+		state = 180 # Abu Dhabi
+		state = 181 # Qatar
+		state = 182 # Muscat
+		state = 183 # Al Wusta
+		state = 194 # Al Mahrah
+		state = 195 # Sanaa
+		state = 196 # Al Bayda
+		state = 197 # Taiz
+		state = 198 # Aden
+		state = 199 # Hadramaut
+		state = 200 # Socotra
+		state = 204 # Central Israel
+		state = 205 # Galilee
+		state = 206 # Southern Israel
+		state = 207 # Jerusalem
+		state = 208 # West Bank
+		state = 210 # Amman
+		state = 211 # Zarqa
+		state = 212 # Southern Jordan
+		state = 423 # Bahrain
+		state = 425 # Musandam
+		state = 486 # RAFO Masirah
+		state = 557 # Babylon
+		state = 587 # Golan
+		state = 641 # Sinjar
+		state = 951 # Sadah
+		state = 952 # Marib
+		state = 1077 # Hanish Islands
+		state = 1082 # Dhofar
+		state = 1103 # Ibb
+		state = 1104 # Al Jawf
+		state = 1105 # Southern Rub al-Khali
+		state = 1122 # Muthanna
+		state = 1123 # Dhi Qar
+		state = 1124 # Maysan
+		state = 1141 # Wasit
+		state = 1142 # Qadisiyah
+		state = 1143 # Karbala
+	}
+}
+
+is_eng_empire_south_asia_state = {
+	OR = {
+		state = 416 # Balochistan
+		state = 417 # Pashto Balochistan
+		state = 418 # Khyber Pakhtunkhwa
+		state = 419 # Pashto Tribal Areas
+		state = 420 # Azad Kashmir
+		state = 421 # Gilgit-Baltistan
+		state = 422 # Punjab
+		state = 426 # Sindh
+		state = 427 # Jammu Kashmir
+		state = 428 # Himachal
+		state = 429 # Eastern Punjab
+		state = 431 # Haryana
+		state = 432 # East-Rajasthan
+		state = 436 # East Gujarat
+		state = 438 # West-Madhya-Pradesh
+		state = 440 # Braj
+		state = 444 # Awadh
+		state = 445 # Purvanchal
+		state = 447 # Bihar
+		state = 451 # Jharkhand
+		state = 452 # West Bengal
+		state = 455 # Gorkhaland
+		state = 456 # South Odisha
+		state = 458 # Telangana
+		state = 459 # South Chhattisgarh
+		state = 460 # South Andhra Pradesh
+		state = 461 # Rayalaseema
+		state = 462 # Tamil Nadu
+		state = 464 # Kongu Nadu
+		state = 465 # Kerala
+		state = 467 # South Karnataka
+		state = 469 # Maharashtra
+		state = 470 # Vidarbha
+		state = 471 # Mumbai
+		state = 473 # Assam
+		state = 475 # Arunachal Pradesh
+		state = 476 # Nagaland
+		state = 477 # Manipur
+		state = 478 # Mizoram
+		state = 479 # Andaman and Nicobar
+		state = 480 # Maldives
+		state = 481 # Eelam
+		state = 482 # Central Sri Lanka
+		state = 483 # Sinhalese Coast
+		state = 484 # Bhutan
+		state = 490 # Dhaka
+		state = 492 # Chittagong
+		state = 493 # Barisal-Khulna
+		state = 494 # Northern Bangladesh
+		state = 563 # Central Punjab
+		state = 573 # Southern Punjab
+		state = 594 # Tribal Areas
+		state = 980 # Meghalya
+		state = 981 # Tripura
+		state = 982 # Sikkim
+		state = 983 # Drangme
+		state = 984 # West-Rajasthan
+		state = 985 # South-Madhya-Pradesh
+		state = 986 # East-Madhya-Pradesh
+		state = 987 # West Gujarat
+		state = 988 # North Karnataka
+		state = 989 # North Odisha
+		state = 990 # North Andhra Pradesh
+		state = 991 # North Chhattisgarh
+		state = 993 # Ladakh
+		state = 1063 # Uttaranchal
+		state = 1171 # Malakand
+	}
+}
+
+is_eng_empire_southeast_asia_state = {
+	OR = {
+		state = 499 # Chin
+		state = 500 # Rahmanland
+		state = 502 # Rakhine
+		state = 503 # Mon-Tanintharyi
+		state = 504 # Lower Burma
+		state = 505 # Upper Burma
+		state = 525 # Sarawak
+		state = 527 # Malacca
+		state = 528 # Western Malaya
+		state = 529 # Eastern Malaya
+		state = 530 # Singapore
+		state = 752 # Brunei
+		state = 816 # Southern Spratlys
+		state = 930 # North Shan
+		state = 1016 # Sabah
+	}
+}
+
+is_eng_empire_east_asia_state = {
+	state = 595 # Hong Kong
+}
+
+is_eng_empire_australasia_state = {
+	OR = {
+		state = 533 # Solomon Islands
+		state = 535 # Fiji
+		state = 543 # Vanuatu
+		state = 546 # Gilbert Islands
+		state = 551 # Line Islands
+		state = 568 # Tuvalu
+		state = 569 # Samoa
+		state = 730 # South Papua
+		state = 731 # Papuan Highlands
+		state = 732 # North Papua
+		state = 733 # Bismarck Archipelago
+		state = 741 # Queensland
+		state = 742 # Australian Capital Territory
+		state = 743 # Victoria
+		state = 744 # Tasmania
+		state = 745 # South Australia
+		state = 746 # Western Australia
+		state = 747 # Northern Territory
+		state = 748 # Christmas Island
+		state = 749 # Cocos Islands
+		state = 750 # North Island
+		state = 751 # South Island
+		state = 941 # Bougainville
+		state = 1115 # Tonga
+		state = 1116 # Phoenix Islands
+		state = 1117 # Nauru
+		state = 1217 # Tokelau
+		state = 1218 # Niue
+		state = 1219 # Norfolk Island
+		state = 1220 # Cook Islands
+		state = 1221 # New South Wales
+		state = 1225 # Guadalcanal
+	}
+}
+
+is_eng_empire_north_america_state = {
+	OR = {
+		state = 753 # Northwestern Territories
+		state = 754 # British Columbia
+		state = 755 # Alberta
+		state = 756 # Saskatchewan
+		state = 757 # Manitoba
+		state = 758 # Nunavut
+		state = 759 # Newfoundland
+		state = 760 # Nova Scotia
+		state = 761 # New Brunswick
+		state = 762 # Eastern Quebec
+		state = 763 # Ontario
+		state = 1159 # Western Quebec
+		state = 1160 # Ungava
+	}
+}
+
+is_eng_empire_caribbean_state = {
+	OR = {
+		state = 845 # Belize
+		state = 856 # Northern Bahamas
+		state = 858 # Jamaica
+		state = 865 # Barbados
+		state = 869 # Trinidad
+	}
+}
+
+is_eng_empire_south_america_state = {
+	OR = {
+		state = 877 # Guyana
+		state = 1005 # Esequiba
+	}
+}
+
+is_eng_empire_europe_state = {
+	OR = {
+		state = 27 # Leinster
+		state = 28 # Munster
+		state = 29 # Connacht
+		state = 85 # Malta
+		state = 145 # Cyprus
+	}
+}
+
+is_any_eng_empire_state = {
+	OR = {
+		is_eng_empire_north_africa_state = yes
+		is_eng_empire_west_africa_state = yes
+		is_eng_empire_east_africa_state = yes
+		is_eng_empire_southern_africa_state = yes
+		is_eng_empire_middle_east_state = yes
+		is_eng_empire_south_asia_state = yes
+		is_eng_empire_southeast_asia_state = yes
+		is_eng_empire_east_asia_state = yes
+		is_eng_empire_australasia_state = yes
+		is_eng_empire_north_america_state = yes
+		is_eng_empire_caribbean_state = yes
+		is_eng_empire_south_america_state = yes
+		is_eng_empire_europe_state = yes
+	}
+}
+
+is_north_africa_geo_state = {
+	OR = {
+		state = 213 # Sinai
+		state = 214 # Suez
+		state = 215 # Cairo
+		state = 216 # Alexandria
+		state = 217 # Nile Valley
+		state = 218 # New Valley
+		state = 219 # Red Sea Coast
+		state = 372 # Tifariti
+		state = 373 # Western-Sahara
+		state = 374 # Tanger-Tetouan-Al Hoceima
+		state = 375 # Marrakesh-Safi
+		state = 376 # Draa-Tafilalet
+		state = 377 # Casablanca-Settat
+		state = 378 # Souss-Massa
+		state = 379 # Mzab
+		state = 380 # Aures
+		state = 381 # Tamanrasset
+		state = 382 # Grand Erg Occidental
+		state = 383 # Algerian Atlas
+		state = 384 # Constantinois
+		state = 385 # Kabylia
+		state = 386 # Algerois
+		state = 387 # Oranais
+		state = 388 # Tunis
+		state = 389 # Gabes
+		state = 390 # Tunisian Desert
+		state = 391 # Tripolitania
+		state = 392 # Sabha
+		state = 393 # Jabal Al Gharbi
+		state = 394 # Sirte
+		state = 395 # Benghazi
+		state = 396 # Derna
+		state = 397 # Al Wahat
+		state = 577 # Western Desert
+		state = 579 # Calanshio Sand Sea
+		state = 590 # Halaib Triangle
+		state = 918 # Ghat
+		state = 919 # Sirte
+		state = 920 # Murzuq
+		state = 1100 # Kufra
+		state = 1101 # Rabyanah Sand Sea
+		state = 1102 # New Cairo
+		state = 1175 # Oriental
+		state = 1176 # Fes-Meknes
+		state = 1177 # Rabat-Sale-Kenitra
+		state = 1178 # Beni Mellal-Khenifra
+		state = 1179 # Guelmim-Oued Noun
+		state = 1198 # Eastern Desert
+		state = 1202 # Serir Tibesti
+		state = 1203 # Haruj
+		state = 1204 # Murzuq & Ubari Desert
+	}
+}
+
+is_west_africa_geo_state = {
+	OR = {
+		state = 187 # Malian Sahara
+		state = 321 # Southeastern Cameroon
+		state = 322 # Ambazonia
+		state = 323 # Northern Cameroon
+		state = 326 # Logone
+		state = 327 # Kanem
+		state = 328 # Chad-Centre
+		state = 329 # Zinder
+		state = 330 # Tahoua
+		state = 331 # Niamey
+		state = 332 # Biafra
+		state = 334 # Lagos
+		state = 336 # Benue
+		state = 337 # Abuja
+		state = 338 # Sokoto
+		state = 339 # Kano
+		state = 340 # Borno
+		state = 341 # Northern Togo
+		state = 342 # Lome
+		state = 343 # North Benin
+		state = 344 # Porto Novo
+		state = 345 # Volta
+		state = 346 # Coastal Ghana
+		state = 347 # Ashanti
+		state = 348 # Upper Ghana
+		state = 349 # Sahel
+		state = 350 # Volta-Delta
+		state = 351 # Black Volta
+		state = 352 # Akan
+		state = 353 # Woroba-Savanes
+		state = 354 # Sassandra
+		state = 355 # Eastern Liberia
+		state = 358 # Freetown
+		state = 359 # Haute-Guinee
+		state = 360 # Guinee-Maritime
+		state = 361 # Bissau
+		state = 362 # Casamance
+		state = 363 # Senegal-Nord
+		state = 364 # Senegal-Central
+		state = 365 # Gambia
+		state = 366 # Tombouctou
+		state = 367 # Sikasso
+		state = 368 # Koulikoro
+		state = 369 # Coastal Mauritania
+		state = 370 # Mauritanian Sahel
+		state = 371 # Mauritanian Sahara
+		state = 398 # Cape Verde
+		state = 413 # Sahara mauritanien
+		state = 580 # Aouzou Strip
+		state = 1001 # Tambacounda
+		state = 1002 # Upper Gambia
+		state = 1003 # Guinea-Bissau
+		state = 1108 # Bilma
+		state = 1163 # Kidal
+		state = 1164 # Gao
+		state = 1165 # Menaka
+		state = 1166 # Kayes
+		state = 1167 # Ansongo
+	}
+}
+
+is_east_africa_geo_state = {
+	OR = {
+		state = 220 # Kassala
+		state = 221 # Khartoum
+		state = 222 # Blue Nile
+		state = 223 # North Kordofan
+		state = 224 # Darfur
+		state = 225 # Upper Nile
+		state = 226 # Bahr el Ghazal
+		state = 227 # Equatoria
+		state = 228 # Eritrean Coast
+		state = 229 # Eritrean Interior
+		state = 230 # Djibouti
+		state = 231 # Tigray
+		state = 232 # Amhara
+		state = 233 # Oromia
+		state = 234 # East Oromia
+		state = 235 # Southern Ethiopia
+		state = 236 # Ogaden
+		state = 237 # Somaliland
+		state = 240 # Somalia
+		state = 241 # Kenyan Coast
+		state = 242 # Central Kenya
+		state = 243 # Nyanza
+		state = 244 # Rift Valley
+		state = 245 # Eastern Kenya
+		state = 246 # Northern Uganda
+		state = 247 # Eastern Uganda
+		state = 248 # Western Uganda
+		state = 249 # Central Uganda
+		state = 250 # Rwanda
+		state = 251 # Burundi
+		state = 252 # Northwest Tanzania
+		state = 253 # Zanzibar
+		state = 254 # Western Tanzania
+		state = 255 # Central Tanzania
+		state = 256 # Kilimanjaro
+		state = 257 # Tanzanian Central Coast
+		state = 258 # Southeast Tanzania
+		state = 576 # Northwest Sudan
+		state = 614 # Northern Darfur
+		state = 923 # Kafia Kingi
+		state = 924 # Jonglei
+		state = 925 # Ilemi
+		state = 926 # Napak
+		state = 927 # Abyei
+		state = 937 # Awdal
+		state = 938 # Khatumo
+		state = 975 # Galmudug
+		state = 1019 # Afar
+		state = 1020 # Tadjourah
+		state = 1045 # Mbeya
+		state = 1046 # Njombe
+		state = 1047 # West Ruvuma
+		state = 1048 # East Ruvuma
+		state = 1183 # South Kordofan
+		state = 1184 # White Nile
+	}
+}
+
+is_southern_africa_geo_state = {
+	OR = {
+		state = 259 # Northern Malawi
+		state = 260 # Southern Malawi
+		state = 261 # Northern Mozambique
+		state = 262 # Mozambique Highlands
+		state = 263 # Zambezi Delta
+		state = 264 # Southern Mozambique
+		state = 266 # Malagasian West Coast
+		state = 267 # Malagasian Highlands
+		state = 268 # Southwest Madagascar
+		state = 271 # Swaziland
+		state = 272 # Lesotho
+		state = 273 # Limpopo
+		state = 274 # Mpumalanga
+		state = 275 # Gauteng
+		state = 276 # Northwest South Africa
+		state = 277 # Free State
+		state = 278 # Northern Cape
+		state = 279 # Kwazulu-Natal
+		state = 280 # Eastern Cape
+		state = 281 # Western Cape
+		state = 282 # Namib-Kalahari
+		state = 283 # Namibian Plateau
+		state = 287 # Botswana Central District
+		state = 288 # Kalahari
+		state = 289 # Matabeleland
+		state = 290 # Mashonaland
+		state = 291 # Masvingo-Manica
+		state = 292 # Lusaka
+		state = 293 # Copperbelt
+		state = 294 # Eastern Zambia
+		state = 295 # Western Zambia
+		state = 296 # Cabinda
+		state = 298 # Luanda
+		state = 299 # Benguela
+		state = 487 # Malagasian East Coast
+		state = 1049 # West Niassa
+		state = 1050 # East Niassa
+	}
+}
+
+is_south_asia_geo_state = {
+	OR = {
+		state = 411 # Badakhstan
+		state = 416 # Balochistan
+		state = 417 # Pashto Balochistan
+		state = 418 # Khyber Pakhtunkhwa
+		state = 419 # Pashto Tribal Areas
+		state = 420 # Azad Kashmir
+		state = 421 # Gilgit-Baltistan
+		state = 422 # Punjab
+		state = 426 # Sindh
+		state = 427 # Jammu Kashmir
+		state = 428 # Himachal
+		state = 429 # Eastern Punjab
+		state = 431 # Haryana
+		state = 432 # East-Rajasthan
+		state = 436 # East Gujarat
+		state = 438 # West-Madhya-Pradesh
+		state = 440 # Braj
+		state = 444 # Awadh
+		state = 445 # Purvanchal
+		state = 447 # Bihar
+		state = 451 # Jharkhand
+		state = 452 # West Bengal
+		state = 455 # Gorkhaland
+		state = 456 # South Odisha
+		state = 458 # Telangana
+		state = 459 # South Chhattisgarh
+		state = 460 # South Andhra Pradesh
+		state = 461 # Rayalaseema
+		state = 462 # Tamil Nadu
+		state = 464 # Kongu Nadu
+		state = 465 # Kerala
+		state = 467 # South Karnataka
+		state = 469 # Maharashtra
+		state = 470 # Vidarbha
+		state = 471 # Mumbai
+		state = 473 # Assam
+		state = 475 # Arunachal Pradesh
+		state = 476 # Nagaland
+		state = 477 # Manipur
+		state = 478 # Mizoram
+		state = 479 # Andaman and Nicobar
+		state = 480 # Maldives
+		state = 481 # Eelam
+		state = 482 # Central Sri Lanka
+		state = 483 # Sinhalese Coast
+		state = 484 # Bhutan
+		state = 485 # Eastern Nepal
+		state = 490 # Dhaka
+		state = 492 # Chittagong
+		state = 493 # Barisal-Khulna
+		state = 494 # Northern Bangladesh
+		state = 563 # Central Punjab
+		state = 573 # Southern Punjab
+		state = 594 # Tribal Areas
+		state = 980 # Meghalya
+		state = 981 # Tripura
+		state = 982 # Sikkim
+		state = 983 # Drangme
+		state = 984 # West-Rajasthan
+		state = 985 # South-Madhya-Pradesh
+		state = 986 # East-Madhya-Pradesh
+		state = 987 # West Gujarat
+		state = 988 # North Karnataka
+		state = 989 # North Odisha
+		state = 990 # North Andhra Pradesh
+		state = 991 # North Chhattisgarh
+		state = 993 # Ladakh
+		state = 1063 # Uttaranchal
+		state = 1153 # Nuristan
+		state = 1154 # Kunar
+		state = 1171 # Malakand
+	}
+}
+
+is_southeast_asia_geo_state = {
+	OR = {
+		state = 499 # Chin
+		state = 500 # Rahmanland
+		state = 502 # Rakhine
+		state = 503 # Mon-Tanintharyi
+		state = 504 # Lower Burma
+		state = 505 # Upper Burma
+		state = 506 # Isaan
+		state = 507 # Northern Thailand
+		state = 508 # Central Thailand
+		state = 509 # Southern Thailand
+		state = 510 # Pattani
+		state = 511 # Eastern Cambodia
+		state = 512 # Northern Khmer
+		state = 513 # Southern Khmer
+		state = 514 # Mekong Plains
+		state = 515 # Northern Laos
+		state = 516 # Mekong Valley
+		state = 517 # Southern Laos
+		state = 518 # Mekong Delta
+		state = 519 # Southern Vietnam
+		state = 520 # Vietnamese Highlands
+		state = 521 # Central Vietnam
+		state = 522 # Red River Delta
+		state = 523 # Northern Vietnam
+		state = 524 # Northeast Vietnam
+		state = 525 # Sarawak
+		state = 527 # Malacca
+		state = 528 # Western Malaya
+		state = 529 # Eastern Malaya
+		state = 530 # Singapore
+		state = 623 # Northern Sumatra
+		state = 627 # Riau Islands
+		state = 629 # Southern Sumatra
+		state = 631 # Western Java
+		state = 634 # Eastern Java
+		state = 635 # Lesser Sunda Islands
+		state = 636 # Moluccas
+		state = 637 # North Moluccas
+		state = 638 # West Papua
+		state = 639 # Sulawesi
+		state = 640 # Kalimantan
+		state = 734 # Loro Munu
+		state = 735 # Northern Luzon
+		state = 736 # Southern Luzon
+		state = 737 # Visayas
+		state = 738 # Moro
+		state = 739 # Mindanao
+		state = 740 # Palawan
+		state = 752 # Brunei
+		state = 801 # Western Spratlys
+		state = 802 # Eastern Spratlys
+		state = 816 # Southern Spratlys
+		state = 930 # North Shan
+		state = 936 # Natuna Islands
+		state = 1016 # Sabah
+		state = 1113 # Banten
+		state = 1114 # Central Java
+		state = 1185 # West Timor
+		state = 1226 # Timor Leste
+		state = 1227 # Cordillera
+		state = 1228 # Ilocos
+		state = 1229 # Central Luzon
+		state = 1230 # Metro Manila
+		state = 1231 # Bicol
+		state = 1232 # Eastern Visayas
+		state = 1233 # Western Visayas
+		state = 1234 # Mindoro
+		state = 1235 # Caraga
+		state = 1236 # Soccsksargen
+		state = 1237 # Northern Mindanao
+		state = 1238 # Zamboanga
+		state = 1239 # Sulu Archipelago
+	}
+}
+
+is_east_asia_geo_state = {
+	OR = {
+		state = 430 # Kinmen
+		state = 434 # Northern Hebei
+		state = 435 # Shandong Peninsula
+		state = 491 # Taiping Island
+		state = 526 # Northern Spratlys
+		state = 531 # Hainan
+		state = 532 # Pearl River Delta
+		state = 534 # Guangdong
+		state = 536 # Nanjing
+		state = 537 # Fujian
+		state = 538 # Zhejiang
+		state = 540 # Shanghai
+		state = 541 # Jiangsu
+		state = 544 # Shandong
+		state = 547 # Beijing
+		state = 548 # Tianjin
+		state = 549 # Hebei
+		state = 552 # Liaoning
+		state = 554 # Jilin
+		state = 555 # Heilongjiang
+		state = 556 # Nei Mongol
+		state = 558 # Shanxi
+		state = 559 # Shaanxi
+		state = 560 # Gansu
+		state = 562 # Jiangxi
+		state = 564 # Anhui
+		state = 567 # Henan
+		state = 570 # Hubei
+		state = 572 # Hunan
+		state = 574 # Guangxi
+		state = 578 # Yunnan
+		state = 582 # Guizhou
+		state = 583 # Chongqing
+		state = 585 # Western Sichuan
+		state = 586 # Sichuan
+		state = 588 # Qinghai
+		state = 589 # Xizang
+		state = 591 # Aksai Chin
+		state = 592 # Xinjiang
+		state = 595 # Hong Kong
+		state = 596 # Eastern Mongolia
+		state = 597 # Western Mongolia
+		state = 598 # Taipei
+		state = 599 # Kaohsiung
+		state = 600 # Hualian
+		state = 601 # Hamgyong
+		state = 602 # Pyongyang
+		state = 603 # Hwanghae
+		state = 604 # Gyeonggi
+		state = 605 # Yeongnam
+		state = 606 # Chungcheong
+		state = 607 # Honam
+		state = 608 # Jeju
+		state = 609 # Kyushu
+		state = 610 # Shikoku
+		state = 611 # Chugoku
+		state = 612 # Kansai
+		state = 613 # Chubu
+		state = 615 # Kanto
+		state = 616 # Tohoku
+		state = 617 # Hokkaido
+		state = 618 # Okinawa
+		state = 619 # Tsushima
+		state = 620 # Minami-Tori-shima
+		state = 621 # Iwo To
+		state = 813 # Paracel
+		state = 939 # Senkaku
+		state = 943 # Macclesfield Bank
+		state = 1015 # Pratas
+		state = 1072 # Ningxia
+		state = 1095 # Liaoxi
+		state = 1096 # Songjiang
+		state = 1097 # Hulunbuir
+		state = 1099 # Baengnyeongdo
+		state = 1109 # Lienchiang
+		state = 1155 # Hsinchu
+		state = 1156 # Taichung
+		state = 1157 # Tainan
+		state = 1158 # Penghu
+		state = 1199 # Kangwon
+		state = 1200 # North Pyongan
+		state = 1201 # Chagang
+	}
+}
+
+eng_controls_be_state_in_north_africa = {
+	any_owned_state = { is_eng_empire_north_africa_state = yes }
+}
+
+eng_pax_no_major_power_in_north_africa = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_north_africa_geo_state = yes }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_west_africa = {
+	any_owned_state = { is_eng_empire_west_africa_state = yes }
+}
+
+eng_pax_no_major_power_in_west_africa = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_west_africa_geo_state = yes }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_east_africa = {
+	any_owned_state = { is_eng_empire_east_africa_state = yes }
+}
+
+eng_pax_no_major_power_in_east_africa = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_east_africa_geo_state = yes }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_southern_africa = {
+	any_owned_state = { is_eng_empire_southern_africa_state = yes }
+}
+
+eng_pax_no_major_power_in_southern_africa = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_southern_africa_geo_state = yes }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_middle_east = {
+	any_owned_state = { is_eng_empire_middle_east_state = yes }
+}
+
+eng_pax_no_major_power_in_middle_east = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_on_continent = middle_east }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_south_asia = {
+	any_owned_state = { is_eng_empire_south_asia_state = yes }
+}
+
+eng_pax_no_major_power_in_south_asia = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_south_asia_geo_state = yes }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_southeast_asia = {
+	any_owned_state = { is_eng_empire_southeast_asia_state = yes }
+}
+
+eng_pax_no_major_power_in_southeast_asia = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_southeast_asia_geo_state = yes }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_east_asia = {
+	any_owned_state = { is_eng_empire_east_asia_state = yes }
+}
+
+eng_pax_no_major_power_in_east_asia = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_east_asia_geo_state = yes }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_australasia = {
+	any_owned_state = { is_eng_empire_australasia_state = yes }
+}
+
+eng_pax_no_major_power_in_australasia = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_on_continent = australia }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_north_america = {
+	any_owned_state = { is_eng_empire_north_america_state = yes }
+}
+
+eng_pax_no_major_power_in_north_america = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_on_continent = north_america }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_caribbean = {
+	any_owned_state = { is_eng_empire_caribbean_state = yes }
+}
+
+eng_pax_no_major_power_in_caribbean = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			is_caribbean_nation = yes
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_south_america = {
+	any_owned_state = { is_eng_empire_south_america_state = yes }
+}
+
+eng_pax_no_major_power_in_south_america = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_on_continent = south_america }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_controls_be_state_in_europe = {
+	any_owned_state = { is_eng_empire_europe_state = yes }
+}
+
+eng_pax_no_major_power_in_europe = {
+	NOT = {
+		any_country = {
+			NOT = { tag = ENG }
+			any_owned_state = { is_on_continent = europe }
+			OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+		}
+	}
+}
+
+eng_target_has_non_be_state = {
+	any_owned_state = { NOT = { is_any_eng_empire_state = yes } }
+}
+
+# --- Empire Strikes Back: British Isles control (incl. all Ireland) ---
+eng_controls_british_isles = {
+	# Scotland
+	controls_state = 8 # Shetland
+	controls_state = 1190 # Orkney
+	controls_state = 1196 # Outer Hebrides
+	controls_state = 1195 # Aberdeenshire
+	controls_state = 9 # Central Belt
+	controls_state = 437 # Highlands
+	controls_state = 1194 # Scottish Borders
+	# England
+	controls_state = 1192 # Northern England
+	controls_state = 10 # Yorkshire
+	controls_state = 11 # Greater Manchester
+	controls_state = 12 # West Midlands
+	controls_state = 13 # Greater London
+	controls_state = 14 # East of England
+	controls_state = 15 # Southern England
+	controls_state = 973 # Cornwall
+	# Wales
+	controls_state = 16 # South Wales
+	controls_state = 1192 # North Wales
+	# Ireland
+	controls_state = 17 # Ultster
+	controls_state = 27 # Leinster
+	controls_state = 28 # Munster
+	controls_state = 29 # Connacht
+}
+
+# --- country holds territory in a geographic region (for targeted antagonize) ---
+eng_in_north_africa_geo = {
+	any_owned_state = { is_north_africa_geo_state = yes }
+}
+
+eng_in_west_africa_geo = {
+	any_owned_state = { is_west_africa_geo_state = yes }
+}
+
+eng_in_east_africa_geo = {
+	any_owned_state = { is_east_africa_geo_state = yes }
+}
+
+eng_in_southern_africa_geo = {
+	any_owned_state = { is_southern_africa_geo_state = yes }
+}
+
+eng_in_middle_east_geo = {
+	any_owned_state = { is_on_continent = middle_east }
+}
+
+eng_in_south_asia_geo = {
+	any_owned_state = { is_south_asia_geo_state = yes }
+}
+
+eng_in_southeast_asia_geo = {
+	any_owned_state = { is_southeast_asia_geo_state = yes }
+}
+
+eng_in_east_asia_geo = {
+	any_owned_state = { is_east_asia_geo_state = yes }
+}
+
+eng_in_australasia_geo = {
+	any_owned_state = { is_on_continent = australia }
+}
+
+eng_in_north_america_geo = {
+	any_owned_state = { is_on_continent = north_america }
+}
+
+eng_in_caribbean_geo = {
+	is_caribbean_nation = yes
+}
+
+eng_in_south_america_geo = {
+	any_owned_state = { is_on_continent = south_america }
+}
+
+eng_in_europe_geo = {
+	any_owned_state = { is_on_continent = europe }
+}
+
+# --- The country in scope is in serious internal collapse (used by the Hong Kong
+# buy-back and the Mediterranean purchase offers to soften an unwilling seller) ---
+eng_country_is_collapsing = {
+	OR = {
+		has_country_flag = paused_debt_repayment
+		has_active_mission = bankruptcy_incoming_collapse
+		has_civil_war = yes
+		AND = {
+			check_variable = { treasury < 0 }
+			has_stability < 0.30
+		}
+	}
+}
+
+# Pax Britannica regional consolidation - secondary (non-primary) members.
+# Used by eng_pax_consolidate_<region> to fold conquered secondaries into the primary.
+
+eng_pax_is_west_africa_secondary = {
+	OR = {
+		tag = GAH
+		tag = SIE
+		tag = GAM
+	}
+}
+
+eng_pax_is_east_africa_secondary = {
+	OR = {
+		tag = UGA
+		tag = TNZ
+		tag = SUD
+		tag = SSU
+		tag = SML
+	}
+}
+
+eng_pax_is_southern_africa_secondary = {
+	OR = {
+		tag = ZIM
+		tag = ZAM
+		tag = MLW
+		tag = BOT
+		tag = LES
+		tag = SWA
+	}
+}
+
+eng_pax_is_middle_east_secondary = {
+	OR = {
+		tag = JOR
+		tag = ISR
+		tag = PAL
+		tag = KUW
+		tag = BHR
+		tag = QAT
+		tag = UAE
+		tag = OMA
+		tag = YEM
+	}
+}
+
+eng_pax_is_south_asia_secondary = {
+	OR = {
+		tag = PAK
+		tag = BAN
+		tag = SRI
+		tag = BHU
+		tag = MLD
+	}
+}
+
+eng_pax_is_southeast_asia_secondary = {
+	OR = {
+		tag = BRM
+		tag = SIN
+		tag = BRU
+	}
+}
+
+eng_pax_is_australasia_secondary = {
+	OR = {
+		tag = NZL
+		tag = PAP
+		tag = FIJ
+		tag = SOL
+		tag = VAN
+		tag = SAM
+		tag = TON
+		tag = KIR
+		tag = TUL
+		tag = NAU
+	}
+}
+
+eng_pax_is_caribbean_secondary = {
+	OR = {
+		tag = TRI
+		tag = BAR
+		tag = BLZ
+		tag = BAH
+	}
+}
+
+eng_pax_is_europe_secondary = {
+	OR = {
+		tag = MLT
+		tag = CYP
+	}
+}

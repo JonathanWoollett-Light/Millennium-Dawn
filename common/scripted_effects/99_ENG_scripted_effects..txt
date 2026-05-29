@@ -1272,3 +1272,960 @@ ENG_run_agendas = {
 		}
 	}
 }
+
+# Pax Britannica - shared effects. Called in the target country's scope from the
+# subjugation event (ENG_pax_britannica.*); FROM and ENG both resolve to Britain.
+
+# Target accepts and becomes a British Dominion (high-autonomy subject).
+eng_become_dominion_of_eng = {
+	set_temp_variable = { percent_change = 10 }
+	set_temp_variable = { tag_index = ENG }
+	set_temp_variable = { influence_target = THIS }
+	change_influence_percentage = yes
+	if = {
+		limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+		ENG = { set_autonomy = { target = ROOT autonomy_state = autonomy_dominion_colored } }
+	}
+	else = {
+		ENG = { set_autonomy = { target = ROOT autonomy_state = autonomy_dominion } }
+	}
+}
+
+# Reorganise every British subject sitting on a generic MD subject tier onto the
+# matching Pax colonial tier (closest autonomy band, preserving puppet status):
+# associated -> Dominion, satellite -> Colony, puppet_state/autonomous -> Puppet.
+# Colour follows GAME_RULE_allow_colored_puppets. Subjects already on a Pax tier or a
+# bespoke ladder (devolution, ADS) are left untouched. Run once at the focus, again on
+# every new puppet (on_puppet), and weekly as a backstop, so war-puppets convert too.
+eng_convert_subjects_to_colonial = {
+	every_subject_country = {
+		limit = {
+			OR = {
+				has_autonomy_state = autonomy_associated_state
+				has_autonomy_state = autonomy_associated_state_colored
+				has_autonomy_state = autonomy_satellite_state
+				has_autonomy_state = autonomy_satellite_state_colored
+				has_autonomy_state = autonomy_puppet_state
+				has_autonomy_state = autonomy_puppet_state_colored
+				has_autonomy_state = autonomy_autonomous_state
+				has_autonomy_state = autonomy_autonomous_state_colored
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_autonomy_state = autonomy_associated_state
+					has_autonomy_state = autonomy_associated_state_colored
+				}
+			}
+			if = {
+				limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+				ENG = { set_autonomy = { target = PREV autonomy_state = autonomy_dominion_colored freedom_level = 0.85 } }
+			}
+			else = {
+				ENG = { set_autonomy = { target = PREV autonomy_state = autonomy_dominion freedom_level = 0.85 } }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_autonomy_state = autonomy_satellite_state
+					has_autonomy_state = autonomy_satellite_state_colored
+				}
+			}
+			if = {
+				limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+				ENG = { set_autonomy = { target = PREV autonomy_state = autonomy_colony_colored freedom_level = 0.60 } }
+			}
+			else = {
+				ENG = { set_autonomy = { target = PREV autonomy_state = autonomy_colony freedom_level = 0.60 } }
+			}
+		}
+		else = {
+			if = {
+				limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+				ENG = { set_autonomy = { target = PREV autonomy_state = autonomy_puppet_colored freedom_level = 0.30 } }
+			}
+			else = {
+				ENG = { set_autonomy = { target = PREV autonomy_state = autonomy_puppet freedom_level = 0.30 } }
+			}
+		}
+	}
+}
+
+# Target cedes every British Empire state it controls (across any region) and keeps
+# the rest of its land, remaining independent.
+eng_cede_be_states = {
+	every_owned_state = {
+		limit = { is_any_eng_empire_state = yes }
+		transfer_state_to = ENG
+	}
+}
+
+# Recalculate the State of the Empire dynamic modifier. Each stat starts at its
+# "Empire Strikes Back" value and linearly inverts as more former British Empire
+# territory is reconquered: value = start * (1 - 2f), where f is the fraction of
+# the 543 historical Empire states ENG now controls. Bureaucracy cost instead
+# climbs from 0 to its cap as f rises. Run on completion of the focus and weekly.
+eng_update_state_of_the_empire = {
+	set_temp_variable = { ENG_soe_owned = 0 }
+	every_owned_state = {
+		limit = { is_any_eng_empire_state = yes }
+		add_to_temp_variable = { ENG_soe_owned = 1 }
+	}
+	# f = owned / 543, clamped to [0,1]
+	set_temp_variable = { ENG_soe_f = ENG_soe_owned }
+	divide_temp_variable = { ENG_soe_f = 543 }
+	clamp_temp_variable = { var = ENG_soe_f min = 0 max = 1 }
+	# inversion factor i = 1 - 2f, runs +1 (start) -> -1 (full inverse)
+	set_temp_variable = { ENG_soe_inv = ENG_soe_f }
+	multiply_temp_variable = { ENG_soe_inv = -2 }
+	add_to_temp_variable = { ENG_soe_inv = 1 }
+
+	set_variable = { ENG_soe_war_support_factor = ENG_soe_inv }
+	multiply_variable = { ENG_soe_war_support_factor = 0.15 }
+
+	set_variable = { ENG_soe_justify_war_goal_time = ENG_soe_inv }
+	multiply_variable = { ENG_soe_justify_war_goal_time = -0.30 }
+
+	set_variable = { ENG_soe_political_power_factor = ENG_soe_inv }
+	multiply_variable = { ENG_soe_political_power_factor = 0.15 }
+
+	set_variable = { ENG_soe_interest_rate = ENG_soe_inv }
+	multiply_variable = { ENG_soe_interest_rate = 2 }
+
+	set_variable = { ENG_soe_stability_factor = ENG_soe_inv }
+	multiply_variable = { ENG_soe_stability_factor = -0.10 }
+
+	# bureaucracy cost climbs 0 -> 0.50 with conquest
+	set_variable = { ENG_soe_bureaucracy_cost = ENG_soe_f }
+	multiply_variable = { ENG_soe_bureaucracy_cost = 0.50 }
+
+	# nationalist fervour climbs 0 -> 0.05 with conquest: the wider the Empire, the
+	# stronger the daily drift toward the nationalist bloc.
+	set_variable = { ENG_soe_nationalist_drift = ENG_soe_f }
+	multiply_variable = { ENG_soe_nationalist_drift = 0.05 }
+
+	# flat downward pressure, deliberately not scaled by reclaim progress
+	set_variable = { ENG_soe_subjects_autonomy_gain = -0.3 }
+}
+
+# Completing a regional Pax focus is an open declaration that Britain means to reclaim
+# that region. Every country holding land there (bar ENG, its subjects, and anyone
+# already at war with it) sours toward the Crown. One effect per region because the
+# membership trigger name cannot be parameterised.
+eng_pax_antagonize_north_africa = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_north_africa_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_west_africa = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_west_africa_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_east_africa = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_east_africa_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_southern_africa = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_southern_africa_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_middle_east = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_middle_east_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_south_asia = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_south_asia_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_southeast_asia = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_southeast_asia_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_east_asia = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_east_asia_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_australasia = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_australasia_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_north_america = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_north_america_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_caribbean = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_caribbean_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_south_america = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_south_america_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+eng_pax_antagonize_europe = {
+	every_country = {
+		limit = {
+			NOT = { tag = ENG }
+			NOT = { is_subject_of = ENG }
+			NOT = { has_war_with = ENG }
+			eng_in_europe_geo = yes
+		}
+		add_opinion_modifier = { target = ROOT modifier = pax_imperial_threat_opinion }
+	}
+}
+
+# Pax Britannica regional consolidation (Tasks 7-9).
+# When ENG (the Pax overlord) beats a region's PRIMARY nation it is re-established
+# as a Dominion anchor with its colonial flag; every other conquered nation in the
+# region is then merged into that primary (states + cores). Driven by on_annex /
+# on_puppet for immediacy and an on_monthly_ENG ownership backstop.
+# Per-region rather than parameterised because the membership/state triggers and the
+# primary tag cannot be passed as arguments (mirrors eng_pax_antagonize_<region>).
+
+eng_pax_consolidate_north_africa = {
+	# Anchor EGY as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_north_africa_anchored }
+			OR = {
+				EGY = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = EGY }
+					any_state = { is_core_of = EGY is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = EGY } }
+			release_puppet = EGY
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = EGY autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = EGY autonomy_state = autonomy_dominion }
+		}
+		EGY = { set_cosmetic_tag = EGY_british_colony }
+		set_country_flag = eng_pax_north_africa_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into EGY.
+	if = {
+		limit = { EGY = { is_subject_of = ENG } }
+		every_owned_state = {
+			limit = {
+				is_eng_empire_north_africa_state = yes
+				NOT = { is_core_of = EGY }
+			}
+			add_core_of = EGY
+			transfer_state_to = EGY
+		}
+	}
+}
+
+eng_pax_consolidate_west_africa = {
+	# Anchor NIG as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_west_africa_anchored }
+			OR = {
+				NIG = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = NIG }
+					any_state = { is_core_of = NIG is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = NIG } }
+			release_puppet = NIG
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = NIG autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = NIG autonomy_state = autonomy_dominion }
+		}
+		NIG = { set_cosmetic_tag = NIG_british_colony }
+		set_country_flag = eng_pax_west_africa_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into NIG.
+	if = {
+		limit = { NIG = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_west_africa_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = NIG
+				transfer_state_to = NIG
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_west_africa_state = yes
+				NOT = { is_core_of = NIG }
+			}
+			add_core_of = NIG
+			transfer_state_to = NIG
+		}
+	}
+}
+
+eng_pax_consolidate_east_africa = {
+	# Anchor KEN as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_east_africa_anchored }
+			OR = {
+				KEN = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = KEN }
+					any_state = { is_core_of = KEN is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = KEN } }
+			release_puppet = KEN
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = KEN autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = KEN autonomy_state = autonomy_dominion }
+		}
+		KEN = { set_cosmetic_tag = KEN_british_colony }
+		set_country_flag = eng_pax_east_africa_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into KEN.
+	if = {
+		limit = { KEN = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_east_africa_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = KEN
+				transfer_state_to = KEN
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_east_africa_state = yes
+				NOT = { is_core_of = KEN }
+			}
+			add_core_of = KEN
+			transfer_state_to = KEN
+		}
+	}
+}
+
+eng_pax_consolidate_southern_africa = {
+	# Anchor SAF as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_southern_africa_anchored }
+			OR = {
+				SAF = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = SAF }
+					any_state = { is_core_of = SAF is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = SAF } }
+			release_puppet = SAF
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = SAF autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = SAF autonomy_state = autonomy_dominion }
+		}
+		SAF = { set_cosmetic_tag = SAF_british_colony }
+		set_country_flag = eng_pax_southern_africa_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into SAF.
+	if = {
+		limit = { SAF = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_southern_africa_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = SAF
+				transfer_state_to = SAF
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_southern_africa_state = yes
+				NOT = { is_core_of = SAF }
+			}
+			add_core_of = SAF
+			transfer_state_to = SAF
+		}
+	}
+}
+
+eng_pax_consolidate_middle_east = {
+	# Anchor IRQ as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_middle_east_anchored }
+			OR = {
+				IRQ = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = IRQ }
+					any_state = { is_core_of = IRQ is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = IRQ } }
+			release_puppet = IRQ
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = IRQ autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = IRQ autonomy_state = autonomy_dominion }
+		}
+		IRQ = { set_cosmetic_tag = IRQ_british_colony }
+		set_country_flag = eng_pax_middle_east_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into IRQ.
+	if = {
+		limit = { IRQ = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_middle_east_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = IRQ
+				transfer_state_to = IRQ
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_middle_east_state = yes
+				NOT = { is_core_of = IRQ }
+			}
+			add_core_of = IRQ
+			transfer_state_to = IRQ
+		}
+	}
+}
+
+eng_pax_consolidate_south_asia = {
+	# Anchor RAJ as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_south_asia_anchored }
+			OR = {
+				RAJ = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = RAJ }
+					any_state = { is_core_of = RAJ is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = RAJ } }
+			release_puppet = RAJ
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = RAJ autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = RAJ autonomy_state = autonomy_dominion }
+		}
+		RAJ = { set_cosmetic_tag = RAJ_british_colony }
+		set_country_flag = eng_pax_south_asia_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into RAJ.
+	if = {
+		limit = { RAJ = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_south_asia_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = RAJ
+				transfer_state_to = RAJ
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_south_asia_state = yes
+				NOT = { is_core_of = RAJ }
+			}
+			add_core_of = RAJ
+			transfer_state_to = RAJ
+		}
+	}
+}
+
+eng_pax_consolidate_southeast_asia = {
+	# Anchor MAY as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_southeast_asia_anchored }
+			OR = {
+				MAY = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = MAY }
+					any_state = { is_core_of = MAY is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = MAY } }
+			release_puppet = MAY
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = MAY autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = MAY autonomy_state = autonomy_dominion }
+		}
+		MAY = { set_cosmetic_tag = MAY_british_colony }
+		set_country_flag = eng_pax_southeast_asia_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into MAY.
+	if = {
+		limit = { MAY = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_southeast_asia_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = MAY
+				transfer_state_to = MAY
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_southeast_asia_state = yes
+				NOT = { is_core_of = MAY }
+			}
+			add_core_of = MAY
+			transfer_state_to = MAY
+		}
+	}
+}
+
+eng_pax_consolidate_east_asia = {
+	# Anchor HKG as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_east_asia_anchored }
+			OR = {
+				HKG = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = HKG }
+					any_state = { is_core_of = HKG is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = HKG } }
+			release_puppet = HKG
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = HKG autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = HKG autonomy_state = autonomy_dominion }
+		}
+		HKG = { set_cosmetic_tag = HKG_british_colony }
+		set_country_flag = eng_pax_east_asia_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into HKG.
+	if = {
+		limit = { HKG = { is_subject_of = ENG } }
+		every_owned_state = {
+			limit = {
+				is_eng_empire_east_asia_state = yes
+				NOT = { is_core_of = HKG }
+			}
+			add_core_of = HKG
+			transfer_state_to = HKG
+		}
+	}
+}
+
+eng_pax_consolidate_australasia = {
+	# Anchor AST as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_australasia_anchored }
+			OR = {
+				AST = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = AST }
+					any_state = { is_core_of = AST is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = AST } }
+			release_puppet = AST
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = AST autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = AST autonomy_state = autonomy_dominion }
+		}
+		AST = { set_cosmetic_tag = AST_british_colony }
+		set_country_flag = eng_pax_australasia_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into AST.
+	if = {
+		limit = { AST = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_australasia_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = AST
+				transfer_state_to = AST
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_australasia_state = yes
+				NOT = { is_core_of = AST }
+			}
+			add_core_of = AST
+			transfer_state_to = AST
+		}
+	}
+}
+
+eng_pax_consolidate_north_america = {
+	# Anchor CAN as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_north_america_anchored }
+			OR = {
+				CAN = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = CAN }
+					any_state = { is_core_of = CAN is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = CAN } }
+			release_puppet = CAN
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = CAN autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = CAN autonomy_state = autonomy_dominion }
+		}
+		CAN = { set_cosmetic_tag = CAN_british_colony }
+		set_country_flag = eng_pax_north_america_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into CAN.
+	if = {
+		limit = { CAN = { is_subject_of = ENG } }
+		every_owned_state = {
+			limit = {
+				is_eng_empire_north_america_state = yes
+				NOT = { is_core_of = CAN }
+			}
+			add_core_of = CAN
+			transfer_state_to = CAN
+		}
+	}
+}
+
+eng_pax_consolidate_caribbean = {
+	# Anchor JAM as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_caribbean_anchored }
+			OR = {
+				JAM = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = JAM }
+					any_state = { is_core_of = JAM is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = JAM } }
+			release_puppet = JAM
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = JAM autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = JAM autonomy_state = autonomy_dominion }
+		}
+		JAM = { set_cosmetic_tag = JAM_british_colony }
+		set_country_flag = eng_pax_caribbean_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into JAM.
+	if = {
+		limit = { JAM = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_caribbean_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = JAM
+				transfer_state_to = JAM
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_caribbean_state = yes
+				NOT = { is_core_of = JAM }
+			}
+			add_core_of = JAM
+			transfer_state_to = JAM
+		}
+	}
+}
+
+eng_pax_consolidate_south_america = {
+	# Anchor GUY as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_south_america_anchored }
+			OR = {
+				GUY = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = GUY }
+					any_state = { is_core_of = GUY is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = GUY } }
+			release_puppet = GUY
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = GUY autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = GUY autonomy_state = autonomy_dominion }
+		}
+		GUY = { set_cosmetic_tag = GUY_british_colony }
+		set_country_flag = eng_pax_south_america_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into GUY.
+	if = {
+		limit = { GUY = { is_subject_of = ENG } }
+		every_owned_state = {
+			limit = {
+				is_eng_empire_south_america_state = yes
+				NOT = { is_core_of = GUY }
+			}
+			add_core_of = GUY
+			transfer_state_to = GUY
+		}
+	}
+}
+
+eng_pax_consolidate_europe = {
+	# Anchor IRE as a Dominion once ENG has beaten it, then fold the region's
+	# territory into it. Run in ENG scope; gated so it is idempotent.
+	if = {
+		limit = {
+			NOT = { has_country_flag = eng_pax_europe_anchored }
+			OR = {
+				IRE = { is_subject_of = ENG }
+				AND = {
+					NOT = { country_exists = IRE }
+					any_state = { is_core_of = IRE is_owned_by = ENG }
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { country_exists = IRE } }
+			release_puppet = IRE
+		}
+		if = {
+			limit = { has_global_flag = GAME_RULE_allow_colored_puppets }
+			set_autonomy = { target = IRE autonomy_state = autonomy_dominion_colored }
+		}
+		else = {
+			set_autonomy = { target = IRE autonomy_state = autonomy_dominion }
+		}
+		IRE = { set_cosmetic_tag = IRE_british_colony }
+		set_country_flag = eng_pax_europe_anchored
+	}
+	# Once the anchor is held, fold the region's conquered territory into IRE.
+	if = {
+		limit = { IRE = { is_subject_of = ENG } }
+		every_country = {
+			limit = {
+				is_subject_of = ENG
+				eng_pax_is_europe_secondary = yes
+			}
+			every_owned_state = {
+				add_core_of = IRE
+				transfer_state_to = IRE
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_eng_empire_europe_state = yes
+				NOT = { is_core_of = IRE }
+			}
+			add_core_of = IRE
+			transfer_state_to = IRE
+		}
+	}
+}
+
+eng_pax_consolidate_all = {
+	eng_pax_consolidate_north_africa = yes
+	eng_pax_consolidate_west_africa = yes
+	eng_pax_consolidate_east_africa = yes
+	eng_pax_consolidate_southern_africa = yes
+	eng_pax_consolidate_middle_east = yes
+	eng_pax_consolidate_south_asia = yes
+	eng_pax_consolidate_southeast_asia = yes
+	eng_pax_consolidate_east_asia = yes
+	eng_pax_consolidate_australasia = yes
+	eng_pax_consolidate_north_america = yes
+	eng_pax_consolidate_caribbean = yes
+	eng_pax_consolidate_south_america = yes
+	eng_pax_consolidate_europe = yes
+}

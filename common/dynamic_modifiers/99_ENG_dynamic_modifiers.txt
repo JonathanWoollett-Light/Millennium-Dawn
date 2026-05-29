@@ -387,3 +387,17 @@ ENG_State_17_Paramilitary_Activity = {
 	required_garrison_factor = ENG_Paramilitary_required_garrison
 	custom_modifier_tooltip = ENG_additional_expenditure_goodfriday_state_TT
 }
+
+ENG_state_of_the_empire = {
+	icon = GFX_idea_ENG_house_of_windsor_shield
+	enable = { always = yes }
+
+	war_support_factor = ENG_soe_war_support_factor
+	justify_war_goal_time = ENG_soe_justify_war_goal_time
+	political_power_factor = ENG_soe_political_power_factor
+	interest_rate_multiplier_modifier = ENG_soe_interest_rate
+	stability_factor = ENG_soe_stability_factor
+	bureaucracy_cost_multiplier_modifier = ENG_soe_bureaucracy_cost
+	nationalist_drift = ENG_soe_nationalist_drift
+	subjects_autonomy_gain = ENG_soe_subjects_autonomy_gain
+}

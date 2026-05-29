@@ -4091,3 +4091,397 @@ ENG_asteroid_mining_decisions = {
 		}
 	}
 }
+
+ENG_pax_britannica_category = {
+	# Peaceful alternative to reclaiming East Asia by force: buy Hong Kong back
+	# from Beijing. China only sells when British sway over it is overwhelming and
+	# the People's Republic is collapsing from within (see ENG_pax_britannica.3).
+	ENG_purchase_hong_kong = {
+		icon = GFX_decision_ENG_pax_east_asia
+
+		highlight_states = {
+			highlight_states_trigger = {
+				state = 595
+			}
+		}
+
+		visible = {
+			has_completed_focus = ENG_pax_east_asia
+			country_exists = CHI
+			NOT = { owns_state = 595 }
+		}
+
+		available = {
+			NOT = { has_war_with = CHI }
+			custom_trigger_tooltip = {
+				tooltip = ENG_hk_china_holds_TT
+				OR = {
+					595 = { is_owned_by = HKG }
+					595 = { is_owned_by = CHI }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ENG_hk_can_afford_TT
+				check_variable = { treasury > 75 }
+			}
+		}
+
+		cost = 50
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ENG_purchase_hong_kong"
+			CHI = { country_event = { id = ENG_pax_britannica.3 days = 3 } }
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			custom_effect_tooltip = ENG_hk_purchase_outcome_TT
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	# Peaceful route: one offer to buy the Faroe Islands from Denmark. Denmark is more
+	# willing to sell than China is over Hong Kong, but still seldom agrees; a refusal
+	# opens ENG_seize_faroe_islands.
+	ENG_purchase_faroe_islands = {
+		icon = GFX_decision_ENG_pax_europe
+
+		fire_only_once = yes
+
+		highlight_states = {
+			highlight_states_trigger = {
+				state = 2
+			}
+		}
+
+		visible = {
+			has_completed_focus = ENG_the_empire_strikes_back
+			country_exists = DEN
+			NOT = { owns_state = 2 }
+			NOT = { has_country_flag = ENG_faroe_purchase_declined }
+			NOT = { has_country_flag = ENG_faroe_ultimatum_issued }
+			NOT = { has_country_flag = ENG_faroe_war_limited }
+		}
+
+		available = {
+			NOT = { has_war_with = DEN }
+			custom_trigger_tooltip = {
+				tooltip = ENG_faroe_denmark_holds_TT
+				OR = {
+					2 = { is_owned_by = DEN }
+					2 = { is_owned_by = FAO }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ENG_faroe_can_afford_TT
+				check_variable = { treasury > 40 }
+			}
+		}
+
+		cost = 50
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ENG_purchase_faroe_islands"
+			DEN = { country_event = { id = ENG_pax_britannica.5 days = 3 } }
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			custom_effect_tooltip = ENG_faroe_purchase_outcome_TT
+			custom_effect_tooltip = TT_IF_THEY_REJECT
+			custom_effect_tooltip = ENG_faroe_purchase_reject_TT
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	# Issue a one-time ultimatum to take the Faroes by force after Denmark refused to
+	# sell. Denmark is given 30 days' warning to prepare (ENG_pax_britannica.11), then
+	# the bilateral war begins (ENG_pax_britannica.12) and the 10-day campaign starts.
+	ENG_seize_faroe_islands = {
+		icon = GFX_decision_ENG_pax_europe
+
+		fire_only_once = yes
+
+		highlight_states = {
+			highlight_states_trigger = {
+				state = 2
+			}
+		}
+
+		visible = {
+			has_country_flag = ENG_faroe_purchase_declined
+			country_exists = DEN
+			NOT = { owns_state = 2 }
+			NOT = { has_country_flag = ENG_faroe_ultimatum_issued }
+			NOT = { has_country_flag = ENG_faroe_war_limited }
+		}
+
+		available = {
+			NOT = { has_war_with = DEN }
+			custom_trigger_tooltip = {
+				tooltip = ENG_faroe_denmark_holds_TT
+				OR = {
+					2 = { is_owned_by = DEN }
+					2 = { is_owned_by = FAO }
+				}
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ENG_seize_faroe_islands"
+			set_country_flag = ENG_faroe_ultimatum_issued
+			# Warn Denmark; it has 30 days to prepare before the war begins.
+			DEN = { country_event = { id = ENG_pax_britannica.11 days = 1 } }
+			country_event = { id = ENG_pax_britannica.12 days = 30 }
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# 10-day campaign to seize the Faroes while the war stays bilateral. Hold state 2
+	# in time and the war ends with the islands ceded (ENG_pax_britannica.7); otherwise
+	# the UK must concede or widen the war (ENG_pax_britannica.8).
+	ENG_faroe_campaign = {
+		icon = GFX_decision_ENG_pax_europe
+
+		fire_only_once = yes
+		selectable_mission = no
+		is_good = yes
+
+		activation = {
+			has_country_flag = ENG_faroe_war_limited
+		}
+
+		available = {
+			controls_state = 2
+		}
+
+		days_mission_timeout = 10
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Mission complete ENG_faroe_campaign"
+			2 = { transfer_state_to = ENG }
+			white_peace = DEN
+			DEN = { NATO_join = yes }
+			clr_country_flag = ENG_faroe_war_limited
+			country_event = { id = ENG_pax_britannica.7 days = 1 }
+		}
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Mission timeout ENG_faroe_campaign"
+			clr_country_flag = ENG_faroe_war_limited
+			country_event = { id = ENG_pax_britannica.8 days = 1 }
+		}
+	}
+
+	# Secure the Mediterranean: offer to buy the shores of the Strait of Gibraltar -
+	# Andalusia/Cadiz (93), Tangier (374) and Ceuta (495) - from their owners. Each
+	# owner is very unlikely to sell unless Britain dwarfs them militarily or is
+	# collapsing internally; a refusal hands Britain a state-claim wargoal. Each state
+	# requires its region's Pax focus (Europe for Cadiz, North Africa for the others).
+	ENG_secure_the_mediterranean = {
+		icon = GFX_decision_ENG_pax_europe
+
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 93
+					state = 374
+					state = 495
+				}
+			}
+		}
+
+		visible = {
+			OR = {
+				AND = {
+					has_completed_focus = ENG_pax_europe
+					NOT = { owns_state = 93 }
+				}
+				AND = {
+					has_completed_focus = ENG_pax_north_africa
+					NOT = { owns_state = 374 }
+				}
+				AND = {
+					has_completed_focus = ENG_pax_north_africa
+					NOT = { owns_state = 495 }
+				}
+			}
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ENG_med_can_afford_TT
+				check_variable = { treasury > 40 }
+			}
+		}
+
+		cost = 75
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ENG_secure_the_mediterranean"
+			if = {
+				limit = {
+					has_completed_focus = ENG_pax_europe
+					NOT = { owns_state = 93 }
+					93 = { owner = { NOT = { is_subject_of = ENG } } }
+				}
+				93 = { owner = { country_event = { id = ENG_pax_britannica.13 days = 2 } } }
+			}
+			if = {
+				limit = {
+					has_completed_focus = ENG_pax_north_africa
+					NOT = { owns_state = 374 }
+					374 = { owner = { NOT = { is_subject_of = ENG } } }
+				}
+				374 = { owner = { country_event = { id = ENG_pax_britannica.14 days = 2 } } }
+			}
+			if = {
+				limit = {
+					has_completed_focus = ENG_pax_north_africa
+					NOT = { owns_state = 495 }
+					495 = { owner = { NOT = { is_subject_of = ENG } } }
+				}
+				495 = { owner = { country_event = { id = ENG_pax_britannica.15 days = 2 } } }
+			}
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			custom_effect_tooltip = ENG_med_purchase_outcome_TT
+			custom_effect_tooltip = TT_IF_THEY_REJECT
+			custom_effect_tooltip = ENG_med_purchase_reject_TT
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	# Expand Gibraltar: bring the secured Strait shores into the realm as core British
+	# territory. Each state requires its region's Pax focus and must be British-held.
+	ENG_expand_gibraltar = {
+		icon = GFX_decision_ENG_pax_europe
+
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 93
+					state = 374
+					state = 495
+				}
+			}
+		}
+
+		visible = {
+			OR = {
+				AND = {
+					has_completed_focus = ENG_pax_europe
+					owns_state = 93
+					NOT = { 93 = { is_core_of = ENG } }
+				}
+				AND = {
+					has_completed_focus = ENG_pax_north_africa
+					owns_state = 374
+					NOT = { 374 = { is_core_of = ENG } }
+				}
+				AND = {
+					has_completed_focus = ENG_pax_north_africa
+					owns_state = 495
+					NOT = { 495 = { is_core_of = ENG } }
+				}
+			}
+		}
+
+		cost = 50
+		days_re_enable = 30
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ENG_expand_gibraltar"
+			if = {
+				limit = {
+					has_completed_focus = ENG_pax_europe
+					owns_state = 93
+				}
+				add_state_core = 93
+			}
+			if = {
+				limit = {
+					has_completed_focus = ENG_pax_north_africa
+					owns_state = 374
+				}
+				add_state_core = 374
+			}
+			if = {
+				limit = {
+					has_completed_focus = ENG_pax_north_africa
+					owns_state = 495
+				}
+				add_state_core = 495
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	ENG_challenge_power = {
+		icon = GFX_decision_category_united_kingdom
+
+		target_array = global.PR_regional_or_greater_powers
+		target_root_trigger = {
+			has_completed_focus = ENG_the_empire_strikes_back
+		}
+		target_trigger = {
+			FROM = {
+				OR = { has_idea = large_power has_idea = great_power has_idea = super_power }
+				NOT = { is_subject_of = ENG }
+				NOT = { has_subject = ENG }
+				NOT = { has_country_flag = ENG_recently_challenged }
+				NOT = { is_in_faction_with = ENG }
+			}
+		}
+		available = {
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = ENG_challenge_power_not_ally_TT
+					NOT = { is_in_faction_with = ENG }
+				}
+			}
+		}
+
+		cost = 75
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ENG_challenge_power on [From.GetName]"
+			FROM = {
+				set_country_flag = { flag = ENG_recently_challenged value = 1 days = 120 }
+				country_event = { id = ENG_pax_britannica.2 days = 2 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	# Invest in a colonial subject's resource extraction. A renewable yearly buff;
+	# the subject's output (and what it owes the Crown via trade/resource sharing)
+	# rises while it lasts.
+	ENG_pax_develop_extraction = {
+		icon = GFX_decision_category_united_kingdom
+
+		targets = { EGY NIG GAH SIE GAM KEN UGA TNZ SUD SSU SML SAF ZIM ZAM MLW BOT LES SWA IRQ JOR ISR PAL KUW BHR QAT UAE OMA YEM RAJ PAK BAN SRI BHU MLD BRM MAY SIN BRU HKG AST NZL PAP FIJ SOL VAN SAM TON KIR TUL NAU CAN JAM TRI BAR BLZ BAH GUY IRE MLT CYP }
+		target_trigger = {
+			FROM = {
+				is_subject_of = ENG
+				pax_is_pax_subject = yes
+			}
+		}
+
+		cost = 35
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ENG_pax_develop_extraction on [From.GetName]"
+			FROM = {
+				add_timed_idea = { idea = pax_colonial_extraction_idea days = 365 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+}

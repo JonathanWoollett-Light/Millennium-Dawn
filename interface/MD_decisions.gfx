@@ -6795,5 +6795,13 @@ spriteTypes = {
 		name = "GFX_decision_SWI_support_humanitarian_efforts"
 		texturefile = "gfx/interface/decisions/decision_SWI_support_humanitarian_efforts.dds"
 	}
+	spriteType = {
+		name = "GFX_decision_ENG_pax_east_asia"
+		texturefile = "gfx/interface/decisions/pax_britannica/east_asia.dds"
+	}
+	spriteType = {
+		name = "GFX_decision_ENG_pax_europe"
+		texturefile = "gfx/interface/decisions/pax_britannica/europe.dds"
+	}
 
 }

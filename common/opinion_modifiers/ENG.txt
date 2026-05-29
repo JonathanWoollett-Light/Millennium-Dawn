@@ -50,4 +50,16 @@ opinion_modifiers = {
 	ENG_monarch_outreach = {
 		value = 15
 	}
+	# Pax Britannica diplomatic modifiers
+	pax_antagonized_opinion = {
+		value = -100
+		trade = yes
+	}
+	pax_blockade_opinion = {
+		value = -1000
+		trade = yes
+	}
+	pax_imperial_threat_opinion = {
+		value = -50
+	}
 }

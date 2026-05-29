@@ -245,4 +245,29 @@ spriteTypes = {
 		name = "GFX_autonomy_fifty_second_state_afghanistan_icon"
 		textureFile = "gfx/interface/autonomy/autonomy_fifty_second_state_afghanistan_icon.dds"
 	}
+	# Pax Britannica subject tiers (reuse generic subject-type art)
+	spriteType = {
+		name = "GFX_autonomy_dominion_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_associated_state_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_autonomy_colony_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_satellite_state_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_autonomy_puppet_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_puppet_state_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_autonomy_dominion_colored_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_associated_state_colored_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_autonomy_colony_colored_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_satellite_state_colored_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_autonomy_puppet_colored_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_puppet_state_colored_icon.dds"
+	}
 }

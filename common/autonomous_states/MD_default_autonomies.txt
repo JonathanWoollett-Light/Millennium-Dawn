@@ -36,6 +36,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { NOT = { is_in_array = { ruling_party = 11 } } }
 		NOT = {
 			OR = {
@@ -98,6 +99,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { NOT = { is_in_array = { ruling_party = 11 } } }
 		NOT = {
 			OR = {
@@ -158,6 +160,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { NOT = { is_in_array = { ruling_party = 11 } } }
 		#Disabled for Russian custom subjects
 		NOT = {
@@ -218,6 +221,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { NOT = { is_in_array = { ruling_party = 11 } } }
 		NOT = {
 			OR = {

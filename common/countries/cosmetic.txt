@@ -995,6 +995,59 @@ KHL = {
 	color = rgb { 255 153 51 }
 	color_ui = rgb { 255 153 51 }
 }
+#Pax Britannica colonial flags (regional consolidation primaries)
+EGY_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+NIG_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+KEN_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+SAF_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+IRQ_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+RAJ_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+MAY_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+HKG_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+AST_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+CAN_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+JAM_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+GUY_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
+IRE_british_colony = {
+	color = rgb { 200 16 46 }
+	color_ui = rgb { 200 16 46 }
+}
 
 JAP_EMPIRE = {
 	color = rgb { 255 191 191 }

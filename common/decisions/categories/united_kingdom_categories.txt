@@ -69,3 +69,16 @@ ENG_asteroid_mining_decisions = {
 		has_completed_focus = ENG_asteroid_mining
 	}
 }
+
+ENG_pax_britannica_category = {
+	icon = GFX_decision_category_united_kingdom
+
+	allowed = { original_tag = ENG }
+	priority = 600
+
+	visible_when_empty = no
+
+	visible = {
+		has_completed_focus = ENG_the_empire_strikes_back
+	}
+}

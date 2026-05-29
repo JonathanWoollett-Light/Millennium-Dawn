@@ -21,6 +21,7 @@ ideas = {
 				}
 			}
 		}
+
 		ENG_energy_transition_programme_idea = {
 			name = ENG_energy_transition_programme
 			picture = fusion_energy
@@ -1361,6 +1362,63 @@ ideas = {
 				hidden_modifier = {
 					corruption_cost_factor = 0.15
 				}
+			}
+		}
+
+		# Pax Britannica economic-pressure ideas, applied to nations blockaded,
+		# antagonized, or challenged by the Empire.
+		pax_naval_blockade_idea = {
+			picture = embargo
+			modifier = {
+				trade_opinion_factor = -0.25
+				receiving_investment_cost_modifier = 0.25
+				internal_investments_money_cost_modifier = 0.25
+				industrial_capacity_factory = -0.10
+			}
+		}
+
+		pax_antagonized_power_idea = {
+			picture = trade
+			modifier = {
+				trade_opinion_factor = -0.20
+				receiving_investment_cost_modifier = 0.20
+				internal_investments_money_cost_modifier = 0.20
+			}
+		}
+
+		pax_challenge_ignored_idea = {
+			picture = trade
+			modifier = {
+				trade_opinion_factor = -0.10
+				receiving_investment_cost_modifier = 0.10
+			}
+		}
+
+		pax_challenge_backlash_idea = {
+			picture = embargo
+			modifier = {
+				trade_opinion_factor = -0.10
+				receiving_investment_cost_modifier = 0.10
+				political_power_factor = -0.05
+			}
+		}
+
+		pax_challenge_escalation_idea = {
+			picture = embargo
+			modifier = {
+				trade_opinion_factor = -0.20
+				receiving_investment_cost_modifier = 0.20
+				industrial_capacity_factory = -0.05
+				stability_factor = -0.05
+			}
+		}
+
+		# Overlord-funded resource extraction buff applied to a colonial subject
+		# (renewable timed idea granted by ENG_pax_develop_extraction).
+		pax_colonial_extraction_idea = {
+			picture = trade
+			modifier = {
+				local_resources_factor = 0.15
 			}
 		}
 	}

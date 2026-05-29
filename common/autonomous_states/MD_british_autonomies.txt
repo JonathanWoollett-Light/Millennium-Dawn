@@ -60,6 +60,7 @@ autonomy_state = {
 			original_tag = ENG
 			NOT = { has_country_flag = ENG_devolution_purged }
 		}
+		NOT = { pax_subject_overlord = yes }
 		ENG_constituent_state_check = yes
 	}
 
@@ -115,6 +116,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = { original_tag = ADS }
 	}
 
@@ -124,5 +126,294 @@ autonomy_state = {
 
 	can_lose_level = {
 		always = no
+	}
+}
+
+# Pax Britannica: subject hierarchy - Dominion > Colony > Puppet (descending autonomy).
+# Mercantile trade-off vs MD's generic subject tiers: UK subjects hand over MORE manpower
+# (lower autonomy_manpower_share = overlord draws on more of the subject's pool) and more
+# trade/resources, but LESS civilian and military industry (lower cic/mic_to_overlord_factor).
+# Each tier also cancels the autonomy that trade generates (autonomy_gain_trade_factor) so
+# heavier extraction does not free the subject. All tiers gated via pax_subject_overlord.
+
+# === DOMINION (high autonomy, keeps own government, light extraction) ===
+autonomy_state = {
+	id = autonomy_dominion
+
+	default = no
+	is_puppet = no
+	min_freedom_level = 0.80
+	manpower_influence = 1.0
+
+	rule = {
+		can_not_declare_war = no
+		can_decline_call_to_war = yes
+		units_deployed_to_overlord = no
+	}
+
+	modifier = {
+		cic_to_overlord_factor = 0.0
+		mic_to_overlord_factor = 0.0
+		can_master_build_for_us = 1
+		autonomy_manpower_share = 0.85
+		extra_trade_to_overlord_factor = 0.35
+		overlord_trade_cost_factor = -0.35
+		research_sharing_per_country_bonus_factor = -0.2
+		autonomy_gain_trade_factor = -0.5
+	}
+
+	ai_subject_wants_higher = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		pax_subject_overlord = yes
+		NOT = { has_global_flag = GAME_RULE_allow_colored_puppets }
+	}
+}
+
+autonomy_state = {
+	id = autonomy_dominion_colored
+
+	default = no
+	is_puppet = no
+	min_freedom_level = 0.80
+	manpower_influence = 1.0
+	use_overlord_color = yes
+
+	rule = {
+		can_not_declare_war = no
+		can_decline_call_to_war = yes
+		units_deployed_to_overlord = no
+	}
+
+	modifier = {
+		cic_to_overlord_factor = 0.0
+		mic_to_overlord_factor = 0.0
+		can_master_build_for_us = 1
+		autonomy_manpower_share = 0.85
+		extra_trade_to_overlord_factor = 0.35
+		overlord_trade_cost_factor = -0.35
+		research_sharing_per_country_bonus_factor = -0.2
+		autonomy_gain_trade_factor = -0.5
+	}
+
+	ai_subject_wants_higher = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		pax_subject_overlord = yes
+		has_global_flag = GAME_RULE_allow_colored_puppets
+	}
+
+	can_take_level = {
+	}
+
+	can_lose_level = {
+	}
+}
+
+# === COLONY (no own war powers, heavy manpower/trade levy, light industry grab) ===
+autonomy_state = {
+	id = autonomy_colony
+
+	default = no
+	is_puppet = no
+	min_freedom_level = 0.45
+	manpower_influence = 0.7
+
+	rule = {
+		can_not_declare_war = yes
+		can_decline_call_to_war = yes
+		units_deployed_to_overlord = no
+	}
+
+	modifier = {
+		cic_to_overlord_factor = 0.15
+		mic_to_overlord_factor = 0.15
+		can_master_build_for_us = 1
+		autonomy_manpower_share = 0.55
+		extra_trade_to_overlord_factor = 0.6
+		overlord_trade_cost_factor = -0.6
+		research_sharing_per_country_bonus_factor = -0.5
+		autonomy_gain_trade_factor = -1.0
+	}
+
+	ai_subject_wants_higher = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 0.5
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		pax_subject_overlord = yes
+		NOT = { has_global_flag = GAME_RULE_allow_colored_puppets }
+	}
+}
+
+autonomy_state = {
+	id = autonomy_colony_colored
+
+	default = no
+	is_puppet = no
+	min_freedom_level = 0.45
+	manpower_influence = 0.7
+	use_overlord_color = yes
+
+	rule = {
+		can_not_declare_war = yes
+		can_decline_call_to_war = yes
+		units_deployed_to_overlord = no
+	}
+
+	modifier = {
+		cic_to_overlord_factor = 0.15
+		mic_to_overlord_factor = 0.15
+		can_master_build_for_us = 1
+		autonomy_manpower_share = 0.55
+		extra_trade_to_overlord_factor = 0.6
+		overlord_trade_cost_factor = -0.6
+		research_sharing_per_country_bonus_factor = -0.5
+		autonomy_gain_trade_factor = -1.0
+	}
+
+	ai_subject_wants_higher = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 0.5
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		pax_subject_overlord = yes
+		has_global_flag = GAME_RULE_allow_colored_puppets
+	}
+
+	can_take_level = {
+	}
+
+	can_lose_level = {
+	}
+}
+
+# === PUPPET (overlord-controlled, maximum manpower/trade levy, modest industry grab) ===
+autonomy_state = {
+	id = autonomy_puppet
+
+	default = no
+	is_puppet = yes
+	min_freedom_level = 0.20
+	manpower_influence = 0.4
+
+	rule = {
+		can_not_declare_war = yes
+		can_decline_call_to_war = no
+		units_deployed_to_overlord = yes
+	}
+
+	modifier = {
+		cic_to_overlord_factor = 0.3
+		mic_to_overlord_factor = 0.3
+		can_master_build_for_us = 1
+		autonomy_manpower_share = 0.25
+		extra_trade_to_overlord_factor = 0.85
+		overlord_trade_cost_factor = -0.85
+		research_sharing_per_country_bonus_factor = -0.6
+		autonomy_gain_trade_factor = -1.0
+	}
+
+	ai_subject_wants_higher = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 0.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = yes
+	}
+
+	allowed = {
+		pax_subject_overlord = yes
+		NOT = { has_global_flag = GAME_RULE_allow_colored_puppets }
+	}
+}
+
+autonomy_state = {
+	id = autonomy_puppet_colored
+
+	default = no
+	is_puppet = yes
+	min_freedom_level = 0.20
+	manpower_influence = 0.4
+	use_overlord_color = yes
+
+	rule = {
+		can_not_declare_war = yes
+		can_decline_call_to_war = no
+		units_deployed_to_overlord = yes
+	}
+
+	modifier = {
+		cic_to_overlord_factor = 0.3
+		mic_to_overlord_factor = 0.3
+		can_master_build_for_us = 1
+		autonomy_manpower_share = 0.25
+		extra_trade_to_overlord_factor = 0.85
+		overlord_trade_cost_factor = -0.85
+		research_sharing_per_country_bonus_factor = -0.6
+		autonomy_gain_trade_factor = -1.0
+	}
+
+	ai_subject_wants_higher = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 0.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = yes
+	}
+
+	allowed = {
+		pax_subject_overlord = yes
+		has_global_flag = GAME_RULE_allow_colored_puppets
+	}
+
+	can_take_level = {
+	}
+
+	can_lose_level = {
 	}
 }

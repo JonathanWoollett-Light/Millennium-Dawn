@@ -16178,12 +16178,573 @@ focus_tree = {
 			add_to_variable = { ENG_propaganda_mission_factor_monarchy = 0.25 tooltip = propaganda_mission_factor_tt }
 			add_to_variable = { ENG_stability_factor_monarchy = 0.05 tooltip = stability_factor_tt }
 			add_to_variable = { ENG_war_support_monarchy = 0.05 tooltip = war_support_factor_tt }
+			newline = yes
+			custom_effect_tooltip = ENG_pax_britannica_reborn_unlock_TT
 		}
 
 		ai_will_do = {
 			base = 1
 		}
 	}
+
+
+	focus = {
+		id = ENG_the_empire_strikes_back
+		icon = Rule_Britannia
+
+		x = 30
+		y = 4
+
+		cost = 10
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_controls_british_isles_TT
+				eng_controls_british_isles = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_the_empire_strikes_back"
+			custom_effect_tooltip = ENG_state_of_the_empire_initial_TT
+			newline = yes
+			custom_effect_tooltip = ENG_pax_convert_subjects_TT
+			hidden_effect = {
+				set_country_flag = ENG_pax_britannica_unlocked
+				add_dynamic_modifier = { modifier = ENG_state_of_the_empire }
+				eng_update_state_of_the_empire = yes
+				eng_convert_subjects_to_colonial = yes
+			}
+			newline = yes
+			news_event = { id = ENG_pax_britannica.10 days = 1 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_north_africa
+		icon = ENG_pax_north_africa
+
+		x = -6
+		y = 1
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_north_africa = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_north_africa"
+			custom_effect_tooltip = ENG_pax_north_africa_unlock_TT
+			newline = yes
+			eng_pax_antagonize_north_africa = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_north_africa = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_west_africa
+		icon = ENG_pax_west_africa
+
+		x = -5
+		y = 2
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_west_africa = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_west_africa"
+			custom_effect_tooltip = ENG_pax_west_africa_unlock_TT
+			newline = yes
+			eng_pax_antagonize_west_africa = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_west_africa = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_east_africa
+		icon = ENG_pax_east_africa
+
+		x = -4
+		y = 1
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_east_africa = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_east_africa"
+			custom_effect_tooltip = ENG_pax_east_africa_unlock_TT
+			newline = yes
+			eng_pax_antagonize_east_africa = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_east_africa = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_southern_africa
+		icon = ENG_pax_southern_africa
+
+		x = -3
+		y = 2
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_southern_africa = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_southern_africa"
+			custom_effect_tooltip = ENG_pax_southern_africa_unlock_TT
+			newline = yes
+			eng_pax_antagonize_southern_africa = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_southern_africa = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_middle_east
+		icon = ENG_pax_middle_east
+
+		x = -2
+		y = 1
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_middle_east = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_middle_east"
+			custom_effect_tooltip = ENG_pax_middle_east_unlock_TT
+			newline = yes
+			eng_pax_antagonize_middle_east = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_middle_east = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_south_asia
+		icon = ENG_pax_south_asia
+
+		x = -1
+		y = 2
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_south_asia = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_south_asia"
+			custom_effect_tooltip = ENG_pax_south_asia_unlock_TT
+			newline = yes
+			eng_pax_antagonize_south_asia = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_south_asia = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_southeast_asia
+		icon = ENG_pax_southeast_asia
+
+		x = 0
+		y = 1
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_southeast_asia = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_southeast_asia"
+			custom_effect_tooltip = ENG_pax_southeast_asia_unlock_TT
+			newline = yes
+			eng_pax_antagonize_southeast_asia = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_southeast_asia = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_east_asia
+		icon = ENG_pax_east_asia
+
+		x = 1
+		y = 2
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_east_asia = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_east_asia"
+			custom_effect_tooltip = ENG_pax_east_asia_unlock_TT
+			newline = yes
+			eng_pax_antagonize_east_asia = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_east_asia = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_australasia
+		icon = ENG_pax_australasia
+
+		x = 2
+		y = 1
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_australasia = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_australasia"
+			custom_effect_tooltip = ENG_pax_australasia_unlock_TT
+			newline = yes
+			eng_pax_antagonize_australasia = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_australasia = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_north_america
+		icon = ENG_pax_north_america
+
+		x = 3
+		y = 2
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_north_america = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_north_america"
+			custom_effect_tooltip = ENG_pax_north_america_unlock_TT
+			newline = yes
+			eng_pax_antagonize_north_america = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_north_america = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_caribbean
+		icon = ENG_pax_caribbean
+
+		x = 4
+		y = 1
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_caribbean = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_caribbean"
+			custom_effect_tooltip = ENG_pax_caribbean_unlock_TT
+			newline = yes
+			eng_pax_antagonize_caribbean = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_caribbean = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_south_america
+		icon = ENG_pax_south_america
+
+		x = 5
+		y = 2
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_south_america = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_south_america"
+			custom_effect_tooltip = ENG_pax_south_america_unlock_TT
+			newline = yes
+			eng_pax_antagonize_south_america = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_south_america = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	focus = {
+		id = ENG_pax_europe
+		icon = ENG_pax_europe
+
+		x = 6
+		y = 1
+		relative_position_id = ENG_the_empire_strikes_back
+
+		cost = 5
+
+		prerequisite = { focus = ENG_the_empire_strikes_back }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = {
+			nationalist_monarchists_are_in_power = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_pax_no_major_power_TT
+				eng_pax_no_major_power_in_europe = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [THIS.GetName]: Focus ENG_pax_europe"
+			custom_effect_tooltip = ENG_pax_europe_unlock_TT
+			newline = yes
+			eng_pax_antagonize_europe = yes
+			every_country = {
+				limit = {
+					NOT = { tag = ENG }
+					NOT = { is_subject_of = ENG }
+					eng_controls_be_state_in_europe = yes
+				}
+				country_event = { id = ENG_pax_britannica.1 days = 1 }
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
 
 	##### Inner Circle
 

@@ -38,6 +38,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		is_arabic_nation = yes
 		OVERLORD = {
 			OR = {
@@ -96,6 +97,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		is_arabic_nation = yes
 		OVERLORD = {
 			OR = {
@@ -156,6 +158,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		is_arabic_nation = yes
 		OVERLORD = {
 			OR = {

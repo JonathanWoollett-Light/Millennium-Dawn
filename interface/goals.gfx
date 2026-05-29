@@ -41272,4 +41272,56 @@ spriteTypes = {
 		name = "focus_JAP_ganbarou"
 		texturefile = "gfx/interface/goals/japan/focus_JAP_ganbarou.dds"
 	}
+	spriteType = {
+		name = "ENG_pax_north_africa"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_north_africa.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_west_africa"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_west_africa.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_east_africa"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_east_africa.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_southern_africa"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_southern_africa.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_middle_east"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_middle_east.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_south_asia"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_south_asia.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_southeast_asia"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_southeast_asia.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_east_asia"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_east_asia.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_australasia"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_australasia.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_north_america"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_north_america.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_caribbean"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_caribbean.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_south_america"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_south_america.dds"
+	}
+	spriteType = {
+		name = "ENG_pax_europe"
+		texturefile = "gfx/interface/goals/00_regions/ENG_pax_europe.dds"
+	}
 }

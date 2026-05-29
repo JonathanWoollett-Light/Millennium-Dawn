@@ -37,6 +37,7 @@ autonomy_state = {
 	ai_overlord_wants_garrison = { always = yes }
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		OVERLORD = {
 			original_tag = DEN
 		}

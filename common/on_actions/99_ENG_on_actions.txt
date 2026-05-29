@@ -1,6 +1,43 @@
 on_actions = {
+	# When ENG puppets a country (war peace deal, scripted puppeting, etc.) after the
+	# Empire is proclaimed, fold the new subject onto the Pax colonial ladder instead of
+	# leaving it on a generic tier. ROOT/THIS = new subject, FROM = the overlord.
+	on_puppet = {
+		effect = {
+			if = {
+				limit = { FROM = { has_country_flag = ENG_pax_britannica_unlocked } }
+				FROM = { eng_convert_subjects_to_colonial = yes }
+				FROM = { eng_pax_consolidate_all = yes }
+			}
+		}
+	}
+
+	# When ENG annexes a country (war peace deal, etc.) after the Empire is proclaimed,
+	# consolidate the affected region into its primary nation. on_annex scope convention
+	# varies, so check ENG on both ROOT and FROM. Ownership-gated inside the effect.
+	on_annex = {
+		effect = {
+			if = {
+				limit = { ROOT = { original_tag = ENG  has_country_flag = ENG_pax_britannica_unlocked } }
+				ROOT = { eng_pax_consolidate_all = yes }
+			}
+			else_if = {
+				limit = { FROM = { original_tag = ENG  has_country_flag = ENG_pax_britannica_unlocked } }
+				FROM = { eng_pax_consolidate_all = yes }
+			}
+		}
+	}
+
 	on_monthly_ENG = {
 		effect = {
+			# Pax Britannica: ownership backstop. Re-consolidate regions monthly in case
+			# on_annex / on_puppet were bypassed (console, scripted transfers). Driven off
+			# ownership inside the effect, so wartime occupation without a peace deal does
+			# not trigger it.
+			if = {
+				limit = { has_country_flag = ENG_pax_britannica_unlocked }
+				eng_pax_consolidate_all = yes
+			}
 			#-----------# "Good Friday" #-----------#
 			if = {
 				limit = {
@@ -222,6 +259,17 @@ on_actions = {
 	}
 
 	on_weekly_ENG = {
+
+		# Rescale the State of the Empire dynamic modifier as territory is reconquered,
+		# and convert any newly acquired subjects (e.g. war puppets) onto the Pax ladder
+		# as a backstop in case on_puppet missed them.
+		effect = {
+			if = {
+				limit = { has_dynamic_modifier = { modifier = ENG_state_of_the_empire } }
+				eng_update_state_of_the_empire = yes
+				eng_convert_subjects_to_colonial = yes
+			}
+		}
 
 		# INNER CIRCLE - Make sure AI doesn't get stuck with focuses paused due to focus triggers (focuses need to be paused when events are pending)
 		effect = {

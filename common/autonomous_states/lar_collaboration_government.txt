@@ -34,6 +34,7 @@ autonomy_state = {
 	}
 
 	allowed = {
+		NOT = { pax_subject_overlord = yes }
 		has_dlc = "La Resistance"
 
 		has_variable = collaboration_formed_by

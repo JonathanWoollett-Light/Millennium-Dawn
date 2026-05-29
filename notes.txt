@@ -1,0 +1,11 @@
+The checked out commit (f4cdfd4a5dd4e3612a3b618c1bfb3c6baa8146e9) and branch, represent a mod for the base millenium dawn mod aimed at expanding british neo-imperialism content, the current approach offer a largely sandboxed approach where focuses unlock some decisions and give a large number of wargoals.
+
+The aim is to rework this into a more linear narrative, with some stories proceeding in parallel but ultimately leading to the same conclusion.
+
+To do this, rework the focus tree (starting from the root at `ENG_the_empire_strikes_back`) into a larger tree with multiple focuses per signficant country (e.g. multiple focuses preparing for the invasion of nigeria) such that it forms a more cohesive narrative of slowly extending the borders of the empire. Some key notes should include:
+1. Political pushback from the queen and monarchy on the governments far right imperialist aims, ultimately culminating in the government assassinating queen elizibeth, or if she has died naturaly in late game assassinating king charles and installing the next in line under and strong arming them into supporting the empire.
+2. Ceding nationalist/fascist rise in portugal and setting up ideas such that if either is attacked the other is called to war.
+3. Events about pursuing conquest of most of the strategically important straits in the world, and expanding their control of the ones they already own (e.g. also owning the north african side of the gibraltar strait)
+4. Attempting to cause civil wars in India and America to weaken them for conquest, when civil wars start their should be a british puppet faction fighting (they may not be a puppet while in the civil war but will become a puppet on winning it).
+5. There should be mutally exclusive focuses on decisions for how to govern where you either pursue an imperial federation, which allows annexation of subjects and allows forming the imperial federation formable once controlling enough territory giving cores, or pursue traditional imperialism which disallows annexing subjects but gives buffs to extracting subject resources. The imperial federation path should require that politics becomes more democratics or non-aligned (or the respective millenium dawn equivalent of western).
+6. For taking Ireland this should be split 

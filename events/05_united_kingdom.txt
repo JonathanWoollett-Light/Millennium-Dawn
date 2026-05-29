@@ -6965,3 +6965,689 @@ country_event = {
 		}
 	}
 }
+
+###########################################################################
+# Pax Britannica - British Empire restoration ultimatums
+# Fired by the Pax Britannica decisions to every country controlling former
+# British Empire territory in the targeted region.
+# Event scope: ROOT/THIS = the target nation, FROM = Britain (ENG).
+###########################################################################
+
+add_namespace = ENG_pax_britannica
+
+# East Africa ultimatum
+country_event = {
+	id = ENG_pax_britannica.1
+	title = ENG_pax_britannica.1.t
+	desc = ENG_pax_britannica.1.d
+	picture = GFX_ENG_generic
+
+	is_triggered_only = yes
+
+	# Accept - rejoin the Empire as a Dominion
+	option = {
+		name = ENG_pax_britannica.1.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.1.a executed"
+		eng_become_dominion_of_eng = yes
+		FROM = { country_event = { id = ENG_pax_britannica.20 days = 1 } }
+		ai_chance = {
+			base = 0
+			modifier = { add = 1 has_idea = minor_power }
+			modifier = { add = 1 has_idea = non_power }
+			modifier = {
+				factor = 1.25
+				sender_influence_higher_30 = yes
+			}
+			modifier = {
+				factor = 1.15
+				has_opinion = { target = ENG value > 25 }
+			}
+		}
+	}
+
+	# Refuse - defiance brings a wargoal and the Royal Navy Blockade
+	option = {
+		name = ENG_pax_britannica.1.b
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.1.b executed"
+		add_ideas = pax_naval_blockade_idea
+		add_opinion_modifier = { target = ENG modifier = pax_blockade_opinion }
+		ENG = {
+			create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+			add_opinion_modifier = { target = ROOT modifier = pax_blockade_opinion }
+			country_event = { id = ENG_pax_britannica.21 days = 1 }
+		}
+		ai_chance = {
+			base = 0
+			modifier = { add = 9 has_idea = regional_power }
+			modifier = { add = 3 has_idea = minor_power }
+			modifier = { add = 1 has_idea = non_power }
+			modifier = {
+				factor = 0.80
+				sender_influence_higher_30 = yes
+			}
+			modifier = {
+				factor = 0.85
+				has_opinion = { target = ENG value > 25 }
+			}
+		}
+	}
+
+	# Cede - hand over the old colonies and keep the rest (only if we hold land
+	# outside the historical Empire)
+	option = {
+		name = ENG_pax_britannica.1.c
+		trigger = {
+			eng_target_has_non_be_state = yes
+		}
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.1.c executed"
+		eng_cede_be_states = yes
+		FROM = { country_event = { id = ENG_pax_britannica.22 days = 1 } }
+		ai_chance = {
+			base = 0
+			modifier = { add = 1 has_idea = regional_power }
+			modifier = { add = 2 has_idea = minor_power }
+			modifier = { add = 1 has_idea = non_power }
+			modifier = {
+				factor = 1.20
+				sender_influence_higher_30 = yes
+			}
+			modifier = {
+				factor = 1.15
+				has_opinion = { target = ENG value > 25 }
+			}
+		}
+	}
+}
+
+# Challenge to a major-or-greater power (fired by the ENG_challenge_power decision).
+# Scope: ROOT/THIS = the challenged power, FROM = Britain (ENG).
+country_event = {
+	id = ENG_pax_britannica.2
+	title = ENG_pax_britannica.2.t
+	desc = ENG_pax_britannica.2.d
+	picture = GFX_ENG_generic
+
+	is_triggered_only = yes
+
+	# Ignore - swallow the provocation, minor economic disruption
+	option = {
+		name = ENG_pax_britannica.2.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.2.a executed"
+		add_timed_idea = { idea = pax_challenge_ignored_idea days = 180 }
+		ai_chance = {
+			base = 4
+			modifier = { add = 3 has_idea = regional_power }
+			modifier = {
+				factor = 1.30
+				sender_influence_higher_30 = yes
+			}
+			modifier = {
+				factor = 1.20
+				has_opinion = { target = ENG value > 25 }
+			}
+		}
+	}
+
+	# Retaliate - economic counter-measures hurt them more, but bruise Britain too
+	option = {
+		name = ENG_pax_britannica.2.b
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.2.b executed"
+		add_timed_idea = { idea = pax_antagonized_power_idea days = 365 }
+		add_opinion_modifier = { target = FROM modifier = pax_antagonized_opinion }
+		FROM = {
+			add_timed_idea = { idea = pax_challenge_backlash_idea days = 180 }
+			add_opinion_modifier = { target = ROOT modifier = pax_antagonized_opinion }
+		}
+		ai_chance = {
+			base = 3
+			modifier = { add = 2 has_idea = large_power }
+			modifier = { add = 1 has_idea = great_power }
+			modifier = {
+				factor = 0.80
+				sender_influence_higher_30 = yes
+			}
+		}
+	}
+
+	# Escalate - both sides reach for wargoals over the region's resources
+	option = {
+		name = ENG_pax_britannica.2.c
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.2.c executed"
+		add_timed_idea = { idea = pax_challenge_escalation_idea days = 365 }
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+		FROM = {
+			add_timed_idea = { idea = pax_challenge_escalation_idea days = 365 }
+			create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = { add = 2 has_idea = large_power }
+			modifier = { add = 4 has_idea = great_power }
+			modifier = { add = 6 has_idea = super_power }
+			modifier = {
+				factor = 0.70
+				sender_influence_higher_30 = yes
+			}
+			modifier = {
+				factor = 1.30
+				has_war_with = ENG
+			}
+		}
+	}
+}
+
+# A summoned nation accepted and rejoined the Empire as a Dominion.
+# Scope: ROOT/THIS = Britain (ENG), FROM = the responding nation.
+country_event = {
+	id = ENG_pax_britannica.20
+	title = ENG_pax_britannica.20.t
+	desc = ENG_pax_britannica.20.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.20.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.20.a executed"
+	}
+}
+
+# A summoned nation defied the Crown; the blockade is up and a wargoal stands.
+# Scope: ROOT/THIS = Britain (ENG), FROM = the responding nation.
+country_event = {
+	id = ENG_pax_britannica.21
+	title = ENG_pax_britannica.21.t
+	desc = ENG_pax_britannica.21.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.21.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.21.a executed"
+	}
+}
+
+# A summoned nation ceded its old colonial states and kept the rest.
+# Scope: ROOT/THIS = Britain (ENG), FROM = the responding nation.
+country_event = {
+	id = ENG_pax_britannica.22
+	title = ENG_pax_britannica.22.t
+	desc = ENG_pax_britannica.22.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.22.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.22.a executed"
+	}
+}
+
+# British offer to buy Hong Kong back (fired by the ENG_purchase_hong_kong decision).
+# Scope: ROOT/THIS = China, FROM = Britain (ENG). China only sells when British
+# influence over it is overwhelming and the People's Republic is collapsing.
+country_event = {
+	id = ENG_pax_britannica.3
+	title = ENG_pax_britannica.3.t
+	desc = ENG_pax_britannica.3.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	# Accept - sell Hong Kong to Britain for a substantial sum
+	option = {
+		name = ENG_pax_britannica.3.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.3.a executed"
+		set_temp_variable = { treasury_change = 75 }
+		modify_treasury_effect = yes
+		595 = { transfer_state_to = FROM }
+		FROM = {
+			set_temp_variable = { treasury_change = -75 }
+			modify_treasury_effect = yes
+			country_event = { id = ENG_pax_britannica.4 days = 1 }
+		}
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				sender_influence_higher_70 = yes
+				eng_country_is_collapsing = yes
+			}
+		}
+	}
+
+	# Refuse - Hong Kong is not for sale
+	option = {
+		name = ENG_pax_britannica.3.b
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.3.b executed"
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				sender_influence_higher_70 = yes
+				eng_country_is_collapsing = yes
+			}
+		}
+	}
+}
+
+# Britain is told its offer for Hong Kong succeeded.
+# Scope: ROOT/THIS = Britain (ENG), FROM = China.
+country_event = {
+	id = ENG_pax_britannica.4
+	title = ENG_pax_britannica.4.t
+	desc = ENG_pax_britannica.4.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.4.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.4.a executed"
+	}
+}
+
+# British offer to buy the Faroe Islands (fired by ENG_purchase_faroe_islands).
+# Scope: ROOT/THIS = Denmark, FROM = Britain (ENG). Denmark is likelier to sell
+# than China, but still seldom does so.
+country_event = {
+	id = ENG_pax_britannica.5
+	title = ENG_pax_britannica.5.t
+	desc = ENG_pax_britannica.5.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	# Accept - sell the Faroe Islands to Britain
+	option = {
+		name = ENG_pax_britannica.5.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.5.a executed"
+		set_temp_variable = { treasury_change = 40 }
+		modify_treasury_effect = yes
+		2 = { transfer_state_to = FROM }
+		FROM = {
+			set_temp_variable = { treasury_change = -40 }
+			modify_treasury_effect = yes
+			country_event = { id = ENG_pax_britannica.9 days = 1 }
+		}
+		ai_chance = {
+			base = 2
+			modifier = { factor = 2 sender_influence_higher_30 = yes }
+			modifier = { factor = 2 has_war = yes }
+			modifier = { factor = 2 has_stability < 0.40 }
+			modifier = { factor = 2 check_variable = { treasury < 10 } }
+		}
+	}
+
+	# Refuse - the Faroes are not for sale (opens the seizure decision for Britain)
+	option = {
+		name = ENG_pax_britannica.5.b
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.5.b executed"
+		FROM = {
+			set_country_flag = ENG_faroe_purchase_declined
+			country_event = { id = ENG_pax_britannica.6 days = 1 }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { factor = 0.5 sender_influence_higher_30 = yes }
+			modifier = { factor = 0.5 has_stability < 0.40 }
+		}
+	}
+}
+
+# Britain is told Denmark refused to sell the Faroes.
+# Scope: ROOT/THIS = Britain (ENG), FROM = Denmark.
+country_event = {
+	id = ENG_pax_britannica.6
+	title = ENG_pax_britannica.6.t
+	desc = ENG_pax_britannica.6.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.6.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.6.a executed"
+	}
+}
+
+# Britain has seized the Faroe Islands within the 30-day campaign.
+# Scope: ROOT/THIS = Britain (ENG).
+country_event = {
+	id = ENG_pax_britannica.7
+	title = ENG_pax_britannica.7.t
+	desc = ENG_pax_britannica.7.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.7.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.7.a executed"
+	}
+}
+
+# The 30-day Faroe campaign ran out of time: concede, or widen the war.
+# Scope: ROOT/THIS = Britain (ENG).
+country_event = {
+	id = ENG_pax_britannica.8
+	title = ENG_pax_britannica.8.t
+	desc = ENG_pax_britannica.8.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	# Concede - call off the campaign at a cost to morale at home
+	option = {
+		name = ENG_pax_britannica.8.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.8.a executed"
+		white_peace = DEN
+		DEN = { NATO_join = yes }
+		clr_country_flag = ENG_faroe_war_limited
+		add_war_support = -0.05
+		add_stability = -0.05
+	}
+
+	# Continue - widen the war: Britain leaves NATO and the alliance backs Denmark
+	option = {
+		name = ENG_pax_britannica.8.b
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.8.b executed"
+		white_peace = DEN
+		ENG = { NATO_leave = yes }
+		DEN = { NATO_join = yes }
+		clr_country_flag = ENG_faroe_war_limited
+		set_country_flag = ENG_faroe_war_full
+		declare_war_on = { target = DEN type = annex_everything }
+	}
+}
+
+# Britain is told Denmark sold the Faroes peacefully.
+# Scope: ROOT/THIS = Britain (ENG), FROM = Denmark.
+country_event = {
+	id = ENG_pax_britannica.9
+	title = ENG_pax_britannica.9.t
+	desc = ENG_pax_britannica.9.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.9.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.9.a executed"
+	}
+}
+
+# Britain's ultimatum: Denmark is warned the Faroes will be taken in 30 days and
+# rallies to prepare. Scope: ROOT/THIS = Denmark, FROM = Britain (ENG).
+country_event = {
+	id = ENG_pax_britannica.11
+	title = ENG_pax_britannica.11.t
+	desc = ENG_pax_britannica.11.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.11.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.11.a executed"
+		add_war_support = 0.05
+	}
+}
+
+# The 30-day ultimatum elapses and the bilateral war begins. Denmark absorbs its
+# Faroese home rule, stands Greenland aside and faces Britain outside NATO; the
+# 10-day campaign (ENG_faroe_campaign) starts. Scope: ROOT/THIS = Britain (ENG).
+country_event = {
+	id = ENG_pax_britannica.12
+	title = ENG_pax_britannica.12.t
+	desc = ENG_pax_britannica.12.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	immediate = {
+		clr_country_flag = ENG_faroe_ultimatum_issued
+		if = {
+			limit = {
+				country_exists = DEN
+				NOT = { owns_state = 2 }
+				NOT = { has_war_with = DEN }
+				OR = {
+					2 = { is_owned_by = DEN }
+					2 = { is_owned_by = FAO }
+				}
+			}
+			if = {
+				limit = {
+					country_exists = FAO
+					2 = { is_owned_by = FAO }
+				}
+				DEN = { annex_country = { target = FAO } }
+			}
+			if = {
+				limit = {
+					country_exists = GRN
+					GRN = { is_subject_of = DEN }
+				}
+				DEN = { end_puppet = GRN }
+			}
+			DEN = { NATO_leave = yes }
+			clr_country_flag = ENG_faroe_purchase_declined
+			set_country_flag = ENG_faroe_war_limited
+			declare_war_on = { target = DEN type = annex_everything }
+		}
+	}
+
+	option = {
+		name = ENG_pax_britannica.12.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.12.a executed"
+	}
+}
+
+# Mediterranean purchase offers (fired by ENG_secure_the_mediterranean). Scope:
+# ROOT/THIS = the owner, buyer is always Britain (ENG). Owners almost never sell
+# unless Britain dwarfs them militarily or is collapsing; a refusal gives Britain a
+# state-claim wargoal. .13 = Andalusia/Cadiz (93), .14 = Tangier (374), .15 = Ceuta (495).
+country_event = {
+	id = ENG_pax_britannica.13
+	title = ENG_pax_britannica.13.t
+	desc = ENG_pax_britannica.13.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	# Accept - sell Andalusia to Britain
+	option = {
+		name = ENG_pax_britannica.13.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.13.a executed"
+		set_temp_variable = { treasury_change = 40 }
+		modify_treasury_effect = yes
+		93 = { transfer_state_to = ENG }
+		ENG = {
+			set_temp_variable = { treasury_change = -40 }
+			modify_treasury_effect = yes
+			country_event = { id = ENG_pax_britannica.16 days = 1 }
+		}
+		ai_chance = {
+			base = 0
+			modifier = { add = 3 ENG = { strength_ratio = { tag = ROOT ratio > 2.0 } } }
+			modifier = { add = 3 ENG = { strength_ratio = { tag = ROOT ratio > 4.0 } } }
+			modifier = { add = 5 eng_country_is_collapsing = yes }
+		}
+	}
+
+	# Refuse - Britain takes a state-claim wargoal instead
+	option = {
+		name = ENG_pax_britannica.13.b
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.13.b executed"
+		ENG = {
+			add_state_claim = 93
+			create_wargoal = {
+				target = ROOT
+				type = take_state_focus
+				generator = { 93 }
+			}
+			country_event = { id = ENG_pax_britannica.17 days = 1 }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { factor = 0.6 ENG = { strength_ratio = { tag = ROOT ratio > 2.0 } } }
+			modifier = { factor = 0.5 eng_country_is_collapsing = yes }
+		}
+	}
+}
+
+country_event = {
+	id = ENG_pax_britannica.14
+	title = ENG_pax_britannica.14.t
+	desc = ENG_pax_britannica.14.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	# Accept - sell Tangier to Britain
+	option = {
+		name = ENG_pax_britannica.14.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.14.a executed"
+		set_temp_variable = { treasury_change = 40 }
+		modify_treasury_effect = yes
+		374 = { transfer_state_to = ENG }
+		ENG = {
+			set_temp_variable = { treasury_change = -40 }
+			modify_treasury_effect = yes
+			country_event = { id = ENG_pax_britannica.16 days = 1 }
+		}
+		ai_chance = {
+			base = 0
+			modifier = { add = 3 ENG = { strength_ratio = { tag = ROOT ratio > 2.0 } } }
+			modifier = { add = 3 ENG = { strength_ratio = { tag = ROOT ratio > 4.0 } } }
+			modifier = { add = 5 eng_country_is_collapsing = yes }
+		}
+	}
+
+	# Refuse - Britain takes a state-claim wargoal instead
+	option = {
+		name = ENG_pax_britannica.14.b
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.14.b executed"
+		ENG = {
+			add_state_claim = 374
+			create_wargoal = {
+				target = ROOT
+				type = take_state_focus
+				generator = { 374 }
+			}
+			country_event = { id = ENG_pax_britannica.17 days = 1 }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { factor = 0.6 ENG = { strength_ratio = { tag = ROOT ratio > 2.0 } } }
+			modifier = { factor = 0.5 eng_country_is_collapsing = yes }
+		}
+	}
+}
+
+country_event = {
+	id = ENG_pax_britannica.15
+	title = ENG_pax_britannica.15.t
+	desc = ENG_pax_britannica.15.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	# Accept - sell Ceuta to Britain
+	option = {
+		name = ENG_pax_britannica.15.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.15.a executed"
+		set_temp_variable = { treasury_change = 40 }
+		modify_treasury_effect = yes
+		495 = { transfer_state_to = ENG }
+		ENG = {
+			set_temp_variable = { treasury_change = -40 }
+			modify_treasury_effect = yes
+			country_event = { id = ENG_pax_britannica.16 days = 1 }
+		}
+		ai_chance = {
+			base = 0
+			modifier = { add = 3 ENG = { strength_ratio = { tag = ROOT ratio > 2.0 } } }
+			modifier = { add = 3 ENG = { strength_ratio = { tag = ROOT ratio > 4.0 } } }
+			modifier = { add = 5 eng_country_is_collapsing = yes }
+		}
+	}
+
+	# Refuse - Britain takes a state-claim wargoal instead
+	option = {
+		name = ENG_pax_britannica.15.b
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.15.b executed"
+		ENG = {
+			add_state_claim = 495
+			create_wargoal = {
+				target = ROOT
+				type = take_state_focus
+				generator = { 495 }
+			}
+			country_event = { id = ENG_pax_britannica.17 days = 1 }
+		}
+		ai_chance = {
+			base = 20
+			modifier = { factor = 0.6 ENG = { strength_ratio = { tag = ROOT ratio > 2.0 } } }
+			modifier = { factor = 0.5 eng_country_is_collapsing = yes }
+		}
+	}
+}
+
+# Britain is told a Mediterranean shore was sold to it. Scope: ROOT/THIS = Britain (ENG).
+country_event = {
+	id = ENG_pax_britannica.16
+	title = ENG_pax_britannica.16.t
+	desc = ENG_pax_britannica.16.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.16.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.16.a executed"
+	}
+}
+
+# Britain is told an offer was refused and a state-claim wargoal granted instead.
+# Scope: ROOT/THIS = Britain (ENG).
+country_event = {
+	id = ENG_pax_britannica.17
+	title = ENG_pax_britannica.17.t
+	desc = ENG_pax_britannica.17.d
+	picture = GFX_report_event_camera
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.17.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.17.a executed"
+	}
+}
+
+# Global news: Britain proclaims a renewed, aggressive imperial policy.
+news_event = {
+	id = ENG_pax_britannica.10
+	title = ENG_pax_britannica.10.t
+	desc = ENG_pax_britannica.10.d
+	picture = GFX_news_event_war
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = ENG_pax_britannica.10.a
+		log = "[GetDateText]: [This.GetName]: ENG_pax_britannica.10.a executed"
+	}
+}
