@@ -1,0 +1,468 @@
+SOV, 2593, Russia, 204371
+USA, 2349, United States, 212286
+CHI, 1697, China, 86719
+ITA, 1600, Italy, 91537
+GER, 1491, Germany, 119753
+CUB, 1446, Cuba, 29873
+PER, 1425, Iran, 119368
+BRA, 1379, Brazil, 51709
+FRA, 1270, France, 51641
+ENG, 1263, United Kingdom, 97507
+UKR, 1195, Ukraine, 75457
+POL, 1181, Poland, 83031
+TUR, 1009, Turkey, 60216
+BLR, 974, Belarus, 39245
+SYR, 973, Syria, 49552
+KOR, 968, Korea, 43804
+CAN, 950, Canada, 31490
+ISR, 921, Israel, 123598
+AFG, 893, Afghan Northern Alliance, 32945
+GRE, 890, Greece, 19866
+ARM, 882, Armenia, 83694
+JAP, 877, Japan, 76091
+SPR, 869, Spain, 56114
+SWE, 869, Sweden, 69208
+DEN, 856, Denmark, 39554
+RAJ, 847, India, 51007
+NKO, 789, Korea DPR, 38072
+SER, 789, Yugoslavia, 43928
+IRQ, 726, Iraq, 61410
+HOL, 709, Netherlands, 96744
+EGY, 683, Egypt, 36231
+BUL, 670, Bulgaria, 21620
+NOR, 658, Norway, 15630
+BRM, 645, Myanmar, 14092
+GEO, 645, Georgia, 30748
+NIG, 631, Nigeria, 21259
+FIN, 622, Finland, 14256
+LBA, 585, Libya, 81963
+ETH, 582, Ethiopia, 10505
+ROM, 581, Romania, 39781
+BOS, 568, Bosnia, 21489
+CZE, 566, Czech Republic, 119281
+SWI, 561, Switzerland, 7128
+IND, 560, Indonesia, 26387
+SAU, 535, Saudi Arabia, 7234
+VEN, 525, Venezuela, 28283
+AST, 524, Australia, 17198
+AZE, 519, Azerbaijan, 20094
+MNT, 506, Montenegro, 25107
+PMR, 506, Transnistria, 20358
+TAI, 505, Republic of China, 10814
+BOT, 498, Botswana, 11628
+SIN, 495, Singapore, 24659
+ALG, 482, Algeria, 112582
+PAK, 467, Pakistan, 5216
+EST, 466, Estonia, 19369
+BEL, 458, Belgium, 4935
+HEZ, 451, Hezbollah, 16547
+SAF, 438, South Africa, 2922
+POR, 412, Portugal, 3558
+ABK, 411, Abkhazia, 9424
+MEX, 403, Mexico, 6925
+CHE, 401, Chechnya, 15001
+AUS, 397, Austria, 2040
+ARG, 394, Argentina, 4129
+TAJ, 392, Tajikistan, 36303
+UAE, 390, United Arab Emirates, 2363
+VIE, 385, Vietnam, 4882
+SLO, 381, Slovakia, 5117
+SUD, 378, Sudan, 3119
+CRO, 374, Croatia, 3537
+YEM, 374, Yemen, 3995
+BOL, 373, Bolivia, 19904
+MOR, 373, Morocco, 3306
+COM, 372, Comoros, 11496
+SIA, 369, Thailand, 4233
+CHL, 364, Chile, 2433
+IRE, 363, Ireland, 1215
+PHI, 354, Philippines, 3895
+HUN, 352, Hungary, 3073
+COL, 351, Colombia, 3251
+LIT, 348, Lithuania, 4792
+ERI, 344, Eritrea, 2095
+ALB, 332, Albania, 1876
+NZL, 327, New Zealand, 1402
+UZB, 327, Uzbekistan, 1931
+LAT, 322, Latvia, 3374
+OMA, 322, Oman, 1466
+KUR, 320, Kurdistan, 13721
+KUW, 319, Kuwait, 1574
+SOM, 319, Somalia, 3300
+FIJ, 318, Fiji, 15225
+PRU, 317, Peru, 2045
+BAN, 316, Bangladesh, 1872
+BHR, 315, Bahrain, 1600
+MAY, 315, Malaysia, 1918
+QAT, 314, Qatar, 1435
+KEN, 313, Kenya, 3316
+ECU, 310, Ecuador, 1768
+TUN, 309, Tunisia, 3146
+SLV, 307, Slovenia, 1948
+KAZ, 305, Kazakhstan, 1761
+LEB, 303, Lebanon, 2007
+AGL, 302, Angola, 2063
+JOR, 301, Jordan, 1536
+CYP, 293, Cyprus, 1576
+HKG, 293, Hong Kong, 17515
+ZIM, 292, Zimbabwe, 902
+SOO, 291, South Ossetia, 10888
+NGR, 290, Niger, 578
+DRC, 289, Congo DR, 1174
+URG, 289, Uruguay, 1198
+MAL, 286, Mali, 2879
+MON, 285, Mongolia, 1099
+LIB, 283, Liberia, 1649
+TNZ, 283, Tanzania, 1598
+CAM, 278, Cameroon, 912
+MLV, 277, Moldova, 1385
+UGA, 277, Uganda, 922
+CAR, 276, Central African Republic, 2493
+KYR, 276, Kyrgyzstan, 1221
+SRI, 275, Sri Lanka, 1277
+NIC, 273, Nicaragua, 809
+SSU, 273, South Sudan, 1440
+GUI, 271, Guinea, 1373
+ZAM, 271, Zambia, 1074
+BEN, 269, Benin, 980
+LUX, 269, Luxembourg, 1500
+GUA, 268, Guatemala, 1337
+ISI, 267, Islamic State, 21377
+KOS, 267, Kosovo, 3886
+SEN, 267, Senegal, 1558
+NEP, 266, Nepal, 1205
+TAL, 266, Islamic Emirate of Afghanistan, 2322
+ELS, 265, El Salvador, 927
+MOZ, 262, Mozambique, 975
+TRK, 262, Turkmenistan, 1734
+BRU, 261, Brunei, 928
+DOM, 261, Dominican Republic, 915
+RWA, 261, Rwanda, 1165
+BUR, 259, Burundi, 731
+PAR, 259, Paraguay, 700
+CHA, 258, Chad, 1087
+FYR, 254, Macedonia, 925
+GAH, 254, Ghana, 1883
+HAI, 254, Haiti, 1538
+ICE, 254, Iceland, 787
+BFA, 251, Burkina Faso, 614
+CSA, 250, Southern Republic of America, 12733
+DJI, 250, Djibouti, 1078
+FSA, 250, Free Syrian Army, 2617
+HON, 250, Honduras, 624
+CDI, 249, Côte d'Ivoire, 728
+COS, 246, Costa Rica, 506
+GUY, 246, Guyana, 1123
+BAH, 244, Bahamas, 443
+BHU, 243, Bhutan, 711
+NAM, 243, Namibia, 708
+PAL, 241, Palestine, 2417
+CBD, 240, Cambodia, 1167
+SIE, 240, Sierra Leone, 1067
+LAO, 239, Laos, 908
+MAD, 239, Madagascar, 665
+SEY, 239, Seychelles, 789
+LES, 237, Lesotho, 796
+MAU, 237, Mauritania, 870
+DPR, 236, Donetsk PR, 24912
+EGU, 236, Equatorial Guinea, 820
+BLZ, 235, Belize, 464
+GAB, 235, Gabon, 954
+MLW, 235, Malawi, 809
+NOV, 234, Novorossiya, 1011
+PAN, 234, Panama, 825
+VOJ, 234, Vojvodina, 21559
+CNG, 233, Congo, 867
+MRT, 233, Mauritius, 704
+MLT, 232, Malta, 901
+SML, 232, Somaliland, 1013
+MLD, 231, Maldives, 788
+SUR, 230, Suriname, 808
+TOG, 230, Togo, 1160
+JAM, 229, Jamaica, 426
+LIC, 227, Liechtenstein, 9049
+GUB, 220, Guinea-Bissau, 1012
+NUS, 218, Tahrir al-Sham, 1811
+PAP, 216, Papua New Guinea, 486
+GAM, 215, Gambia, 630
+TIM, 212, Timor Leste, 1683
+SOL, 211, Solomon Islands, 983
+SHA, 209, Sahrawi, 3807
+SAO, 206, São Tomé and Príncipe, 1072
+BAR, 204, Barbados, 400
+TRI, 204, Trinidad and Tobago, 452
+SWA, 201, Swaziland, 708
+NCY, 200, Northern Cyprus, 620
+HOU, 199, Houthi Yemen, 1406
+VER, 198, Cabo Verde, 892
+ROJ, 194, Rojava, 1407
+STV, 192, Saint Vincent and the Grenadines, 288
+CAT, 189, Catalonia, 585
+DMI, 189, Dominica, 231
+AQY, 187, Ansar al-Sharia, 674
+GRA, 185, Grenada, 240
+SCO, 185, Scotland, 674
+STL, 184, Saint Lucia, 248
+MIC, 181, Micronesia, 226
+STK, 177, Saint Kitts and Nevis, 308
+AFR, 175, Armed Forces Revolutionary Council, 884
+SMA, 173, San Marino, 13988
+HOR, 170, House of Representatives of Libya, 750
+HAM, 169, Gaza Strip, 899
+LPR, 168, Luhansk PR, 7341
+CAS, 167, Cascadia, 26873
+CHS, 167, Chin State, 1711
+TTP, 165, Tehrik-i-Taliban, 670
+TIB, 162, Tibet, 537
+QUE, 158, Quebec, 1103
+TUA, 156, Tuaregs, 673
+DAR, 155, Darfur, 970
+GNC, 155, National Salvation Government of Libya, 601
+PKK, 155, People's Republic of Kurdistan, 690
+SHB, 154, Islamic Courts Union, 1144
+GNA, 149, Government of National Accord, 899
+NKR, 148, Artsakh, 1795
+SEL, 147, Séléka, 596
+CRE, 144, Crete, 481
+BAL, 142, Anti-Balaka, 623
+LOG, 134, Republic of Logone, 566
+USB, 134, Free States of America, 24887
+LUR, 133, Liberians United for Reconciliation and Democracy, 1192
+CNR, 130, Canary Islands, 668
+JUB, 129, Jubaland, 810
+PAU, 129, Palau, 250
+OPR, 127, Odessa PR, 7172
+PUN, 127, Puntland, 1963
+WAS, 125, Wales, 410
+UNI, 121, UNITA, 926
+STH, 119, "Saint Helena, Ascension and Tristan da Cunha", 601
+RCD, 116, Rally for Congolese Democracy, 795
+HPR, 114, Kharkiv PR, 5798
+ACE, 113, Aceh, 740
+SCL, 110, Padania, 857
+SWS, 110, Southwestern State of Somalia, 726
+HLS, 107, Vatican City, 433
+TAT, 103, Tatarstan, 5480
+MLC, 102, Movement for the Liberation of Congo, 862
+SNA, 101, Somali National Alliance, 724
+LKT, 100, Republic of Lakota, 22263
+WAG, 100, Wagner Group, 975
+ALA, 99, Alawite State, 671
+WAA, 93, Wa State, 387
+TEX, 91, Texas, 845
+DRU, 90, Jabal Al-Druze, 526
+SHN, 88, South Shan State, 308
+KAR, 87, Karen State, 399
+CAL, 86, California, 639
+SAM, 85, Samoa, 262
+KAC, 81, Kachin State, 391
+NEN, 80, New England, 2209
+MLR, 79, Malorossiya, 1838
+EUU, 75, European Union, 4144
+VTB, 74, Vitebsk People 's Republic, 1856
+NAV, 73, Basque Country, 172
+TIE, 72, Tibesti, 3213
+MAC, 70, Macau, 303
+BSH, 66, Bashkortostan, 532
+LRP, 63, Lviv Democratic Republic, 2675
+KUB, 60, Kuban Republic, 13110
+MNC, 59, Monaco, 305
+KIR, 58, Kiribati, 257
+BLC, 57, Balochistan, 410
+SAR, 57, Sardinia, 182
+ADO, 56, Andorra, 458
+TON, 56, Tonga, 256
+MAR, 55, Marshall Islands, 247
+SIK, 55, Sikkim State, 167
+TRA, 55, Transylvania, 259
+NAU, 54, Nauru, 255
+VAN, 54, Vanuatu, 235
+ARA, 53, Arabistan, 332
+TAM, 53, Tamaulipas, 312
+GLC, 52, Great Lakes Confederation, 454
+IOM, 52, Isle of Mann, 472
+CRM, 51, Crimean People's Republic, 1802
+URA, 51, Ural, 1132
+QTF, 50, Qatif, 327
+SIL, 50, Silesian Republic, 303
+TUV, 50, Tuva, 156
+FLN, 49, Flanders, 772
+HEJ, 46, Hejaz, 195
+RUS, 46, Freedom of Russia Legion, 562
+SLA, 46, Sinaloa Cartel, 309
+SPA, 45, Andalusia, 721
+SPL, 45, Sao Paulo, 325
+TRC, 45, Tierra Caliente, 325
+CAB, 44, Cabinda, 209
+KAN, 44, Kansas, 907
+SUL, 44, Sul, 325
+ETK, 43, East Turkestan, 445
+FLA, 43, Florida, 907
+NEJ, 43, Nejd, 193
+IDH, 42, Idaho, 1007
+LOR, 42, Luristan, 201
+NYK, 42, New York, 834
+ANT, 41, Antigua and Barbuda, 288
+MAN, 41, Manipur, 143
+PTR, 41, Puerto Rico, 825
+YUC, 41, Yucatán, 230
+PAT, 40, Patagonia, 321
+RGD, 40, Rio Grande, 227
+TAB, 40, Tabaristan, 177
+ZAP, 40, Zapatista, 229
+GRN, 39, Greenland, 37827
+HWI, 39, Federated States of Hawaii, 854
+ASK, 38, Alaska, 470
+FGU, 38, French Guiana, 212
+UDT, 38, Union of Deseret, 747
+CSM, 37, Casamance, 269
+NPM, 34, Maoist Nepal, 275
+RSK, 34, Republika Srpska, 219
+HZG, 33, Herzegovina, 205
+KHM, 33, Yugra, 413
+WVA, 33, West Virginia, 635
+TUL, 32, Tuvalu, 256
+IKR, 31, Rojhelat, 457
+HRM, 30, Emirate of Musandam, 249
+KLM, 30, Kalmykia, 156
+VMT, 30, Vermont, 647
+BRY, 29, Buryatia, 158
+VRP, 29, Volhynia Democratic Republic, 1103
+YAK, 29, Yakutia, 127
+ADJ, 28, Commune of Adjara, 144
+FAO, 28, Faroe Islands, 457
+KAE, 28, Karelia, 159
+KRP, 28, Karakalpakstan, 500
+TLS, 28, Talishstan, 143
+TRP, 28, Tripolitania, 416
+WLC, 28, Wallachia, 152
+CYR, 27, Cyrenaica, 506
+FEZ, 27, Fezzan, 305
+GAL, 26, Galicia, 127
+KBK, 26, Kabardino-Balkaria, 157
+ALT, 25, Altai, 133
+FNC, 25, Ivorian New Forces, 221
+ING, 25, Ingushetia, 158
+SAZ, 25, South Azerbaijan, 266
+CKK, 24, Chukotka, 158
+DAG, 24, Dagestan, 124
+KAM, 24, Kamtapur, 143
+LAG, 24, Latgale, 195
+PRP, 24, Podolia Republic, 248
+RYU, 24, Ryukyu, 871
+ADY, 23, Adygea, 150
+DRP, 23, Dnipropetrovsk Republic, 235
+FAR, 23, Far Eastern Republic, 117
+LAD, 23, Ladakh, 143
+MEG, 23, Meghalaya State, 143
+NEE, 23, Nenets, 159
+PUK, 23, Patriotic Union of Kurdistan, 534
+ARK, 22, Rakhine State, 185
+GGZ, 22, Gagauzia, 420
+KAS, 22, Kashmir, 148
+KCC, 22, Karachay-Cherkessia, 158
+KHS, 22, Khakassia, 158
+NHN, 22, North Shan State, 308
+BAY, 21, Bavaria, 157
+SIB, 21, Siberian Republic, 117
+KOM, 20, Komi, 159
+KSH, 20, Republic of Kashubia, 176
+YAM, 20, Yamalo-Nenets, 129
+IEK, 19, Islamic Emirate of Kurdistan, 404
+MEL, 19, Mari El, 157
+NLA, 18, Netherlands Antilles, 160
+UDM, 18, Udmurtia, 158
+ZOM, 18, The Zombie horde, 1759
+CHU, 17, Chuvashia, 160
+DON, 17, Republic of Don, 124
+GOR, 17, United Mountainous Republic, 117
+MOV, 17, Mordovia, 129
+ANJ, 15, Anjouan, 262
+BDA, 15, Badakhshan, 123
+C01, 14, Civilian, 96
+CSB, 14, Republic of Central Siberia, 123
+HAZ, 14, Hazaristan, 136
+ESB, 13, Republic of Eastern Siberia, 123
+MTE, 13, Mayotte, 263
+ZAN, 13, Zanzibar, 422
+AIA, 12, Al-Itihaad, 457
+ADS, 11, Albionis, 247
+NIR, 11, Northern Ireland, 222
+D30, 9, D30, 1
+D12, 5, D12, 1
+D13, 5, D13, 1
+KBY, 5, Kabylia, 538
+D02, 4, D02, 1
+D03, 4, D03, 1
+D06, 4, D06, 1
+D07, 4, D07, 1
+D08, 4, D08, 1
+D10, 4, D10, 1
+D11, 4, D11, 1
+D20, 4, D20, 1
+D27, 4, D27, 1
+D42, 4, D42, 1
+ALN, 3, Chimera, 166
+D01, 3, D01, 1
+D04, 3, D04, 1
+D05, 3, D05, 1
+D09, 3, D09, 1
+D14, 3, D14, 1
+D15, 3, D15, 1
+D17, 3, D17, 1
+D22, 3, D22, 1
+D25, 3, D25, 1
+D26, 3, D26, 1
+D28, 3, D28, 1
+D32, 3, D32, 1
+D37, 3, D37, 1
+D40, 3, D40, 1
+D41, 3, D41, 1
+D43, 3, D43, 1
+D47, 3, D47, 1
+D74, 3, D74, 1
+D16, 2, D16, 1
+D18, 2, D18, 1
+D19, 2, D19, 1
+D21, 2, D21, 1
+D23, 2, D23, 1
+D24, 2, D24, 1
+D29, 2, D29, 1
+D31, 2, D31, 1
+D33, 2, D33, 1
+D34, 2, D34, 1
+D35, 2, D35, 1
+D36, 2, D36, 1
+D38, 2, D38, 1
+D39, 2, D39, 1
+D44, 2, D44, 1
+D45, 2, D45, 1
+D46, 2, D46, 1
+D48, 2, D48, 1
+D49, 2, D49, 1
+D50, 2, D50, 1
+D51, 2, D51, 1
+D52, 2, D52, 1
+D53, 2, D53, 1
+D54, 2, D54, 1
+D55, 2, D55, 1
+D56, 2, D56, 1
+D58, 2, D58, 1
+D63, 2, D63, 1
+D66, 2, D66, 1
+D75, 2, D75, 1
+D57, 1, D57, 1
+D59, 1, D59, 1
+D60, 1, D60, 1
+D61, 1, D61, 1
+D62, 1, D62, 1
+D64, 1, D64, 1
+D65, 1, D65, 1
+D67, 1, D67, 1
+D68, 1, D68, 1
+D69, 1, D69, 1
+D70, 1, D70, 1
+D71, 1, D71, 1
+D72, 1, D72, 1
+D73, 1, D73, 1
+TML, 1, Tamil Eelam, 867
