@@ -19,7 +19,23 @@
       "Bash(python -c \"import yaml; yaml.safe_load\\(open\\('localisation/english/MD_map_modes_l_english.yml',encoding='utf-8-sig'\\)\\); print\\('YAML OK'\\)\")",
       "Bash(python tools/balance/set_renewable_hotspots.py --root .)",
       "Bash(python -c ' *)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(python -c \"import matplotlib; print\\('matplotlib', matplotlib.__version__\\)\")",
+      "Bash(python renewable_power_per_cost.py)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('tools/analysis/renewable_power_per_cost.py'\\).read\\(\\)\\); print\\('syntax OK'\\)\")",
+      "Bash(python tools/analysis/renewable_power_per_cost.py --out \"C:/Users/jonat/AppData/Local/Temp/paxgfx/renewable_power_per_cost.png\")",
+      "Bash(python calibrate.py)",
+      "Bash(python tools/balance/set_energy_tech_scurves.py)",
+      "Bash(python tools/balance/set_energy_tech_scurves.py --apply)",
+      "Bash(sed -n '/^\\\\tearly_renewables = {/,/start_year/p' common/technologies/industry.txt)",
+      "Bash(python tools/analysis/renewable_power_per_cost.py --out /tmp/energy_chart.png)",
+      "Bash(cat)",
+      "Bash(python /tmp/shape_check.py)",
+      "Bash(python -c \"print\\('renewable peak 5.417e-4 vs old 1.87e-3 -> ratio', round\\(1.87e-3/5.417e-4,2\\),'x lower'\\)\")",
+      "Bash(python tools/analysis/renewable_power_per_cost.py --out /tmp/chart.png)",
+      "Bash(sed -n '12,46p' tools/balance/set_energy_tech_scurves.py)",
+      "Bash(sed -n '/## Intended efficiency/,/Crossover amplitudes/p' .claude/docs/energy-power-balance.md)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('tools/balance/set_energy_tech_scurves.py'\\).read\\(\\)\\); print\\('tool syntax OK'\\)\")"
     ]
   }
 }
