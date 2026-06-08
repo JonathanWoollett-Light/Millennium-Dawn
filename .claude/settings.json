@@ -7,7 +7,19 @@
       "Bash(pre-commit run *)",
       "Bash(findstr *)",
       "Edit",
-      "Write"
+      "Write",
+      "Bash(awk 'NR<=1675 && /^\\\\t*\\(on_startup|on_daily|on_weekly|on_monthly|on_yearly|on_[a-z_]+\\) = \\\\{/{blk=$0; ln=NR} END{}' common/on_actions/00_on_actions.txt)",
+      "Bash(awk -F: '$1<=1675')",
+      "Bash(sed -n '756,766p' common/scripted_effects/99_AI_investment_scripted_effects.txt)",
+      "Bash(sed -n '378,402p' common/map_modes/01_economy_energy_map_modes.txt)",
+      "Bash(sed -n '36,52p' common/scripted_localisation/01_money_scripted_localisation.txt)",
+      "Bash(sed -n '207,218p' common/modifier_definitions/energy_modifier_definitions.txt)",
+      "Bash(awk '/renewable_energy_hotspot_map_mode = {/,/^\\\\t\\\\t\\\\}\\\\s*$/' common/map_modes/01_economy_energy_map_modes.txt)",
+      "Bash(python tools/balance/set_renewable_hotspots.py)",
+      "Bash(python -c \"import yaml; yaml.safe_load\\(open\\('localisation/english/MD_map_modes_l_english.yml',encoding='utf-8-sig'\\)\\); print\\('YAML OK'\\)\")",
+      "Bash(python tools/balance/set_renewable_hotspots.py --root .)",
+      "Bash(python -c ' *)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
