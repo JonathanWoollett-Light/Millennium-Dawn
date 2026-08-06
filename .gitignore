@@ -48,6 +48,8 @@ docs/assets/images/seo/generated/
 specs/
 
 # Tooling / analysis
+tools/playtest/playtest_map.html
+docs/public/playtest-map/
 .full_diff.txt
 .validation_cache/
 .tmp-archive/

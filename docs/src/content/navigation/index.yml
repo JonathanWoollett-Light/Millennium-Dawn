@@ -13,6 +13,8 @@ main:
         url: /dev-resources/developer-setup/
       - title: Git Workflow
         url: /dev-resources/git-workflow/
+      - title: Playtest Tracker
+        url: /dev-resources/playtest-tracker/
   - title: Information
     children:
       - title: Changelogs

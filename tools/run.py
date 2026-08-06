@@ -28,6 +28,7 @@ SEARCH_DIRS = [
     "assets",
     "generators",
     "linting",
+    "playtest",
     "publishing",
     "standardization",
     "validation",
