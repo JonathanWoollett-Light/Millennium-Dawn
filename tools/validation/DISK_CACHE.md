@@ -14,11 +14,13 @@ disk_cache.per_file_cached_by_content(mod_path, namespace, source_path, content,
 disk_cache.aggregate_cached(mod_path, key, tracked_files, factory_fn)
 ```
 
-| Function                     | Key                                      | Use when                                               |
-| ---------------------------- | ---------------------------------------- | ------------------------------------------------------ |
-| `per_file_cached`            | `(filename, mtime_ns, size)` + namespace | One result per source file (mtime-based)               |
-| `per_file_cached_by_content` | `(len, sha1(content))` + namespace       | One result per source file, keyed on content not mtime |
-| `aggregate_cached`           | `(mtime_ns, size)` of every tracked file | Merged result that depends on the whole tree           |
+| Function                     | Key                                 | Use when                   |
+| ---------------------------- | ----------------------------------- | -------------------------- |
+| `per_file_cached`            | `(filename, mtime_ns, size)`        | Per file, keyed on mtime   |
+| `per_file_cached_by_content` | `(len, sha1(content))`              | Per file, keyed on content |
+| `aggregate_cached`           | `(mtime_ns, size)` per tracked file | Merged over the whole tree |
+
+Every key is additionally namespaced.
 
 `per_file_cached_by_content` is preferred on CI, where git checkouts reset mtimes and make the stat-based key miss every entry. Supply the already-read content string; no extra file read.
 

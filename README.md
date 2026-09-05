@@ -57,11 +57,9 @@ docs/            - Development documentation
 
 ## Documentation
 
-| Topic               | Location                                                                                                    |
-| ------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Code Style          | [docs/src/content/resources/code-stylization-guide.md](./docs/src/content/resources/code-stylization-guide.md) |
-| Modifiers & Effects | [docs/src/content/resources/code-resource.md](./docs/src/content/resources/code-resource.md)                   |
-| Game Rules          | [docs/src/content/tutorials/game-rules.md](./docs/src/content/tutorials/game-rules.md)                         |
+- **Code Style** — [code-stylization-guide.md](./docs/src/content/resources/code-stylization-guide.md)
+- **Modifiers & Effects** — [code-resource.md](./docs/src/content/resources/code-resource.md)
+- **Game Rules** — [game-rules.md](./docs/src/content/tutorials/game-rules.md)
 
 ## License
 

@@ -24,15 +24,17 @@ Open the local site using the URL shown in the `astro dev` output.
 
 ## Where to Edit Content
 
-| Content folder                       | Published URL pattern                       | Notes                                            |
-| ------------------------------------ | ------------------------------------------- | ------------------------------------------------ |
-| `src/content/pages/*.md`             | `permalink` frontmatter (or `/<filename>/`) | See **Regular pages** below                      |
-| `src/content/countries/*.md`         | `/countries/<slug>/`                        | Use `slug` frontmatter when the filename differs |
-| `src/content/changelogSections/*.md` | `/changelogs/<filename>/`                   | Listed on `/changelogs/` unless `hidden: true`   |
-| `src/content/tutorials/*.md`         | `/player-tutorials/<filename>/`             | Index page is `/tutorials/`                      |
-| `src/content/resources/*.md`         | `/dev-resources/<filename>/`                | Index page is `/resources/`                      |
-| `src/content/devDiaries/*.{md,mdx}`  | `permalink` or `/dev-diaries/<filename>/`   | Prefer `.mdx` for optimized images               |
-| `src/content/misc/*.md`              | `/misc/<filename>/`                         |                                                  |
+Folders below are under `src/content/`. A `permalink` in frontmatter overrides the pattern.
+
+| Folder                   | Published URL pattern           | Notes                        |
+| ------------------------ | ------------------------------- | ---------------------------- |
+| `pages/*.md`             | `/<filename>/`                  | See **Regular pages**        |
+| `countries/*.md`         | `/countries/<slug>/`            | `slug` if filename differs   |
+| `changelogSections/*.md` | `/changelogs/<filename>/`       | Listed unless `hidden: true` |
+| `tutorials/*.md`         | `/player-tutorials/<filename>/` | Index `/tutorials/`          |
+| `resources/*.md`         | `/dev-resources/<filename>/`    | Index `/resources/`          |
+| `devDiaries/*.{md,mdx}`  | `/dev-diaries/<filename>/`      | Prefer `.mdx` for images     |
+| `misc/*.md`              | `/misc/<filename>/`             |                              |
 
 ### Regular pages
 
@@ -44,16 +46,18 @@ If you omit `permalink`, the URL defaults to `/<filename>/` (for example `mod-ov
 
 Each published page must have **exactly one** `<h1>`. The layout supplies it for most collections — **do not** repeat the page title as `# Title` in the Markdown body.
 
-| Collection / route                   | Who renders the H1       | Body rule                                                         |
-| ------------------------------------ | ------------------------ | ----------------------------------------------------------------- |
-| `src/content/pages/*.md` (catch-all) | Layout (`showPageTitle`) | Start with intro text or `##` sections — **no** `#` title line    |
-| `getting-started`, `faq`             | Layout (`showPageTitle`) | Same as pages above                                               |
-| `src/content/tutorials/*.md`         | Article hero             | **No** `#` matching `title` in frontmatter; use `##` for sections |
-| `src/content/resources/*.md`         | Article hero             | Same as tutorials                                                 |
-| `src/content/changelogSections/*.md` | Article hero             | Same as tutorials                                                 |
-| `src/content/devDiaries/*.{md,mdx}`  | Article hero             | Same as tutorials                                                 |
-| `src/content/countries/*.md`         | Country layout           | **No** `#` country name; use `##` for sections                    |
-| `src/content/misc/*.md`              | Article hero             | Same as tutorials                                                 |
+Collections below are under `src/content/`.
+
+| Collection               | H1 source              | Body rule                                |
+| ------------------------ | ---------------------- | ---------------------------------------- |
+| `pages/*.md` (catch-all) | Layout `showPageTitle` | Intro or `##` sections; **no** `#` title |
+| `getting-started`, `faq` | Layout `showPageTitle` | Same as pages above                      |
+| `tutorials/*.md`         | Article hero           | **No** `#` matching `title`; use `##`    |
+| `resources/*.md`         | Article hero           | Same as tutorials                        |
+| `changelogSections/*.md` | Article hero           | Same as tutorials                        |
+| `devDiaries/*.{md,mdx}`  | Article hero           | Same as tutorials                        |
+| `countries/*.md`         | Country layout         | **No** `#` country name; use `##`        |
+| `misc/*.md`              | Article hero           | Same as tutorials                        |
 
 `bun run check:content-html` fails if a hero-collection file opens with `#` text that matches its frontmatter `title` (case-insensitive).
 
@@ -126,10 +130,8 @@ infobox:
 
 In **Military & Industry** and **Economy** sections, stat `label` values must match exactly or the stat is dropped at build time:
 
-| Section kind        | Accepted labels                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------ |
-| Military & Industry | `Tag`, `Divisions`, `Total Factories`, `Military Ind.`, `Civilian Ind.`, `Naval Dockyards` |
-| Economy             | `Treasury`, `Debt`, `Investments`                                                          |
+- **Military & Industry** — `Tag`, `Divisions`, `Total Factories`, `Military Ind.`, `Civilian Ind.`, `Naval Dockyards`
+- **Economy** — `Treasury`, `Debt`, `Investments`
 
 Overview sections accept any label. A mistyped label in a structured section fails `bun run check`.
 

@@ -4,15 +4,13 @@ Thank you for your interest in contributing to Millennium Dawn! This file is a p
 
 ## Quick Links
 
-| Guide                                                                                                                        | What it covers                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [Developer Setup Guide](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/developer-setup/)                     | Prerequisites, cloning, pre-commit hooks, dev tools, VSCode, day-to-day workflow. **Start here.** |
-| [Contributing Guide (Docs Site)](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/contributing/)               | Docs site setup, `bun run dev`, content conventions, link rules, the docs CI pipeline.            |
-| [Code Stylization Guide](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/code-stylization-guide/)             | Formatting and code structure for HOI4 script files.                                              |
-| [Content Review Guide](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/content-review-guide/)                 | Quality checklist and developer expectations.                                                     |
-| [Focus Tree Design Principles](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/focus-tree-design-principles/) | Branch structure, pacing, choices.                                                                |
-| [Git Workflow](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/git-workflow/)                                 | Fork workflow, branch naming, commits, PRs.                                                       |
-| [AI Modding Guide](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/ai-modding-guide/)                         | Setting up local AI models for development.                                                       |
+- [Developer Setup Guide](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/developer-setup/) — Prerequisites, cloning, pre-commit hooks, dev tools, VSCode, day-to-day workflow. **Start here.**
+- [Contributing Guide (Docs Site)](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/contributing/) — Docs site setup, `bun run dev`, content conventions, link rules, the docs CI pipeline.
+- [Code Stylization Guide](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/code-stylization-guide/) — Formatting and code structure for HOI4 script files.
+- [Content Review Guide](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/content-review-guide/) — Quality checklist and developer expectations.
+- [Focus Tree Design Principles](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/focus-tree-design-principles/) — Branch structure, pacing, choices.
+- [Git Workflow](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/git-workflow/) — Fork workflow, branch naming, commits, PRs.
+- [AI Modding Guide](https://millenniumdawn.github.io/Millennium-Dawn/dev-resources/ai-modding-guide/) — Setting up local AI models for development.
 
 ## One-Command Setup
 

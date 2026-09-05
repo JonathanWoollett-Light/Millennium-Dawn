@@ -127,17 +127,22 @@ if __name__ == "__main__":
 
 ### Common imports from `shared_utils`
 
-| Symbol                           | Use                                                                                           |
-| -------------------------------- | --------------------------------------------------------------------------------------------- |
-| `Colors`                         | ANSI color constants (`GREEN`, `RED`, `YELLOW`, etc.)                                         |
-| `DEFAULT_EXTRA_SKIP_PATTERNS`    | `["FR_loc"]` — base skip patterns for validators                                              |
-| `clean_filepath(path)`           | Trim absolute path to start from `common/`, `events/`, etc.                                   |
-| `should_skip_file(path, extra)`  | Check if a file matches skip patterns                                                         |
-| `strip_comments(text)`           | Remove `#`-comments from HOI4 script text                                                     |
-| `FileOpener`                     | LRU-cached file reader (8192 entries)                                                         |
-| `create_validation_parser(desc)` | Argparse factory for validators (`--path`, `--strict`, `--staged`, `--no-cache`, `--workers`) |
-| `create_linting_parser(desc)`    | Argparse factory for linting scripts (`--mode`, `--files`, `--workers`)                       |
-| `run_validator_main(cls, desc)`  | Entry point for validators — parses args, creates instance, runs, exits                       |
+| Symbol                           | Use                                                         |
+| -------------------------------- | ----------------------------------------------------------- |
+| `Colors`                         | ANSI color constants (`GREEN`, `RED`, `YELLOW`, etc.)       |
+| `DEFAULT_EXTRA_SKIP_PATTERNS`    | `["FR_loc"]` — base skip patterns for validators            |
+| `clean_filepath(path)`           | Trim absolute path to start from `common/`, `events/`, etc. |
+| `should_skip_file(path, extra)`  | Check if a file matches skip patterns                       |
+| `strip_comments(text)`           | Remove `#`-comments from HOI4 script text                   |
+| `FileOpener`                     | LRU-cached file reader (8192 entries)                       |
+| `create_validation_parser(desc)` | Argparse factory for validators (flags below)               |
+| `create_linting_parser(desc)`    | Argparse factory for linting scripts (flags below)          |
+| `run_validator_main(cls, desc)`  | Entry point: parses args, builds instance, runs, exits      |
+
+Details:
+
+- `create_validation_parser`: `--path`, `--strict`, `--staged`, `--no-cache`, `--workers`.
+- `create_linting_parser`: `--mode`, `--files`, `--workers`.
 
 ## Scripts by Category
 
@@ -145,14 +150,19 @@ if __name__ == "__main__":
 
 Style checkers, formatters, and encoding validators. These are used in pre-commit hooks and CI.
 
-| Script                                | Description                                                                                                                                                                                                                                                                                            |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **check_common_mistakes.py**          | Detects common scripting mistakes: bad value ranges, `allowed`/`cancel` no-ops, `ai_will_do factor` vs `base`, division instead of multiplication, malformed leader rotations in `*_political_leaders.txt`. `--output FILE` also writes the `FILE`-stem `.json` sidecar the CI validation report reads |
-| **fix_styling.py**                    | Comprehensive auto-fixer for style issues (tabs, spacing, braces, whitespace)                                                                                                                                                                                                                          |
-| **fix_line_endings.py**               | Converts CRLF to LF line endings                                                                                                                                                                                                                                                                       |
-| **fix_loc_yaml.py**                   | Fixes localisation YAML issues (quotes, tabs, colons, version keys)                                                                                                                                                                                                                                    |
-| **validate_localization_encoding.py** | Validates and fixes UTF-8 BOM encoding for localisation files                                                                                                                                                                                                                                          |
-| **validate_mod_encoding.py**          | Checks UTF-8 encoding for `.mod` files                                                                                                                                                                                                                                                                 |
+| Script                                | Description                                       |
+| ------------------------------------- | ------------------------------------------------- |
+| **check_common_mistakes.py**          | Common scripting-mistake detector (see below)     |
+| **fix_styling.py**                    | Auto-fixer for tabs, spacing, braces, whitespace  |
+| **fix_line_endings.py**               | Converts CRLF to LF line endings                  |
+| **fix_loc_yaml.py**                   | Fixes loc YAML quotes, tabs, colons, version keys |
+| **validate_localization_encoding.py** | Validates and fixes UTF-8 BOM for loc files       |
+| **validate_mod_encoding.py**          | Checks UTF-8 encoding for `.mod` files            |
+
+Details:
+
+- `check_common_mistakes.py` covers bad value ranges, `allowed`/`cancel` no-ops, `ai_will_do factor` vs `base`, division instead of multiplication, and malformed leader rotations in `*_political_leaders.txt`.
+- `--output FILE` also writes the `FILE`-stem `.json` sidecar the CI validation report reads.
 
 ### Validation (`validation/`)
 
@@ -170,39 +180,45 @@ Auto-standardizers for focus trees, events, decisions, and ideas. See `standardi
 
 DDS conversion, GFX entry generation, texture and flag tools.
 
-| Script                         | Description                                                                       |
-| ------------------------------ | --------------------------------------------------------------------------------- |
-| **batchdds-2.py**              | Self-contained Python DDS converter (DXT1/DXT5, no external dependencies)         |
-| **convert_to_legacy_dds.py**   | Converts DX10/sRGB DDS files to legacy ARGB8888 for HOI4 compatibility            |
-| **duplicate_icon.py**          | Detects duplicate icon files in a focus tree file                                 |
-| **find_duplicate_textures.py** | Finds duplicate texture files in the mod                                          |
-| **flag-reference-checker.py**  | Validates flag references across the mod                                          |
-| **gfx_entry_generator_gui.py** | GFX sprite entry generator with GUI, calls into the root `gfx_entry_generator.py` |
-| **state_gfx.py**               | Extracts province colors from state files and renders them on the map             |
+| Script                         | Description                                         |
+| ------------------------------ | --------------------------------------------------- |
+| **batchdds-2.py**              | Self-contained DDS converter (DXT1/DXT5, no deps)   |
+| **convert_to_legacy_dds.py**   | Converts DX10/sRGB DDS to legacy ARGB8888 for HOI4  |
+| **duplicate_icon.py**          | Detects duplicate icon files in a focus tree file   |
+| **find_duplicate_textures.py** | Finds duplicate texture files in the mod            |
+| **flag-reference-checker.py**  | Validates flag references across the mod            |
+| **gfx_entry_generator_gui.py** | GUI front end for the root `gfx_entry_generator.py` |
+| **state_gfx.py**               | Renders state-file province colors onto the map     |
 
 ### Analysis (`analysis/`)
 
 Metrics, reference analysis, and review tools.
 
-| Script                              | Description                                                                                                                                                     |
-| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **ai_path_report.py**               | Reports one country's AI path rule, flag wiring, focus ownership, killswitch orphans, and the burdens/mechanics the AI must be able to resolve (issue #3162)     |
-| **calculate_days.py**               | Calculates days from January 1st for the HOI4 date system                                                                                                       |
-| **estimate_gdp.py**                 | Estimates starting GDP for country tags using MD's building formulas                                                                                            |
-| **event_load.py**                   | Reports how many events the yearly pulse schedules for one country and when, flagging years where several land in the same window                            |
-| **find_idea_references.py**         | Finds which ideas from a file are referenced elsewhere in the codebase                                                                                          |
-| **find_scripted_loc_references.py** | Checks whether scripted localisation names are actually referenced                                                                                              |
-| **pre_place_power_plants.py**       | Bakes fossil_powerplant + composite_plant counts into `history/states/` to skip startup loops. Re-run after edits to the energy formula or country/state setup. |
-| **review_branch.py**                | Generates a diff summary of the current branch vs main                                                                                                          |
-| **search_add_ideas.py**             | Searches for `add_ideas` / `add_timed_idea` usage across the codebase                                                                                           |
+| Script                              | Description                                               |
+| ----------------------------------- | --------------------------------------------------------- |
+| **ai_path_report.py**               | One country's AI path rule and wiring (issue #3162)       |
+| **calculate_days.py**               | Calculates days from January 1st for the HOI4 date system |
+| **estimate_gdp.py**                 | Estimates starting GDP from MD's building formulas        |
+| **event_load.py**                   | Yearly-pulse event load for one country, by year          |
+| **find_idea_references.py**         | Finds which ideas from a file are used elsewhere          |
+| **find_scripted_loc_references.py** | Checks whether scripted loc names are referenced          |
+| **pre_place_power_plants.py**       | Bakes power-plant counts into `history/states/`           |
+| **review_branch.py**                | Generates a diff summary of the current branch vs main    |
+| **search_add_ideas.py**             | Finds `add_ideas` / `add_timed_idea` usage                |
+
+Details:
+
+- `ai_path_report.py` also covers flag wiring, focus ownership, killswitch orphans, and the burdens/mechanics the AI must be able to resolve.
+- `event_load.py` flags years where several events land in the same window.
+- `pre_place_power_plants.py` bakes `fossil_powerplant` + `composite_plant` counts to skip startup loops; re-run after edits to the energy formula or country/state setup.
 
 ### Generators (`generators/`)
 
 Content generation tools.
 
-| Script                        | Description                                                           |
-| ----------------------------- | --------------------------------------------------------------------- |
-| **generate_tribute_ideas.py** | Generates tribute idea definitions and localisation for all countries |
+| Script                        | Description                                       |
+| ----------------------------- | ------------------------------------------------- |
+| **generate_tribute_ideas.py** | Generates tribute ideas and loc for all countries |
 
 ### Publishing (`publishing/`)
 
@@ -230,36 +246,50 @@ Tests live in `tests/report_lib/` and run on every PR via the `tools-validation.
 
 ### Tests (`tests/`)
 
-| Script                             | Description                                                      |
-| ---------------------------------- | ---------------------------------------------------------------- |
-| **staged_validators_test.py**      | Tests staged validators using synthetic temporary files          |
-| **staged_validators_real_test.py** | Tests staged validators against real mod files with known issues |
+| Script                             | Description                                                 |
+| ---------------------------------- | ----------------------------------------------------------- |
+| **staged_validators_test.py**      | Tests staged validators using synthetic temp files          |
+| **staged_validators_real_test.py** | Tests staged validators on real mod files with known issues |
 
 Tests for individual validators live in `tests/validation/`:
 
-| Script                               | Description                                                                                                              |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| **all_validators_test.py**           | Suite-wide smoke test: every `validate_*.py` must expose a `BaseValidator` subclass and run cleanly on an empty mod tree |
-| **validate_simplifications_test.py** | Unit tests for the scope-merge and two-bucket `random_list` detectors, including suppression edge cases                  |
+| Script                               | Description                                        |
+| ------------------------------------ | -------------------------------------------------- |
+| **all_validators_test.py**           | Smoke test: every validator loads and runs clean   |
+| **validate_simplifications_test.py** | Scope-merge and two-bucket `random_list` detectors |
+
+Details:
+
+- `all_validators_test.py`: every `validate_*.py` must expose a `BaseValidator` subclass and run cleanly on an empty mod tree.
+- `validate_simplifications_test.py` covers suppression edge cases.
 
 ### Root-Level Scripts
 
 Hook entry points, CI tools, shared libraries, and other scripts that stay at the `tools/` root.
 
-| Script                            | Description                                                                                                                                                                                                                                                                                                                                        |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **precommit_validate.py**         | Pre-commit hook (`md-validate-content`): runs the commit-stage validators in parallel, sharing one staged-file list                                                                                                                                                                                                                                |
-| **standardize_staged.py**         | Pre-commit hook: routes staged files to the correct standardizer                                                                                                                                                                                                                                                                                   |
-| **generate_validation_report.py** | CI: renders the PR validation comment + posts GitHub Check Runs                                                                                                                                                                                                                                                                                    |
-| **validate_tools.py**             | CI: validates Python scripts in the tools directory                                                                                                                                                                                                                                                                                                |
-| **gfx_entry_generator.py**        | GFX sprite entry generator (cross-platform, merges into existing `.gfx` files)                                                                                                                                                                                                                                                                     |
-| **shared_utils.py**               | Shared utilities: `Colors` class, `FileOpener` (LRU cache), `clean_filepath()`, `should_skip_file()`, `DEFAULT_EXTRA_SKIP_PATTERNS`, argparse factories (`create_validation_parser`, `create_linting_parser`, `create_standard_parser`), entry points (`run_validator_main`, `run_tool_main`), `find_hoi4_install()`, `extract_block_from_text()`. |
-| **loc.py**                        | Localisation utilities                                                                                                                                                                                                                                                                                                                             |
-| **logging_tool.py**               | Logging utility                                                                                                                                                                                                                                                                                                                                    |
-| **cleanup_or.py**                 | Library for `linting/check_common_mistakes.py`: finds redundant `AND`/single-condition `OR` blocks                                                                                                                                                                                                                                                 |
-| **assign_mio_icons.py**           | Manual tool: assigns MIO trait icons deterministically from the trait's winning modifier                                                                                                                                                                                                                                                           |
-| **summarize_game_log.py**         | Manual tool: parses scripted `log =` lines out of game.log into a "what happened" report after a test run                                                                                                                                                                                                                                          |
-| **sync_dynamic_tokens.py**        | Manual tool: regenerates `common/synchronized_dynamic_tokens` from error.log                                                                                                                                                                                                                                                                       |
+| Script                            | Description                                              |
+| --------------------------------- | -------------------------------------------------------- |
+| **precommit_validate.py**         | Pre-commit hook `md-validate-content` (parallel)         |
+| **standardize_staged.py**         | Pre-commit hook: routes staged files to standardizers    |
+| **generate_validation_report.py** | CI: PR validation comment + GitHub Check Runs            |
+| **validate_tools.py**             | CI: validates Python scripts in the tools directory      |
+| **gfx_entry_generator.py**        | Cross-platform GFX entry generator; merges into `.gfx`   |
+| **shared_utils.py**               | Shared utilities — see the imports table above           |
+| **loc.py**                        | Localisation utilities                                   |
+| **logging_tool.py**               | Logging utility                                          |
+| **cleanup_or.py**                 | Finds redundant `AND` / single-condition `OR` blocks     |
+| **assign_mio_icons.py**           | Manual: MIO trait icons from the winning modifier        |
+| **summarize_game_log.py**         | Manual: scripted `log =` lines from game.log to a report |
+| **sync_dynamic_tokens.py**        | Manual: regenerates synchronized dynamic tokens          |
+
+Details:
+
+- `precommit_validate.py` shares one staged-file list across the validators it runs.
+- `shared_utils.py` also exports `create_standard_parser`, `run_tool_main`, `find_hoi4_install()` and `extract_block_from_text()`.
+- `cleanup_or.py` is a library for `linting/check_common_mistakes.py`, not a standalone tool.
+- `assign_mio_icons.py` assigns icons deterministically from the trait's winning modifier.
+- `summarize_game_log.py` produces a "what happened" report after a test run.
+- `sync_dynamic_tokens.py` regenerates `common/synchronized_dynamic_tokens` from error.log.
 
 ---
 

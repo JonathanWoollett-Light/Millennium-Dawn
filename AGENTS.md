@@ -36,6 +36,8 @@ Pre-commit and CI run **different hook sets** — passing locally does not guara
   merge columns, or move detail into a terse `Details:` list under the table
   (patterns: `.claude/docs/documentation-references.md`, `.claude/docs/formable-reference.md`).
   Content that cannot fit a 100-wide table becomes a bulleted list instead.
+  Enforced by `tools/tests/markdown_table_width_test.py`; the published docs site
+  under `docs/src/content/` is exempt (rendered HTML, and country/author data tables).
 
 ### Line endings in Python tooling
 

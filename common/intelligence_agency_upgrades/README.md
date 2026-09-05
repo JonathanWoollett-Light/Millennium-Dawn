@@ -8,15 +8,13 @@ This directory holds the intelligence agency upgrade definitions used by the van
 
 Adding or renaming an agency upgrade touches seven files. All seven must stay in sync or the upgrade will be invisible, unclickable, or show as a blank icon in the queue UI.
 
-| File                                                                   | What it holds                                                                                |
-| ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `common/intelligence_agency_upgrades/intelligence_agency_upgrades.txt` | Source of truth — the `upgrade_X = { ... }` block with `picture`, `ai_will_do`, `level = {}` |
-| `common/on_actions/MD_auto_agency_on_actions.txt`                      | Registry — assigns the upgrade to an index in four parallel global arrays                    |
-| `localisation/english/MD_auto_agency_l_english.yml`                    | Loc triple — token id / display name / gfx sprite name                                       |
-| `common/scripted_guis/00_MD_auto_agency_scripted_gui.txt`              | Prerequisite gating (only if the upgrade needs `has_done_agency_upgrade = ...` prereqs)      |
-| `common/scripted_triggers/00_MD_auto_agency_scripted_triggers.txt`     | Per-index `can_select` / `slot_available` triggers and their dispatch branches               |
-| `common/scripted_effects/00_MD_auto_agency_scripted_effects.txt`       | Per-index seed branch in `MD_auto_agency_seed_completed_cache`                               |
-| `interface/countryintelligenceagencyview.gfx`                          | Sprite definition referenced by `picture =` and the `_gfx` loc key                           |
+- `common/intelligence_agency_upgrades/intelligence_agency_upgrades.txt` — Source of truth — the `upgrade_X = { ... }` block with `picture`, `ai_will_do`, `level = {}`
+- `common/on_actions/MD_auto_agency_on_actions.txt` — Registry — assigns the upgrade to an index in four parallel global arrays
+- `localisation/english/MD_auto_agency_l_english.yml` — Loc triple — token id / display name / gfx sprite name
+- `common/scripted_guis/00_MD_auto_agency_scripted_gui.txt` — Prerequisite gating (only if the upgrade needs `has_done_agency_upgrade = ...` prereqs)
+- `common/scripted_triggers/00_MD_auto_agency_scripted_triggers.txt` — Per-index `can_select` / `slot_available` triggers and their dispatch branches
+- `common/scripted_effects/00_MD_auto_agency_scripted_effects.txt` — Per-index seed branch in `MD_auto_agency_seed_completed_cache`
+- `interface/countryintelligenceagencyview.gfx` — Sprite definition referenced by `picture =` and the `_gfx` loc key
 
 ## Adding a new upgrade — step by step
 
