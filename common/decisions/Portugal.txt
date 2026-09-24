@@ -1,5 +1,39 @@
 POR_shadow_ops_category = {
 
+	# Brussels has seen enough. A year to either stand the operations down or leave, and it is
+	# answered by the two focuses under the European question, not by anything in here.
+	POR_o_ultimato_de_bruxelas = {
+		activation = { always = no }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_ultimato_answered_tt
+				OR = {
+					has_completed_focus = POR_permanecer_na_europa
+					has_completed_focus = POR_a_saida_atlantica
+				}
+			}
+		}
+
+		days_mission_timeout = 365
+		is_good = no
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_o_ultimato_de_bruxelas"
+			custom_effect_tooltip = POR_ultimato_answered_effect_tt
+		}
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_o_ultimato_de_bruxelas timed out"
+			set_temp_variable = { POR_heat_add = 15 }
+			POR_add_exposure = yes
+			add_stability = -0.10
+			add_political_power = -100
+			news_event = { id = portugal_news.12 hours = 6 }
+		}
+	}
+
 	# The whole loop starts here. Money and attention, one country at a time, until there
 	# is enough of a network there to be worth using.
 	POR_cultivar_a_rede = {

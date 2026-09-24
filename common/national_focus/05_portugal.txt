@@ -1739,6 +1739,21 @@ focus_tree = {
 				limit = { has_idea = NATO_member }
 				NATO_leave = yes
 			}
+			# The same four lines the EU screen runs for Article 50
+			# (common/scripted_guis/01_european_union_guis.txt:1786), so the withdrawal is the real
+			# two-year chain - revocable, extendable and ending in a deal or no deal - rather than
+			# an instant exit.
+			if = {
+				limit = {
+					has_idea = EU_member
+					NOT = { has_country_flag = Article_50 }
+				}
+				activate_mission = EU_exit
+				set_country_flag = Article_50
+				EU_vacate_offices = yes
+				news_event = EU_news.34
+				update_eu_dirty_variable = yes
+			}
 			set_intervention_to_lvl_5 = yes
 			add_war_support = 0.05
 		}
@@ -9477,5 +9492,61 @@ focus_tree = {
 			modifier = { factor = 25 POR_ai_shadow_path = yes }
 			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
 		}
+	}
+
+	focus = {
+		id = POR_a_lei_de_estrangeiros
+		icon = portugal_flag_people
+		x = 10
+		y = 1
+		relative_position_id = POR_a_politica_social
+		cost = 7
+		prerequisite = { focus = POR_a_politica_social }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY }
+
+		available = {
+			date > 2007.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_lei_de_estrangeiros"
+			add_to_variable = { POR_psoc_monthly_population = 0.05 tooltip = monthly_population_tt }
+			add_to_variable = { POR_psoc_stability_factor = -0.02 tooltip = stability_factor_tt }
+			add_manpower = 20000
+			set_temp_variable = { POR_ideo_add = 5 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_aima
+		icon = POR_royal_edicts
+		x = 0
+		y = 1
+		relative_position_id = POR_a_lei_de_estrangeiros
+		cost = 10
+		prerequisite = { focus = POR_a_lei_de_estrangeiros }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_MANPOWER }
+
+		available = {
+			date > 2023.10.29
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_aima"
+			add_to_variable = { POR_psoc_monthly_population = 0.05 tooltip = monthly_population_tt }
+			add_to_variable = { POR_psoc_bureaucracy_cost = 0.05 tooltip = bureaucracy_cost_multiplier_modifier_tt }
+			add_manpower = 30000
+			if = {
+				limit = { has_idea = POR_a_emigracao_2 }
+				swap_ideas = { remove_idea = POR_a_emigracao_2 add_idea = POR_a_emigracao_1 }
+			}
+			set_temp_variable = { POR_ideo_add = 5 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
 	}
 }

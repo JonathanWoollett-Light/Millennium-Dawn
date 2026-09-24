@@ -511,6 +511,16 @@ check_breach_of_EU_value = {
 		}
 		add_to_variable = { THIS.breach_of_EU_value = -5 }
 	}
+	## Portugal's shadow war, once Brussels can see it. POR_exposure_breach_bonus is 4 at
+	## exposure tier 3 and 6 at tier 4, against the >3 and >4 thresholds in
+	## EU_voting_decisions.txt.
+	if = {
+		limit = {
+			original_tag = POR
+			check_variable = { POR_exposure_breach_bonus > 0 }
+		}
+		add_to_variable = { THIS.breach_of_EU_value = POR_exposure_breach_bonus }
+	}
 	### democracy ###
 	if = { limit = { has_idea = dictatorship }
 		add_to_variable = { THIS.breach_of_EU_value = 5 }

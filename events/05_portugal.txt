@@ -689,3 +689,190 @@ country_event = {
 		add_political_power = -25
 	}
 }
+
+# Tier 3 exposure. The Commission's letter is polite and has a date in it.
+country_event = {
+	id = portugal.75
+	title = portugal.75.t
+	desc = portugal.75.d
+	picture = GFX_report_event_ITA_EU_Flag
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.75.a
+		add_political_power = -25
+	}
+}
+
+# The year ran out without an answer.
+news_event = {
+	id = portugal_news.12
+	title = portugal_news.12.t
+	desc = portugal_news.12.d
+	picture = GFX_news_EU_cal
+
+	major = yes
+	is_triggered_only = yes
+
+	option = { name = portugal_news.12.a }
+}
+
+# 2002. Peace in Angola.
+country_event = {
+	id = portugal.76
+	title = portugal.76.t
+	desc = portugal.76.d
+	picture = GFX_SAO_coup
+
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = POR
+		country_exists = AGL
+	}
+
+	# We were in the room
+	option = {
+		name = portugal.76.a
+		trigger = {
+			OR = {
+				AGL = { has_country_flag = POR_backed_by_portugal }
+				AGL = { has_country_flag = POR_opposed_by_portugal }
+				UNI = { has_country_flag = POR_backed_by_portugal }
+			}
+		}
+		set_temp_variable = { percent_change = 6 }
+		set_temp_variable = { tag_index = ROOT.id }
+		set_temp_variable = { influence_target = AGL.id }
+		change_influence_percentage = yes
+		add_political_power = 50
+		ai_chance = { base = 100 }
+	}
+
+	# We watched from Lisbon
+	option = {
+		name = portugal.76.b
+		trigger = {
+			AGL = { NOT = { has_country_flag = POR_backed_by_portugal } NOT = { has_country_flag = POR_opposed_by_portugal } }
+			UNI = { NOT = { has_country_flag = POR_backed_by_portugal } }
+		}
+		add_political_power = 25
+		ai_chance = { base = 100 }
+	}
+}
+
+# 2009. Bissau again.
+country_event = {
+	id = portugal.77
+	title = portugal.77.t
+	desc = portugal.77.d
+	picture = GFX_SAO_coup
+
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = POR
+		country_exists = GUB
+		GUB = { has_civil_war = no }
+	}
+
+	# Convene the CPLP, insist on the constitutional order
+	option = {
+		name = portugal.77.a
+		set_temp_variable = { percent_change = 6 }
+		set_temp_variable = { tag_index = ROOT.id }
+		set_temp_variable = { influence_target = GUB.id }
+		change_influence_percentage = yes
+		GUB = { add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations } }
+		add_political_power = 25
+		ai_chance = { base = 70 }
+	}
+
+	# A country this unstable is a country this reachable
+	option = {
+		name = portugal.77.b
+		trigger = { has_country_flag = POR_shadow_doors_open }
+		GUB = {
+			add_to_variable = { POR_net@ROOT = 0.20 }
+			clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+		}
+		set_temp_variable = { POR_heat_add = 4 }
+		POR_add_exposure = yes
+		ai_chance = {
+			base = 30
+			modifier = { factor = 3 POR_ai_shadow_path = yes }
+		}
+	}
+}
+
+# 2017. Cabo Delgado.
+country_event = {
+	id = portugal.78
+	title = portugal.78.t
+	desc = portugal.78.d
+	picture = GFX_senegal_soldiers
+
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = POR
+		country_exists = MOZ
+	}
+
+	# Send the training mission
+	option = {
+		name = portugal.78.a
+		add_war_support = 0.03
+		MOZ = {
+			add_opinion_modifier = { target = ROOT modifier = military_aid }
+			add_to_variable = { POR_net@ROOT = 0.10 }
+			clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+		}
+		custom_effect_tooltip = POR_cabo_delgado_mission_tt
+		ai_chance = { base = 60 }
+	}
+
+	# It is not our war
+	option = {
+		name = portugal.78.b
+		add_political_power = 25
+		ai_chance = { base = 40 }
+	}
+}
+
+# 2021. Palma.
+country_event = {
+	id = portugal.79
+	title = portugal.79.t
+	desc = portugal.79.d
+	picture = GFX_senegal_soldiers
+
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = POR
+		country_exists = MOZ
+	}
+
+	# Join the European training mission
+	option = {
+		name = portugal.79.a
+		trigger = { has_idea = EU_member }
+		add_war_support = 0.05
+		army_experience = 25
+		MOZ = {
+			add_opinion_modifier = { target = ROOT modifier = military_aid }
+			add_to_variable = { POR_net@ROOT = 0.10 }
+			clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+		}
+		ai_chance = { base = 70 }
+	}
+
+	# Let the region handle its own
+	option = {
+		name = portugal.79.b
+		add_political_power = 25
+		ai_chance = { base = 30 }
+	}
+}

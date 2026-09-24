@@ -143,6 +143,7 @@ POR_politica_industrial = {
 POR_politica_social = {
 	icon = GFX_idea_por_unstable_republic
 
+	bureaucracy_cost_multiplier_modifier = POR_psoc_bureaucracy_cost
 	consumer_goods_factor = POR_psoc_consumer_goods_factor
 	education_cost_multiplier_modifier = POR_psoc_education_cost_multiplier_modifier
 	expected_healthcare_modifier = POR_psoc_expected_healthcare_modifier

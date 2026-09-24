@@ -189,6 +189,21 @@ POR_update_exposure_tier = {
 			set_variable = { POR_exposure_breach_bonus = 6 }
 		}
 	}
+
+	# Tier 3 is where the breach value first crosses the EU's serious-breach threshold, so it
+	# is where Brussels stops hinting. Once only: a second ultimatum would not be believed.
+	if = {
+		limit = {
+			check_variable = { POR_exposure_tier > 2 }
+			has_idea = EU_member
+			NOT = { has_country_flag = POR_stood_down }
+			NOT = { has_country_flag = POR_ultimato_emitido }
+			NOT = { has_country_flag = Article_50 }
+		}
+		set_country_flag = POR_ultimato_emitido
+		activate_mission = POR_o_ultimato_de_bruxelas
+		country_event = { id = portugal.75 hours = 6 }
+	}
 }
 
 # Weekly hygiene. Every derived counter is recomputed from the arrays rather than
