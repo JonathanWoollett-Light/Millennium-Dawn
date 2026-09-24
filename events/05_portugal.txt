@@ -282,7 +282,17 @@ country_event = {
 		name = portugal.6.b
 		log = "[GetDateText]: [This.GetName]: portugal.6.b executed"
 
-		add_to_variable = { POR_economy_interest_rate_multiplier_modifier = 1.5 tooltip = interest_rate_multiplier_modifier_tt }
+		custom_effect_tooltip = {
+			localization_key = adds_dynamic_modifier_tt
+			MODIFIER = POR_convergencia
+		}
+		hidden_effect = {
+			if = {
+				limit = { NOT = { has_dynamic_modifier = { modifier = POR_convergencia } } }
+				add_dynamic_modifier = { modifier = POR_convergencia }
+			}
+		}
+		add_to_variable = { POR_conv_interest_rate_multiplier_modifier = 1.5 tooltip = interest_rate_multiplier_modifier_tt }
 		add_stability = 0.05
 		add_war_support = 0.05
 
@@ -524,6 +534,7 @@ country_event = {
 	is_triggered_only = yes
 	hidden = yes
 
+	# ROOT is the client government, FROM is Portugal.
 	immediate = {
 		random_neighbor_country = {
 			limit = {
@@ -531,11 +542,18 @@ country_event = {
 				is_subject = no
 				has_war = no
 				NOT = { tag = FROM }
-				NOT = { is_in_faction_with = PREV }
+				NOT = { tag = ROOT }
+				NOT = { is_in_faction_with = ROOT }
+				any_owned_state = { is_controlled_by = PREV }
 			}
-			add_opinion_modifier = { target = PREV modifier = border_tensions }
-			# PREV is the client here, and PREV from inside it is this neighbour.
-			PREV = { create_wargoal = { type = take_state_focus target = PREV } }
+			add_opinion_modifier = { target = ROOT modifier = border_tensions }
+			# The claim has to exist before the war goal does: take_claimed_state draws its
+			# states from claims, and take_state_focus without a generator draws none at all.
+			random_owned_state = {
+				limit = { is_controlled_by = PREV }
+				add_claim_by = ROOT
+			}
+			ROOT = { create_wargoal = { type = take_claimed_state target = PREV } }
 		}
 	}
 }

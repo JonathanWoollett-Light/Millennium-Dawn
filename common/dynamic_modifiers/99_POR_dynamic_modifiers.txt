@@ -1,73 +1,37 @@
-POR_economy_modifier = {
-	icon = GFX_idea_por_ogme
 
-	consumer_goods_factor = POR_economy_consumer_goods_factor
-	industrial_capacity_factory = POR_economy_industrial_capacity_factory
-	civilian_factories_productivity = POR_economy_civilian_factories_productivity
-	production_speed_buildings_factor = POR_economy_production_speed_buildings_factor
-	productivity_growth_modifier = POR_economy_productivity_growth_modifier
-	research_speed_factor = POR_economy_research_speed_factor
-	interest_rate_multiplier_modifier = POR_economy_interest_rate_multiplier_modifier
-	return_on_investment_modifier = POR_economy_return_on_investment_modifier
-	local_resources_factor = POR_economy_local_resources_factor
-	resource_export_multiplier_modifier = POR_economy_resource_export_multiplier_modifier
-	trade_opinion_factor = POR_economy_trade_opinion_factor
-	bureaucracy_cost_multiplier_modifier = POR_economy_bureaucracy_cost
-	monthly_population = POR_economy_monthly_population
-}
-
-POR_military_modifier = {
-	icon = GFX_idea_por_nation_in_arms
-
-	army_org_factor = POR_military_army_org_factor
-	army_morale_factor = POR_military_army_morale_factor
-	army_core_attack_factor = POR_military_army_core_attack_factor
-	army_core_defence_factor = POR_military_army_core_defence_factor
-	training_time_army_factor = POR_military_training_time_army_factor
-	experience_gain_army = POR_military_experience_gain_army
-	special_forces_cap_flat = POR_military_special_forces_cap_flat
-	navy_max_range_factor = POR_military_navy_max_range_factor
-	air_range_factor = POR_military_air_range_factor
-	max_command_power_mult = POR_military_max_command_power_mult
-}
-
-POR_political_modifier = {
-	icon = GFX_idea_por_estado_novo
-
-	political_power_factor = POR_political_political_power_factor
-	political_power_gain = POR_political_political_power_gain
-	stability_factor = POR_political_stability_factor
-	war_support_factor = POR_political_war_support_factor
-	drift_defence_factor = POR_political_drift_defence_factor
-	political_manipulation_corruption_factor = POR_political_corruption_factor
-	justify_war_goal_time = POR_political_justify_war_goal_time
-}
 
 # How far the public argument has moved. The wider it is, the harder the country is to hold
 # in place and the cheaper it is to argue with.
 POR_ideologia_modifier = {
 	icon = GFX_idea_por_iberian_workers_united
 
-	drift_defence_factor = POR_political_drift_defence_ideo
+	bureaucracy_cost_multiplier_modifier = POR_ideologia_bureaucracy_cost
 	communism_drift = POR_ideologia_communism_drift
-	nationalist_drift = POR_ideologia_nationalist_drift
 	democratic_drift = POR_ideologia_democratic_drift
+	drift_defence_factor = POR_ideologia_drift_defence_factor
+	nationalist_drift = POR_ideologia_nationalist_drift
 	neutrality_drift = POR_ideologia_neutrality_drift
+	political_power_factor = POR_ideologia_political_power_factor
 	political_power_gain = POR_ideologia_political_power_gain
+	stability_factor = POR_ideologia_stability_factor
+	trade_opinion_factor = POR_ideologia_trade_opinion_factor
+	war_support_factor = POR_ideologia_war_support_factor
 }
 
 # The shadow network. Everything the Lusophone lane buys for reaching overseas.
 POR_shadow_network = {
 	icon = GFX_idea_por_colonial_army
 
-	foreign_influence_modifier = POR_shadow_foreign_influence_modifier
+	bureaucracy_cost_multiplier_modifier = POR_shadow_bureaucracy_cost
+	drift_defence_factor = POR_shadow_drift_defence_factor
+	experience_gain_army = POR_shadow_experience_gain_army
 	foreign_influence_continent_modifier = POR_shadow_foreign_influence_continent_modifier
+	foreign_influence_modifier = POR_shadow_foreign_influence_modifier
+	foreign_subversive_activites = POR_shadow_foreign_subversive_activites
 	influence_coup_modifier = POR_shadow_influence_coup_modifier
 	send_volunteer_size = POR_shadow_send_volunteer_size
-	send_volunteer_divisions_required = POR_shadow_send_volunteer_divisions_required
-	send_volunteers_tension = POR_shadow_send_volunteers_tension
+	special_forces_cap_flat = POR_shadow_special_forces_cap_flat
 	subjects_autonomy_gain = POR_shadow_subjects_autonomy_gain
-	foreign_subversive_activites = POR_shadow_foreign_subversive_activites
 }
 
 # The air force. Portugal had no air dynamic modifier, so nothing in the tree could reach
@@ -75,13 +39,13 @@ POR_shadow_network = {
 POR_forca_aerea = {
 	icon = GFX_idea_por_volunteers_in_the_war2
 
-	air_mission_efficiency = POR_air_air_mission_efficiency
-	air_superiority_efficiency = POR_air_air_superiority_efficiency
 	air_agility_factor = POR_air_air_agility_factor
-	experience_gain_air_factor = POR_experience_gain_air_factor
-	air_range_factor = POR_air_air_range_factor
 	air_cas_present_factor = POR_air_air_cas_present_factor
 	air_intercept_efficiency = POR_air_air_intercept_efficiency
+	air_mission_efficiency = POR_air_air_mission_efficiency
+	air_range_factor = POR_air_air_range_factor
+	air_superiority_efficiency = POR_air_air_superiority_efficiency
+	experience_gain_air_factor = POR_air_experience_gain_air_factor
 }
 
 # What it costs to keep an army in someone else's war, six thousand kilometres from the
@@ -120,13 +84,16 @@ POR_eu_exposure_modifier = {
 POR_marinha = {
 	icon = GFX_idea_por_colonial_army
 
+	bureaucracy_cost_multiplier_modifier = POR_navy_bureaucracy_cost
+	convoy_raiding_efficiency_factor = POR_navy_convoy_raiding_efficiency_factor
+	experience_gain_navy_factor = POR_navy_experience_gain_navy_factor
+	local_resources_factor = POR_navy_local_resources_factor
 	naval_coordination = POR_navy_naval_coordination
 	naval_detection = POR_navy_naval_detection
-	navy_visibility = POR_navy_navy_visibility
-	convoy_raiding_efficiency_factor = POR_navy_convoy_raiding_efficiency_factor
-	navy_submarine_detection_factor = POR_navy_navy_submarine_detection_factor
 	naval_invasion_capacity = POR_navy_naval_invasion_capacity
-	experience_gain_navy_factor = POR_navy_experience_gain_navy_factor
+	navy_max_range_factor = POR_navy_navy_max_range_factor
+	navy_submarine_detection_factor = POR_navy_navy_submarine_detection_factor
+	navy_visibility = POR_navy_navy_visibility
 }
 
 POR_politica_financeira = {
@@ -160,6 +127,7 @@ POR_politica_industrial = {
 	hydroelectric_power_generation_modifier = POR_pind_hydroelectric_power_generation_modifier
 	infrastructure_cost_multiplier_modifier = POR_pind_infrastructure_cost_multiplier_modifier
 	interest_rate_multiplier_modifier = POR_pind_interest_rate_multiplier_modifier
+	local_resources_factor = POR_pind_local_resources_factor
 	nuclear_energy_generation_modifier = POR_pind_nuclear_energy_generation_modifier
 	political_manipulation_corruption_factor = POR_pind_political_manipulation_corruption_factor
 	production_speed_buildings_factor = POR_pind_production_speed_buildings_factor
@@ -193,14 +161,65 @@ POR_politica_social = {
 POR_intervencao = {
 	icon = GFX_idea_por_colonial_assimilation
 
-	operative_slot = POR_int_operative_slot
-	intel_network_gain_factor = POR_int_intel_network_gain_factor
-	decryption_factor = POR_int_decryption_factor
-	civilian_intel_factor = POR_int_civilian_intel_factor
+	agency_upgrade_time = POR_int_agency_upgrade_time
 	army_intel_factor = POR_int_army_intel_factor
+	bureaucracy_cost_multiplier_modifier = POR_int_bureaucracy_cost
+	civilian_intel_factor = POR_int_civilian_intel_factor
+	decryption_factor = POR_int_decryption_factor
+	enemy_operative_detection_chance_factor = POR_int_enemy_operative_detection_chance_factor
+	intel_network_gain_factor = POR_int_intel_network_gain_factor
+	justify_war_goal_time = POR_int_justify_war_goal_time
+	local_resources_factor = POR_int_local_resources_factor
+	navy_max_range_factor = POR_int_navy_max_range_factor
 	operation_cost = POR_int_operation_cost
 	operation_risk = POR_int_operation_risk
-	agency_upgrade_time = POR_int_agency_upgrade_time
 	operative_death_on_capture_chance = POR_int_operative_death_on_capture_chance
-	enemy_operative_detection_chance_factor = POR_int_enemy_operative_detection_chance_factor
+	operative_slot = POR_int_operative_slot
+	resource_export_multiplier_modifier = POR_int_resource_export_multiplier_modifier
+	special_forces_cap_flat = POR_int_special_forces_cap_flat
+	trade_opinion_factor = POR_int_trade_opinion_factor
+	war_support_factor = POR_int_war_support_factor
+}
+
+POR_a_republica = {
+	icon = GFX_idea_por_unstable_republic
+
+	bureaucracy_cost_multiplier_modifier = POR_rep_bureaucracy_cost
+	civilian_factories_productivity = POR_rep_civilian_factories_productivity
+	drift_defence_factor = POR_rep_drift_defence_factor
+	industrial_capacity_factory = POR_rep_industrial_capacity_factory
+	interest_rate_multiplier_modifier = POR_rep_interest_rate_multiplier_modifier
+	political_power_factor = POR_rep_political_power_factor
+	political_power_gain = POR_rep_political_power_gain
+	stability_factor = POR_rep_stability_factor
+}
+
+POR_convergencia = {
+	icon = GFX_idea_por_ogme
+
+	interest_rate_multiplier_modifier = POR_conv_interest_rate_multiplier_modifier
+	productivity_growth_modifier = POR_conv_productivity_growth_modifier
+	research_speed_factor = POR_conv_research_speed_factor
+}
+
+POR_exercito = {
+	icon = GFX_idea_por_nation_in_arms
+
+	army_core_attack_factor = POR_exe_army_core_attack_factor
+	army_core_defence_factor = POR_exe_army_core_defence_factor
+	army_morale_factor = POR_exe_army_morale_factor
+	army_org_factor = POR_exe_army_org_factor
+	bureaucracy_cost_multiplier_modifier = POR_exe_bureaucracy_cost
+	drift_defence_factor = POR_exe_drift_defence_factor
+	experience_gain_army = POR_exe_experience_gain_army
+	foreign_subversive_activites = POR_exe_foreign_subversive_activites
+	max_command_power_mult = POR_exe_max_command_power_mult
+	special_forces_cap_flat = POR_exe_special_forces_cap_flat
+	training_time_army_factor = POR_exe_training_time_army_factor
+}
+
+POR_programa_de_governo = {
+	icon = GFX_idea_por_estado_novo
+
+	political_power_gain = POR_pgov_political_power_gain
 }

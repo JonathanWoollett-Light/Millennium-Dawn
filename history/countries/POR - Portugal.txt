@@ -264,9 +264,6 @@ capital = 96
 		POR_o_fim_do_imperio
 	}
 
-	add_dynamic_modifier = { modifier = POR_economy_modifier }
-	add_dynamic_modifier = { modifier = POR_military_modifier }
-	add_dynamic_modifier = { modifier = POR_political_modifier }
 	POR_shadow_startup = yes
 
 	add_to_array = { global.un_aid_esco_contributor = THIS }

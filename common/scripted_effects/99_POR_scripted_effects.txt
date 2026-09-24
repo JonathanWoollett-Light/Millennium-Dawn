@@ -118,6 +118,13 @@ POR_score_client = {
 # Raises exposure by POR_heat_add, after scaling it by the target's pariah standing.
 # Expects POR_heat_add set, and runs in POR's scope with the target already scored.
 POR_add_exposure = {
+	# POR_heat_mult only exists after POR_score_client has run. Callers that are not scoring a
+	# client - an annexation, a coup in Madrid, a garrison left on a beach - were multiplying
+	# by an unset temp and adding nothing.
+	if = {
+		limit = { NOT = { has_variable = POR_heat_mult } }
+		set_temp_variable = { POR_heat_mult = 1 }
+	}
 	multiply_temp_variable = { POR_heat_add = POR_heat_mult }
 	add_to_variable = { POR_shadow_exposure = POR_heat_add }
 	clamp_variable = { var = POR_shadow_exposure min = 0 max = 100 }
@@ -610,20 +617,25 @@ POR_update_overseas_doctrine = {
 	set_variable = { POR_ttx_jungle = 0 }
 	set_variable = { POR_ttx_ranger = 0 }
 	set_variable = { POR_ttx_hills = 0 }
+	set_variable = { POR_ttx_marine = 0 }
 
-	# Where the wars are decides what the officers come home knowing. Guinea, Timor and
-	# Sao Tome are jungle end to end; Angola and Mozambique are forest.
+	# Where the wars are decides what the officers come home knowing. Guinea and Sao Tome are
+	# jungle end to end, Angola and Mozambique are forest, and Timor is a mountain with a
+	# coastline.
 	for_each_scope_loop = {
 		array = POR_shadow_clients
 		if = {
 			limit = {
 				OR = {
 					original_tag = GUB
-					original_tag = TIM
 					original_tag = SAO
 				}
 			}
 			set_variable = { PREV.POR_ttx_jungle = 0.50 }
+		}
+		if = {
+			limit = { original_tag = TIM }
+			set_variable = { PREV.POR_ttx_hills = 0.50 }
 		}
 		if = {
 			limit = {
@@ -633,6 +645,16 @@ POR_update_overseas_doctrine = {
 				}
 			}
 			set_variable = { PREV.POR_ttx_ranger = 0.50 }
+		}
+		# Two archipelagos reached only over a beach.
+		if = {
+			limit = {
+				OR = {
+					original_tag = VER
+					original_tag = SAO
+				}
+			}
+			set_variable = { PREV.POR_ttx_marine = 0.50 }
 		}
 	}
 }
@@ -710,7 +732,10 @@ POR_raise_ideological_development = {
 
 POR_update_ideology_tier = {
 	if = {
-		limit = { NOT = { has_dynamic_modifier = { modifier = POR_ideologia_modifier } } }
+		limit = {
+			check_variable = { POR_ideological_development > 0 }
+			NOT = { has_dynamic_modifier = { modifier = POR_ideologia_modifier } }
+		}
 		add_dynamic_modifier = { modifier = POR_ideologia_modifier }
 	}
 
@@ -720,9 +745,16 @@ POR_update_ideology_tier = {
 	else_if = { limit = { check_variable = { POR_ideological_development > 19 } } set_variable = { POR_ideology_tier = 1 } }
 	else = { set_variable = { POR_ideology_tier = 0 } }
 
-	# The wider the argument, the easier the country is to move.
-	set_variable = { POR_political_drift_defence_ideo = POR_ideology_tier }
-	multiply_variable = { POR_political_drift_defence_ideo = -0.03 }
+	# The wider the argument, the easier the country is to move. Recomputed weekly into the same
+	# field the ideology focuses write, so last week's contribution comes back out first.
+	if = {
+		limit = { NOT = { has_variable = POR_ideologia_tier_drift } }
+		set_variable = { POR_ideologia_tier_drift = 0 }
+	}
+	subtract_from_variable = { POR_ideologia_drift_defence_factor = POR_ideologia_tier_drift }
+	set_variable = { POR_ideologia_tier_drift = POR_ideology_tier }
+	multiply_variable = { POR_ideologia_tier_drift = -0.03 }
+	add_to_variable = { POR_ideologia_drift_defence_factor = POR_ideologia_tier_drift }
 }
 
 # A change of government is not a reset. Every time the country argues itself into handing
@@ -921,7 +953,7 @@ POR_abandon_deficit_path_1 = {
 
 		if = {
 			limit = { has_completed_focus = POR_a_saida_limpa }
-			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = 0.5 }
+			add_to_variable = { POR_pfin_interest_rate_multiplier_modifier = 0.5 }
 		}
 		if = {
 			limit = { has_completed_focus = POR_o_orcamento_rectificativo }
@@ -973,7 +1005,7 @@ POR_abandon_deficit_path_2 = {
 
 		if = {
 			limit = { has_completed_focus = POR_o_pacto_estupido }
-			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.5 }
+			add_to_variable = { POR_pfin_interest_rate_multiplier_modifier = -0.5 }
 		}
 		if = {
 			limit = { has_completed_focus = POR_a_reversao_do_empobrecimento }
@@ -2241,10 +2273,11 @@ POR_keep_evacuation_state = {
 		clr_state_flag = POR_evacuation_state
 		clear_variable = POR_evacuation_owner
 		add_core_of = ROOT
+		add_claim_by = FROM
 	}
 	FROM = {
 		add_opinion_modifier = { target = ROOT modifier = imminent_danger_to_national_security }
-		create_wargoal = { type = take_state_focus target = ROOT }
+		create_wargoal = { type = take_claimed_state target = ROOT }
 	}
 	add_war_support = 0.05
 	set_temp_variable = { POR_heat_add = 15 }

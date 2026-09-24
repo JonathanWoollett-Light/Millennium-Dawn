@@ -41,7 +41,10 @@ POR_operation_pronunciamento = {
 		infantry_weapons_type = 1000
 	}
 
-	required_tokens = { token_civilian token_army }
+	required_tokens = {
+		token_civilian
+		token_army
+	}
 
 	risk_chance = 0.35
 	experience = 4
