@@ -103,7 +103,7 @@ country_event = {
 		# The autonomy terms replace the informal arrangement. Leaving both in place would
 		# charge the client twice for the same trade.
 		FROM = {
-			remove_ideas = { POR_presenca_lusofona_1 POR_presenca_lusofona_2 POR_presenca_lusofona_3 }
+			remove_ideas = { POR_lusophone_presence_1 POR_lusophone_presence_2 POR_lusophone_presence_3 }
 		}
 
 		set_temp_variable = { POR_heat_add = 6 }

@@ -3120,7 +3120,7 @@ POR_the_fifth_empire = {
 	}
 }
 
-POR_o_imperio_informal = {
+POR_informal_empire = {
 	possible = {
 		difficulty > 1
 		has_any_custom_difficulty_setting = no

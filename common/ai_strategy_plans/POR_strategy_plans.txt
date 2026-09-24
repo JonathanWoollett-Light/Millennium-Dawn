@@ -12,28 +12,28 @@ POR_HISTORICAL_plan = {
 	}
 
 	ai_national_focuses = {
-		POR_o_programa_de_convergencia
-		POR_o_euro_e_a_divida
-		POR_a_terceira_republica
-		POR_reforma_do_estado
-		POR_educacao_para_todos
-		POR_a_reindustrializacao
-		POR_a_reestruturacao_da_divida
-		POR_combate_a_corrupcao
-		POR_o_regresso_aos_mercados
-		POR_o_tribunal_de_contas
-		POR_o_recenseamento_da_diaspora
-		POR_a_web_summit
+		POR_convergence_program
+		POR_euro_and_the_debt
+		POR_third_republic
+		POR_reform_of_the_state
+		POR_education_for_all
+		POR_reindustrialization
+		POR_debt_restructuring
+		POR_fighting_corruption
+		POR_return_to_the_markets
+		POR_court_of_auditors
+		POR_diaspora_census
+		POR_web_summit
 		POR_portugal_2030
-		POR_a_comunidade_lusofona
-		POR_o_instituto_camoes
+		POR_lusophone_community
+		POR_camoes_institute
 	}
 
 	focus_factors = {
-		POR_a_realpolitik_lusofona = 0
-		POR_a_via_aberta = 0
-		POR_o_pronunciamento = 0
-		POR_a_saida_atlantica = 0
+		POR_lusophone_realpolitik = 0
+		POR_open_road = 0
+		POR_pronunciamento = 0
+		POR_atlantic_exit = 0
 	}
 }
 
@@ -51,28 +51,28 @@ POR_LUSOPHONE_plan = {
 	}
 
 	ai_national_focuses = {
-		POR_a_comunidade_lusofona
-		POR_o_instituto_camoes
-		POR_o_programa_de_convergencia
-		POR_a_realpolitik_lusofona
-		POR_os_amigos_do_regime
-		POR_a_terceira_republica
-		POR_a_rede_de_oficiais
-		POR_a_via_discreta
-		POR_o_euro_e_a_divida
-		POR_a_legiao_portuguesa
-		POR_a_escola_de_guerra_de_africa
-		POR_reforma_do_estado
-		POR_a_reindustrializacao
-		POR_a_questao_europeia
-		POR_permanecer_na_europa
-		POR_educacao_para_todos
-		POR_o_recenseamento_da_diaspora
+		POR_lusophone_community
+		POR_camoes_institute
+		POR_convergence_program
+		POR_lusophone_realpolitik
+		POR_friends_of_the_regime
+		POR_third_republic
+		POR_officer_network
+		POR_discreet_road
+		POR_euro_and_the_debt
+		POR_portuguese_legion
+		POR_african_war_school
+		POR_reform_of_the_state
+		POR_reindustrialization
+		POR_european_question
+		POR_remain_in_europe
+		POR_education_for_all
+		POR_diaspora_census
 	}
 
 	focus_factors = {
-		POR_a_via_aberta = 0
-		POR_a_saida_atlantica = 0
+		POR_open_road = 0
+		POR_atlantic_exit = 0
 	}
 }
 
@@ -90,27 +90,27 @@ POR_IMPERIAL_plan = {
 	}
 
 	ai_national_focuses = {
-		POR_a_comunidade_lusofona
-		POR_a_realpolitik_lusofona
-		POR_os_amigos_do_regime
-		POR_a_rede_de_oficiais
-		POR_a_via_aberta
-		POR_a_legiao_portuguesa
-		POR_o_pronunciamento
-		POR_a_escola_de_guerra_de_africa
-		POR_a_projeccao_de_forcas
-		POR_a_segunda_vaga
-		POR_o_programa_de_convergencia
-		POR_o_euro_e_a_divida
-		POR_a_questao_europeia
-		POR_a_saida_atlantica
-		POR_o_imperio_informal
-		POR_a_terceira_republica
-		POR_a_reindustrializacao
+		POR_lusophone_community
+		POR_lusophone_realpolitik
+		POR_friends_of_the_regime
+		POR_officer_network
+		POR_open_road
+		POR_portuguese_legion
+		POR_pronunciamento
+		POR_african_war_school
+		POR_force_projection
+		POR_second_wave
+		POR_convergence_program
+		POR_euro_and_the_debt
+		POR_european_question
+		POR_atlantic_exit
+		POR_informal_empire
+		POR_third_republic
+		POR_reindustrialization
 	}
 
 	focus_factors = {
-		POR_a_via_discreta = 0
-		POR_permanecer_na_europa = 0
+		POR_discreet_road = 0
+		POR_remain_in_europe = 0
 	}
 }

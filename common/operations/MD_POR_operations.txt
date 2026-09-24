@@ -231,11 +231,11 @@ POR_operation_falsa_bandeira = {
 			# already looking. A traced sponsor cannot afterwards offer the government its help.
 			set_temp_variable = { POR_blown_chance = 20 }
 			if = {
-				limit = { has_idea = POR_presenca_lusofona_2 }
+				limit = { has_idea = POR_lusophone_presence_2 }
 				set_temp_variable = { POR_blown_chance = 30 }
 			}
 			if = {
-				limit = { has_idea = POR_presenca_lusofona_3 }
+				limit = { has_idea = POR_lusophone_presence_3 }
 				set_temp_variable = { POR_blown_chance = 45 }
 			}
 			random = {

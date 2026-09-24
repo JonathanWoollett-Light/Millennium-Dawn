@@ -1,7 +1,7 @@
 ideas = {
 	country = {
 		# Starting Spirits
-		POR_a_divida_publica_1 = {
+		POR_public_debt_1 = {
 			picture = por_unstable_republic
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -11,8 +11,8 @@ ideas = {
 			}
 		}
 
-		POR_a_divida_publica_2 = {
-			name = POR_a_divida_publica_1
+		POR_public_debt_2 = {
+			name = POR_public_debt_1
 			picture = por_unstable_republic
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -22,8 +22,8 @@ ideas = {
 			}
 		}
 
-		POR_a_divida_publica_3 = {
-			name = POR_a_divida_publica_1
+		POR_public_debt_3 = {
+			name = POR_public_debt_1
 			picture = por_unstable_republic
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -32,7 +32,7 @@ ideas = {
 			}
 		}
 
-		POR_a_economia_de_baixo_valor_1 = {
+		POR_low_value_economy_1 = {
 			picture = por_ogme
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -42,8 +42,8 @@ ideas = {
 			}
 		}
 
-		POR_a_economia_de_baixo_valor_2 = {
-			name = POR_a_economia_de_baixo_valor_1
+		POR_low_value_economy_2 = {
+			name = POR_low_value_economy_1
 			picture = por_ogme
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -53,8 +53,8 @@ ideas = {
 			}
 		}
 
-		POR_a_economia_de_baixo_valor_3 = {
-			name = POR_a_economia_de_baixo_valor_1
+		POR_low_value_economy_3 = {
+			name = POR_low_value_economy_1
 			picture = por_ogme
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -63,7 +63,7 @@ ideas = {
 			}
 		}
 
-		POR_o_estado_pesado_1 = {
+		POR_heavy_state_1 = {
 			picture = por_estado_novo
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -73,8 +73,8 @@ ideas = {
 			}
 		}
 
-		POR_o_estado_pesado_2 = {
-			name = POR_o_estado_pesado_1
+		POR_heavy_state_2 = {
+			name = POR_heavy_state_1
 			picture = por_estado_novo
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -84,8 +84,8 @@ ideas = {
 			}
 		}
 
-		POR_o_estado_pesado_3 = {
-			name = POR_o_estado_pesado_1
+		POR_heavy_state_3 = {
+			name = POR_heavy_state_1
 			picture = por_estado_novo
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -94,7 +94,7 @@ ideas = {
 			}
 		}
 
-		POR_a_emigracao_1 = {
+		POR_emigration_1 = {
 			picture = Portugalia_Ideologia_2
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -104,8 +104,8 @@ ideas = {
 			}
 		}
 
-		POR_a_emigracao_2 = {
-			name = POR_a_emigracao_1
+		POR_emigration_2 = {
+			name = POR_emigration_1
 			picture = Portugalia_Ideologia_2
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -116,7 +116,7 @@ ideas = {
 		}
 
 		# The end of the empire. Permanent, but swapped as Portugal builds a new one.
-		POR_o_fim_do_imperio = {
+		POR_end_of_empire = {
 			picture = por_empire
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -126,7 +126,7 @@ ideas = {
 			}
 		}
 
-		POR_o_imperio_informal_idea = {
+		POR_informal_empire_idea = {
 			picture = por_empire
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -136,7 +136,7 @@ ideas = {
 			}
 		}
 
-		POR_o_quinto_imperio_idea = {
+		POR_fifth_empire_idea = {
 			picture = por_the_fifth_empire
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -149,7 +149,7 @@ ideas = {
 
 		# The Portuguese Legion. Each tier makes an overseas deployment cheaper to field
 		# and teaches the officer corps more of what it learns there.
-		POR_idea_legiao_portuguesa_1 = {
+		POR_idea_portuguese_legion_1 = {
 			picture = por_volunteers_in_the_war
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -159,8 +159,8 @@ ideas = {
 			}
 		}
 
-		POR_idea_legiao_portuguesa_2 = {
-			name = POR_idea_legiao_portuguesa_1
+		POR_idea_portuguese_legion_2 = {
+			name = POR_idea_portuguese_legion_1
 			picture = por_volunteers_in_the_war2
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -170,8 +170,8 @@ ideas = {
 			}
 		}
 
-		POR_idea_legiao_portuguesa_3 = {
-			name = POR_idea_legiao_portuguesa_1
+		POR_idea_portuguese_legion_3 = {
+			name = POR_idea_portuguese_legion_1
 			picture = por_volunteers_in_the_war3
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -187,7 +187,7 @@ ideas = {
 		# The CPLP, as seen from inside it. Every Portuguese-speaking state carries this from the
 		# start, so a player on the other side of the table can see the relationship exists
 		# before anything is being done to them, and knows where to look when it is.
-		POR_comunidade_lusofona_idea = {
+		POR_lusophone_community_idea = {
 			picture = por_empire
 			allowed_civil_war = { always = yes }
 			cancel = {
@@ -207,7 +207,7 @@ ideas = {
 			}
 		}
 
-		POR_presenca_lusofona_1 = {
+		POR_lusophone_presence_1 = {
 			picture = por_iberian_workers_united
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -221,8 +221,8 @@ ideas = {
 			}
 		}
 
-		POR_presenca_lusofona_2 = {
-			name = POR_presenca_lusofona_1
+		POR_lusophone_presence_2 = {
+			name = POR_lusophone_presence_1
 			picture = por_colonial_assimilation
 			allowed_civil_war = { always = yes }
 			modifier = {
@@ -240,8 +240,8 @@ ideas = {
 			}
 		}
 
-		POR_presenca_lusofona_3 = {
-			name = POR_presenca_lusofona_1
+		POR_lusophone_presence_3 = {
+			name = POR_lusophone_presence_1
 			picture = por_nation_in_arms
 			allowed_civil_war = { always = yes }
 			cancel = {
@@ -271,28 +271,28 @@ ideas = {
 	}
 
 	hidden_ideas = {
-		POR_ultramar_income_money = {
+		POR_overseas_income_money = {
 			allowed_civil_war = { always = yes }
 			modifier = {
 				custom_modifier_tooltip = additional_income_POR_ultramar_TT
 			}
 		}
 
-		POR_ultramar_expense_money = {
+		POR_overseas_expense_money = {
 			allowed_civil_war = { always = yes }
 			modifier = {
 				custom_modifier_tooltip = additional_expense_POR_ultramar_TT
 			}
 		}
 
-		POR_lusofonia_money = {
+		POR_lusophony_money = {
 			allowed_civil_war = { always = yes }
 			modifier = {
 				custom_modifier_tooltip = additional_income_POR_lusofonia_TT
 			}
 		}
 
-		POR_legiao_money = {
+		POR_legion_money = {
 			allowed_civil_war = { always = yes }
 			modifier = {
 				custom_modifier_tooltip = additional_expense_POR_legiao_TT

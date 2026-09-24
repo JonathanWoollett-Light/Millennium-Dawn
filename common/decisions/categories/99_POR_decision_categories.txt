@@ -31,7 +31,7 @@ POR_intervencao_category = {
 	icon = GFX_decision_category_generic_political_actions
 	priority = 155
 
-	visible = { has_completed_focus = POR_a_intervencao }
+	visible = { has_completed_focus = POR_intervention }
 }
 
 POR_contra_espionagem_category = {
@@ -42,8 +42,8 @@ POR_contra_espionagem_category = {
 
 	visible = {
 		OR = {
-			has_idea = POR_presenca_lusofona_2
-			has_idea = POR_presenca_lusofona_3
+			has_idea = POR_lusophone_presence_2
+			has_idea = POR_lusophone_presence_3
 		}
 	}
 }

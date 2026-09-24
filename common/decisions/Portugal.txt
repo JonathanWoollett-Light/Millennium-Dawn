@@ -9,8 +9,8 @@ POR_shadow_ops_category = {
 			custom_trigger_tooltip = {
 				tooltip = POR_ultimato_answered_tt
 				OR = {
-					has_completed_focus = POR_permanecer_na_europa
-					has_completed_focus = POR_a_saida_atlantica
+					has_completed_focus = POR_remain_in_europe
+					has_completed_focus = POR_atlantic_exit
 				}
 			}
 		}
@@ -78,7 +78,7 @@ POR_shadow_ops_category = {
 
 			set_temp_variable = { POR_net_step = 0.10 }
 			if = {
-				limit = { has_country_flag = POR_os_amigos_do_regime }
+				limit = { has_country_flag = POR_friends_of_the_regime }
 				add_to_temp_variable = { POR_net_step = 0.05 }
 			}
 			multiply_temp_variable = { POR_net_step = POR_reward_mult }
@@ -245,7 +245,7 @@ POR_shadow_ops_category = {
 
 	# The rebellion itself. Forty-five days between the order and the shooting, which is
 	# time enough for the target to notice if it is paying attention.
-	POR_o_pronunciamento_local = {
+	POR_pronunciamento_local = {
 		icon = GFX_decision_generic_operation
 
 		cost = 150
@@ -285,13 +285,13 @@ POR_shadow_ops_category = {
 			}
 			has_equipment = { infantry_weapons_1 > 999 }
 			custom_trigger_tooltip = {
-				tooltip = POR_o_pronunciamento_local_tt
+				tooltip = POR_pronunciamento_local_tt
 				check_variable = { treasury > 5.9 }
 			}
 		}
 
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision POR_o_pronunciamento_local [FROM.GetName]"
+			log = "[GetDateText]: [Root.GetName]: Decision POR_pronunciamento_local [FROM.GetName]"
 			set_temp_variable = { treasury_change = -6 }
 			modify_treasury_effect = yes
 			add_equipment_to_stockpile = {
@@ -319,7 +319,7 @@ POR_shadow_ops_category = {
 		}
 
 		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove POR_o_pronunciamento_local [FROM.GetName]"
+			log = "[GetDateText]: [Root.GetName]: Decision remove POR_pronunciamento_local [FROM.GetName]"
 			clr_country_flag = POR_pronunciamento_running
 
 			if = {
@@ -751,7 +751,7 @@ POR_intervencao_category = {
 
 	# Madrid. Eighteen months of work inside a NATO member, and the only reason it is
 	# conceivable is that the Spanish state has stopped being able to answer for itself.
-	POR_o_golpe_de_madrid_decision = {
+	POR_madrid_operation_decision = {
 		icon = GFX_decision_generic_nationalism
 
 		cost = 250
@@ -769,20 +769,20 @@ POR_intervencao_category = {
 				POR_madrid_is_ready = yes
 			}
 			custom_trigger_tooltip = {
-				tooltip = POR_o_golpe_de_madrid_decision_tt
+				tooltip = POR_madrid_operation_decision_tt
 				check_variable = { treasury > 19.9 }
 			}
 		}
 
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision POR_o_golpe_de_madrid_decision"
+			log = "[GetDateText]: [Root.GetName]: Decision POR_madrid_operation_decision"
 			set_temp_variable = { treasury_change = -20 }
 			modify_treasury_effect = yes
 			custom_effect_tooltip = TT_IF_THEY_ACCEPT
 		}
 
 		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove POR_o_golpe_de_madrid_decision"
+			log = "[GetDateText]: [Root.GetName]: Decision remove POR_madrid_operation_decision"
 			if = {
 				limit = {
 					country_exists = SPR
@@ -812,7 +812,7 @@ POR_intervencao_category = {
 		days_re_enable = 90
 
 		visible = {
-			has_country_flag = POR_a_galiza
+			has_country_flag = POR_galicia
 			country_exists = SPR
 			NOT = { owns_state = 944 }
 		}
@@ -854,8 +854,8 @@ POR_contra_espionagem_category = {
 		visible = {
 			country_exists = POR
 			OR = {
-				has_idea = POR_presenca_lusofona_2
-				has_idea = POR_presenca_lusofona_3
+				has_idea = POR_lusophone_presence_2
+				has_idea = POR_lusophone_presence_3
 			}
 		}
 
@@ -892,7 +892,7 @@ POR_contra_espionagem_category = {
 			base = 50
 			modifier = {
 				factor = 2
-				has_idea = POR_presenca_lusofona_3
+				has_idea = POR_lusophone_presence_3
 			}
 			modifier = {
 				factor = 0

@@ -257,11 +257,11 @@ capital = 96
 		no_currency_backing
 
 		#National Spirits
-		POR_a_divida_publica_1
-		POR_a_economia_de_baixo_valor_1
-		POR_o_estado_pesado_1
-		POR_a_emigracao_1
-		POR_o_fim_do_imperio
+		POR_public_debt_1
+		POR_low_value_economy_1
+		POR_heavy_state_1
+		POR_emigration_1
+		POR_end_of_empire
 	}
 
 	POR_shadow_startup = yes

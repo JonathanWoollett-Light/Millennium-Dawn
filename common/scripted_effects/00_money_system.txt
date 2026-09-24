@@ -838,7 +838,7 @@ calculate_additional_income_rate = {
 			add_to_variable = { additional_income_rate = POR_ultramar_income }
 		}
 		if = {
-			limit = { has_completed_focus = POR_o_instituto_camoes }
+			limit = { has_completed_focus = POR_camoes_institute }
 			set_variable = { POR_lusofonia_income = gdp_total }
 			multiply_variable = { POR_lusofonia_income = 0.0015 }
 			add_to_variable = { additional_income_rate = POR_lusofonia_income }
