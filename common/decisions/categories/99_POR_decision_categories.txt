@@ -15,3 +15,12 @@ POR_escola_ultramar_category = {
 
 	visible = { has_country_flag = POR_escola_ultramar_aberta }
 }
+
+POR_federacao_category = {
+	allowed = { original_tag = POR }
+
+	icon = GFX_decision_category_generic_foreign_policy
+	priority = 160
+
+	visible = { has_country_flag = POR_conferencia_aberta }
+}

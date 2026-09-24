@@ -3105,3 +3105,32 @@ achievement_the_new_zanzibar = {
 		}
 	}
 }
+
+POR_the_fifth_empire = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = POR
+	}
+
+	happened = {
+		original_tag = POR
+		has_country_flag = POR_federacao_formada
+	}
+}
+
+POR_o_imperio_informal = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = POR
+	}
+
+	happened = {
+		original_tag = POR
+		has_idea = EU_member
+		check_variable = { POR_lusophone_subjects^num > 2 }
+	}
+}

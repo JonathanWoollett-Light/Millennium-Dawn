@@ -495,3 +495,80 @@ POR_escola_ultramar_category = {
 		}
 	}
 }
+
+POR_federacao_category = {
+
+	# The conference itself. Every client answers for itself, which is the whole
+	# difference between a federation and a colony.
+	POR_convocar_a_conferencia = {
+		icon = GFX_decision_generic_political_discourse
+
+		cost = 100
+		days_re_enable = 365
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_lusophone_subjects
+
+		target_root_trigger = {
+			has_country_flag = POR_conferencia_aberta
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				is_subject_of = ROOT
+				NOT = { has_country_flag = POR_federacao_decided }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_convocar_a_conferencia [FROM.GetName]"
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			FROM = { country_event = { id = portugal.60 days = 3 } }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	# Coercion still goes through an event the subject answers. We can make refusing
+	# expensive; we cannot make it impossible.
+	POR_pressionar_o_subordinado = {
+		icon = GFX_decision_generic_nationalism
+
+		cost = 200
+		days_re_enable = 180
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_lusophone_subjects
+
+		target_root_trigger = {
+			has_country_flag = POR_conferencia_aberta
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				is_subject_of = ROOT
+				has_country_flag = POR_federacao_decided
+				NOT = { has_country_flag = POR_federacao_willing }
+				check_variable = { POR_federacao_pressure < 2 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_pressionar_o_subordinado [FROM.GetName]"
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			FROM = {
+				add_to_variable = { POR_federacao_pressure = 1 }
+				clr_country_flag = POR_federacao_decided
+				add_stability = -0.05
+				add_opinion_modifier = { target = ROOT modifier = supported_opposition }
+				country_event = { id = portugal.60 days = 3 }
+			}
+		}
+
+		ai_will_do = { base = 5 }
+	}
+}

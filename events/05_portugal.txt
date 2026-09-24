@@ -160,3 +160,93 @@ news_event = {
 		name = portugal_news.2.a
 	}
 }
+
+# Put to each client government in turn. FROM is Portugal.
+country_event = {
+	id = portugal.60
+	title = portugal.60.t
+	desc = portugal.60.d
+	picture = GFX_SAO_Election
+
+	is_triggered_only = yes
+
+	# Accede to the federation
+	option = {
+		name = portugal.60.a
+		log = "[GetDateText]: [This.GetName]: portugal.60.a executed"
+
+		set_country_flag = POR_federacao_willing
+		set_country_flag = POR_federacao_decided
+		FROM = { country_event = { id = portugal.61 hours = 6 } }
+
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 2
+				has_opinion = { target = FROM value > 50 }
+			}
+			modifier = {
+				factor = 3
+				check_variable = { POR_federacao_pressure > 0 }
+			}
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+		}
+	}
+
+	# Remain sovereign
+	option = {
+		name = portugal.60.b
+
+		set_country_flag = POR_federacao_decided
+
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0.5
+				check_variable = { POR_federacao_pressure > 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = portugal.61
+	title = portugal.61.t
+	desc = portugal.61.d
+	picture = GFX_SAO_Election
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.61.a
+		log = "[GetDateText]: [This.GetName]: portugal.61.a executed"
+		add_political_power = 25
+	}
+}
+
+news_event = {
+	id = portugal_news.5
+	title = portugal_news.5.t
+	desc = portugal_news.5.d
+	picture = GFX_news_SAO_coup
+
+	major = yes
+	is_triggered_only = yes
+
+	option = { name = portugal_news.5.a }
+}
+
+news_event = {
+	id = portugal_news.6
+	title = portugal_news.6.t
+	desc = portugal_news.6.d
+	picture = GFX_news_SAO_coup
+
+	major = yes
+	is_triggered_only = yes
+
+	option = { name = portugal_news.6.a }
+}
