@@ -26,6 +26,16 @@ focus_tree = {
 		scroll_wheel_factor = 0.80
 	}
 	shortcut = {
+		name = military_shortcut_title
+		target = POR_as_forcas_armadas
+		scroll_wheel_factor = 0.80
+	}
+	shortcut = {
+		name = POR_atlantico_shortcut
+		target = POR_o_mar_portugues
+		scroll_wheel_factor = 0.80
+	}
+	shortcut = {
 		name = diplomacy_shortcut_title
 		target = POR_a_comunidade_lusofona
 		scroll_wheel_factor = 0.80
@@ -38,7 +48,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_terceira_republica
 		icon = flag_portugal
-		x = 4
+		x = 7
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -55,7 +65,7 @@ focus_tree = {
 	focus = {
 		id = POR_reforma_do_estado
 		icon = POR_matters_of_realm
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = POR_a_terceira_republica
 		cost = 5
@@ -126,7 +136,7 @@ focus_tree = {
 	focus = {
 		id = POR_educacao_para_todos
 		icon = POR_portuguese_youth
-		x = 2
+		x = 4
 		y = 1
 		relative_position_id = POR_a_terceira_republica
 		cost = 5
@@ -181,7 +191,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_programa_de_convergencia
 		icon = iberian_summit
-		x = 36
+		x = 45
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_ECONOMY }
@@ -198,7 +208,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_euro_e_a_divida
 		icon = POR_burden_empire
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_o_programa_de_convergencia
 		cost = 5
@@ -219,7 +229,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_reestruturacao_da_divida
 		icon = POR_autonomy
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_o_euro_e_a_divida
 		cost = 7
@@ -251,7 +261,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_alternativa_soberana
 		icon = POR_ban_republic
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_o_euro_e_a_divida
 		cost = 7
@@ -276,7 +286,7 @@ focus_tree = {
 		id = POR_o_regresso_aos_mercados
 		icon = POR_Imperio_Ultramarino
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = POR_o_euro_e_a_divida
 		cost = 10
 		prerequisite = { focus = POR_a_reestruturacao_da_divida focus = POR_a_alternativa_soberana }
@@ -294,7 +304,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_reindustrializacao
 		icon = POR_knights_of_portugal
-		x = 2
+		x = 4
 		y = 1
 		relative_position_id = POR_o_programa_de_convergencia
 		cost = 5
@@ -326,7 +336,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_web_summit
 		icon = POR_pink_map
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_a_reindustrializacao
 		cost = 5
@@ -347,7 +357,7 @@ focus_tree = {
 	focus = {
 		id = POR_portugal_2030
 		icon = the_kingdom_reunited
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_a_reindustrializacao
 		cost = 10
@@ -381,7 +391,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_comunidade_lusofona
 		icon = POR_Imperio_Ultramarino
-		x = 124
+		x = 107
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_INFLUENCE }
@@ -412,7 +422,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_instituto_camoes
 		icon = POR_portuguese_youth
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = POR_a_comunidade_lusofona
 		cost = 5
@@ -436,7 +446,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_realpolitik_lusofona
 		icon = POR_Kingdom_Emblem
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_a_comunidade_lusofona
 		cost = 7
@@ -463,7 +473,7 @@ focus_tree = {
 	focus = {
 		id = POR_os_amigos_do_regime
 		icon = por_concordat
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_a_realpolitik_lusofona
 		cost = 5
@@ -486,7 +496,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_rede_de_oficiais
 		icon = POR_Army_Emblem
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_a_realpolitik_lusofona
 		cost = 5
@@ -509,7 +519,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_via_discreta
 		icon = limited_self_rule
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_a_rede_de_oficiais
 		cost = 5
@@ -534,7 +544,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_via_aberta
 		icon = the_pink_map
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_a_rede_de_oficiais
 		cost = 5
@@ -561,7 +571,7 @@ focus_tree = {
 		id = POR_a_legiao_portuguesa
 		icon = portuguese_legion
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = POR_a_rede_de_oficiais
 		cost = 7
 		prerequisite = { focus = POR_a_via_discreta focus = POR_a_via_aberta }
@@ -582,7 +592,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_pronunciamento
 		icon = POR_protect_angola
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = POR_a_legiao_portuguesa
 		cost = 7
@@ -659,7 +669,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_segunda_vaga
 		icon = POR_protect_mozambique
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = POR_a_escola_de_guerra_de_africa
 		cost = 7
@@ -682,7 +692,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_questao_europeia
 		icon = iberian_summit
-		x = 3
+		x = 8
 		y = 1
 		relative_position_id = POR_a_realpolitik_lusofona
 		cost = 5
@@ -705,7 +715,7 @@ focus_tree = {
 	focus = {
 		id = POR_permanecer_na_europa
 		icon = POR_autonomy
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_a_questao_europeia
 		cost = 7
@@ -734,7 +744,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_saida_atlantica
 		icon = ohno_step_portugal
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_a_questao_europeia
 		cost = 10
@@ -771,7 +781,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_imperio_informal
 		icon = the_fifth_empire
-		x = -1
+		x = -2
 		y = 2
 		relative_position_id = POR_a_escola_de_guerra_de_africa
 		cost = 10
@@ -809,8 +819,9 @@ focus_tree = {
 	focus = {
 		id = POR_o_quinto_imperio
 		icon = the_fifth_empire
-		x = 158
-		y = 0
+		x = 0
+		y = 1
+		relative_position_id = POR_o_imperio_informal
 		cost = 10
 		allow_branch = {
 			has_game_rule = {
@@ -837,7 +848,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_imperio_ultramarino
 		icon = POR_Imperio_Ultramarino
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_o_quinto_imperio
 		cost = 7
@@ -860,7 +871,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_conferencia_imperial
 		icon = iberian_summit
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_o_quinto_imperio
 		cost = 7
@@ -933,7 +944,7 @@ focus_tree = {
 	focus = {
 		id = POR_as_forcas_armadas
 		icon = Portuguese_Army
-		x = 66
+		x = 61
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_MILITARY_LAWS }
@@ -959,7 +970,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_profissionalizacao
 		icon = POR_Army_Emblem
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = POR_as_forcas_armadas
 		cost = 7
@@ -1077,7 +1088,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_isaf
 		icon = POR_autonomy
-		x = 2
+		x = 4
 		y = 1
 		relative_position_id = POR_as_forcas_armadas
 		cost = 5
@@ -1146,7 +1157,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_mar_portugues
 		icon = Portuguese_Navy
-		x = 96
+		x = 73
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_NAVY }
@@ -1163,7 +1174,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_arsenal_do_alfeite
 		icon = POR_Navy_Emblem
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_o_mar_portugues
 		cost = 5
@@ -1235,7 +1246,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_zona_economica_exclusiva
 		icon = the_pink_map
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_o_mar_portugues
 		cost = 5
@@ -1281,17 +1292,25 @@ focus_tree = {
 	focus = {
 		id = POR_a_forca_aerea
 		icon = Portuguese_Air_Force
-		x = 3
-		y = 1
-		relative_position_id = POR_o_mar_portugues
-		cost = 5
-		prerequisite = { focus = POR_o_mar_portugues }
+		x = 87
+		y = 0
+		cost = 7
 		search_filters = { FOCUS_FILTER_AIRCRAFT }
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus POR_a_forca_aerea"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_forca_aerea
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_forca_aerea } } }
+					add_dynamic_modifier = { modifier = POR_forca_aerea }
+				}
+			}
 			air_experience = 25
-			add_to_variable = { POR_military_air_range_factor = 0.10 tooltip = air_range_factor_tt }
+			add_to_variable = { POR_air_air_range_factor = 0.10 tooltip = air_range_factor_tt }
 		}
 
 		ai_will_do = { base = 10 }
@@ -1300,7 +1319,7 @@ focus_tree = {
 	focus = {
 		id = POR_os_f_16_mlu
 		icon = POR_Airforce_Emblem
-		x = 0
+		x = 2
 		y = 1
 		relative_position_id = POR_a_forca_aerea
 		cost = 5
@@ -1378,7 +1397,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_bloco_central
 		icon = portugal_flag_people
-		x = -3
+		x = -6
 		y = 1
 		relative_position_id = POR_o_ciclo_politico
 		cost = 5
@@ -1456,7 +1475,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_alternancia
 		icon = iberian_summit
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_o_ciclo_politico
 		cost = 5
@@ -1532,7 +1551,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_frente_de_esquerda
 		icon = por_iberian_workers_united
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_o_ciclo_politico
 		cost = 5
@@ -1619,7 +1638,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_reaccao_nacional
 		icon = por_camisas_azuis
-		x = 3
+		x = 6
 		y = 1
 		relative_position_id = POR_o_ciclo_politico
 		cost = 5
@@ -1708,5 +1727,1021 @@ focus_tree = {
 		}
 
 		ai_will_do = { base = 5 }
+	}
+
+	##################################
+	### POLICY
+	##################################
+
+	focus = {
+		id = POR_o_programa_de_governo
+		icon = POR_royal_edicts
+		x = 35
+		y = 0
+		cost = 7
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_programa_de_governo"
+			add_political_power = 50
+			add_to_variable = { POR_political_political_power_gain = 0.05 tooltip = political_power_gain_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_politica_economica
+		icon = iberian_summit
+		x = -4
+		y = 1
+		relative_position_id = POR_o_programa_de_governo
+		cost = 5
+		prerequisite = { focus = POR_o_programa_de_governo }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_politica_economica"
+			add_political_power = 25
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_politica_financeira
+		icon = POR_burden_empire
+		x = -4
+		y = 1
+		relative_position_id = POR_a_politica_economica
+		cost = 5
+		prerequisite = { focus = POR_a_politica_economica }
+		search_filters = { FOCUS_FILTER_ECONOMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_politica_financeira"
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.25 tooltip = interest_rate_multiplier_modifier_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	# Asset taxation. The left bloc's answer: tax what people own.
+	focus = {
+		id = POR_o_imi_progressivo
+		icon = POR_matters_of_realm
+		x = -2
+		y = 1
+		relative_position_id = POR_a_politica_financeira
+		cost = 7
+		prerequisite = { focus = POR_a_politica_financeira }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_fiscal_path_1_open_tt
+				POR_fiscal_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_imi_progressivo"
+			POR_abandon_fiscal_path_2 = yes
+			set_variable = { POR_fiscal_path = 1 }
+			add_ideas = POR_imi_progressivo_idea
+			set_temp_variable = { corp_change = 2 }
+			modify_corporate_tax_rate_effect = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_cadastro_predial
+		icon = POR_autonomy
+		x = 0
+		y = 1
+		relative_position_id = POR_o_imi_progressivo
+		cost = 7
+		prerequisite = { focus = POR_o_imi_progressivo }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_INTERNAL_AFFAIRS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_fiscal_path_1_held_tt
+				check_variable = { POR_fiscal_path = 1 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_cadastro_predial"
+			add_ideas = POR_cadastro_predial_idea
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_imposto_sobre_a_fortuna
+		icon = por_iberian_workers_united
+		x = 0
+		y = 1
+		relative_position_id = POR_o_cadastro_predial
+		cost = 10
+		prerequisite = { focus = POR_o_cadastro_predial }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_fiscal_path_1_held_tt
+				check_variable = { POR_fiscal_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_imposto_sobre_a_fortuna"
+			add_ideas = POR_imposto_fortuna_idea
+			set_temp_variable = { corp_change = 3 }
+			modify_corporate_tax_rate_effect = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	# Income and consumption taxation. The centre-right's answer: tax what people earn and spend.
+	focus = {
+		id = POR_o_irs_alargado
+		icon = POR_ban_republic
+		x = 2
+		y = 1
+		relative_position_id = POR_a_politica_financeira
+		cost = 7
+		prerequisite = { focus = POR_a_politica_financeira }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_fiscal_path_2_open_tt
+				POR_fiscal_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_irs_alargado"
+			POR_abandon_fiscal_path_1 = yes
+			set_variable = { POR_fiscal_path = 2 }
+			add_ideas = POR_irs_alargado_idea
+			set_temp_variable = { pop_change = 3 }
+			modify_population_tax_rate_effect = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_iva_geral
+		icon = POR_pink_map
+		x = 0
+		y = 1
+		relative_position_id = POR_o_irs_alargado
+		cost = 7
+		prerequisite = { focus = POR_o_irs_alargado }
+		search_filters = { FOCUS_FILTER_ECONOMY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_fiscal_path_2_held_tt
+				check_variable = { POR_fiscal_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_iva_geral"
+			add_ideas = POR_iva_geral_idea
+			set_temp_variable = { pop_change = 2 }
+			modify_population_tax_rate_effect = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_taxa_unica
+		icon = por_ogme
+		x = 0
+		y = 1
+		relative_position_id = POR_o_iva_geral
+		cost = 10
+		prerequisite = { focus = POR_o_iva_geral }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_fiscal_path_2_held_tt
+				check_variable = { POR_fiscal_path = 2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_taxa_unica"
+			add_ideas = POR_taxa_unica_idea
+			set_temp_variable = { corp_change = -8 }
+			modify_corporate_tax_rate_effect = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	# Whoever wrote the tax code, somebody has to collect it.
+	focus = {
+		id = POR_a_autoridade_tributaria
+		icon = POR_the_moderating_power
+		x = 0
+		y = 4
+		relative_position_id = POR_a_politica_financeira
+		cost = 7
+		prerequisite = { focus = POR_o_cadastro_predial focus = POR_o_iva_geral }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_CORRUPTION }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_autoridade_tributaria"
+			decrease_corruption = yes
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.25 tooltip = interest_rate_multiplier_modifier_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_fim_do_alpha_jet
+		icon = POR_Airforce_Emblem
+		x = -6
+		y = 1
+		relative_position_id = POR_a_forca_aerea
+		cost = 5
+		prerequisite = { focus = POR_a_forca_aerea }
+		mutually_exclusive = { focus = POR_a_academia_da_forca_aerea }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_EXPENDITURE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_fim_do_alpha_jet"
+			set_temp_variable = { treasury_change = 3 }
+			modify_treasury_effect = yes
+			add_to_variable = { POR_air_air_mission_efficiency = 0.05 tooltip = air_mission_efficiency_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_academia_da_forca_aerea
+		icon = POR_portuguese_youth
+		x = -2
+		y = 1
+		relative_position_id = POR_a_forca_aerea
+		cost = 5
+		prerequisite = { focus = POR_a_forca_aerea }
+		mutually_exclusive = { focus = POR_o_fim_do_alpha_jet }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_AIR_XP }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_academia_da_forca_aerea"
+			air_experience = 50
+			add_to_variable = { POR_experience_gain_air_factor = 0.10 tooltip = experience_gain_air_factor_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_p3_cup
+		icon = Portuguese_Navy
+		x = 6
+		y = 1
+		relative_position_id = POR_a_forca_aerea
+		cost = 7
+		prerequisite = { focus = POR_a_forca_aerea }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_NAVY }
+
+		available = { date > 2005.1.1 }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_p3_cup"
+			add_tech_bonus = {
+				name = POR_o_p3_cup
+				uses = 2
+				bonus = 0.20
+				category = CAT_air_anti_submarine_warfare
+			}
+			add_to_variable = { POR_air_air_range_factor = 0.10 tooltip = air_range_factor_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_c295
+		icon = POR_zambia
+		x = 0
+		y = 1
+		relative_position_id = POR_a_academia_da_forca_aerea
+		cost = 7
+		prerequisite = { focus = POR_a_academia_da_forca_aerea focus = POR_o_fim_do_alpha_jet }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_EQUIPMENT }
+
+		available = { date > 2006.1.1 }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_c295"
+			add_tech_bonus = {
+				name = POR_o_c295
+				uses = 2
+				bonus = 0.15
+				category = CAT_medium_aircraft
+			}
+			mio:POR_ogma_aircraft_manufacturer = { add_mio_funds = 1500 }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_os_merlin
+		icon = POR_protect_mozambique
+		x = 0
+		y = 1
+		relative_position_id = POR_o_p3_cup
+		cost = 5
+		prerequisite = { focus = POR_o_p3_cup }
+		search_filters = { FOCUS_FILTER_AIRCRAFT }
+
+		available = { date > 2004.1.1 }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_os_merlin"
+			add_tech_bonus = {
+				name = POR_os_merlin
+				uses = 2
+				bonus = 0.15
+				category = CAT_transport_helicopters
+			}
+			add_to_variable = { POR_air_air_range_factor = 0.05 tooltip = air_range_factor_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_monte_real_e_beja
+		icon = POR_Army_Emblem
+		x = -6
+		y = 2
+		relative_position_id = POR_a_forca_aerea
+		cost = 7
+		prerequisite = { focus = POR_o_fim_do_alpha_jet focus = POR_a_academia_da_forca_aerea }
+		search_filters = { FOCUS_FILTER_ADD_BUILDING FOCUS_FILTER_AIRCRAFT }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_monte_real_e_beja"
+			97 = { one_state_air_base = yes }
+			1056 = { one_state_air_base = yes }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_tekever
+		icon = POR_pink_map
+		x = 4
+		y = 1
+		relative_position_id = POR_o_p3_cup
+		cost = 5
+		prerequisite = { focus = POR_o_p3_cup }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_RESEARCH }
+
+		available = { date > 2010.1.1 }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_tekever"
+			add_tech_bonus = {
+				name = POR_a_tekever
+				uses = 2
+				bonus = 0.20
+				category = CAT_air_drones
+			}
+			mio:POR_tekever_aircraft_manufacturer = { add_mio_task_capacity = 1 }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_policiamento_aereo
+		icon = POR_autonomy
+		x = 0
+		y = 3
+		relative_position_id = POR_a_forca_aerea
+		cost = 7
+		prerequisite = { focus = POR_o_c295 }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_DIPLOMACY }
+
+		available = {
+			has_idea = NATO_member
+			date > 2007.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_policiamento_aereo"
+			air_experience = 75
+			add_to_variable = { POR_air_air_superiority_efficiency = 0.05 tooltip = air_superiority_efficiency_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_caca_de_quinta_geracao
+		icon = the_fifth_empire
+		x = 0
+		y = 4
+		relative_position_id = POR_a_forca_aerea
+		cost = 10
+		prerequisite = { focus = POR_o_policiamento_aereo }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_EQUIPMENT }
+
+		available = { date > 2025.1.1 }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_caca_de_quinta_geracao"
+			add_tech_bonus = {
+				name = POR_o_caca_de_quinta_geracao
+				uses = 1
+				bonus = 0.25
+				category = CAT_light_aircraft
+			}
+			add_to_variable = { POR_air_air_agility_factor = 0.05 tooltip = air_agility_factor_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	##################################
+	### THE DEFICIT
+	##################################
+
+	focus = {
+		id = POR_a_questao_do_deficit
+		icon = POR_Imperio_Ultramarino
+		x = -6
+		y = 1
+		relative_position_id = POR_a_politica_financeira
+		cost = 7
+		prerequisite = { focus = POR_a_politica_financeira }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_EUROPEAN_UNION }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_questao_do_deficit"
+			add_political_power = 25
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_comissao_constancio
+		icon = POR_the_moderating_power
+		x = -2
+		y = 1
+		relative_position_id = POR_a_questao_do_deficit
+		cost = 7
+		prerequisite = { focus = POR_a_questao_do_deficit }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_CORRUPTION }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_deficit_path_1_open_tt
+				POR_deficit_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_comissao_constancio"
+			POR_abandon_deficit_path_2 = yes
+			set_variable = { POR_deficit_path = 1 }
+			add_ideas = POR_contas_verdadeiras_idea
+			add_stability = -0.05
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_orcamento_rectificativo
+		icon = POR_matters_of_realm
+		x = 0
+		y = 1
+		relative_position_id = POR_a_comissao_constancio
+		cost = 7
+		prerequisite = { focus = POR_a_comissao_constancio }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_INTERNAL_AFFAIRS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_deficit_path_1_held_tt
+				check_variable = { POR_deficit_path = 1 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_orcamento_rectificativo"
+			add_ideas = POR_orcamento_rectificativo_idea
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_saida_limpa
+		icon = the_fifth_empire
+		x = 0
+		y = 1
+		relative_position_id = POR_o_orcamento_rectificativo
+		cost = 10
+		prerequisite = { focus = POR_o_orcamento_rectificativo }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_EUROPEAN_UNION }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_deficit_path_1_held_tt
+				check_variable = { POR_deficit_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_saida_limpa"
+			add_ideas = POR_saida_limpa_idea
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.5 tooltip = interest_rate_multiplier_modifier_tt }
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_as_medidas_extraordinarias
+		icon = POR_pink_map
+		x = 2
+		y = 1
+		relative_position_id = POR_a_questao_do_deficit
+		cost = 7
+		prerequisite = { focus = POR_a_questao_do_deficit }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_deficit_path_2_open_tt
+				POR_deficit_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_as_medidas_extraordinarias"
+			POR_abandon_deficit_path_1 = yes
+			set_variable = { POR_deficit_path = 2 }
+			add_ideas = POR_medidas_extraordinarias_idea
+			set_temp_variable = { debt_change = 4 }
+			modify_debt_effect = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_pacto_estupido
+		icon = iberian_summit
+		x = 0
+		y = 1
+		relative_position_id = POR_as_medidas_extraordinarias
+		cost = 7
+		prerequisite = { focus = POR_as_medidas_extraordinarias }
+		search_filters = { FOCUS_FILTER_EUROPEAN_UNION FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_deficit_path_2_held_tt
+				check_variable = { POR_deficit_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_pacto_estupido"
+			add_ideas = POR_pacto_estupido_idea
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = 0.5 tooltip = interest_rate_multiplier_modifier_tt }
+			add_political_power = 50
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_reversao_do_empobrecimento
+		icon = portugal_flag_people
+		x = 0
+		y = 1
+		relative_position_id = POR_o_pacto_estupido
+		cost = 10
+		prerequisite = { focus = POR_o_pacto_estupido }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_deficit_path_2_held_tt
+				check_variable = { POR_deficit_path = 2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_3_tt
+				POR_ideology_tier_3 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_reversao_do_empobrecimento"
+			add_ideas = POR_reversao_idea
+			medium_expenditure = yes
+			set_temp_variable = { temp_opinion = 15 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_conselho_das_financas_publicas
+		icon = POR_royal_edicts
+		x = 0
+		y = 4
+		relative_position_id = POR_a_questao_do_deficit
+		cost = 7
+		prerequisite = { focus = POR_o_orcamento_rectificativo focus = POR_o_pacto_estupido }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_INTERNAL_AFFAIRS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_conselho_das_financas_publicas"
+			decrease_corruption = yes
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.25 tooltip = interest_rate_multiplier_modifier_tt }
+			add_political_power = 50
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+
+	##################################
+	### THE BANKS
+	##################################
+
+	focus = {
+		id = POR_o_sistema_financeiro
+		icon = POR_matters_of_realm
+		x = 6
+		y = 1
+		relative_position_id = POR_a_politica_financeira
+		cost = 7
+		prerequisite = { focus = POR_a_politica_financeira }
+		search_filters = { FOCUS_FILTER_ECONOMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_sistema_financeiro"
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.25 tooltip = interest_rate_multiplier_modifier_tt }
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_nacionalizacao_do_bpn
+		icon = POR_autonomy
+		x = -2
+		y = 1
+		relative_position_id = POR_o_sistema_financeiro
+		cost = 7
+		prerequisite = { focus = POR_o_sistema_financeiro }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_banking_path_1_open_tt
+				POR_banking_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_nacionalizacao_do_bpn"
+			POR_abandon_banking_path_2 = yes
+			set_variable = { POR_banking_path = 1 }
+			add_ideas = POR_banco_do_estado_idea
+			large_expenditure = yes
+			set_temp_variable = { debt_change = 4 }
+			modify_debt_effect = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_recapitalizacao_da_caixa
+		icon = POR_royal_edicts
+		x = 0
+		y = 1
+		relative_position_id = POR_a_nacionalizacao_do_bpn
+		cost = 7
+		prerequisite = { focus = POR_a_nacionalizacao_do_bpn }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_banking_path_1_held_tt
+				check_variable = { POR_banking_path = 1 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_recapitalizacao_da_caixa"
+			add_ideas = POR_caixa_recapitalizada_idea
+			large_expenditure = yes
+			set_temp_variable = { debt_change = 5 }
+			modify_debt_effect = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_banco_publico_de_fomento
+		icon = the_kingdom_reunited
+		x = 0
+		y = 1
+		relative_position_id = POR_a_recapitalizacao_da_caixa
+		cost = 10
+		prerequisite = { focus = POR_a_recapitalizacao_da_caixa }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_FOREIGN_INVESTMENTS FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_banking_path_1_held_tt
+				check_variable = { POR_banking_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_3_tt
+				POR_ideology_tier_3 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_banco_publico_de_fomento"
+			add_ideas = POR_banco_de_fomento_idea
+			medium_expenditure = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_liquidacao_do_bpp
+		icon = POR_ban_republic
+		x = 2
+		y = 1
+		relative_position_id = POR_o_sistema_financeiro
+		cost = 7
+		prerequisite = { focus = POR_o_sistema_financeiro }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_banking_path_2_open_tt
+				POR_banking_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_liquidacao_do_bpp"
+			POR_abandon_banking_path_1 = yes
+			set_variable = { POR_banking_path = 2 }
+			add_ideas = POR_risco_privado_idea
+			small_expenditure = yes
+			add_stability = -0.05
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_resolucao_do_bes
+		icon = estado_novo
+		x = 0
+		y = 1
+		relative_position_id = POR_a_liquidacao_do_bpp
+		cost = 7
+		prerequisite = { focus = POR_a_liquidacao_do_bpp }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_INTERNAL_AFFAIRS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_banking_path_2_held_tt
+				check_variable = { POR_banking_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_resolucao_do_bes"
+			add_ideas = POR_fundo_de_resolucao_idea
+			set_temp_variable = { debt_change = 5 }
+			modify_debt_effect = yes
+			add_stability = -0.04
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_venda_do_novo_banco
+		icon = reclaim_crown_jewel
+		x = 0
+		y = 1
+		relative_position_id = POR_a_resolucao_do_bes
+		cost = 10
+		prerequisite = { focus = POR_a_resolucao_do_bes }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_FOREIGN_INVESTMENTS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_banking_path_2_held_tt
+				check_variable = { POR_banking_path = 2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_venda_do_novo_banco"
+			add_ideas = POR_capital_estrangeiro_idea
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_supervisao_bancaria
+		icon = POR_the_moderating_power
+		x = 0
+		y = 4
+		relative_position_id = POR_o_sistema_financeiro
+		cost = 7
+		prerequisite = { focus = POR_a_recapitalizacao_da_caixa focus = POR_a_resolucao_do_bes }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_EUROPEAN_UNION FOCUS_FILTER_CORRUPTION }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_supervisao_bancaria"
+			decrease_corruption = yes
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.25 tooltip = interest_rate_multiplier_modifier_tt }
+		}
+
+		ai_will_do = { base = 10 }
 	}
 }

@@ -39,6 +39,17 @@ POR_political_modifier = {
 	political_manipulation_corruption_factor = POR_political_corruption_factor
 }
 
+# How far the public argument has moved. The wider it is, the harder the country is to hold
+# in place and the cheaper it is to argue with.
+POR_ideologia_modifier = {
+	icon = GFX_idea_por_iberian_workers_united
+
+	drift_defence_factor = POR_political_drift_defence_ideo
+	communism_drift = POR_ideologia_communism_drift
+	nationalist_drift = POR_ideologia_nationalist_drift
+	political_power_gain = POR_ideologia_political_power_gain
+}
+
 # The shadow network. Everything the Lusophone lane buys for reaching overseas.
 POR_shadow_network = {
 	icon = GFX_idea_por_colonial_army
@@ -51,6 +62,18 @@ POR_shadow_network = {
 	send_volunteers_tension = POR_shadow_send_volunteers_tension
 	subjects_autonomy_gain = POR_shadow_subjects_autonomy_gain
 	foreign_subversive_activites = POR_shadow_foreign_subversive_activites
+}
+
+# The air force. Portugal had no air dynamic modifier, so nothing in the tree could reach
+# mission efficiency, agility or air experience.
+POR_forca_aerea = {
+	icon = GFX_idea_por_volunteers_in_the_war2
+
+	air_mission_efficiency = POR_air_air_mission_efficiency
+	air_superiority_efficiency = POR_air_air_superiority_efficiency
+	air_agility_factor = POR_air_air_agility_factor
+	experience_gain_air_factor = POR_experience_gain_air_factor
+	air_range_factor = POR_air_air_range_factor
 }
 
 # What it costs to keep an army in someone else's war, six thousand kilometres from the

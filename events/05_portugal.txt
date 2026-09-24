@@ -389,3 +389,17 @@ country_event = {
 		}
 	}
 }
+
+# The government changes hands. Fired by the weekly watcher, not by on_government_change,
+# which never sees an alternation inside the same ideology group.
+news_event = {
+	id = portugal_news.7
+	title = portugal_news.7.t
+	desc = portugal_news.7.d
+	picture = GFX_news_SAO_coup
+
+	major = no
+	is_triggered_only = yes
+
+	option = { name = portugal_news.7.a }
+}

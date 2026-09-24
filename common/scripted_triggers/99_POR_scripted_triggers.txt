@@ -35,3 +35,103 @@ POR_ai_shadow_path = {
 POR_ai_not_shadow_path = {
 	NOT = { POR_ai_alt_path = yes }
 }
+
+# Parliamentary blocs. The totals are recomputed weekly from the frozen election result by
+# POR_update_blocs; majority_threshold is half the valid vote and is written by the same
+# core effects (00_MD_politicsview_scripted_effects.txt:964).
+POR_bloc_left_has_majority = {
+	check_variable = { POR_bloc_left > majority_threshold }
+}
+
+POR_bloc_right_has_majority = {
+	check_variable = { POR_bloc_right > majority_threshold }
+}
+
+POR_bloc_centre_has_majority = {
+	check_variable = { POR_bloc_centre > majority_threshold }
+}
+
+# How far the public argument has moved. Radical policy is gated on these.
+POR_ideology_tier_1 = {
+	check_variable = { POR_ideological_development > 19 }
+}
+
+POR_ideology_tier_2 = {
+	check_variable = { POR_ideological_development > 39 }
+}
+
+POR_ideology_tier_3 = {
+	check_variable = { POR_ideological_development > 59 }
+}
+
+POR_ideology_tier_4 = {
+	check_variable = { POR_ideological_development > 79 }
+}
+
+# A policy path is open while the country is uncommitted, already on it, or the other side
+# has just won a majority and may tear it up.
+POR_fiscal_path_1_open = {
+	OR = {
+		check_variable = { POR_fiscal_path = 0 }
+		check_variable = { POR_fiscal_path = 1 }
+		AND = {
+			check_variable = { POR_fiscal_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_fiscal_path_2_open = {
+	OR = {
+		check_variable = { POR_fiscal_path = 0 }
+		check_variable = { POR_fiscal_path = 2 }
+		AND = {
+			check_variable = { POR_fiscal_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_deficit_path_1_open = {
+	OR = {
+		check_variable = { POR_deficit_path = 0 }
+		check_variable = { POR_deficit_path = 1 }
+		AND = {
+			check_variable = { POR_deficit_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_deficit_path_2_open = {
+	OR = {
+		check_variable = { POR_deficit_path = 0 }
+		check_variable = { POR_deficit_path = 2 }
+		AND = {
+			check_variable = { POR_deficit_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_banking_path_1_open = {
+	OR = {
+		check_variable = { POR_banking_path = 0 }
+		check_variable = { POR_banking_path = 1 }
+		AND = {
+			check_variable = { POR_banking_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_banking_path_2_open = {
+	OR = {
+		check_variable = { POR_banking_path = 0 }
+		check_variable = { POR_banking_path = 2 }
+		AND = {
+			check_variable = { POR_banking_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}

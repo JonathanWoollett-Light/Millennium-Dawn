@@ -41,6 +41,10 @@ on_actions = {
 
 	on_weekly_POR = {
 		effect = {
+			POR_update_blocs = yes
+			POR_watch_party_flip = yes
+			POR_update_ideology_tier = yes
+
 			POR_prune_shadow_arrays = yes
 			POR_update_intervention_load = yes
 

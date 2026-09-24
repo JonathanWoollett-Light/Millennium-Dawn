@@ -11,6 +11,11 @@ shared_focus = {
 		trigger = { tag = BOS }
 	}
 	offset = {
+		x = -13
+		y = -8
+		trigger = { tag = POR }
+	}
+	offset = {
 		x = -70 #15
 		y = -18 #20
 		trigger = { tag = ROM }

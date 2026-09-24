@@ -11,6 +11,17 @@ POR_shadow_startup = {
 	set_variable = { POR_ops_cap = 2 }
 	set_variable = { POR_active_operations = 0 }
 
+	set_variable = { POR_ideological_development = 0 }
+	set_variable = { POR_ideology_tier = 0 }
+	set_variable = { POR_party_flips = 0 }
+	set_variable = { POR_fiscal_path = 0 }
+	set_variable = { POR_industrial_path = 0 }
+	set_variable = { POR_social_path = 0 }
+	set_variable = { POR_deficit_path = 0 }
+	set_variable = { POR_banking_path = 0 }
+	POR_update_blocs = yes
+	POR_watch_party_flip = yes
+
 	clear_array = POR_network_target_array
 	if = { limit = { country_exists = AGL } add_to_array = { POR_network_target_array = AGL.id } }
 	if = { limit = { country_exists = UNI } add_to_array = { POR_network_target_array = UNI.id } }
@@ -615,5 +626,371 @@ POR_update_overseas_doctrine = {
 			}
 			set_variable = { PREV.POR_ttx_ranger = 0.50 }
 		}
+	}
+}
+
+# Adds one party's share of the last election to the bloc being totalled. Below-threshold
+# parties are stored as 0, and a fully banned slate leaves -1 behind, so clamp on the way in.
+POR_bloc_add_slot = {
+	clamp_temp_variable = { var = POR_bloc_slot min = 0 max = 1 }
+	add_to_temp_variable = { POR_bloc_acc = POR_bloc_slot }
+}
+
+# Who could pass a law if they voted together. Read from the frozen election result rather
+# than live popularity, because party_pop_array is renormalised against the engine's five
+# ideology groups on every recalculate_party (00_MD_politicsview_scripted_effects.txt:561).
+# majority_threshold is half the valid vote and is written by the same effects, so the two
+# never disagree.
+POR_update_blocs = {
+	# Left: PS, CDU, Bloco de Esquerda, PCTP, POUS
+	set_temp_variable = { POR_bloc_acc = 0 }
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^3 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^5 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^18 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^19 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^4 }
+	POR_bloc_add_slot = yes
+	set_variable = { POR_bloc_left = POR_bloc_acc }
+
+	# Right: PSD, CDS-PP, the liberals, PNR, Braganca
+	set_temp_variable = { POR_bloc_acc = 0 }
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^1 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^14 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^2 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^20 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^23 }
+	POR_bloc_add_slot = yes
+	set_variable = { POR_bloc_right = POR_bloc_acc }
+
+	# The central bloc: the two parties of government, for anything that needs consensus.
+	set_temp_variable = { POR_bloc_acc = 0 }
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^3 }
+	POR_bloc_add_slot = yes
+	set_temp_variable = { POR_bloc_slot = party_pop_elect_array^1 }
+	POR_bloc_add_slot = yes
+	set_variable = { POR_bloc_centre = POR_bloc_acc }
+
+	clear_variable = POR_bloc_slot
+	clear_variable = POR_bloc_acc
+}
+
+# Ideas spreading through the public argument. A ratchet: it never falls, because an
+# argument the country has already had cannot be un-had. POR_ideo_add is the input.
+POR_raise_ideological_development = {
+	if = {
+		limit = { NOT = { has_variable = POR_ideo_add } }
+		set_temp_variable = { POR_ideo_add = 2 }
+	}
+	add_to_variable = { POR_ideological_development = POR_ideo_add }
+	clamp_variable = { var = POR_ideological_development min = 0 max = 100 }
+	clear_variable = POR_ideo_add
+	POR_update_ideology_tier = yes
+}
+
+POR_update_ideology_tier = {
+	if = {
+		limit = { NOT = { has_dynamic_modifier = { modifier = POR_ideologia_modifier } } }
+		add_dynamic_modifier = { modifier = POR_ideologia_modifier }
+	}
+
+	if = { limit = { check_variable = { POR_ideological_development > 79 } } set_variable = { POR_ideology_tier = 4 } }
+	else_if = { limit = { check_variable = { POR_ideological_development > 59 } } set_variable = { POR_ideology_tier = 3 } }
+	else_if = { limit = { check_variable = { POR_ideological_development > 39 } } set_variable = { POR_ideology_tier = 2 } }
+	else_if = { limit = { check_variable = { POR_ideological_development > 19 } } set_variable = { POR_ideology_tier = 1 } }
+	else = { set_variable = { POR_ideology_tier = 0 } }
+
+	# The wider the argument, the easier the country is to move.
+	set_variable = { POR_political_drift_defence_ideo = POR_ideology_tier }
+	multiply_variable = { POR_political_drift_defence_ideo = -0.03 }
+}
+
+# A change of government is not a reset. Every time the country argues itself into handing
+# power to the other side, the argument itself gets wider. on_government_change cannot
+# carry this: PS, PSD and the liberals all sit in the democratic group
+# (00_MD_politicsview_scripted_effects.txt:184-193), so a normal alternation never fires it.
+POR_watch_party_flip = {
+	set_party_index_to_ruling_party = yes
+
+	if = {
+		limit = { NOT = { has_variable = POR_last_ruling_party } }
+		set_variable = { POR_last_ruling_party = party_index }
+	}
+	if = {
+		limit = { NOT = { check_variable = { POR_last_ruling_party = party_index } } }
+		set_temp_variable = { POR_ideo_add = 5 }
+		# Crossing an outlook group is a bigger shock than an alternation inside one.
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						check_variable = { POR_last_ruling_party < 4 }
+						check_variable = { party_index > 3 }
+					}
+					AND = {
+						check_variable = { POR_last_ruling_party > 3 }
+						check_variable = { party_index < 4 }
+					}
+				}
+			}
+			set_temp_variable = { POR_ideo_add = 8 }
+		}
+		POR_raise_ideological_development = yes
+		add_to_variable = { POR_party_flips = 1 }
+		news_event = { id = portugal_news.7 hours = 6 }
+	}
+	set_variable = { POR_last_ruling_party = party_index }
+	clear_variable = party_index
+}
+
+# Repealing a tax code.
+#
+# Uncompleting a focus does NOT undo what its completion_reward granted: the engine only
+# clears the node. Shipped MD gets this wrong (events/05_armenia.txt:10525 uncompletes a
+# focus and leaves its idea behind), and the one place that gets it right strips the ideas
+# first (99_ENG_scripted_effects..txt:888). So every rollback below removes the ideas and
+# reverses the rates itself, and only then clears the focuses.
+#
+# Deepest focus first, each guarded, rather than uncomplete_children: prerequisite groups
+# are ORs, so children can rest on a focus from the surviving path.
+
+POR_abandon_fiscal_path_1 = {
+	if = {
+		limit = { check_variable = { POR_fiscal_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_fiscal_path_1_tt
+
+		remove_ideas = { POR_imi_progressivo_idea POR_cadastro_predial_idea POR_imposto_fortuna_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_o_imi_progressivo }
+			set_temp_variable = { corp_change = -2 }
+			modify_corporate_tax_rate_effect = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_imposto_sobre_a_fortuna }
+			set_temp_variable = { corp_change = -3 }
+			modify_corporate_tax_rate_effect = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_o_imposto_sobre_a_fortuna }
+			uncomplete_national_focus = { focus = POR_o_imposto_sobre_a_fortuna refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_cadastro_predial }
+			uncomplete_national_focus = { focus = POR_o_cadastro_predial refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_imi_progressivo }
+			uncomplete_national_focus = { focus = POR_o_imi_progressivo refund_political_power = no }
+		}
+
+		set_variable = { POR_fiscal_path = 0 }
+
+		# A government tearing up its predecessor's tax code teaches the country that the
+		# tax code is a thing that can be torn up.
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_fiscal_path_2 = {
+	if = {
+		limit = { check_variable = { POR_fiscal_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_fiscal_path_2_tt
+
+		remove_ideas = { POR_irs_alargado_idea POR_iva_geral_idea POR_taxa_unica_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_o_irs_alargado }
+			set_temp_variable = { pop_change = -3 }
+			modify_population_tax_rate_effect = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_iva_geral }
+			set_temp_variable = { pop_change = -2 }
+			modify_population_tax_rate_effect = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_taxa_unica }
+			set_temp_variable = { corp_change = 8 }
+			modify_corporate_tax_rate_effect = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_a_taxa_unica }
+			uncomplete_national_focus = { focus = POR_a_taxa_unica refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_iva_geral }
+			uncomplete_national_focus = { focus = POR_o_iva_geral refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_irs_alargado }
+			uncomplete_national_focus = { focus = POR_o_irs_alargado refund_political_power = no }
+		}
+
+		set_variable = { POR_fiscal_path = 0 }
+
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+# Repealing a fiscal consolidation.
+#
+# House rules every rollback follows: ideas always go; one-off costs are NOT refunded,
+# because the money was spent; one-off gains ARE reversed, because a rollback re-opens the
+# focus and an unreversed credit would be farmable on every flip; faction opinion is
+# reversed equal and opposite; law steps unwind deepest first and re-test has_idea.
+
+POR_abandon_deficit_path_1 = {
+	if = {
+		limit = { check_variable = { POR_deficit_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_deficit_path_1_tt
+
+		remove_ideas = { POR_contas_verdadeiras_idea POR_orcamento_rectificativo_idea POR_saida_limpa_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_a_saida_limpa }
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = 0.5 }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_orcamento_rectificativo }
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_a_saida_limpa }
+			uncomplete_national_focus = { focus = POR_a_saida_limpa refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_orcamento_rectificativo }
+			uncomplete_national_focus = { focus = POR_o_orcamento_rectificativo refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_comissao_constancio }
+			uncomplete_national_focus = { focus = POR_a_comissao_constancio refund_political_power = no }
+		}
+
+		set_variable = { POR_deficit_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_deficit_path_2 = {
+	if = {
+		limit = { check_variable = { POR_deficit_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_deficit_path_2_tt
+
+		remove_ideas = { POR_medidas_extraordinarias_idea POR_pacto_estupido_idea POR_reversao_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_o_pacto_estupido }
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.5 }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_reversao_do_empobrecimento }
+			set_temp_variable = { temp_opinion = -15 }
+			change_labour_unions_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_a_reversao_do_empobrecimento }
+			uncomplete_national_focus = { focus = POR_a_reversao_do_empobrecimento refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_pacto_estupido }
+			uncomplete_national_focus = { focus = POR_o_pacto_estupido refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_as_medidas_extraordinarias }
+			uncomplete_national_focus = { focus = POR_as_medidas_extraordinarias refund_political_power = no }
+		}
+
+		set_variable = { POR_deficit_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_banking_path_1 = {
+	if = {
+		limit = { check_variable = { POR_banking_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_banking_path_1_tt
+
+		remove_ideas = { POR_banco_do_estado_idea POR_caixa_recapitalizada_idea POR_banco_de_fomento_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_a_nacionalizacao_do_bpn }
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_o_banco_publico_de_fomento }
+			uncomplete_national_focus = { focus = POR_o_banco_publico_de_fomento refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_recapitalizacao_da_caixa }
+			uncomplete_national_focus = { focus = POR_a_recapitalizacao_da_caixa refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_nacionalizacao_do_bpn }
+			uncomplete_national_focus = { focus = POR_a_nacionalizacao_do_bpn refund_political_power = no }
+		}
+
+		set_variable = { POR_banking_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_banking_path_2 = {
+	if = {
+		limit = { check_variable = { POR_banking_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_banking_path_2_tt
+
+		remove_ideas = { POR_risco_privado_idea POR_fundo_de_resolucao_idea POR_capital_estrangeiro_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_a_liquidacao_do_bpp }
+			set_temp_variable = { temp_opinion = -10 }
+			change_small_medium_business_owners_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_a_venda_do_novo_banco }
+			uncomplete_national_focus = { focus = POR_a_venda_do_novo_banco refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_resolucao_do_bes }
+			uncomplete_national_focus = { focus = POR_a_resolucao_do_bes refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_liquidacao_do_bpp }
+			uncomplete_national_focus = { focus = POR_a_liquidacao_do_bpp refund_political_power = no }
+		}
+
+		set_variable = { POR_banking_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
 	}
 }

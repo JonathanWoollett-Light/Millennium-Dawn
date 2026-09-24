@@ -241,6 +241,176 @@ ideas = {
 				mic_to_target_factor = 0.10
 			}
 		}
+
+		# Fiscal policy. Which of these Portugal holds depends on who last won an election,
+		# and every one of them can be repealed by a government that disagrees.
+		POR_imi_progressivo_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				tax_gain_multiplier_modifier = 0.04
+				consumer_goods_factor = -0.01
+				return_on_investment_modifier = -0.03
+			}
+		}
+
+		POR_cadastro_predial_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				tax_gain_multiplier_modifier = 0.05
+				political_manipulation_corruption_factor = -0.05
+			}
+		}
+
+		POR_imposto_fortuna_idea = {
+			picture = por_colonial_assimilation
+			allowed_civil_war = { always = yes }
+			modifier = {
+				tax_gain_multiplier_modifier = 0.10
+				return_on_investment_modifier = -0.10
+				foreign_influence_defense_modifier = -0.05
+			}
+		}
+
+		POR_irs_alargado_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				tax_gain_multiplier_modifier = 0.05
+				stability_factor = -0.02
+			}
+		}
+
+		POR_iva_geral_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				tax_gain_multiplier_modifier = 0.06
+				consumer_goods_factor = 0.03
+			}
+		}
+
+		POR_taxa_unica_idea = {
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.10
+				tax_gain_multiplier_modifier = -0.02
+				stability_factor = -0.04
+			}
+		}
+
+		# The deficit. Meet the number or argue with the rule.
+		POR_contas_verdadeiras_idea = {
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_manipulation_corruption_factor = -0.10
+				stability_factor = -0.03
+			}
+		}
+
+		POR_orcamento_rectificativo_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				tax_gain_multiplier_modifier = 0.04
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		POR_saida_limpa_idea = {
+			picture = por_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				interest_rate_multiplier_modifier = -0.5
+				political_power_gain = 0.05
+			}
+		}
+
+		POR_medidas_extraordinarias_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				tax_gain_multiplier_modifier = 0.03
+				political_manipulation_corruption_factor = 0.08
+			}
+		}
+
+		POR_pacto_estupido_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_gain = 0.10
+				trade_opinion_factor = -0.10
+			}
+		}
+
+		POR_reversao_idea = {
+			picture = por_nation_in_arms
+			allowed_civil_war = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.03
+				stability_factor = 0.05
+				productivity_growth_modifier = 0.05
+			}
+		}
+
+		# The banks. Public balance sheet or private risk.
+		POR_banco_do_estado_idea = {
+			picture = por_colonial_assimilation
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.05
+				interest_rate_multiplier_modifier = 0.5
+			}
+		}
+
+		POR_caixa_recapitalizada_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.05
+				civilian_factories_productivity = 0.03
+			}
+		}
+
+		POR_banco_de_fomento_idea = {
+			picture = por_nation_in_arms
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.10
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		POR_risco_privado_idea = {
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				interest_rate_multiplier_modifier = -0.25
+				stability_factor = -0.03
+			}
+		}
+
+		POR_fundo_de_resolucao_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				interest_rate_multiplier_modifier = 0.25
+				political_manipulation_corruption_factor = 0.05
+			}
+		}
+
+		POR_capital_estrangeiro_idea = {
+			picture = por_the_fifth_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.08
+				foreign_influence_defense_modifier = -0.05
+			}
+		}
 	}
 
 	hidden_ideas = {
