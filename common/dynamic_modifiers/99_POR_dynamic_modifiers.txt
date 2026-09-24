@@ -53,6 +53,16 @@ POR_shadow_network = {
 	foreign_subversive_activites = POR_shadow_foreign_subversive_activites
 }
 
+# What it costs to keep an army in someone else's war, six thousand kilometres from the
+# nearest Portuguese depot. Attached and scaled by POR_update_intervention_load.
+POR_intervencao_ultramarina = {
+	icon = GFX_idea_por_colonial_army
+
+	army_fuel_consumption_factor = POR_intervention_fuel
+	unit_upkeep_attrition_factor = POR_intervention_upkeep
+	supply_consumption_factor = POR_intervention_supply
+}
+
 # What the officer corps brings home from the overseas wars.
 POR_doutrina_ultramarina = {
 	icon = GFX_idea_por_volunteers_in_the_war3

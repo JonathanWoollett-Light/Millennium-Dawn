@@ -1,0 +1,495 @@
+POR_shadow_ops_category = {
+
+	# The whole loop starts here. Money and attention, one country at a time, until there
+	# is enough of a network there to be worth using.
+	POR_cultivar_a_rede = {
+		icon = GFX_decision_generic_political_discourse
+
+		cost = 25
+		days_re_enable = 60
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_network_target_array
+
+		target_root_trigger = {
+			has_country_flag = POR_shadow_doors_open
+			NOT = { has_country_flag = POR_stood_down }
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+				NOT = { is_subject_of = ROOT }
+				check_variable = { POR_net@ROOT < 1 }
+			}
+			is_in_array = { POR_network_target_array = FROM.id }
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_cultivar_a_rede_tt
+				check_variable = { treasury > 1.4 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_cultivar_a_rede [FROM.GetName]"
+			set_temp_variable = { treasury_change = -1.5 }
+			modify_treasury_effect = yes
+
+			FROM = { POR_score_client = yes }
+
+			set_temp_variable = { POR_net_step = 0.10 }
+			if = {
+				limit = { has_country_flag = POR_os_amigos_do_regime }
+				add_to_temp_variable = { POR_net_step = 0.05 }
+			}
+			multiply_temp_variable = { POR_net_step = POR_reward_mult }
+
+			FROM = {
+				add_to_variable = { POR_net@ROOT = ROOT.POR_net_step }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+				add_to_variable = { POR_heat@ROOT = 1 }
+			}
+
+			set_temp_variable = { percent_change = 1.5 }
+			multiply_temp_variable = { percent_change = POR_reward_mult }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = FROM.id }
+			change_influence_percentage = yes
+
+			if = {
+				limit = { has_country_flag = POR_via_aberta }
+				set_temp_variable = { POR_heat_add = 1 }
+				POR_add_exposure = yes
+			}
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 3
+				FROM = { influence_higher_20 = yes }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	# Weapons, no Portuguese in the country. The cheapest and quietest lever we have, and
+	# the weakest.
+	POR_armar_os_nossos = {
+		icon = GFX_decision_generic_army_support
+
+		cost = 40
+		days_re_enable = 180
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_network_target_array
+
+		target_root_trigger = {
+			has_country_flag = POR_shadow_doors_open
+			NOT = { has_country_flag = POR_stood_down }
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				NOT = { has_war_with = ROOT }
+				check_variable = { POR_net@ROOT > 0.199 }
+			}
+			OR = {
+				is_in_array = { POR_network_target_array = FROM.id }
+				is_in_array = { POR_shadow_clients = FROM.id }
+			}
+		}
+
+		available = {
+			has_equipment = { infantry_weapons_1 > 999 }
+			custom_trigger_tooltip = {
+				tooltip = POR_armar_os_nossos_tt
+				check_variable = { treasury > 0.9 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_armar_os_nossos [FROM.GetName]"
+			set_temp_variable = { treasury_change = -1.0 }
+			modify_treasury_effect = yes
+
+			send_equipment = {
+				equipment = infantry_weapons_1
+				target = FROM
+				amount = 1000
+			}
+
+			FROM = {
+				POR_score_client = yes
+				add_to_variable = { POR_net@ROOT = 0.05 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+				add_to_variable = { POR_heat@ROOT = 4 }
+			}
+
+			set_temp_variable = { POR_heat_add = 1 }
+			POR_add_exposure = yes
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	# Buying the officer corps is what decides whether the rebellion has an army or only a
+	# grievance. It is also the single loudest thing we can do short of a war.
+	POR_comprar_os_generais = {
+		icon = GFX_decision_generic_intelligence_operation
+
+		cost = 75
+		days_re_enable = 365
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_network_target_array
+
+		target_root_trigger = {
+			has_country_flag = POR_comprar_os_generais_unlocked
+			NOT = { has_country_flag = POR_stood_down }
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+				check_variable = { POR_net@ROOT > 0.399 }
+				check_variable = { POR_officers@ROOT < 0.3 }
+			}
+			is_in_array = { POR_network_target_array = FROM.id }
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_comprar_os_generais_tt
+				check_variable = { treasury > 1.9 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_comprar_os_generais [FROM.GetName]"
+			set_temp_variable = { treasury_change = -2.0 }
+			modify_treasury_effect = yes
+
+			FROM = {
+				POR_score_client = yes
+				add_to_variable = { POR_officers@ROOT = 0.10 }
+				clamp_variable = { var = POR_officers@ROOT min = 0 max = 0.3 }
+				add_to_variable = { POR_heat@ROOT = 6 }
+			}
+
+			set_temp_variable = { POR_heat_add = 2 }
+			POR_add_exposure = yes
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	# The rebellion itself. Forty-five days between the order and the shooting, which is
+	# time enough for the target to notice if it is paying attention.
+	POR_o_pronunciamento_local = {
+		icon = GFX_decision_generic_operation
+
+		cost = 150
+		days_remove = 45
+		days_re_enable = 730
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_network_target_array
+
+		target_root_trigger = {
+			has_country_flag = POR_pronunciamento_unlocked
+			NOT = { has_country_flag = POR_stood_down }
+			NOT = { has_country_flag = POR_pronunciamento_running }
+			check_variable = { POR_shadow_clients^num < POR_ops_cap }
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_civil_war = no
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+				NOT = { is_in_faction_with = ROOT }
+				NOT = { is_subject_of = ROOT }
+				NOT = { has_government = ROOT }
+				NOT = { has_country_flag = POR_client_cooldown@ROOT }
+				check_variable = { POR_net@ROOT > 0.699 }
+			}
+			is_in_array = { POR_network_target_array = FROM.id }
+		}
+
+		available = {
+			FROM = {
+				influence_higher_30 = yes
+				has_civil_war = no
+			}
+			has_equipment = { infantry_weapons_1 > 999 }
+			custom_trigger_tooltip = {
+				tooltip = POR_o_pronunciamento_local_tt
+				check_variable = { treasury > 5.9 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_o_pronunciamento_local [FROM.GetName]"
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+			add_equipment_to_stockpile = {
+				type = infantry_weapons_1
+				amount = -1000
+			}
+
+			set_country_flag = POR_pronunciamento_running
+
+			FROM = {
+				POR_score_client = yes
+				add_to_variable = { POR_heat@ROOT = 15 }
+				set_country_flag = { flag = POR_pronunciamento_pending@ROOT days = 60 value = 1 }
+				country_event = { id = portugal.20 days = 3 }
+			}
+
+			if = {
+				limit = { has_country_flag = POR_via_aberta }
+				set_temp_variable = { POR_heat_add = 8 }
+			}
+			else = { set_temp_variable = { POR_heat_add = 4 } }
+			POR_add_exposure = yes
+
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove POR_o_pronunciamento_local [FROM.GetName]"
+			clr_country_flag = POR_pronunciamento_running
+
+			if = {
+				limit = { NOT = { country_exists = FROM } }
+				custom_effect_tooltip = POR_pronunciamento_aborted_tt
+			}
+			else_if = {
+				limit = { FROM = { has_civil_war = yes } }
+				custom_effect_tooltip = POR_pronunciamento_aborted_tt
+			}
+			else = { POR_start_client_civil_war = yes }
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 4
+				has_global_flag = POR_IMPERIAL_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				check_variable = { POR_shadow_exposure > 54 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { interest_rate > 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	# Every network has a file somewhere. Burning ours costs us the country and buys back
+	# the quiet.
+	POR_desactivar_o_dossie = {
+		icon = GFX_decision_generic_nationalism
+
+		cost = 50
+		days_re_enable = 180
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_network_target_array
+
+		target_root_trigger = {
+			has_country_flag = POR_shadow_doors_open
+			check_variable = { POR_shadow_exposure > 9 }
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				check_variable = { POR_net@ROOT > 0.099 }
+			}
+			is_in_array = { POR_network_target_array = FROM.id }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_desactivar_o_dossie [FROM.GetName]"
+			FROM = {
+				set_variable = { POR_net@ROOT = 0 }
+				set_variable = { POR_officers@ROOT = 0 }
+				set_variable = { POR_heat@ROOT = 0 }
+			}
+			subtract_from_variable = { POR_shadow_exposure = 15 }
+			clamp_variable = { var = POR_shadow_exposure min = 0 max = 100 }
+			POR_update_exposure_tier = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				check_variable = { POR_shadow_exposure > 54 }
+			}
+		}
+	}
+}
+
+POR_escola_ultramar_category = {
+
+	# There is no substitute for having been there. An officer sent to sit in on someone
+	# else's war comes home with something the staff college cannot teach.
+	POR_estagio_na_selva = {
+		icon = GFX_decision_generic_military
+
+		cost = 50
+		days_remove = 120
+		days_re_enable = 365
+		fixed_random_seed = no
+
+		visible = {
+			NOT = { has_country_flag = POR_estagio_em_curso }
+		}
+
+		available = {
+			OR = {
+				check_variable = { POR_active_operations > 0 }
+				check_variable = { POR_intervention_count > 0 }
+			}
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = { has_trait = jungle_rat }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_estagio_tt
+				check_variable = { treasury > 1.4 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_estagio_na_selva"
+			set_country_flag = POR_estagio_em_curso
+			set_temp_variable = { treasury_change = -1.5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove POR_estagio_na_selva"
+			clr_country_flag = POR_estagio_em_curso
+			random_army_leader = {
+				limit = {
+					is_field_marshal = no
+					NOT = { has_trait = jungle_rat }
+				}
+				random_list = {
+					70 = {
+						add_unit_leader_trait = jungle_rat
+						gain_xp = 100
+					}
+					30 = { gain_xp = 50 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	POR_estagio_na_floresta = {
+		icon = GFX_decision_generic_military
+
+		cost = 50
+		days_remove = 120
+		days_re_enable = 365
+		fixed_random_seed = no
+
+		visible = {
+			NOT = { has_country_flag = POR_estagio_em_curso }
+		}
+
+		available = {
+			OR = {
+				check_variable = { POR_active_operations > 0 }
+				check_variable = { POR_intervention_count > 0 }
+			}
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = { has_trait = ranger }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_estagio_tt
+				check_variable = { treasury > 1.4 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_estagio_na_floresta"
+			set_country_flag = POR_estagio_em_curso
+			set_temp_variable = { treasury_change = -1.5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove POR_estagio_na_floresta"
+			clr_country_flag = POR_estagio_em_curso
+			random_army_leader = {
+				limit = {
+					is_field_marshal = no
+					NOT = { has_trait = ranger }
+				}
+				random_list = {
+					70 = {
+						add_unit_leader_trait = ranger
+						gain_xp = 100
+					}
+					30 = { gain_xp = 50 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+}

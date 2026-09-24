@@ -208,6 +208,270 @@ POR_prune_shadow_arrays = {
 	set_variable = { POR_active_operations = POR_shadow_clients^num }
 }
 
+# Starts the rebellion. ROOT is Portugal, FROM is the country we have been working on.
+#
+# Never calls start_civil_war_against_the_strongest_opposition or its sibling: both find
+# the rebel with random_enemy_country limited to original_tag = ROOT
+# (01_civil_war_effects.txt:118), which never matches when the instigator is a third party.
+# Ideology tokens are literal for the same reason; ideology = ROOT inside FROM resolves to
+# the instigator. No capital or states are passed, so the engine splits the country itself
+# and there is no state-ownership geometry to maintain.
+POR_start_client_civil_war = {
+	set_temp_variable = { POR_client_parent_temp = FROM.id }
+
+	FROM = {
+		POR_score_client = yes
+
+		set_variable = { POR_cw_size = POR_net@ROOT }
+		multiply_variable = { POR_cw_size = 0.55 }
+		if = {
+			limit = { ROOT = { has_country_flag = POR_via_aberta } }
+			add_to_variable = { POR_cw_size = 0.08 }
+		}
+		if = {
+			limit = { ROOT = { has_country_flag = POR_via_discreta } }
+			subtract_from_variable = { POR_cw_size = 0.10 }
+		}
+
+		# Backing the weak and the outlawed buys a bigger position for less money, and the
+		# price is that the rebellion itself is weaker. The officers we bought are what
+		# make it winnable.
+		set_variable = { POR_cw_underdog = ROOT.POR_reward_mult }
+		subtract_from_variable = { POR_cw_underdog = 1 }
+		multiply_variable = { POR_cw_underdog = 0.25 }
+		subtract_from_variable = { POR_cw_size = POR_cw_underdog }
+		clamp_variable = { var = POR_cw_size min = 0.15 max = 0.60 }
+
+		set_variable = { POR_cw_army = POR_cw_size }
+		add_to_variable = { POR_cw_army = POR_officers@ROOT }
+		clamp_variable = { var = POR_cw_army min = 0.15 max = 0.75 }
+
+		set_country_flag = { flag = POR_client_cooldown@ROOT days = 1825 value = 1 }
+		set_variable = { POR_net@ROOT = 0.2 }
+		set_variable = { POR_officers@ROOT = 0 }
+	}
+
+	if = {
+		limit = { has_government = democratic }
+		FROM = {
+			start_civil_war = {
+				ideology = democratic
+				size = POR_cw_size
+				army_ratio = POR_cw_army
+				navy_ratio = POR_cw_size
+				air_ratio = POR_cw_size
+				set_country_flag = POR_client_fresh
+				set_country_flag = POR_shadow_client
+			}
+			hidden_effect = { add_popularity = { ideology = democratic popularity = -0.5 } }
+			recalculate_party = yes
+			update_majority_threshold = yes
+		}
+		set_temp_variable = { POR_client_slot = 1 }
+	}
+	else_if = {
+		limit = { has_government = communism }
+		FROM = {
+			start_civil_war = {
+				ideology = communism
+				size = POR_cw_size
+				army_ratio = POR_cw_army
+				navy_ratio = POR_cw_size
+				air_ratio = POR_cw_size
+				set_country_flag = POR_client_fresh
+				set_country_flag = POR_shadow_client
+			}
+			hidden_effect = { add_popularity = { ideology = communism popularity = -0.5 } }
+			recalculate_party = yes
+			update_majority_threshold = yes
+		}
+		set_temp_variable = { POR_client_slot = 5 }
+	}
+	else_if = {
+		limit = { has_government = nationalist }
+		FROM = {
+			start_civil_war = {
+				ideology = nationalist
+				size = POR_cw_size
+				army_ratio = POR_cw_army
+				navy_ratio = POR_cw_size
+				air_ratio = POR_cw_size
+				set_country_flag = POR_client_fresh
+				set_country_flag = POR_shadow_client
+			}
+			hidden_effect = { add_popularity = { ideology = nationalist popularity = -0.5 } }
+			recalculate_party = yes
+			update_majority_threshold = yes
+		}
+		set_temp_variable = { POR_client_slot = 23 }
+	}
+	else = {
+		FROM = {
+			start_civil_war = {
+				ideology = neutrality
+				size = POR_cw_size
+				army_ratio = POR_cw_army
+				navy_ratio = POR_cw_size
+				air_ratio = POR_cw_size
+				set_country_flag = POR_client_fresh
+				set_country_flag = POR_shadow_client
+			}
+			hidden_effect = { add_popularity = { ideology = neutrality popularity = -0.5 } }
+			recalculate_party = yes
+			update_majority_threshold = yes
+		}
+		set_temp_variable = { POR_client_slot = 14 }
+	}
+
+	POR_install_client_politics = yes
+}
+
+# Everything the new country needs to be a country. This runs outside the start_civil_war
+# effect list, because the order between that list and on_declare_war's own politics copy
+# is undocumented; doing it here is correct either way. Shape follows the only working
+# fresh rebel setup in the mod, events/Influence.txt:1214-1270.
+POR_install_client_politics = {
+	every_country = {
+		limit = { has_country_flag = POR_client_fresh }
+		clr_country_flag = POR_client_fresh
+
+		start_politics_input = yes
+		set_variable = { ruling_party = ROOT.POR_client_slot }
+		set_temp_variable = { _client_slot = ROOT.POR_client_slot }
+		set_variable = { party_pop_array^_client_slot = 0.7 }
+
+		if = {
+			limit = { ROOT = { has_government = democratic } }
+			set_popularities = {
+				democratic = 70
+				communism = 10
+				neutrality = 10
+				fascism = 0
+				nationalist = 10
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = no
+			}
+		}
+		else_if = {
+			limit = { ROOT = { has_government = communism } }
+			set_popularities = {
+				democratic = 10
+				communism = 70
+				neutrality = 10
+				fascism = 0
+				nationalist = 10
+			}
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+		}
+		else_if = {
+			limit = { ROOT = { has_government = nationalist } }
+			set_popularities = {
+				democratic = 10
+				communism = 10
+				neutrality = 10
+				fascism = 0
+				nationalist = 70
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+		}
+		else = {
+			set_popularities = {
+				democratic = 10
+				communism = 10
+				neutrality = 70
+				fascism = 0
+				nationalist = 10
+			}
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+			}
+		}
+
+		hidden_effect = {
+			startup_politics = yes
+			set_leader = yes
+			recalculate_party = yes
+			hold_elections = yes
+		}
+
+		init_influence = yes
+		set_variable = { domestic_influence_amount = 70 }
+		add_to_array = { influence_array = ROOT }
+		add_to_array = { influence_array_val = 30 }
+		sort_influence = yes
+
+		add_opinion_modifier = { target = ROOT modifier = supported_us_in_the_coup }
+
+		set_country_flag = POR_client_pending_puppet
+		set_variable = { POR_client_overlord_id = ROOT.id }
+		set_variable = { POR_client_parent_id = ROOT.POR_client_parent_temp }
+
+		country_event = { id = portugal.30 hours = 6 }
+	}
+}
+
+# Run on a client that has just won its war. A dynamic tag owns its territory without
+# holding cores on any of it, which leaves it permanently in a compliance crisis.
+POR_client_core_repair = {
+	every_owned_state = {
+		limit = { NOT = { is_core_of = PREV } }
+		add_core_of = PREV
+	}
+	un_recog_setup_check = yes
+}
+
+# The price of distance. Every theatre Portuguese troops are standing in has to be fuelled
+# and supplied from Lisbon, and a good share of what is landed is stolen, sold or written
+# off long before it reaches the firing line. The first intervention already hurts; the
+# second is what makes an expensive army unaffordable and a cheap one the obvious answer.
+POR_update_intervention_load = {
+	set_variable = { POR_intervention_count = nations_we_sent_volunteers_to^num }
+
+	if = {
+		limit = { check_variable = { POR_intervention_count < 1 } }
+		clear_variable = POR_intervention_fuel
+		clear_variable = POR_intervention_upkeep
+		clear_variable = POR_intervention_supply
+		if = {
+			limit = { has_dynamic_modifier = { modifier = POR_intervencao_ultramarina } }
+			remove_dynamic_modifier = { modifier = POR_intervencao_ultramarina }
+		}
+	}
+	else = {
+		if = {
+			limit = { NOT = { has_dynamic_modifier = { modifier = POR_intervencao_ultramarina } } }
+			add_dynamic_modifier = { modifier = POR_intervencao_ultramarina }
+		}
+
+		set_variable = { POR_intervention_extra = POR_intervention_count }
+		subtract_from_variable = { POR_intervention_extra = 1 }
+
+		set_variable = { POR_intervention_fuel = POR_intervention_extra }
+		multiply_variable = { POR_intervention_fuel = 0.35 }
+		add_to_variable = { POR_intervention_fuel = 0.75 }
+		clamp_variable = { var = POR_intervention_fuel min = 0 max = 2.5 }
+
+		set_variable = { POR_intervention_upkeep = POR_intervention_extra }
+		multiply_variable = { POR_intervention_upkeep = 0.20 }
+		add_to_variable = { POR_intervention_upkeep = 0.35 }
+		clamp_variable = { var = POR_intervention_upkeep min = 0 max = 1.5 }
+
+		set_variable = { POR_intervention_supply = POR_intervention_extra }
+		multiply_variable = { POR_intervention_supply = 0.05 }
+		add_to_variable = { POR_intervention_supply = 0.15 }
+		clamp_variable = { var = POR_intervention_supply min = 0 max = 0.5 }
+	}
+}
+
 # What the officer corps is learning right now. Recomputed weekly from live operations so
 # the doctrine fades when Portugal stops fighting other people's wars.
 POR_update_overseas_doctrine = {
@@ -217,6 +481,7 @@ POR_update_overseas_doctrine = {
 	}
 
 	set_variable = { POR_ttx_all = POR_active_operations }
+	add_to_variable = { POR_ttx_all = POR_intervention_count }
 	multiply_variable = { POR_ttx_all = 0.25 }
 	clamp_variable = { var = POR_ttx_all min = 0 max = 1 }
 

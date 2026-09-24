@@ -1,0 +1,17 @@
+POR_shadow_ops_category = {
+	allowed = { original_tag = POR }
+
+	icon = GFX_decision_category_generic_foreign_policy
+	priority = 150
+
+	visible = { has_country_flag = POR_shadow_doors_open }
+}
+
+POR_escola_ultramar_category = {
+	allowed = { original_tag = POR }
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 140
+
+	visible = { has_country_flag = POR_escola_ultramar_aberta }
+}

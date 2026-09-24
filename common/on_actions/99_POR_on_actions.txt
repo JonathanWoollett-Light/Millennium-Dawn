@@ -1,13 +1,55 @@
 on_actions = {
+	# ROOT is the winner, FROM is the side that was annexed. Puppeting waits until here:
+	# an overlord relationship declared during the war would block volunteers and leave
+	# the client unable to finish it (99_SOV_on_actions.txt:143).
+	on_civil_war_end = {
+		effect = {
+			if = {
+				limit = { has_country_flag = POR_client_pending_puppet }
+				clr_country_flag = POR_client_pending_puppet
+				POR_client_core_repair = yes
+				news_event = { id = portugal_news.2 hours = 6 }
+				var:POR_client_overlord_id = {
+					set_autonomy = {
+						target = PREV
+						autonomy_state = autonomy_associated_state
+						end_wars = no
+						end_civil_wars = yes
+					}
+					country_event = { id = portugal.32 hours = 8 }
+				}
+				clear_variable = POR_client_overlord_id
+			}
+
+			# Our side lost. The file on it closes, and the government that survived knows
+			# exactly who paid for the attempt.
+			if = {
+				limit = {
+					FROM = { has_country_flag = POR_shadow_client }
+					NOT = { has_country_flag = POR_shadow_client }
+				}
+				FROM = {
+					if = {
+						limit = { check_variable = { POR_client_overlord_id > 0 } }
+						var:POR_client_overlord_id = { country_event = { id = portugal.34 hours = 8 } }
+					}
+				}
+				add_opinion_modifier = { target = var:FROM.POR_client_overlord_id modifier = supported_opposition }
+			}
+		}
+	}
+
 	on_weekly_POR = {
 		effect = {
 			POR_prune_shadow_arrays = yes
+			POR_update_intervention_load = yes
 			POR_update_overseas_doctrine = yes
 
 			# Exposure only cools while nothing of ours is fighting overseas.
 			if = {
 				limit = {
 					check_variable = { POR_active_operations = 0 }
+					check_variable = { POR_intervention_count = 0 }
 					check_variable = { POR_shadow_exposure > 0 }
 				}
 				subtract_from_variable = { POR_shadow_exposure = 0.5 }

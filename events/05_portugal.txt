@@ -1,0 +1,156 @@
+add_namespace = portugal
+add_namespace = portugal_news
+
+# The target notices. Forty-five days between the order and the shooting is long enough to
+# act on, if anyone in the capital is still reading the reports.
+country_event = {
+	id = portugal.20
+	title = portugal.20.t
+	desc = portugal.20.d
+	picture = GFX_SAO_coup
+
+	is_triggered_only = yes
+
+	# Purge the officer corps
+	option = {
+		name = portugal.20.a
+		log = "[GetDateText]: [This.GetName]: portugal.20.a executed"
+
+		add_stability = -0.10
+		subtract_from_variable = { POR_net@FROM = 0.20 }
+		clamp_variable = { var = POR_net@FROM min = 0 max = 1 }
+		set_variable = { POR_officers@FROM = 0 }
+
+		set_temp_variable = { party_index = ruling_party }
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		change_relative_party_popularity = yes
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 3
+				check_variable = { POR_net@FROM > 0.8 }
+			}
+			modifier = {
+				factor = 0.25
+				has_stability < 0.4
+			}
+		}
+	}
+
+	# There is nothing to it
+	option = {
+		name = portugal.20.b
+
+		ai_chance = {
+			base = 60
+			modifier = {
+				factor = 0.5
+				check_variable = { POR_net@FROM > 0.8 }
+			}
+		}
+	}
+}
+
+# On the new client, the moment it exists.
+country_event = {
+	id = portugal.30
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: portugal.30 fired"
+		var:POR_client_overlord_id = { country_event = { id = portugal.31 hours = 2 } }
+	}
+}
+
+# Lisbon reads the wire.
+country_event = {
+	id = portugal.31
+	title = portugal.31.t
+	desc = portugal.31.d
+	picture = GFX_SAO_coup
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.31.a
+		log = "[GetDateText]: [This.GetName]: portugal.31.a executed"
+
+		add_to_array = { POR_shadow_clients = FROM.id }
+		set_variable = { POR_active_operations = POR_shadow_clients^num }
+		hidden_effect = { news_event = { id = portugal_news.1 hours = 6 } }
+	}
+}
+
+# The client won.
+country_event = {
+	id = portugal.32
+	title = portugal.32.t
+	desc = portugal.32.d
+	picture = GFX_SAO_Election
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.32.a
+		log = "[GetDateText]: [This.GetName]: portugal.32.a executed"
+
+		add_to_array = { POR_lusophone_subjects = FROM.id }
+		remove_from_array = { POR_shadow_clients = FROM.id }
+		set_variable = { POR_active_operations = POR_shadow_clients^num }
+
+		set_temp_variable = { POR_heat_add = 6 }
+		FROM = { POR_score_client = yes }
+		POR_add_exposure = yes
+		POR_update_exposure_tier = yes
+	}
+}
+
+# The client lost.
+country_event = {
+	id = portugal.34
+	title = portugal.34.t
+	desc = portugal.34.d
+	picture = GFX_ivory_coast_protest_supressed
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.34.a
+		log = "[GetDateText]: [This.GetName]: portugal.34.a executed"
+
+		set_temp_variable = { POR_heat_add = 15 }
+		set_temp_variable = { POR_heat_mult = 1 }
+		POR_add_exposure = yes
+		POR_update_exposure_tier = yes
+	}
+}
+
+news_event = {
+	id = portugal_news.1
+	title = portugal_news.1.t
+	desc = portugal_news.1.d
+	picture = GFX_news_angolan_civil_war
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = portugal_news.1.a
+	}
+}
+
+news_event = {
+	id = portugal_news.2
+	title = portugal_news.2.t
+	desc = portugal_news.2.d
+	picture = GFX_news_SAO_coup
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = portugal_news.2.a
+	}
+}
