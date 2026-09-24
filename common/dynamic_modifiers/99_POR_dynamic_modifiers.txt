@@ -223,3 +223,37 @@ POR_programa_de_governo = {
 
 	political_power_gain = POR_pgov_political_power_gain
 }
+
+POR_doutrina_terrestre = {
+	icon = GFX_idea_por_colonial_army
+
+	army_bonus_air_superiority_factor = POR_dt_army_bonus_air_superiority_factor
+	army_defence_factor = POR_dt_army_defence_factor
+	army_speed_factor = POR_dt_army_speed_factor
+	breakthrough_factor = POR_dt_breakthrough_factor
+	dig_in_speed_factor = POR_dt_dig_in_speed_factor
+	experience_gain_army_unit_factor = POR_dt_experience_gain_army_unit_factor
+	planning_speed = POR_dt_planning_speed
+}
+
+POR_doutrina_naval = {
+	icon = GFX_idea_por_volunteers_in_the_war
+
+	naval_coordination = POR_dn_naval_coordination
+	naval_damage_factor = POR_dn_naval_damage_factor
+	naval_hit_chance = POR_dn_naval_hit_chance
+	naval_speed_factor = POR_dn_naval_speed_factor
+	naval_torpedo_hit_chance_factor = POR_dn_naval_torpedo_hit_chance_factor
+	navy_carrier_air_targetting_factor = POR_dn_navy_carrier_air_targetting_factor
+}
+
+POR_doutrina_aerea = {
+	icon = GFX_idea_por_volunteers_in_the_war2
+
+	air_agility_factor = POR_da_air_agility_factor
+	air_cas_efficiency = POR_da_air_cas_efficiency
+	air_detection = POR_da_air_detection
+	air_range_factor = POR_da_air_range_factor
+	ground_attack_factor = POR_da_ground_attack_factor
+	paradrop_organization_factor = POR_da_paradrop_organization_factor
+}

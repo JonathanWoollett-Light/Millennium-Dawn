@@ -1317,7 +1317,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_comunidade_lusofona
 		icon = POR_Imperio_Ultramarino
-		x = 107
+		x = 111
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_INFLUENCE }
@@ -2119,7 +2119,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_mar_portugues
 		icon = Portuguese_Navy
-		x = 88
+		x = 90
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_NAVY }
@@ -2254,7 +2254,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_forca_aerea
 		icon = Portuguese_Air_Force
-		x = 96
+		x = 100
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_AIRCRAFT }
@@ -2479,10 +2479,10 @@ focus_tree = {
 		id = POR_o_estado_maior_general
 		icon = POR_royal_edicts
 		x = 0
-		y = 2
+		y = 3
 		relative_position_id = POR_a_escola_de_doutrina
 		cost = 10
-		prerequisite = { focus = POR_a_defesa_elastica focus = POR_a_guerra_ligeira focus = POR_o_choque_blindado }
+		prerequisite = { focus = POR_a_defesa_do_territorio focus = POR_a_contra_subversao focus = POR_a_batalha_decisiva }
 		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_ARMY_XP }
 
 		completion_reward = {
@@ -2633,9 +2633,9 @@ focus_tree = {
 	focus = {
 		id = POR_o_navio_polivalente
 		icon = POR_Imperio_Ultramarino
-		x = 0
-		y = 1
-		relative_position_id = POR_a_esquadra_de_superficie
+		x = -3
+		y = 2
+		relative_position_id = POR_a_escola_naval
 		cost = 10
 		prerequisite = { focus = POR_a_esquadra_de_superficie }
 		search_filters = { FOCUS_FILTER_NAVY FOCUS_FILTER_ADD_BUILDING }
@@ -2680,9 +2680,9 @@ focus_tree = {
 	focus = {
 		id = POR_a_patrulha_oceanica
 		icon = POR_pink_map
-		x = 0
-		y = 1
-		relative_position_id = POR_a_negacao_do_mar
+		x = 1
+		y = 2
+		relative_position_id = POR_a_escola_naval
 		cost = 7
 		prerequisite = { focus = POR_a_negacao_do_mar }
 		search_filters = { FOCUS_FILTER_NAVY FOCUS_FILTER_RESOURCE }
@@ -2753,6 +2753,320 @@ focus_tree = {
 		}
 	}
 
+
+	##################################
+	### THE SECOND ARMY SCHOOL
+	##################################
+
+	focus = {
+		id = POR_a_defesa_do_territorio
+		icon = POR_the_tarrafal
+		x = 0
+		y = 1
+		relative_position_id = POR_a_defesa_elastica
+		cost = 10
+		prerequisite = { focus = POR_a_defesa_elastica }
+		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_ADD_BUILDING }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_defesa_do_territorio"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_terrestre
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_terrestre } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_terrestre }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_a_defesa_do_territorio
+				uses = 3
+				bonus = 0.25
+				category = CAT_towed_artillery
+				category = CAT_fortifications
+				category = CAT_excavation
+			}
+			add_to_variable = { POR_dt_dig_in_speed_factor = 0.20 tooltip = dig_in_speed_factor_tt }
+			add_to_variable = { POR_dt_army_defence_factor = 0.05 tooltip = army_defence_factor_tt }
+			97 = { add_building_construction = { type = anti_air_building level = 1 instant_build = yes } }
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_contra_subversao
+		icon = portuguese_legion
+		x = 0
+		y = 1
+		relative_position_id = POR_a_guerra_ligeira
+		cost = 10
+		prerequisite = { focus = POR_a_guerra_ligeira }
+		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_INSURGENCY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_contra_subversao"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_terrestre
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_terrestre } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_terrestre }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_a_contra_subversao
+				uses = 3
+				bonus = 0.25
+				category = CAT_special_operations_doctrine
+				category = CAT_ranger_forces_doctrine
+				category = CAT_body_armor
+				category = CAT_camouflage
+			}
+			add_to_variable = { POR_dt_army_bonus_air_superiority_factor = 0.10 tooltip = army_bonus_air_superiority_factor_tt }
+			add_to_variable = { POR_dt_experience_gain_army_unit_factor = 0.05 tooltip = experience_gain_army_unit_factor_tt }
+			mio:POR_eid_materiel_manufacturer = {
+				add_mio_funds = 2000
+			}
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_batalha_decisiva
+		icon = POR_knights_of_portugal
+		x = 0
+		y = 1
+		relative_position_id = POR_o_choque_blindado
+		cost = 10
+		prerequisite = { focus = POR_o_choque_blindado }
+		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_EQUIPMENT }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_batalha_decisiva"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_terrestre
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_terrestre } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_terrestre }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_a_batalha_decisiva
+				uses = 3
+				bonus = 0.25
+				category = CAT_self_propelled_artillery
+				category = CAT_artillery_fire_modes
+				category = CAT_operational_theory_doctrine
+			}
+			add_to_variable = { POR_dt_breakthrough_factor = 0.10 tooltip = breakthrough_factor_tt }
+			add_to_variable = { POR_dt_planning_speed = 0.15 tooltip = planning_speed_tt }
+			add_to_variable = { POR_dt_army_speed_factor = 0.05 tooltip = army_speed_factor_tt }
+			mio:POR_umm_tank_manufacturer = {
+				add_mio_funds = 2000
+			}
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+
+	##################################
+	### THE SECOND NAVAL SCHOOL
+	##################################
+
+	focus = {
+		id = POR_a_esquadra_de_combate
+		icon = POR_Navy_Emblem
+		x = -1
+		y = 2
+		relative_position_id = POR_a_escola_naval
+		cost = 10
+		prerequisite = { focus = POR_a_esquadra_de_superficie }
+		search_filters = { FOCUS_FILTER_NAVY FOCUS_FILTER_EQUIPMENT }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_esquadra_de_combate"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_naval
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_naval } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_naval }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_a_esquadra_de_combate
+				uses = 3
+				bonus = 0.25
+				category = CAT_destroyers
+				category = CAT_naval_vertical_launch_systems
+				category = CAT_naval_fire_control
+				category = CAT_capital_ships_doctrine
+			}
+			add_to_variable = { POR_dn_naval_hit_chance = 0.10 tooltip = naval_hit_chance_tt }
+			add_to_variable = { POR_dn_naval_damage_factor = 0.10 tooltip = naval_damage_factor_tt }
+			mio:POR_Arsenal_do_Alfeite_naval_manufacturer = {
+				add_mio_funds = 3000
+			}
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_os_misseis_de_cruzeiro
+		icon = POR_flag_of_kongo
+		x = 3
+		y = 2
+		relative_position_id = POR_a_escola_naval
+		cost = 10
+		prerequisite = { focus = POR_a_negacao_do_mar }
+		search_filters = { FOCUS_FILTER_NAVY FOCUS_FILTER_EQUIPMENT }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_os_misseis_de_cruzeiro"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_naval
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_naval } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_naval }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_os_misseis_de_cruzeiro
+				uses = 3
+				bonus = 0.25
+				category = CAT_missile_submarines
+				category = CAT_naval_anti_ship_missiles
+				category = CAT_vertical_launch_surface_missiles
+			}
+			add_to_variable = { POR_dn_naval_torpedo_hit_chance_factor = 0.10 tooltip = naval_torpedo_hit_chance_factor_tt }
+			add_to_variable = { POR_dn_naval_speed_factor = 0.05 tooltip = naval_speed_factor_tt }
+			mio:POR_envc_naval_manufacturer = {
+				add_mio_funds = 2500
+			}
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_porta_aeronaves
+		icon = the_fifth_empire
+		x = -2
+		y = 3
+		relative_position_id = POR_a_escola_naval
+		cost = 15
+		prerequisite = { focus = POR_a_esquadra_de_combate }
+		prerequisite = { focus = POR_o_navio_polivalente }
+		allow_branch = {
+			has_game_rule = {
+				rule = allow_fictional_content
+				option = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_NAVY FOCUS_FILTER_AIRCRAFT }
+
+		available = {
+			date > 2030.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_porta_aeronaves"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_naval
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_naval } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_naval }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_o_porta_aeronaves
+				uses = 2
+				bonus = 0.25
+				category = CAT_aircraft_carriers
+				category = CAT_capital_ships_doctrine
+				category = CAT_naval_radar
+			}
+			add_to_variable = { POR_dn_navy_carrier_air_targetting_factor = 0.15 tooltip = navy_carrier_air_targetting_factor_tt }
+			add_to_variable = { POR_dn_naval_coordination = 0.10 tooltip = naval_coordination_tt }
+			1056 = { one_state_dockyard = yes }
+			mio:POR_envc_naval_manufacturer = {
+				add_mio_funds = 5000
+			}
+			set_temp_variable = { treasury_change = -22 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+		}
+	}
 
 	##################################
 	### THE PARTY ROADS
@@ -3614,10 +3928,10 @@ focus_tree = {
 		id = POR_o_caca_de_quinta_geracao
 		icon = the_fifth_empire
 		x = -1
-		y = 5
+		y = 6
 		relative_position_id = POR_a_forca_aerea
 		cost = 10
-		prerequisite = { focus = POR_o_caca_multifuncao focus = POR_a_superioridade_aerea }
+		prerequisite = { focus = POR_o_apoio_aereo_proximo focus = POR_o_tiro_de_longo_alcance }
 		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_EQUIPMENT }
 
 		available = { date > 2025.1.1 }
@@ -6150,7 +6464,7 @@ focus_tree = {
 				bonus = 0.25
 				category = CAT_drone_warfare_doctrine
 				category = CAT_air_drones
-				category = CAT_naval_recon_drones
+				category = CAT_drones
 			}
 			add_to_variable = { POR_air_air_mission_efficiency = 0.05 tooltip = air_mission_efficiency_tt }
 			add_to_variable = { POR_air_air_intercept_efficiency = 0.10 tooltip = air_intercept_efficiency_tt }
@@ -6179,7 +6493,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_intervencao
 		icon = POR_Imperio_Ultramarino
-		x = 120
+		x = 124
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_INFLUENCE }
@@ -6742,6 +7056,155 @@ focus_tree = {
 			base = 10
 			modifier = { factor = 25 POR_ai_shadow_path = yes }
 			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	##################################
+	### THE SECOND AIR SCHOOL
+	##################################
+
+	focus = {
+		id = POR_o_tiro_de_longo_alcance
+		icon = POR_Airforce_Emblem
+		x = 0
+		y = 1
+		relative_position_id = POR_a_superioridade_aerea
+		cost = 10
+		prerequisite = { focus = POR_a_superioridade_aerea }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_tiro_de_longo_alcance"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_aerea
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_aerea } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_aerea }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_o_tiro_de_longo_alcance
+				uses = 3
+				bonus = 0.25
+				category = CAT_air_to_air_weapons
+				category = CAT_avionics
+				category = CAT_military_electronics
+			}
+			add_to_variable = { POR_da_air_detection = 0.15 tooltip = air_detection_tt }
+			add_to_variable = { POR_da_air_agility_factor = 0.05 tooltip = air_agility_factor_tt }
+			mio:POR_eid_materiel_manufacturer = {
+				add_mio_funds = 2500
+			}
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_apoio_aereo_proximo
+		icon = Portuguese_Air_Force
+		x = 0
+		y = 1
+		relative_position_id = POR_o_caca_multifuncao
+		cost = 10
+		prerequisite = { focus = POR_o_caca_multifuncao }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_ARMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_apoio_aereo_proximo"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_aerea
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_aerea } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_aerea }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_o_apoio_aereo_proximo
+				uses = 3
+				bonus = 0.25
+				category = CAT_strike_aircraft_doctrine
+				category = CAT_gunship_weapons
+				category = CAT_targeting_pods
+				category = CAT_attack_helicopters
+			}
+			add_to_variable = { POR_da_air_cas_efficiency = 0.15 tooltip = air_cas_efficiency_tt }
+			add_to_variable = { POR_da_ground_attack_factor = 0.10 tooltip = ground_attack_factor_tt }
+			mio:POR_ogma_aircraft_manufacturer = {
+				add_mio_funds = 2500
+			}
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_ponte_aerea
+		icon = POR_pink_map
+		x = 0
+		y = 1
+		relative_position_id = POR_o_kc_390
+		cost = 10
+		prerequisite = { focus = POR_o_kc_390 }
+		search_filters = { FOCUS_FILTER_AIRCRAFT FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_ponte_aerea"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_doutrina_aerea
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_aerea } } }
+					add_dynamic_modifier = { modifier = POR_doutrina_aerea }
+				}
+			}
+			add_tech_bonus = {
+				name = POR_a_ponte_aerea
+				uses = 3
+				bonus = 0.25
+				category = CAT_heavy_aircraft_doctrine
+				category = CAT_aerial_refueling
+				category = CAT_airborne_early_warning
+			}
+			add_to_variable = { POR_da_air_range_factor = 0.15 tooltip = air_range_factor_tt }
+			add_to_variable = { POR_da_paradrop_organization_factor = 0.20 tooltip = paradrop_organization_factor_tt }
+			mio:POR_ogma_aircraft_manufacturer = {
+				add_mio_funds = 2500
+			}
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
 		}
 	}
 }
