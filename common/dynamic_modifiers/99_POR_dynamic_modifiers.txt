@@ -257,3 +257,20 @@ POR_doutrina_aerea = {
 	ground_attack_factor = POR_da_ground_attack_factor
 	paradrop_organization_factor = POR_da_paradrop_organization_factor
 }
+
+POR_as_potencias_mod = {
+	icon = GFX_idea_por_the_fifth_empire
+
+	air_range_factor = POR_pot_air_range_factor
+	decryption_factor = POR_pot_decryption_factor
+	drift_defence_factor = POR_pot_drift_defence_factor
+	foreign_influence_continent_modifier = POR_pot_foreign_influence_continent_modifier
+	foreign_influence_modifier = POR_pot_foreign_influence_modifier
+	foreign_subversive_activites = POR_pot_foreign_subversive_activites
+	naval_coordination = POR_pot_naval_coordination
+	political_power_factor = POR_pot_political_power_factor
+	political_power_gain = POR_pot_political_power_gain
+	productivity_growth_modifier = POR_pot_productivity_growth_modifier
+	resource_export_multiplier_modifier = POR_pot_resource_export_multiplier_modifier
+	trade_opinion_factor = POR_pot_trade_opinion_factor
+}

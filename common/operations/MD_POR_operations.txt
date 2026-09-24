@@ -32,10 +32,23 @@ POR_operation_pronunciamento = {
 			NOT = { is_in_faction_with = ROOT }
 			NOT = { has_government = ROOT }
 			NOT = { has_country_flag = POR_client_cooldown@ROOT }
-			influence_higher_30 = yes
-			check_variable = { POR_net@ROOT > 0.699 }
-			check_variable = { POR_officers@ROOT > 0.14 }
+			NOT = { has_country_flag = POR_tratado@ROOT }
 			has_country_flag = POR_raid_recent@ROOT
+			# Naming a country a priority is what buys the lower bar, and it is a focus the
+			# host can watch being taken.
+			OR = {
+				AND = {
+					influence_higher_30 = yes
+					check_variable = { POR_net@ROOT > 0.699 }
+					check_variable = { POR_officers@ROOT > 0.14 }
+				}
+				AND = {
+					has_country_flag = POR_prioridade@ROOT
+					influence_higher_20 = yes
+					check_variable = { POR_net@ROOT > 0.549 }
+					check_variable = { POR_officers@ROOT > 0.09 }
+				}
+			}
 		}
 		has_equipment = { infantry_weapons_1 > 4999 }
 		custom_trigger_tooltip = {

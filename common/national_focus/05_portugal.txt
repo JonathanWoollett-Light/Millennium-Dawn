@@ -60,6 +60,11 @@ focus_tree = {
 		target = POR_as_campanhas
 		scroll_wheel_factor = 0.80
 	}
+	shortcut = {
+		name = POR_potencias_shortcut
+		target = POR_a_balanca_das_potencias
+		scroll_wheel_factor = 0.80
+	}
 
 	##################################
 	### POLITICS - A TERCEIRA REPUBLICA
@@ -7222,7 +7227,7 @@ focus_tree = {
 	focus = {
 		id = POR_as_campanhas
 		icon = POR_Imperio_Ultramarino
-		x = 138
+		x = 146
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_INFLUENCE }
@@ -7251,7 +7256,7 @@ focus_tree = {
 	focus = {
 		id = POR_os_observadores_do_estoril
 		icon = POR_angola
-		x = -7
+		x = -14
 		y = 1
 		relative_position_id = POR_as_campanhas
 		cost = 7
@@ -7395,7 +7400,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_embaixada_em_bissau
 		icon = POR_flag_of_kongo
-		x = -5
+		x = -10
 		y = 1
 		relative_position_id = POR_as_campanhas
 		cost = 7
@@ -7531,7 +7536,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_barragem_de_cahora_bassa
 		icon = POR_mozambique
-		x = -3
+		x = -6
 		y = 1
 		relative_position_id = POR_as_campanhas
 		cost = 7
@@ -7672,7 +7677,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_portugues_em_timor
 		icon = POR_autonomy
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = POR_as_campanhas
 		cost = 7
@@ -7811,7 +7816,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_lusofonia_de_malabo
 		icon = POR_burden_empire
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = POR_as_campanhas
 		cost = 7
@@ -7940,7 +7945,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_tratado_de_simulambuco
 		icon = reclaim_crown_jewel
-		x = 3
+		x = 5
 		y = 1
 		relative_position_id = POR_as_campanhas
 		cost = 7
@@ -8064,7 +8069,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_acordo_cambial
 		icon = portugal_flag_people
-		x = 5
+		x = 7
 		y = 1
 		relative_position_id = POR_as_campanhas
 		cost = 7
@@ -8203,7 +8208,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_zona_de_desenvolvimento_conjunto
 		icon = POR_royal_edicts
-		x = 7
+		x = 9
 		y = 1
 		relative_position_id = POR_as_campanhas
 		cost = 7
@@ -8332,6 +8337,1143 @@ focus_tree = {
 				factor = 0
 				has_active_mission = bankruptcy_incoming_collapse
 			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	##################################
+	### THE TREATY OR THE RISING
+	##################################
+
+	focus = {
+		id = POR_o_reconhecimento_de_luanda
+		icon = POR_protect_angola
+		x = -1
+		y = 1
+		relative_position_id = POR_o_memorando_de_luena
+		cost = 10
+		prerequisite = { focus = POR_o_memorando_de_luena }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = AGL
+			country_exists = UNI
+			AGL = { has_civil_war = yes }
+			date < 2002.4.4
+			custom_trigger_tooltip = {
+				tooltip = POR_not_yet_committed_tt
+				AGL = { NOT = { has_country_flag = POR_opposed_by_portugal } }
+				UNI = { NOT = { has_country_flag = POR_backed_by_portugal } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_reconhecimento_de_luanda"
+			set_temp_variable = { POR_commit_heat = 10 }
+			AGL = { POR_commit_here = yes }
+			UNI = { POR_mark_opposed = yes }
+			set_temp_variable = { percent_change = 8 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = AGL.id }
+			change_influence_percentage = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_apoio_a_unita
+		icon = POR_pink_map
+		x = 1
+		y = 1
+		relative_position_id = POR_o_memorando_de_luena
+		cost = 10
+		prerequisite = { focus = POR_o_memorando_de_luena }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_INSURGENCY FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = AGL
+			country_exists = UNI
+			AGL = { has_civil_war = yes }
+			date < 2002.4.4
+			custom_trigger_tooltip = {
+				tooltip = POR_not_yet_committed_tt
+				AGL = { NOT = { has_country_flag = POR_backed_by_portugal } }
+				UNI = { NOT = { has_country_flag = POR_opposed_by_portugal } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_apoio_a_unita"
+			set_temp_variable = { POR_commit_heat = 20 }
+			UNI = { POR_commit_here = yes }
+			AGL = { POR_mark_opposed = yes }
+			set_temp_variable = { percent_change = 10 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = UNI.id }
+			change_influence_percentage = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_pacto_de_bissau
+		icon = POR_the_moderating_power
+		x = -1
+		y = 1
+		relative_position_id = POR_a_reforma_do_sector_de_seguranca
+		cost = 10
+		prerequisite = { focus = POR_a_reforma_do_sector_de_seguranca }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_TRADE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = GUB
+			custom_trigger_tooltip = {
+				tooltip = POR_no_rising_prepared_tt
+				GUB = { NOT = { has_country_flag = POR_prioridade@ROOT } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_pacto_de_bissau"
+			custom_effect_tooltip = POR_tratado_effect_tt
+			GUB = {
+				set_country_flag = POR_tratado@ROOT
+				add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				reverse_add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+			}
+			set_temp_variable = { percent_change = 10 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = GUB.id }
+			change_influence_percentage = yes
+			add_to_variable = { POR_int_trade_opinion_factor = 0.05 tooltip = trade_opinion_factor_tt }
+			set_temp_variable = { int_investment_change = 8 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_noite_dos_generais
+		icon = POR_the_tarrafal
+		x = 1
+		y = 1
+		relative_position_id = POR_a_reforma_do_sector_de_seguranca
+		cost = 10
+		prerequisite = { focus = POR_a_reforma_do_sector_de_seguranca }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = GUB
+			custom_trigger_tooltip = {
+				tooltip = POR_no_treaty_signed_tt
+				GUB = { NOT = { has_country_flag = POR_tratado@ROOT } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ready_for_a_directed_rising_tt
+				POR_ready_for_a_directed_rising = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_noite_dos_generais"
+			custom_effect_tooltip = POR_prioridade_effect_tt
+			GUB = {
+				set_country_flag = POR_prioridade@ROOT
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+				add_to_variable = { POR_officers@ROOT = 0.05 }
+				clamp_variable = { var = POR_officers@ROOT min = 0 max = 0.3 }
+			}
+			add_to_variable = { POR_int_operation_risk = -0.05 tooltip = operation_risk_tt }
+			set_temp_variable = { POR_heat_add = 12 }
+			POR_add_exposure = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_parceria_de_maputo
+		icon = POR_mozambique
+		x = -1
+		y = 1
+		relative_position_id = POR_o_gas_do_rovuma
+		cost = 10
+		prerequisite = { focus = POR_o_gas_do_rovuma }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_TRADE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = MOZ
+			custom_trigger_tooltip = {
+				tooltip = POR_no_rising_prepared_tt
+				MOZ = { NOT = { has_country_flag = POR_prioridade@ROOT } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_parceria_de_maputo"
+			custom_effect_tooltip = POR_tratado_effect_tt
+			MOZ = {
+				set_country_flag = POR_tratado@ROOT
+				add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				reverse_add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+			}
+			set_temp_variable = { percent_change = 10 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = MOZ.id }
+			change_influence_percentage = yes
+			add_to_variable = { POR_int_trade_opinion_factor = 0.05 tooltip = trade_opinion_factor_tt }
+			set_temp_variable = { int_investment_change = 12 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_regresso_da_renamo
+		icon = POR_protect_mozambique
+		x = 1
+		y = 1
+		relative_position_id = POR_o_gas_do_rovuma
+		cost = 10
+		prerequisite = { focus = POR_o_gas_do_rovuma }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = MOZ
+			custom_trigger_tooltip = {
+				tooltip = POR_no_treaty_signed_tt
+				MOZ = { NOT = { has_country_flag = POR_tratado@ROOT } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ready_for_a_directed_rising_tt
+				POR_ready_for_a_directed_rising = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_regresso_da_renamo"
+			custom_effect_tooltip = POR_prioridade_effect_tt
+			MOZ = {
+				set_country_flag = POR_prioridade@ROOT
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+				add_to_variable = { POR_officers@ROOT = 0.05 }
+				clamp_variable = { var = POR_officers@ROOT min = 0 max = 0.3 }
+			}
+			add_to_variable = { POR_int_operation_risk = -0.05 tooltip = operation_risk_tt }
+			set_temp_variable = { POR_heat_add = 14 }
+			POR_add_exposure = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_tratado_de_dili
+		icon = POR_autonomy
+		x = -1
+		y = 1
+		relative_position_id = POR_o_mar_de_timor
+		cost = 10
+		prerequisite = { focus = POR_o_mar_de_timor }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_TRADE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = TIM
+			custom_trigger_tooltip = {
+				tooltip = POR_no_rising_prepared_tt
+				TIM = { NOT = { has_country_flag = POR_prioridade@ROOT } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_tratado_de_dili"
+			custom_effect_tooltip = POR_tratado_effect_tt
+			TIM = {
+				set_country_flag = POR_tratado@ROOT
+				add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				reverse_add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+			}
+			set_temp_variable = { percent_change = 10 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = TIM.id }
+			change_influence_percentage = yes
+			add_to_variable = { POR_int_trade_opinion_factor = 0.05 tooltip = trade_opinion_factor_tt }
+			set_temp_variable = { int_investment_change = 8 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_os_peticionarios
+		icon = limited_self_rule
+		x = 1
+		y = 1
+		relative_position_id = POR_o_mar_de_timor
+		cost = 10
+		prerequisite = { focus = POR_o_mar_de_timor }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = TIM
+			custom_trigger_tooltip = {
+				tooltip = POR_no_treaty_signed_tt
+				TIM = { NOT = { has_country_flag = POR_tratado@ROOT } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ready_for_a_directed_rising_tt
+				POR_ready_for_a_directed_rising = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_os_peticionarios"
+			custom_effect_tooltip = POR_prioridade_effect_tt
+			TIM = {
+				set_country_flag = POR_prioridade@ROOT
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+				add_to_variable = { POR_officers@ROOT = 0.05 }
+				clamp_variable = { var = POR_officers@ROOT min = 0 max = 0.3 }
+			}
+			add_to_variable = { POR_int_operation_risk = -0.05 tooltip = operation_risk_tt }
+			set_temp_variable = { POR_heat_add = 12 }
+			POR_add_exposure = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_acordo_de_malabo
+		icon = POR_burden_empire
+		x = -1
+		y = 1
+		relative_position_id = POR_o_dossie_de_black_beach
+		cost = 10
+		prerequisite = { focus = POR_o_dossie_de_black_beach }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_TRADE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = EGU
+			custom_trigger_tooltip = {
+				tooltip = POR_no_rising_prepared_tt
+				EGU = { NOT = { has_country_flag = POR_prioridade@ROOT } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_acordo_de_malabo"
+			custom_effect_tooltip = POR_tratado_effect_tt
+			EGU = {
+				set_country_flag = POR_tratado@ROOT
+				add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				reverse_add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+			}
+			set_temp_variable = { percent_change = 10 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = EGU.id }
+			change_influence_percentage = yes
+			add_to_variable = { POR_int_trade_opinion_factor = 0.05 tooltip = trade_opinion_factor_tt }
+			set_temp_variable = { int_investment_change = 10 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_hora_de_severo_moto
+		icon = por_camisas_azuis
+		x = 1
+		y = 1
+		relative_position_id = POR_o_dossie_de_black_beach
+		cost = 10
+		prerequisite = { focus = POR_o_dossie_de_black_beach }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = EGU
+			custom_trigger_tooltip = {
+				tooltip = POR_no_treaty_signed_tt
+				EGU = { NOT = { has_country_flag = POR_tratado@ROOT } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ready_for_a_directed_rising_tt
+				POR_ready_for_a_directed_rising = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_hora_de_severo_moto"
+			custom_effect_tooltip = POR_prioridade_effect_tt
+			EGU = {
+				set_country_flag = POR_prioridade@ROOT
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+				add_to_variable = { POR_officers@ROOT = 0.05 }
+				clamp_variable = { var = POR_officers@ROOT min = 0 max = 0.3 }
+			}
+			add_to_variable = { POR_int_operation_risk = -0.05 tooltip = operation_risk_tt }
+			set_temp_variable = { POR_heat_add = 16 }
+			POR_add_exposure = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_estatuto_de_cabinda
+		icon = POR_flag_of_kongo
+		x = 0
+		y = 1
+		relative_position_id = POR_a_republica_de_cabinda
+		cost = 10
+		prerequisite = { focus = POR_a_republica_de_cabinda }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_TRADE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = CAB
+			custom_trigger_tooltip = {
+				tooltip = POR_no_rising_prepared_tt
+				CAB = { NOT = { has_country_flag = POR_prioridade@ROOT } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_estatuto_de_cabinda"
+			custom_effect_tooltip = POR_tratado_effect_tt
+			CAB = {
+				set_country_flag = POR_tratado@ROOT
+				add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				reverse_add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+			}
+			set_temp_variable = { percent_change = 10 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = CAB.id }
+			change_influence_percentage = yes
+			add_to_variable = { POR_int_trade_opinion_factor = 0.05 tooltip = trade_opinion_factor_tt }
+			set_temp_variable = { int_investment_change = 8 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_protocolo_de_sao_tome
+		icon = POR_royal_edicts
+		x = 0
+		y = 1
+		relative_position_id = POR_a_estacao_naval_do_golfo
+		cost = 10
+		prerequisite = { focus = POR_a_estacao_naval_do_golfo }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_TRADE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = SAO
+			custom_trigger_tooltip = {
+				tooltip = POR_no_rising_prepared_tt
+				SAO = { NOT = { has_country_flag = POR_prioridade@ROOT } }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_protocolo_de_sao_tome"
+			custom_effect_tooltip = POR_tratado_effect_tt
+			SAO = {
+				set_country_flag = POR_tratado@ROOT
+				add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				reverse_add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+			}
+			set_temp_variable = { percent_change = 10 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = SAO.id }
+			change_influence_percentage = yes
+			add_to_variable = { POR_int_trade_opinion_factor = 0.05 tooltip = trade_opinion_factor_tt }
+			set_temp_variable = { int_investment_change = 8 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_questao_da_praia
+		icon = portugal_flag_people
+		x = 0
+		y = 1
+		relative_position_id = POR_o_estado_associado
+		cost = 10
+		prerequisite = { focus = POR_o_estado_associado }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = VER
+			custom_trigger_tooltip = {
+				tooltip = POR_no_treaty_signed_tt
+				VER = { NOT = { has_country_flag = POR_tratado@ROOT } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ready_for_a_directed_rising_tt
+				POR_ready_for_a_directed_rising = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_questao_da_praia"
+			custom_effect_tooltip = POR_prioridade_effect_tt
+			VER = {
+				set_country_flag = POR_prioridade@ROOT
+				add_to_variable = { POR_net@ROOT = 0.10 }
+				clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+				add_to_variable = { POR_officers@ROOT = 0.05 }
+				clamp_variable = { var = POR_officers@ROOT min = 0 max = 0.3 }
+			}
+			add_to_variable = { POR_int_operation_risk = -0.05 tooltip = operation_risk_tt }
+			set_temp_variable = { POR_heat_add = 10 }
+			POR_add_exposure = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	##################################
+	### AS POTENCIAS
+	##################################
+
+	focus = {
+		id = POR_a_balanca_das_potencias
+		icon = OTT_Sublime_Porte
+		x = 162
+		y = 0
+		cost = 7
+		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_DIPLOMACY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_needs_POR_as_campanhas_tt
+				has_completed_focus = POR_as_campanhas
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_balanca_das_potencias"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_as_potencias_mod
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_as_potencias_mod } } }
+					add_dynamic_modifier = { modifier = POR_as_potencias_mod }
+				}
+			}
+			add_political_power = 50
+			add_to_variable = { POR_pot_decryption_factor = 0.05 tooltip = decryption_factor_tt }
+			add_to_variable = { POR_pot_foreign_influence_modifier = 0.05 tooltip = foreign_influence_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_questao_iberica
+		icon = iberian_summit
+		x = -2
+		y = 1
+		relative_position_id = POR_a_balanca_das_potencias
+		cost = 7
+		prerequisite = { focus = POR_a_balanca_das_potencias }
+		search_filters = { FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = SPR
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_questao_iberica"
+			add_political_power = 50
+			SPR = {
+				add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+				reverse_add_opinion_modifier = { target = ROOT modifier = established_diplomatic_relations }
+			}
+			add_to_variable = { POR_pot_drift_defence_factor = 0.05 tooltip = drift_defence_factor_tt }
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_as_cimeiras_ibericas
+		icon = POR_the_moderating_power
+		x = -1
+		y = 1
+		relative_position_id = POR_a_questao_iberica
+		cost = 10
+		prerequisite = { focus = POR_a_questao_iberica }
+		mutually_exclusive = { focus = POR_a_desespanholizacao }
+		search_filters = { FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_TRADE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			country_exists = SPR
+			SPR = { has_opinion = { target = ROOT value > 19 } }
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_as_cimeiras_ibericas"
+			set_country_flag = POR_cimeiras_ibericas
+			SPR = {
+				add_opinion_modifier = { target = ROOT modifier = diplomatic_proximity }
+				reverse_add_opinion_modifier = { target = ROOT modifier = diplomatic_proximity }
+			}
+			add_to_variable = { POR_pot_trade_opinion_factor = 0.10 tooltip = trade_opinion_factor_tt }
+			add_to_variable = { POR_pot_productivity_growth_modifier = 0.03 tooltip = productivity_growth_modifier_tt }
+			set_temp_variable = { int_investment_change = 10 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_desespanholizacao
+		icon = remember_olivenca
+		x = 1
+		y = 1
+		relative_position_id = POR_a_questao_iberica
+		cost = 10
+		prerequisite = { focus = POR_a_questao_iberica }
+		mutually_exclusive = { focus = POR_as_cimeiras_ibericas }
+		search_filters = { FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = SPR
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_desespanholizacao"
+			set_country_flag = POR_desespanholizacao
+			set_temp_variable = { percent_change = -12 }
+			set_temp_variable = { tag_index = SPR.id }
+			set_temp_variable = { influence_target = ROOT.id }
+			change_influence_percentage = yes
+			SPR = {
+				add_opinion_modifier = { target = ROOT modifier = diplomatic_distance }
+			}
+			add_to_variable = { POR_pot_drift_defence_factor = 0.10 tooltip = drift_defence_factor_tt }
+			add_to_variable = { POR_pot_foreign_subversive_activites = -0.10 tooltip = foreign_subversive_activites_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_alianca_mais_antiga
+		icon = POR_Kingdom_Emblem
+		x = -1
+		y = 2
+		relative_position_id = POR_a_questao_iberica
+		cost = 10
+		prerequisite = { focus = POR_a_questao_iberica }
+		search_filters = { FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_NAVY }
+
+		available = {
+			country_exists = ENG
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_alianca_mais_antiga"
+			set_country_flag = POR_alianca_mais_antiga
+			ENG = {
+				add_opinion_modifier = { target = ROOT modifier = declaration_of_friendship }
+				reverse_add_opinion_modifier = { target = ROOT modifier = declaration_of_friendship }
+				give_military_access = ROOT
+			}
+			add_to_variable = { POR_pot_naval_coordination = 0.05 tooltip = naval_coordination_tt }
+			add_to_variable = { POR_pot_decryption_factor = 0.10 tooltip = decryption_factor_tt }
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_via_de_bruxelas
+		icon = POR_royal_edicts
+		x = 1
+		y = 2
+		relative_position_id = POR_a_questao_iberica
+		cost = 10
+		prerequisite = { focus = POR_a_questao_iberica }
+		search_filters = { FOCUS_FILTER_EUROPEAN_UNION FOCUS_FILTER_DIPLOMACY }
+
+		available = {
+			has_idea = EU_member
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_via_de_bruxelas"
+			set_country_flag = POR_via_de_bruxelas
+			custom_effect_tooltip = POR_a_via_de_bruxelas_effect_tt
+			subtract_from_variable = { POR_shadow_exposure = 8 }
+			clamp_variable = { var = POR_shadow_exposure min = 0 max = 100 }
+			POR_update_exposure_tier = yes
+			add_political_power = 75
+			add_to_variable = { POR_pot_political_power_factor = 0.05 tooltip = political_power_factor_tt }
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_concorrencia_francofona
+		icon = POR_flag_of_kongo
+		x = 0
+		y = 3
+		relative_position_id = POR_a_questao_iberica
+		cost = 10
+		prerequisite = { focus = POR_a_alianca_mais_antiga focus = POR_a_via_de_bruxelas }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_FOREIGN_POLICY }
+
+		available = {
+			country_exists = FRA
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_concorrencia_francofona"
+			set_country_flag = POR_concorrencia_francofona
+			every_other_country = {
+				limit = { is_in_array = { ROOT.POR_network_target_array = THIS.id } }
+				ROOT = {
+					set_temp_variable = { percent_change = -5 }
+					set_temp_variable = { tag_index = FRA.id }
+					set_temp_variable = { influence_target = PREV.id }
+					change_influence_percentage = yes
+				}
+			}
+			FRA = {
+				add_opinion_modifier = { target = ROOT modifier = diplomatic_distance }
+			}
+			add_to_variable = { POR_pot_foreign_influence_continent_modifier = 0.05 tooltip = foreign_influence_continent_modifier_tt }
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_renegociacao_das_lajes
+		icon = Portuguese_Air_Force
+		x = 2
+		y = 1
+		relative_position_id = POR_a_balanca_das_potencias
+		cost = 7
+		prerequisite = { focus = POR_a_balanca_das_potencias }
+		search_filters = { FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_AIRCRAFT }
+
+		available = {
+			country_exists = USA
+			has_idea = NATO_member
+			custom_trigger_tooltip = {
+				tooltip = POR_needs_POR_a_base_das_lajes_tt
+				has_completed_focus = POR_a_base_das_lajes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_renegociacao_das_lajes"
+			set_country_flag = POR_lajes_renegociada
+			USA = {
+				add_opinion_modifier = { target = ROOT modifier = military_aid }
+			}
+			set_temp_variable = { treasury_change = 8 }
+			modify_treasury_effect = yes
+			add_to_variable = { POR_pot_air_range_factor = 0.05 tooltip = air_range_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_cimeira_das_lajes
+		icon = POR_Airforce_Emblem
+		x = -1
+		y = 1
+		relative_position_id = POR_a_renegociacao_das_lajes
+		cost = 10
+		prerequisite = { focus = POR_a_renegociacao_das_lajes }
+		mutually_exclusive = { focus = POR_o_fim_do_acordo }
+		search_filters = { FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_WAR_SUPPORT }
+
+		available = {
+			country_exists = USA
+			date > 2003.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_cimeira_das_lajes"
+			set_country_flag = POR_cimeira_das_lajes
+			USA = {
+				add_opinion_modifier = { target = ROOT modifier = declaration_of_friendship }
+				reverse_add_opinion_modifier = { target = ROOT modifier = declaration_of_friendship }
+			}
+			add_war_support = -0.05
+			add_stability = -0.05
+			add_to_variable = { POR_pot_political_power_gain = 0.05 tooltip = political_power_gain_tt }
+			add_to_variable = { POR_pot_decryption_factor = 0.10 tooltip = decryption_factor_tt }
+			set_temp_variable = { treasury_change = 6 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_fim_do_acordo
+		icon = ohno_step_portugal
+		x = 1
+		y = 1
+		relative_position_id = POR_a_renegociacao_das_lajes
+		cost = 10
+		prerequisite = { focus = POR_a_renegociacao_das_lajes }
+		mutually_exclusive = { focus = POR_a_cimeira_das_lajes }
+		search_filters = { FOCUS_FILTER_DIPLOMACY FOCUS_FILTER_STABILITY }
+
+		available = {
+			country_exists = USA
+			custom_trigger_tooltip = {
+				tooltip = POR_the_atlanticists_do_not_govern_tt
+				NOT = { POR_the_atlanticists_govern = yes }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_fim_do_acordo"
+			set_country_flag = POR_fim_do_acordo
+			clr_country_flag = POR_lajes_renegociada
+			USA = {
+				add_opinion_modifier = { target = ROOT modifier = broke_off_diplomatic_relations }
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_to_variable = { POR_pot_drift_defence_factor = 0.10 tooltip = drift_defence_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_terminal_de_aguas_profundas
+		icon = the_pink_map
+		x = 2
+		y = 2
+		relative_position_id = POR_a_renegociacao_das_lajes
+		cost = 10
+		prerequisite = { focus = POR_a_renegociacao_das_lajes }
+		search_filters = { FOCUS_FILTER_TRADE FOCUS_FILTER_FOREIGN_INVESTMENTS FOCUS_FILTER_INFRASTRUCTURE }
+
+		available = {
+			country_exists = CHI
+			date > 2013.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_terminal_de_aguas_profundas"
+			set_country_flag = POR_terminal_de_aguas_profundas
+			set_temp_variable = { percent_change = 6 }
+			set_temp_variable = { tag_index = CHI.id }
+			set_temp_variable = { influence_target = ROOT.id }
+			change_influence_percentage = yes
+			CHI = {
+				add_opinion_modifier = { target = ROOT modifier = economic_mission }
+				reverse_add_opinion_modifier = { target = ROOT modifier = economic_mission }
+			}
+			1056 = { one_state_infrastructure = yes }
+			add_to_variable = { POR_pot_trade_opinion_factor = 0.10 tooltip = trade_opinion_factor_tt }
+			add_to_variable = { POR_pot_resource_export_multiplier_modifier = 0.05 tooltip = resource_export_multiplier_modifier_tt }
+			set_temp_variable = { int_investment_change = 15 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = 10 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_forum_de_macau
+		icon = Port_Arthur_Colony
+		x = 0
+		y = 2
+		relative_position_id = POR_a_renegociacao_das_lajes
+		cost = 10
+		prerequisite = { focus = POR_a_renegociacao_das_lajes }
+		search_filters = { FOCUS_FILTER_TRADE FOCUS_FILTER_INFLUENCE FOCUS_FILTER_DIPLOMACY }
+
+		available = {
+			country_exists = CHI
+			country_exists = MAC
+			date > 2003.10.12
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_forum_de_macau"
+			set_country_flag = POR_forum_de_macau
+			CHI = {
+				add_opinion_modifier = { target = ROOT modifier = economic_mission }
+				reverse_add_opinion_modifier = { target = ROOT modifier = economic_mission }
+			}
+			every_other_country = {
+				limit = { is_in_array = { ROOT.POR_network_target_array = THIS.id } }
+				add_opinion_modifier = { target = ROOT modifier = economic_mission }
+			}
+			add_to_variable = { POR_pot_trade_opinion_factor = 0.10 tooltip = trade_opinion_factor_tt }
+			add_to_variable = { POR_pot_foreign_influence_continent_modifier = 0.05 tooltip = foreign_influence_continent_modifier_tt }
+			set_temp_variable = { int_investment_change = 10 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_equidistancia
+		icon = POR_burden_empire
+		x = 1
+		y = 3
+		relative_position_id = POR_a_renegociacao_das_lajes
+		cost = 10
+		prerequisite = { focus = POR_o_terminal_de_aguas_profundas focus = POR_o_forum_de_macau }
+		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_DIPLOMACY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_equidistancia"
+			set_country_flag = POR_equidistancia
+			custom_effect_tooltip = POR_a_equidistancia_effect_tt
+			subtract_from_variable = { POR_shadow_exposure = 12 }
+			clamp_variable = { var = POR_shadow_exposure min = 0 max = 100 }
+			POR_update_exposure_tier = yes
+			add_political_power = 100
+			add_to_variable = { POR_pot_foreign_influence_modifier = 0.10 tooltip = foreign_influence_modifier_tt }
+			add_to_variable = { POR_pot_political_power_factor = 0.05 tooltip = political_power_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 10
 			modifier = { factor = 25 POR_ai_shadow_path = yes }
 			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
 		}
