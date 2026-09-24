@@ -402,7 +402,11 @@ focus_tree = {
 			add_political_power = 25
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
 	}
 
 	focus = {
@@ -421,7 +425,11 @@ focus_tree = {
 			add_to_variable = { POR_shadow_foreign_influence_modifier = 0.05 tooltip = foreign_influence_modifier_tt }
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
 	}
 
 	# Everything below this point is the shadow war.
@@ -445,7 +453,11 @@ focus_tree = {
 			unlock_decision_category_tooltip = POR_shadow_ops_category
 		}
 
-		ai_will_do = { base = 5 }
+		ai_will_do = {
+			base = 5
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
 	}
 
 	focus = {
@@ -464,7 +476,11 @@ focus_tree = {
 			add_to_variable = { POR_shadow_foreign_influence_modifier = 0.05 tooltip = foreign_influence_modifier_tt }
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
 	}
 
 	focus = {
@@ -483,7 +499,11 @@ focus_tree = {
 			unlock_decision_tooltip = POR_comprar_os_generais
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
 	}
 
 	focus = {
@@ -504,7 +524,11 @@ focus_tree = {
 			add_to_variable = { POR_political_drift_defence_factor = 0.10 tooltip = drift_defence_factor_tt }
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 has_global_flag = POR_LUSOPHONE_FOCUS_PATH }
+			modifier = { factor = 0 POR_ai_not_lusophone_path = yes }
+		}
 	}
 
 	focus = {
@@ -526,7 +550,11 @@ focus_tree = {
 			add_to_variable = { POR_shadow_send_volunteer_size = 1 tooltip = send_volunteer_size_tt }
 		}
 
-		ai_will_do = { base = 5 }
+		ai_will_do = {
+			base = 5
+			modifier = { factor = 25 has_global_flag = POR_IMPERIAL_FOCUS_PATH }
+			modifier = { factor = 0 POR_ai_not_imperial_path = yes }
+		}
 	}
 
 	focus = {
@@ -544,7 +572,11 @@ focus_tree = {
 			add_ideas = POR_idea_legiao_portuguesa_1
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
 	}
 
 	focus = {
@@ -563,7 +595,11 @@ focus_tree = {
 			unlock_decision_tooltip = POR_o_pronunciamento_local
 		}
 
-		ai_will_do = { base = 5 }
+		ai_will_do = {
+			base = 5
+			modifier = { factor = 25 has_global_flag = POR_IMPERIAL_FOCUS_PATH }
+			modifier = { factor = 0 POR_ai_not_imperial_path = yes }
+		}
 	}
 
 	focus = {
@@ -587,7 +623,11 @@ focus_tree = {
 			unlock_decision_category_tooltip = POR_escola_ultramar_category
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
 	}
 
 	focus = {
@@ -609,7 +649,11 @@ focus_tree = {
 			increase_intervention_law_effect = yes
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 has_global_flag = POR_IMPERIAL_FOCUS_PATH }
+			modifier = { factor = 0 POR_ai_not_imperial_path = yes }
+		}
 	}
 
 	focus = {
@@ -628,7 +672,11 @@ focus_tree = {
 			custom_effect_tooltip = POR_a_segunda_vaga_tt
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 has_global_flag = POR_IMPERIAL_FOCUS_PATH }
+			modifier = { factor = 0 POR_ai_not_imperial_path = yes }
+		}
 	}
 
 	focus = {
@@ -647,7 +695,11 @@ focus_tree = {
 			add_to_variable = { POR_political_drift_defence_factor = 0.05 tooltip = drift_defence_factor_tt }
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
 	}
 
 	focus = {
@@ -672,7 +724,11 @@ focus_tree = {
 			custom_effect_tooltip = POR_permanecer_na_europa_tt
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 has_global_flag = POR_LUSOPHONE_FOCUS_PATH }
+			modifier = { factor = 0 POR_ai_not_lusophone_path = yes }
+		}
 	}
 
 	focus = {
@@ -705,7 +761,11 @@ focus_tree = {
 			add_war_support = 0.05
 		}
 
-		ai_will_do = { base = 3 }
+		ai_will_do = {
+			base = 3
+			modifier = { factor = 25 has_global_flag = POR_IMPERIAL_FOCUS_PATH }
+			modifier = { factor = 0 POR_ai_not_imperial_path = yes }
+		}
 	}
 
 	focus = {
@@ -735,6 +795,10 @@ focus_tree = {
 			add_political_power = 100
 		}
 
-		ai_will_do = { base = 10 }
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 has_global_flag = POR_IMPERIAL_FOCUS_PATH }
+			modifier = { factor = 0 POR_ai_not_imperial_path = yes }
+		}
 	}
 }

@@ -1,0 +1,116 @@
+POR_HISTORICAL_plan = {
+	allowed = { original_tag = POR }
+	name = "Historical"
+	desc = "Convergence, the euro and a quiet place inside the Union"
+
+	enable = {
+		has_global_flag = POR_HISTORICAL_FOCUS_PATH
+	}
+
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		POR_o_programa_de_convergencia
+		POR_o_euro_e_a_divida
+		POR_a_terceira_republica
+		POR_reforma_do_estado
+		POR_educacao_para_todos
+		POR_a_reindustrializacao
+		POR_a_reestruturacao_da_divida
+		POR_combate_a_corrupcao
+		POR_o_regresso_aos_mercados
+		POR_o_tribunal_de_contas
+		POR_o_recenseamento_da_diaspora
+		POR_a_web_summit
+		POR_portugal_2030
+		POR_a_comunidade_lusofona
+		POR_o_instituto_camoes
+	}
+
+	focus_factors = {
+		POR_a_realpolitik_lusofona = 0
+		POR_a_via_aberta = 0
+		POR_o_pronunciamento = 0
+		POR_a_saida_atlantica = 0
+	}
+}
+
+POR_LUSOPHONE_plan = {
+	allowed = { original_tag = POR }
+	name = "The Lusophone Community"
+	desc = "Soft power across the former empire, and a network that never has to be used"
+
+	enable = {
+		has_global_flag = POR_LUSOPHONE_FOCUS_PATH
+	}
+
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		POR_a_comunidade_lusofona
+		POR_o_instituto_camoes
+		POR_o_programa_de_convergencia
+		POR_a_realpolitik_lusofona
+		POR_os_amigos_do_regime
+		POR_a_terceira_republica
+		POR_a_rede_de_oficiais
+		POR_a_via_discreta
+		POR_o_euro_e_a_divida
+		POR_a_legiao_portuguesa
+		POR_a_escola_de_guerra_de_africa
+		POR_reforma_do_estado
+		POR_a_reindustrializacao
+		POR_a_questao_europeia
+		POR_permanecer_na_europa
+		POR_educacao_para_todos
+		POR_o_recenseamento_da_diaspora
+	}
+
+	focus_factors = {
+		POR_a_via_aberta = 0
+		POR_a_saida_atlantica = 0
+	}
+}
+
+POR_IMPERIAL_plan = {
+	allowed = { original_tag = POR }
+	name = "The Fifth Empire"
+	desc = "Client governments installed by force, and an exit from Europe when the bill arrives"
+
+	enable = {
+		has_global_flag = POR_IMPERIAL_FOCUS_PATH
+	}
+
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		POR_a_comunidade_lusofona
+		POR_a_realpolitik_lusofona
+		POR_os_amigos_do_regime
+		POR_a_rede_de_oficiais
+		POR_a_via_aberta
+		POR_a_legiao_portuguesa
+		POR_o_pronunciamento
+		POR_a_escola_de_guerra_de_africa
+		POR_a_projeccao_de_forcas
+		POR_a_segunda_vaga
+		POR_o_programa_de_convergencia
+		POR_o_euro_e_a_divida
+		POR_a_questao_europeia
+		POR_a_saida_atlantica
+		POR_o_imperio_informal
+		POR_a_terceira_republica
+		POR_a_reindustrializacao
+	}
+
+	focus_factors = {
+		POR_a_via_discreta = 0
+		POR_permanecer_na_europa = 0
+	}
+}
