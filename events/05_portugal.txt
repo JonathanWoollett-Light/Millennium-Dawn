@@ -403,3 +403,16 @@ news_event = {
 
 	option = { name = portugal_news.7.a }
 }
+
+# The argument stops being an argument.
+news_event = {
+	id = portugal_news.8
+	title = portugal_news.8.t
+	desc = portugal_news.8.d
+	picture = GFX_news_election_rally
+
+	major = yes
+	is_triggered_only = yes
+
+	option = { name = portugal_news.8.a }
+}

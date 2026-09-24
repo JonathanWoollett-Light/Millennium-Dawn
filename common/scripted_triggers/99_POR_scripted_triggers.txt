@@ -68,6 +68,49 @@ POR_ideology_tier_4 = {
 	check_variable = { POR_ideological_development > 79 }
 }
 
+# Whether the government has a base worth organising, and whether anyone else does.
+POR_ruling_party_has_support = {
+	check_variable = { party_pop_array^ruling_party > 0.15 }
+}
+
+POR_has_an_opposition = {
+	check_variable = { POR_opposition_party > -1 }
+}
+
+# The strongest outlook out of office, cached weekly by POR_update_ideology_support.
+POR_revolt_has_support = {
+	check_variable = { POR_revolt_party > -1 }
+	check_variable = { POR_revolt_support > 0.34 }
+}
+
+# Which family holds office. The alignment focuses read these; the socialists sit in the
+# Atlantic camp rather than the left one, which is the whole quarrel of the period.
+POR_the_left_governs = {
+	OR = {
+		check_variable = { ruling_party = 4 }
+		check_variable = { ruling_party = 5 }
+		check_variable = { ruling_party = 18 }
+		check_variable = { ruling_party = 19 }
+	}
+}
+
+POR_the_atlanticists_govern = {
+	OR = {
+		check_variable = { ruling_party = 1 }
+		check_variable = { ruling_party = 2 }
+		check_variable = { ruling_party = 3 }
+	}
+}
+
+POR_the_national_right_governs = {
+	OR = {
+		check_variable = { ruling_party = 14 }
+		check_variable = { ruling_party = 20 }
+		check_variable = { ruling_party = 22 }
+		check_variable = { ruling_party = 23 }
+	}
+}
+
 # A policy path is open while the country is uncommitted, already on it, or the other side
 # has just won a majority and may tear it up.
 POR_fiscal_path_1_open = {

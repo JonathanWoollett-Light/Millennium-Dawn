@@ -10,6 +10,8 @@ POR_economy_modifier = {
 	interest_rate_multiplier_modifier = POR_economy_interest_rate_multiplier_modifier
 	return_on_investment_modifier = POR_economy_return_on_investment_modifier
 	local_resources_factor = POR_economy_local_resources_factor
+	trade_opinion_factor = POR_economy_trade_opinion_factor
+	bureaucracy_cost_multiplier_modifier = POR_economy_bureaucracy_cost
 	monthly_population = POR_economy_monthly_population
 }
 
@@ -47,6 +49,8 @@ POR_ideologia_modifier = {
 	drift_defence_factor = POR_political_drift_defence_ideo
 	communism_drift = POR_ideologia_communism_drift
 	nationalist_drift = POR_ideologia_nationalist_drift
+	democratic_drift = POR_ideologia_democratic_drift
+	neutrality_drift = POR_ideologia_neutrality_drift
 	political_power_gain = POR_ideologia_political_power_gain
 }
 
@@ -74,6 +78,8 @@ POR_forca_aerea = {
 	air_agility_factor = POR_air_air_agility_factor
 	experience_gain_air_factor = POR_experience_gain_air_factor
 	air_range_factor = POR_air_air_range_factor
+	air_cas_present_factor = POR_air_air_cas_present_factor
+	air_intercept_efficiency = POR_air_air_intercept_efficiency
 }
 
 # What it costs to keep an army in someone else's war, six thousand kilometres from the
@@ -107,4 +113,77 @@ POR_eu_exposure_modifier = {
 	foreign_influence_defense_modifier = POR_exposure_foreign_influence_defense_modifier
 	interest_rate_multiplier_modifier = POR_exposure_interest_rate_multiplier_modifier
 	stability_factor = POR_exposure_stability_factor
+}
+
+POR_marinha = {
+	icon = GFX_idea_por_colonial_army
+
+	naval_coordination = POR_navy_naval_coordination
+	naval_detection = POR_navy_naval_detection
+	navy_visibility = POR_navy_navy_visibility
+	convoy_raiding_efficiency_factor = POR_navy_convoy_raiding_efficiency_factor
+	navy_submarine_detection_factor = POR_navy_navy_submarine_detection_factor
+	naval_invasion_capacity = POR_navy_naval_invasion_capacity
+	experience_gain_navy_factor = POR_navy_experience_gain_navy_factor
+}
+
+POR_politica_financeira = {
+	icon = GFX_idea_por_ogme
+
+	civilian_factories_productivity = POR_pfin_civilian_factories_productivity
+	consumer_goods_factor = POR_pfin_consumer_goods_factor
+	foreign_influence_defense_modifier = POR_pfin_foreign_influence_defense_modifier
+	interest_rate_multiplier_modifier = POR_pfin_interest_rate_multiplier_modifier
+	political_manipulation_corruption_factor = POR_pfin_political_manipulation_corruption_factor
+	political_power_gain = POR_pfin_political_power_gain
+	production_speed_buildings_factor = POR_pfin_production_speed_buildings_factor
+	productivity_growth_modifier = POR_pfin_productivity_growth_modifier
+	return_on_investment_modifier = POR_pfin_return_on_investment_modifier
+	stability_factor = POR_pfin_stability_factor
+	tax_gain_multiplier_modifier = POR_pfin_tax_gain_multiplier_modifier
+	trade_opinion_factor = POR_pfin_trade_opinion_factor
+}
+
+POR_politica_industrial = {
+	icon = GFX_idea_por_empire
+
+	agricolture_productivity_modifier = POR_pind_agricolture_productivity_modifier
+	civilian_factories_productivity = POR_pind_civilian_factories_productivity
+	consumer_goods_factor = POR_pind_consumer_goods_factor
+	energy_gain_multiplier = POR_pind_energy_gain_multiplier
+	energy_use_multiplier = POR_pind_energy_use_multiplier
+	foreign_influence_continent_modifier = POR_pind_foreign_influence_continent_modifier
+	foreign_influence_defense_modifier = POR_pind_foreign_influence_defense_modifier
+	fossil_pp_energy_generation_modifier = POR_pind_fossil_pp_energy_generation_modifier
+	hydroelectric_power_generation_modifier = POR_pind_hydroelectric_power_generation_modifier
+	infrastructure_cost_multiplier_modifier = POR_pind_infrastructure_cost_multiplier_modifier
+	interest_rate_multiplier_modifier = POR_pind_interest_rate_multiplier_modifier
+	nuclear_energy_generation_modifier = POR_pind_nuclear_energy_generation_modifier
+	political_manipulation_corruption_factor = POR_pind_political_manipulation_corruption_factor
+	production_speed_buildings_factor = POR_pind_production_speed_buildings_factor
+	production_speed_infrastructure_factor = POR_pind_production_speed_infrastructure_factor
+	productivity_growth_modifier = POR_pind_productivity_growth_modifier
+	renewable_energy_gain_multiplier = POR_pind_renewable_energy_gain_multiplier
+	research_speed_factor = POR_pind_research_speed_factor
+	return_on_investment_modifier = POR_pind_return_on_investment_modifier
+	stability_factor = POR_pind_stability_factor
+	trade_opinion_factor = POR_pind_trade_opinion_factor
+}
+
+POR_politica_social = {
+	icon = GFX_idea_por_unstable_republic
+
+	consumer_goods_factor = POR_psoc_consumer_goods_factor
+	education_cost_multiplier_modifier = POR_psoc_education_cost_multiplier_modifier
+	expected_healthcare_modifier = POR_psoc_expected_healthcare_modifier
+	health_cost_multiplier_modifier = POR_psoc_health_cost_multiplier_modifier
+	monthly_population = POR_psoc_monthly_population
+	political_manipulation_corruption_factor = POR_psoc_political_manipulation_corruption_factor
+	political_power_gain = POR_psoc_political_power_gain
+	productivity_growth_modifier = POR_psoc_productivity_growth_modifier
+	research_speed_factor = POR_psoc_research_speed_factor
+	return_on_investment_modifier = POR_psoc_return_on_investment_modifier
+	social_cost_multiplier_modifier = POR_psoc_social_cost_multiplier_modifier
+	stability_factor = POR_psoc_stability_factor
+	trade_opinion_factor = POR_psoc_trade_opinion_factor
 }
