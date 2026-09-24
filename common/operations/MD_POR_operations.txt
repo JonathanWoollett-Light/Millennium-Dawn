@@ -8,9 +8,9 @@ POR_operation_pronunciamento = {
 	desc = POR_operation_pronunciamento_desc
 	priority = 1
 
-	days = 60
-	network_strength = 40
-	operatives = 2
+	days = 90
+	network_strength = 70
+	operatives = 3
 
 	visible = {
 		num_of_operatives > 0
@@ -32,13 +32,20 @@ POR_operation_pronunciamento = {
 			NOT = { is_in_faction_with = ROOT }
 			NOT = { has_government = ROOT }
 			NOT = { has_country_flag = POR_client_cooldown@ROOT }
-			influence_higher_10 = yes
-			check_variable = { POR_net@ROOT > 0.499 }
+			influence_higher_30 = yes
+			check_variable = { POR_net@ROOT > 0.699 }
+			check_variable = { POR_officers@ROOT > 0.14 }
+			has_country_flag = POR_raid_recent@ROOT
+		}
+		has_equipment = { infantry_weapons_1 > 4999 }
+		custom_trigger_tooltip = {
+			tooltip = POR_operation_pronunciamento_cost_tt
+			check_variable = { treasury > 11.9 }
 		}
 	}
 
 	equipment = {
-		infantry_weapons_type = 1000
+		infantry_weapons_type = 5000
 	}
 
 	required_tokens = {
@@ -46,7 +53,7 @@ POR_operation_pronunciamento = {
 		token_army
 	}
 
-	risk_chance = 0.35
+	risk_chance = 0.50
 	experience = 4
 	outcome_extra_chance = 0.20
 	risk_modifiers = { operation_risk }
@@ -55,7 +62,9 @@ POR_operation_pronunciamento = {
 
 	on_start = { # SCOPE_OPERATION
 		ROOT = {
-			set_country_flag = { flag = POR_pronunciamento_running days = 90 value = 1 }
+			set_country_flag = { flag = POR_pronunciamento_running days = 120 value = 1 }
+			set_temp_variable = { treasury_change = -12 }
+			modify_treasury_effect = yes
 			FROM = { POR_score_client = yes }
 			set_temp_variable = { POR_heat_add = 6 }
 			POR_add_exposure = yes
@@ -63,11 +72,22 @@ POR_operation_pronunciamento = {
 	}
 
 	outcome_execute = { # SCOPE_OPERATION
-		ROOT = { POR_start_client_civil_war = yes }
+		ROOT = {
+			POR_start_client_civil_war = yes
+			# Which side Portugal then backs is a decision, not an assumption, and it is not
+			# always free: a government that has already traced a raid to Lisbon will not take
+			# Portuguese help whatever Lisbon offers.
+			country_event = { id = portugal.73 hours = 12 }
+		}
 	}
 
+	# outcome_extra_execute REPLACES outcome_execute rather than adding to it
+	# (common/operations/_documentation.info:214), so the rising has to be started here too or
+	# one attempt in five would buy ninety days, three operatives and twelve billion of nothing.
 	outcome_extra_execute = { # SCOPE_OPERATION
 		ROOT = {
+			POR_start_client_civil_war = yes
+			country_event = { id = portugal.73 hours = 12 }
 			# A rising the garrison joined rather than fought costs us less of our own money.
 			set_temp_variable = { treasury_change = 4 }
 			modify_treasury_effect = yes
@@ -113,6 +133,157 @@ POR_operation_pronunciamento = {
 		modifier = {
 			factor = 0
 			check_variable = { POR_shadow_exposure > 54 }
+		}
+	}
+}
+
+# The false flag. A raid on a barracks or a ministry that leaves evidence pointing at somebody
+# the host already distrusts. It starts nothing on its own; it is the precondition the directed
+# rising asks for, and it is where the risk of the whole chain actually sits. Failing it is what
+# tells the host government that Portugal is the problem.
+POR_operation_falsa_bandeira = {
+	icon = GFX_operations_targeted_sabotage
+	map_icon = GFX_operations_targeted_sabotage_map
+	name = POR_operation_falsa_bandeira
+	desc = POR_operation_falsa_bandeira_desc
+	priority = 2
+
+	days = 45
+	network_strength = 35
+	operatives = 2
+
+	visible = {
+		num_of_operatives > 1
+		has_country_flag = POR_falsa_bandeira_unlocked
+		NOT = { has_country_flag = POR_stood_down }
+		FROM = {
+			exists = yes
+			is_in_array = { ROOT.POR_network_target_array = THIS.id }
+		}
+	}
+
+	available = {
+		FROM = {
+			has_civil_war = no
+			is_subject = no
+			NOT = { has_war_with = ROOT }
+			NOT = { has_country_flag = POR_raid_recent@ROOT }
+			check_variable = { POR_net@ROOT > 0.299 }
+		}
+	}
+
+	requirements = {
+		FROM = { any_owned_state = { is_capital = no } }
+	}
+	selection_target = {
+		targets = { FROM }
+	}
+	selection_target_state = {
+		is_capital = no
+	}
+
+	equipment = {
+		infantry_weapons_type = 500
+	}
+
+	required_tokens = {
+		token_civilian
+	}
+
+	risk_chance = 0.40
+	experience = 3
+	outcome_extra_chance = 0.20
+	risk_modifiers = { operation_risk }
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+
+	on_start = { # SCOPE_OPERATION
+		ROOT = {
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+			set_temp_variable = { POR_heat_add = 4 }
+			POR_add_exposure = yes
+		}
+	}
+
+	outcome_execute = { # SCOPE_OPERATION
+		FROM = {
+			set_country_flag = { flag = POR_raid_recent@ROOT days = 180 value = 1 }
+			add_stability = -0.05
+			add_war_support = 0.05
+			country_event = { id = portugal.72 days = 2 }
+
+			# The operation format has no failure hook, so attribution is rolled here: even a
+			# raid that goes to plan can be traced, and the deeper we are the harder they are
+			# already looking. A traced sponsor cannot afterwards offer the government its help.
+			set_temp_variable = { POR_blown_chance = 20 }
+			if = {
+				limit = { has_idea = POR_presenca_lusofona_2 }
+				set_temp_variable = { POR_blown_chance = 30 }
+			}
+			if = {
+				limit = { has_idea = POR_presenca_lusofona_3 }
+				set_temp_variable = { POR_blown_chance = 45 }
+			}
+			random = {
+				chance = var:POR_blown_chance
+				set_country_flag = { flag = POR_raid_blown@ROOT days = 365 value = 1 }
+				add_opinion_modifier = { target = ROOT modifier = accused_of_interference }
+				ROOT = {
+					set_temp_variable = { POR_heat_add = 12 }
+					POR_add_exposure = yes
+				}
+			}
+		}
+		ROOT = { army_experience = 15 }
+	}
+
+	# Replaces outcome_execute rather than adding to it, so the pretext is set here as well.
+	# This is the raid that was never traced: same pretext, no attribution roll.
+	outcome_extra_execute = { # SCOPE_OPERATION
+		FROM = {
+			set_country_flag = { flag = POR_raid_recent@ROOT days = 180 value = 1 }
+			add_stability = -0.05
+			add_war_support = 0.05
+			country_event = { id = portugal.72 days = 2 }
+			# The evidence lands on somebody else entirely, which is the whole point.
+			add_to_variable = { POR_net@ROOT = 0.05 }
+			clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+		}
+		ROOT = { army_experience = 15 }
+	}
+
+	outcome_potential = {
+		custom_effect_tooltip = POR_operation_falsa_bandeira_outcome_tt
+	}
+
+	phases = { # infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = { has_war = no }
+			}
+		}
+	}
+	phases = { # the raid itself
+		targeted_sabotage_plant_explosives = { base = 90 }
+		targeted_sabotage_organize_more_meetings = { base = 10 }
+	}
+	phases = { # exfiltration
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+
+	ai_will_do = {
+		base = 3
+		modifier = {
+			factor = 0
+			check_variable = { POR_shadow_exposure > 59 }
 		}
 	}
 }

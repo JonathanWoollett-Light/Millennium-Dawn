@@ -184,6 +184,29 @@ ideas = {
 
 		# The client ladder. These sit on the country Portugal is cultivating, so the
 		# trade and industry terms are targeted back at Portugal.
+		# The CPLP, as seen from inside it. Every Portuguese-speaking state carries this from the
+		# start, so a player on the other side of the table can see the relationship exists
+		# before anything is being done to them, and knows where to look when it is.
+		POR_comunidade_lusofona_idea = {
+			picture = por_empire
+			allowed_civil_war = { always = yes }
+			cancel = {
+				OR = {
+					has_war_with = POR
+					NOT = { country_exists = POR }
+				}
+			}
+			modifier = {
+				political_power_gain = 0.02
+				enemy_operative_detection_chance_factor = 0.05
+			}
+			targeted_modifier = {
+				tag = POR
+				trade_opinion_factor = 0.10
+				extra_trade_to_target_factor = 0.10
+			}
+		}
+
 		POR_presenca_lusofona_1 = {
 			picture = por_iberian_workers_united
 			allowed_civil_war = { always = yes }
@@ -203,6 +226,7 @@ ideas = {
 			picture = por_colonial_assimilation
 			allowed_civil_war = { always = yes }
 			modifier = {
+				enemy_operative_detection_chance_factor = 0.15
 				foreign_influence_defense_modifier = -0.05
 				local_resources_factor = -0.15
 				resource_export_multiplier_modifier = -0.20
@@ -227,6 +251,8 @@ ideas = {
 				}
 			}
 			modifier = {
+				enemy_operative_detection_chance_factor = 0.30
+				operative_slot = 1
 				foreign_influence_defense_modifier = -0.08
 				local_resources_factor = -0.15
 				resource_export_multiplier_modifier = -0.20

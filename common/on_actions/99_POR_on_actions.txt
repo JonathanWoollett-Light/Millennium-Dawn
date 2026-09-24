@@ -4,6 +4,10 @@ on_actions = {
 	# the client unable to finish it (99_SOV_on_actions.txt:143).
 	on_civil_war_end = {
 		effect = {
+			# ROOT is the winner here, so a side Portugal backed is identified by the
+			# flag it still carries.
+			POR_resolve_backing = yes
+
 			if = {
 				limit = { has_country_flag = POR_client_pending_puppet }
 				clr_country_flag = POR_client_pending_puppet

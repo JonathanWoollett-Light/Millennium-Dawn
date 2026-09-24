@@ -557,3 +557,135 @@ country_event = {
 		}
 	}
 }
+
+# A war we paid for has been won by the people we paid. FROM is the winner.
+country_event = {
+	id = portugal.70
+	title = portugal.70.t
+	desc = portugal.70.d
+	picture = GFX_SAO_coup
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.70.a
+		add_war_support = 0.03
+		add_stability = 0.02
+	}
+}
+
+# A war we paid for has been won by the other people. FROM is the winner.
+country_event = {
+	id = portugal.71
+	title = portugal.71.t
+	desc = portugal.71.d
+	picture = GFX_african_refugee_camp
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.71.a
+		add_stability = -0.03
+		add_political_power = -25
+	}
+}
+
+# The host government works out that somebody blew up its barracks. FROM is Portugal, though
+# the event only says so if the raid was traced.
+country_event = {
+	id = portugal.72
+	title = portugal.72.t
+	desc = portugal.72.d
+	picture = GFX_senegal_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.72.a
+		trigger = { NOT = { has_country_flag = POR_raid_blown@FROM } }
+		add_stability = -0.03
+		add_war_support = 0.05
+	}
+
+	option = {
+		name = portugal.72.b
+		trigger = { has_country_flag = POR_raid_blown@FROM }
+		add_stability = -0.03
+		add_war_support = 0.05
+		add_political_power = 50
+		FROM = {
+			set_temp_variable = { POR_heat_add = 8 }
+			POR_add_exposure = yes
+		}
+	}
+}
+
+# The rising has happened and Lisbon must decide, inside its own cabinet and on the record,
+# which of the two governments it recognises. ROOT is Portugal and FROM is the country that
+# split; the rebels are the fresh client carrying POR_client_fresh.
+country_event = {
+	id = portugal.73
+	title = portugal.73.t
+	desc = portugal.73.d
+	picture = GFX_SAO_coup
+
+	is_triggered_only = yes
+
+	# Back the people we put there.
+	option = {
+		name = portugal.73.a
+		ai_chance = { base = 80 }
+
+		set_temp_variable = { POR_commit_heat = 14 }
+		random_country = {
+			limit = {
+				has_country_flag = POR_shadow_client
+				has_country_flag = POR_client_fresh
+			}
+			POR_commit_here = yes
+		}
+		FROM = { POR_mark_opposed = yes }
+	}
+
+	# Back the government against the rising we started, which leaves Portugal looking like the
+	# only friend it has. A government that has already traced a raid to Lisbon will not take it.
+	option = {
+		name = portugal.73.b
+		trigger = { FROM = { NOT = { has_country_flag = POR_raid_blown@ROOT } } }
+		ai_chance = { base = 20 }
+
+		set_temp_variable = { POR_commit_heat = 6 }
+		FROM = { POR_commit_here = yes }
+		random_country = {
+			limit = {
+				has_country_flag = POR_shadow_client
+				has_country_flag = POR_client_fresh
+			}
+			POR_mark_opposed = yes
+		}
+	}
+
+	# Say nothing, recognise nobody, and sell to both.
+	option = {
+		name = portugal.73.c
+		ai_chance = { base = 10 }
+		add_political_power = 25
+		set_temp_variable = { POR_heat_add = 4 }
+		POR_add_exposure = yes
+	}
+}
+
+# A client has rolled up our network. FROM is the country that did it.
+country_event = {
+	id = portugal.74
+	title = portugal.74.t
+	desc = portugal.74.d
+	picture = GFX_african_refugee_camp
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.74.a
+		add_political_power = -25
+	}
+}

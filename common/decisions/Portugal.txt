@@ -805,3 +805,65 @@ POR_intervencao_category = {
 		ai_will_do = { base = 5 }
 	}
 }
+
+# Not Portugal's decisions. A country deep enough in the Portuguese sphere to carry the second
+# or third presence idea can see what is being done to it, and this is what it can do back.
+POR_contra_espionagem_category = {
+
+	POR_purgar_a_rede = {
+		icon = GFX_decision_generic_arrest
+
+		cost = 125
+		days_remove = 90
+		days_re_enable = 730
+
+		visible = {
+			country_exists = POR
+			OR = {
+				has_idea = POR_presenca_lusofona_2
+				has_idea = POR_presenca_lusofona_3
+			}
+		}
+
+		available = {
+			has_civil_war = no
+			NOT = { has_war_with = POR }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_purgar_a_rede"
+			add_stability = -0.05
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove POR_purgar_a_rede"
+			subtract_from_variable = { POR_net@POR = 0.25 }
+			clamp_variable = { var = POR_net@POR min = 0 max = 1 }
+			set_variable = { POR_officers@POR = 0 }
+			set_country_flag = { flag = POR_purge_cooldown days = 365 value = 1 }
+			clr_country_flag = POR_raid_recent@POR
+			add_opinion_modifier = { target = POR modifier = accused_of_interference }
+			set_temp_variable = { percent_change = -8 }
+			set_temp_variable = { tag_index = POR.id }
+			set_temp_variable = { influence_target = THIS.id }
+			change_influence_percentage = yes
+			POR = {
+				set_temp_variable = { POR_heat_add = 10 }
+				POR_add_exposure = yes
+				country_event = { id = portugal.74 hours = 12 }
+			}
+		}
+
+		ai_will_do = {
+			base = 50
+			modifier = {
+				factor = 2
+				has_idea = POR_presenca_lusofona_3
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = POR_purge_cooldown
+			}
+		}
+	}
+}

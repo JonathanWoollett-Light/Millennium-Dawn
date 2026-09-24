@@ -43,6 +43,15 @@ POR_shadow_startup = {
 		limit = { NOT = { has_dynamic_modifier = { modifier = POR_shadow_network } } }
 		add_dynamic_modifier = { modifier = POR_shadow_network }
 	}
+
+	# Everybody in the community can see they are in it.
+	every_other_country = {
+		limit = {
+			portuguese_speaking = yes
+			NOT = { has_idea = POR_comunidade_lusofona_idea }
+		}
+		add_ideas = POR_comunidade_lusofona_idea
+	}
 }
 
 # Scores one country Portugal is working on. Runs in that country's scope with ROOT = POR,
@@ -122,7 +131,7 @@ POR_add_exposure = {
 	# client - an annexation, a coup in Madrid, a garrison left on a beach - were multiplying
 	# by an unset temp and adding nothing.
 	if = {
-		limit = { NOT = { has_variable = POR_heat_mult } }
+		limit = { check_variable = { POR_heat_mult = 0 } }
 		set_temp_variable = { POR_heat_mult = 1 }
 	}
 	multiply_temp_variable = { POR_heat_add = POR_heat_mult }
@@ -716,7 +725,7 @@ POR_update_blocs = {
 # argument the country has already had cannot be un-had. POR_ideo_add is the input.
 POR_raise_ideological_development = {
 	if = {
-		limit = { NOT = { has_variable = POR_ideo_add } }
+		limit = { check_variable = { POR_ideo_add = 0 } }
 		set_temp_variable = { POR_ideo_add = 2 }
 	}
 	# The raw variable change prints an empty "which grants:" block whenever the tier it
@@ -2018,7 +2027,7 @@ POR_abandon_costumes_path_2 = {
 # instead of widening it. Takes POR_ideo_sub.
 POR_cool_ideological_development = {
 	if = {
-		limit = { NOT = { has_variable = POR_ideo_sub } }
+		limit = { check_variable = { POR_ideo_sub = 0 } }
 		set_temp_variable = { POR_ideo_sub = 10 }
 	}
 	custom_effect_tooltip = POR_ideological_development_down_tt
@@ -2334,4 +2343,118 @@ POR_run_madrid_coup = {
 	set_temp_variable = { POR_heat_add = 30 }
 	POR_add_exposure = yes
 	news_event = { id = portugal_news.9 hours = 12 }
+}
+
+# Backing a side in somebody else's civil war.
+#
+# The commitment is recorded as a flag on each side rather than as a tag id held by Portugal,
+# because a rebel is a dynamic tag that may not survive the war, and because on_civil_war_end
+# hands us the winner as ROOT and annexes the loser
+# (common/on_actions/05_lar_on_actions.txt:975). A flag travels with the country scope whatever
+# happens to the tag, so "did our side win" is answered by looking at the winner alone.
+#
+# The price of a commitment is paid when it is made and the reward when it is won, and the
+# reward lands on the winner - influence, a network and standing there - rather than as a bonus
+# at home. The multiplier is fixed at commitment time and stored on the backed side, so backing
+# an underdog is priced the day it is done and a second commitment elsewhere cannot overwrite it.
+
+# All three run in the scope of the country concerned, with ROOT as Portugal. Every caller is a
+# focus completion or an event option, where ROOT is Portugal already, so nothing has to be
+# threaded through FROM.
+
+# The side Portugal is backing.
+POR_mark_backed = {
+	set_country_flag = POR_backed_by_portugal
+	clr_country_flag = POR_opposed_by_portugal
+	add_opinion_modifier = { target = ROOT modifier = supported_our_claim }
+}
+
+# The side Portugal is backing against.
+POR_mark_opposed = {
+	set_country_flag = POR_opposed_by_portugal
+	clr_country_flag = POR_backed_by_portugal
+	add_opinion_modifier = { target = ROOT modifier = supported_opposition }
+}
+
+# The commitment itself, run on the side being backed. The underdog multiplier is scored and
+# stored here, on this country, so a later commitment somewhere else cannot overwrite it.
+# Takes POR_commit_heat on Portugal.
+POR_commit_here = {
+	POR_score_client = yes
+	set_variable = { POR_backing_mult@ROOT = ROOT.POR_reward_mult }
+	POR_mark_backed = yes
+
+	ROOT = {
+		add_to_variable = { POR_backing_count = 1 }
+		if = {
+			limit = { check_variable = { POR_commit_heat = 0 } }
+			set_temp_variable = { POR_commit_heat = 10 }
+		}
+		set_temp_variable = { POR_heat_add = POR_commit_heat }
+		POR_add_exposure = yes
+		clear_variable = POR_commit_heat
+		custom_effect_tooltip = POR_commit_to_a_side_tt
+	}
+}
+
+# Called from on_civil_war_end in the WINNER's scope. Portugal is a third party here, so
+# anything of ours runs inside an explicit POR scope.
+POR_resolve_backing = {
+	if = {
+		limit = {
+			has_country_flag = POR_backed_by_portugal
+			country_exists = POR
+		}
+		clr_country_flag = POR_backed_by_portugal
+		if = {
+			limit = { NOT = { has_variable = POR_backing_mult@POR } }
+			set_variable = { POR_backing_mult@POR = 1 }
+		}
+		set_temp_variable = { POR_pay = 12 }
+		multiply_temp_variable = { POR_pay = POR_backing_mult@POR }
+		round_temp_variable = POR_pay
+
+		add_to_variable = { POR_net@POR = 0.25 }
+		clamp_variable = { var = POR_net@POR min = 0 max = 1 }
+		add_opinion_modifier = { target = POR modifier = ideological_alliance }
+		reverse_add_opinion_modifier = { target = POR modifier = ideological_alliance }
+
+		POR = {
+			set_temp_variable = { percent_change = PREV.POR_pay }
+			set_temp_variable = { tag_index = THIS.id }
+			set_temp_variable = { influence_target = PREV.id }
+			change_influence_percentage = yes
+			add_to_variable = { POR_int_trade_opinion_factor = 0.05 tooltip = trade_opinion_factor_tt }
+			subtract_from_variable = { POR_backing_count = 1 }
+			clamp_variable = { var = POR_backing_count min = 0 max = 20 }
+			add_political_power = 50
+			if = {
+				limit = { NOT = { is_in_array = { POR_network_target_array = PREV.id } } }
+				add_to_array = { POR_network_target_array = PREV.id }
+			}
+			country_event = { id = portugal.70 hours = 6 }
+		}
+		clear_variable = POR_backing_mult@POR
+	}
+	else_if = {
+		limit = {
+			has_country_flag = POR_opposed_by_portugal
+			country_exists = POR
+		}
+		clr_country_flag = POR_opposed_by_portugal
+		set_variable = { POR_net@POR = 0 }
+		add_opinion_modifier = { target = POR modifier = supported_opposition }
+		POR = {
+			set_temp_variable = { percent_change = -10 }
+			set_temp_variable = { tag_index = THIS.id }
+			set_temp_variable = { influence_target = PREV.id }
+			change_influence_percentage = yes
+			subtract_from_variable = { POR_backing_count = 1 }
+			clamp_variable = { var = POR_backing_count min = 0 max = 20 }
+			set_temp_variable = { POR_heat_add = 12 }
+			POR_add_exposure = yes
+			country_event = { id = portugal.71 hours = 6 }
+		}
+		clear_variable = POR_backing_mult@POR
+	}
 }

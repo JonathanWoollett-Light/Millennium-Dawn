@@ -801,3 +801,131 @@
  POR_o_apoio_aereo_proximo_desc: "The air force is reminded, at some length and by the army, that its purpose includes being overhead when a Portuguese company is in contact three thousand kilometres from Lisbon."
  POR_a_ponte_aerea: "The Air Bridge"
  POR_a_ponte_aerea_desc: "Tankers, transports and a radar picture that can be flown to wherever it is needed. An expeditionary country that cannot move itself is a country with opinions rather than a policy."
+ ### AS CAMPANHAS ###
+ POR_campanhas_shortcut: "Campaigns"
+ POR_as_campanhas: "The Campaigns"
+ POR_as_campanhas_desc: "The instruments exist. What follows is the list of places to use them, and every one of them has a specific quarrel Portugal can be useful in."
+ POR_needs_POR_a_intervencao_tt: "We have built the §Yinstruments of intervention§!"
+
+ ### ANGOLA ###
+ POR_os_observadores_do_estoril: "The Estoril Observers"
+ POR_os_observadores_do_estoril_desc: "Portugal, the United States and Russia observe the Angolan peace process, which means Portugal sits in a room with both sides of a war and is trusted by neither. Both sides talk to it anyway, because there is nobody else who speaks to both."
+ POR_os_diamantes_das_lundas: "The Diamonds of the Lundas"
+ POR_os_diamantes_das_lundas_desc: "UNITA pays for its war with stones dug out of the Lunda riverbeds and sold through Antwerp. The Security Council outlawed the trade in 1998, which raised the price and changed nothing else. Somebody has to certify the paperwork."
+ POR_o_memorando_de_luena: "The Luena Memorandum"
+ POR_o_memorando_de_luena_desc: "Savimbi is killed in the bush in February and the war is over by April, on terms written in six weeks by men who had been shooting at each other for twenty-seven years. Whoever brokered it owns a share of the peace."
+ POR_o_memorando_de_luena_effect_tt: "Portugal is the §Yguarantor§! of the Angolan settlement, and is owed by whichever side kept its army"
+ POR_lundas_tt: "We hold a §Ynetwork§! inside UNITA"
+ POR_luena_tt: "We hold a §Ynetwork above 40%%§! in §Yeither§! Angolan camp"
+
+ ### GUINEA-BISSAU ###
+ POR_a_embaixada_em_bissau: "The Embassy in Bissau"
+ POR_a_embaixada_em_bissau_desc: "Every officer above major did his staff course in Lisbon, every minister's children are at school in Portugal, and the embassy is the largest building in the city that still has a working generator."
+ POR_os_donos_da_cocaina: "The Owners of the Cocaine"
+ POR_os_donos_da_cocaina_desc: "Two tonnes a week come ashore in the Bijagos and leave again for Europe, and the men who arrange it wear the uniform of the armed forces. Portugal can prosecute this or it can know about it, and knowing about it buys more."
+ POR_a_reforma_do_sector_de_seguranca: "Security Sector Reform"
+ POR_a_reforma_do_sector_de_seguranca_desc: "A European mission to pension off the general staff and professionalise what is left. It is the correct policy, it is what the country asked for, and every man it retires becomes available to whoever is paying."
+ POR_a_reforma_do_sector_de_seguranca_effect_tt: "Portugal §Yrebuilds§! the Bissau officer corps, and knows where every one of them sleeps"
+ POR_bissau_network_tt: "We hold a §Ynetwork above 30%%§! in Guinea-Bissau"
+ POR_bissau_reform_tt: "We are the §Ylargest foreign influence§! in Guinea-Bissau, above §Y30%%§!"
+
+ ### MOZAMBIQUE ###
+ POR_a_barragem_de_cahora_bassa: "Cahora Bassa"
+ POR_a_barragem_de_cahora_bassa_desc: "The largest dam in southern Africa, built by Portugal in 1974 and still owned by it a quarter of a century after the country around it became independent. Maputo would like it back. Everything else follows from the price."
+ POR_a_cooperacao_tecnico_militar: "Technical-Military Cooperation"
+ POR_a_cooperacao_tecnico_militar_desc: "Portuguese instructors at Boane and Mozambican officers at Pedroucos, under an agreement signed so quietly that the parliament in Lisbon was told afterwards."
+ POR_o_gas_do_rovuma: "The Rovuma Gas"
+ POR_o_gas_do_rovuma_desc: "The largest gas find in a generation, offshore of the poorest province in the country, and an insurgency ashore that started the year the platforms were ordered. Nobody involved thinks those two facts are unrelated."
+ POR_maputo_network_tt: "We hold a §Ynetwork above 30%%§! in Mozambique"
+ POR_rovuma_tt: "We are the §Ylargest foreign influence§! in Mozambique, above §Y30%%§!"
+
+ ### EAST TIMOR ###
+ POR_o_portugues_em_timor: "Portuguese in Timor"
+ POR_o_portugues_em_timor_desc: "A country where five per cent speak Portuguese chooses it as an official language, because the generation that led the resistance conspired in it and the generation that occupied them did not. Lisbon pays for the teachers."
+ POR_a_guarda_em_dili: "The Guard in Dili"
+ POR_a_guarda_em_dili_desc: "The army dismisses a third of itself, the third that was dismissed goes to the hills with its weapons, and Dili burns. Portuguese gendarmes land within a fortnight and stay for six years."
+ POR_o_mar_de_timor: "The Timor Sea"
+ POR_o_mar_de_timor_desc: "A maritime boundary drawn to favour Canberra, a gas field worth more than the country's entire economy, and a conciliation at The Hague that nobody expected the small side to win."
+ POR_dili_network_tt: "We hold a §Ynetwork above 30%%§! in East Timor"
+ POR_timor_sea_tt: "We are the §Ylargest foreign influence§! in East Timor, above §Y30%%§!"
+
+ ### EQUATORIAL GUINEA ###
+ POR_a_lusofonia_de_malabo: "The Lusophony of Malabo"
+ POR_a_lusofonia_de_malabo_desc: "A country where almost nobody speaks Portuguese makes it an official language and joins the CPLP, in exchange for the community declining to discuss its prisons. Both sides know exactly what the transaction is."
+ POR_o_governo_de_severo_moto: "The Severo Moto Government"
+ POR_o_governo_de_severo_moto_desc: "A government-in-exile in Madrid, sentenced to a hundred years in absentia, and a standing invitation to anyone who can put it on a plane to Malabo."
+ POR_o_dossie_de_black_beach: "The Black Beach File"
+ POR_o_dossie_de_black_beach_desc: "Sixty-four mercenaries arrested in Harare on their way to overthrow Obiang, financed from London, and a trial that named everyone except the people who paid. The file is still open and Lisbon has a copy."
+ POR_o_dossie_de_black_beach_effect_tt: "Portugal holds the §Ynames§! of everyone who has tried this before, and what they got wrong"
+ POR_malabo_network_tt: "We hold a §Ynetwork above 30%%§! in Equatorial Guinea"
+ POR_black_beach_tt: "We are the §Ylargest foreign influence§! in Equatorial Guinea, above §Y30%%§!"
+
+ ### CABINDA ###
+ POR_o_tratado_de_simulambuco: "The Treaty of Simulambuco"
+ POR_o_tratado_de_simulambuco_desc: "In 1885 the princes of Cabinda placed themselves under Portuguese protection as a separate territory from Angola. Every Cabindan separatist argument since has begun with that sentence, and Lisbon has spent a century declining to finish it."
+ POR_a_flec_de_cabinda: "The FLEC of Cabinda"
+ POR_a_flec_de_cabinda_desc: "A separatist front split into factions, an enclave producing most of Angola's oil, and a Portuguese-speaking exile leadership in Paris and Lisbon that has been waiting thirty years for a telephone call."
+ POR_a_republica_de_cabinda: "The Republic of Cabinda"
+ POR_a_republica_de_cabinda_desc: "Sixty thousand barrels a day, seven hundred thousand people, and a border with Angola that only exists on the maps Portugal drew. It is declared on a morning when Luanda is looking somewhere else."
+ POR_flec_tt: "We hold a §Ynetwork above 30%%§! in Angola"
+ POR_cabinda_ready_tt: "Angola is §Yat war with itself§! or §Ylosing§! a war"
+
+ ### CAPE VERDE ###
+ POR_o_acordo_cambial: "The Exchange Rate Agreement"
+ POR_o_acordo_cambial_desc: "The escudo is pegged to the Portuguese escudo and then to the euro, guaranteed by a credit line from Lisbon. It is the single most consequential thing Portugal does for any of these countries and it never makes a newspaper."
+ POR_a_parceria_especial: "The Special Partnership"
+ POR_a_parceria_especial_desc: "Portugal spends its European presidency arranging a status for Cape Verde that is not membership and not aid, and which nobody else in the Union has. It is drafted in Lisbon and signed in Brussels."
+ POR_o_estado_associado: "The Associated State"
+ POR_o_estado_associado_desc: "A currency issued against Portuguese reserves, a diaspora larger than the resident population, and a free movement arrangement. At some point somebody is going to ask what the difference is."
+ POR_o_estado_associado_effect_tt: "Cape Verde becomes an §Yassociated state§! in everything but the word"
+ POR_praia_network_tt: "We hold a §Ynetwork above 30%%§! in Cape Verde"
+ POR_praia_associated_tt: "We are the §Ylargest foreign influence§! in Cape Verde, above §Y50%%§!"
+
+ ### SAO TOME ###
+ POR_a_zona_de_desenvolvimento_conjunto: "The Joint Development Zone"
+ POR_a_zona_de_desenvolvimento_conjunto_desc: "An oil block shared with Nigeria on terms of sixty to forty in Abuja's favour, signed by a country of a hundred and forty thousand people with no lawyers of its own. Lisbon supplies the lawyers."
+ POR_o_dezasseis_de_julho: "The Sixteenth of July"
+ POR_o_dezasseis_de_julho_desc: "The president is abroad, a major with veterans of the Buffalo Battalion behind him takes the radio station, and a week later everybody agrees it did not really happen. Somebody made the telephone calls that ended it."
+ POR_a_estacao_naval_do_golfo: "The Gulf Naval Station"
+ POR_a_estacao_naval_do_golfo_desc: "One island in the middle of the Gulf of Guinea, at the point where every tanker leaving West Africa has to pass. Every navy in the world has asked about it. One of them speaks the language."
+ POR_sao_tome_network_tt: "We hold a §Ynetwork above 30%%§! in Sao Tome"
+ POR_gulf_station_tt: "We are the §Ylargest foreign influence§! in Sao Tome, above §Y50%%§!"
+ ### BACKING A SIDE ###
+ POR_commit_to_a_side_tt: "Portugal is §Ycommitted§!. If this side wins we take an §Ginfluence share, a network and a trading position§! in whatever it becomes; if it loses we are §Rthe power that backed the losers§!"
+ portugal.70.t: "Our Side Won"
+ portugal.70.d: "The war we were careful never to admit being in has ended in favour of the people we were careful never to admit paying. The new government's first foreign visit is to Lisbon, its finance ministry is advised by people we seconded, and the concessions signed under the old one are being reviewed in our favour.\n\n\n\nNobody is going to write any of that down."
+
+
+
+Nobody is going to write any of that down."
+ portugal.70.a: "The correct investment"
+ portugal.71.t: "We Backed the Losers"
+ portugal.71.d: "The side we supplied has been destroyed and the side we supplied against is in the capital, going through the filing cabinets. Some of what they will find has our letterhead on it.\n\n\n\nEvery position we held in that country is now held by whoever paid for the winners."
+
+
+
+Every position we held in that country is now held by whoever paid for the winners."
+ portugal.71.a: "Deniability was always the weaker half of the plan"
+ ### THE RAID AND THE SIDE ###
+ POR_operation_falsa_bandeira: "False Flag"
+ POR_operation_falsa_bandeira_desc: "A barracks, a customs post or a ministry annexe goes up at four in the morning, and the material left in the wreckage belongs to somebody the government already distrusts. It starts nothing by itself. It makes what comes next believable."
+ POR_operation_falsa_bandeira_outcome_tt: "Leaves a §Yusable pretext§! in the target for §Y180 days§!, and may be §Rtraced back to us§!"
+ POR_operation_pronunciamento_cost_tt: "We hold at least §Y12 billion§! in the treasury"
+ POR_purgar_a_rede: "Purge the Portuguese Network"
+ POR_purgar_a_rede_desc: "Ninety days of arrests, expulsions and retirements, beginning with the officers who went to staff college in Lisbon. It costs the government stability it does not have and the economy contracts that were signing themselves. It is still cheaper than the alternative."
+ POR_contra_espionagem_category: "Counter-Intelligence"
+ portugal.72.t: "Explosion at the Barracks"
+ portugal.72.d: "Something went up before dawn and the wreckage is being photographed by people who already know what they want it to mean. The material recovered from the scene is foreign and it is not new.\n\n\n\nThe question in every ministry this morning is not who did it. It is who benefits, and every faction has a different answer."
+ portugal.72.a: "Somebody wanted this"
+ portugal.72.b: "The trail runs to Lisbon"
+ portugal.73.t: "Which Government Do We Recognise?"
+ portugal.73.d: "The rising we arranged is under way and both sides have a foreign ministry, a radio station and a claim. Lisbon now has to say which one it recognises, and it has to say it this week.\n\n\n\nBacking our own people is the obvious answer and the expensive one. Backing the government against the rebellion we started is the oldest trick in the file, and the only one that leaves us looking like a friend when it is over."
+ portugal.73.a: "The people we put there"
+ portugal.73.b: "The government, and our sympathies"
+ portugal.73.c: "Recognise nobody, sell to both"
+ portugal.74.t: "The Network Is Rolled Up"
+ portugal.74.d: "Ninety days of arrests in a country we thought we understood. The officers we paid for are retired, the customs men are in prison, and the second secretary at the central bank has been on television.\n\n\n\nEverything we built there has to be built again, and this time they are looking."
+ portugal.74.a: "They were always going to notice eventually"
+ POR_operation_falsa_bandeira_unlocked_tt: "Unlocks the §YFalse Flag§! operation against any state where we hold a network"
+ POR_comunidade_lusofona_idea: "Community of Portuguese Language Countries"
+ POR_comunidade_lusofona_idea_desc: "Nine states, two hundred and eighty million people and one language, held together by a secretariat in Lisbon with a budget smaller than a mid-sized municipality. It is worth something in trade and almost nothing in obligation.\n\n\n\nIt is also the reason our counter-intelligence services know which embassy to watch. Everyone who joins is told, politely, what the arrangement has historically been."
