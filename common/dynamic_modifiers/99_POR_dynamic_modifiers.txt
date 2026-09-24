@@ -10,6 +10,7 @@ POR_economy_modifier = {
 	interest_rate_multiplier_modifier = POR_economy_interest_rate_multiplier_modifier
 	return_on_investment_modifier = POR_economy_return_on_investment_modifier
 	local_resources_factor = POR_economy_local_resources_factor
+	resource_export_multiplier_modifier = POR_economy_resource_export_multiplier_modifier
 	trade_opinion_factor = POR_economy_trade_opinion_factor
 	bureaucracy_cost_multiplier_modifier = POR_economy_bureaucracy_cost
 	monthly_population = POR_economy_monthly_population
@@ -39,6 +40,7 @@ POR_political_modifier = {
 	war_support_factor = POR_political_war_support_factor
 	drift_defence_factor = POR_political_drift_defence_factor
 	political_manipulation_corruption_factor = POR_political_corruption_factor
+	justify_war_goal_time = POR_political_justify_war_goal_time
 }
 
 # How far the public argument has moved. The wider it is, the harder the country is to hold
@@ -186,4 +188,19 @@ POR_politica_social = {
 	social_cost_multiplier_modifier = POR_psoc_social_cost_multiplier_modifier
 	stability_factor = POR_psoc_stability_factor
 	trade_opinion_factor = POR_psoc_trade_opinion_factor
+}
+
+POR_intervencao = {
+	icon = GFX_idea_por_colonial_assimilation
+
+	operative_slot = POR_int_operative_slot
+	intel_network_gain_factor = POR_int_intel_network_gain_factor
+	decryption_factor = POR_int_decryption_factor
+	civilian_intel_factor = POR_int_civilian_intel_factor
+	army_intel_factor = POR_int_army_intel_factor
+	operation_cost = POR_int_operation_cost
+	operation_risk = POR_int_operation_risk
+	agency_upgrade_time = POR_int_agency_upgrade_time
+	operative_death_on_capture_chance = POR_int_operative_death_on_capture_chance
+	enemy_operative_detection_chance_factor = POR_int_enemy_operative_detection_chance_factor
 }

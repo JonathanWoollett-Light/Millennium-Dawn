@@ -50,6 +50,11 @@ focus_tree = {
 		target = POR_a_comunidade_lusofona
 		scroll_wheel_factor = 0.80
 	}
+	shortcut = {
+		name = POR_intervencao_shortcut
+		target = POR_a_intervencao
+		scroll_wheel_factor = 0.80
+	}
 
 	##################################
 	### POLITICS - A TERCEIRA REPUBLICA
@@ -6124,6 +6129,578 @@ focus_tree = {
 				factor = 0
 				has_active_mission = bankruptcy_incoming_collapse
 			}
+		}
+	}
+
+	##################################
+	### INTERVENTION, NEO-COLONIALISM AND INVASION
+	##################################
+
+	focus = {
+		id = POR_a_intervencao
+		icon = POR_Imperio_Ultramarino
+		x = 193
+		y = 0
+		cost = 7
+		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_needs_POR_a_realpolitik_lusofona_tt
+				has_completed_focus = POR_a_realpolitik_lusofona
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_intervencao"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_intervencao
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_intervencao } } }
+					add_dynamic_modifier = { modifier = POR_intervencao }
+				}
+			}
+			add_political_power = 50
+			add_to_variable = { POR_int_intel_network_gain_factor = 0.10 tooltip = intel_network_gain_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_sied
+		icon = POR_the_tarrafal
+		x = -4
+		y = 1
+		relative_position_id = POR_a_intervencao
+		cost = 7
+		prerequisite = { focus = POR_a_intervencao }
+		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_sied"
+			custom_effect_tooltip = POR_o_sied_agency_tt
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_intelligence_agency = yes } }
+					create_intelligence_agency = {
+						name = "Servico de Informacoes Estrategicas de Defesa (SIED)"
+						icon = GFX_intelligence_agency_logo_por
+					}
+				}
+			}
+			add_to_variable = { POR_int_operative_slot = 1 tooltip = operative_slot_tt }
+			add_to_variable = { POR_int_decryption_factor = 0.10 tooltip = decryption_factor_tt }
+			add_to_variable = { POR_economy_bureaucracy_cost = 0.05 tooltip = bureaucracy_cost_multiplier_modifier_tt }
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_seccao_de_operacoes
+		icon = POR_Army_Emblem
+		x = 0
+		y = 1
+		relative_position_id = POR_a_intervencao
+		cost = 7
+		prerequisite = { focus = POR_a_intervencao }
+		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_ARMY_XP }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_seccao_de_operacoes"
+			add_to_variable = { POR_int_operation_cost = -0.15 tooltip = operation_cost_tt }
+			add_to_variable = { POR_int_operation_risk = -0.10 tooltip = operation_risk_tt }
+			add_to_variable = { POR_int_agency_upgrade_time = -0.15 tooltip = agency_upgrade_time_tt }
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_diplomacia_economica
+		icon = POR_burden_empire
+		x = 4
+		y = 1
+		relative_position_id = POR_a_intervencao
+		cost = 7
+		prerequisite = { focus = POR_a_intervencao }
+		search_filters = { FOCUS_FILTER_TRADE FOCUS_FILTER_FOREIGN_INVESTMENTS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_diplomacia_economica"
+			add_to_variable = { POR_economy_trade_opinion_factor = 0.10 tooltip = trade_opinion_factor_tt }
+			add_to_variable = { POR_shadow_foreign_influence_modifier = 0.05 tooltip = foreign_influence_modifier_tt }
+			set_temp_variable = { int_investment_change = 6 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_rede_civil
+		icon = portugal_flag_people
+		x = -2
+		y = 1
+		relative_position_id = POR_o_sied
+		cost = 10
+		prerequisite = { focus = POR_o_sied }
+		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_INFLUENCE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_rede_civil"
+			add_to_variable = { POR_int_civilian_intel_factor = 0.20 tooltip = civilian_intel_factor_tt }
+			add_to_variable = { POR_int_intel_network_gain_factor = 0.15 tooltip = intel_network_gain_factor_tt }
+			add_to_variable = { POR_int_operative_death_on_capture_chance = -0.20 tooltip = operative_death_on_capture_chance_tt }
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_rede_militar
+		icon = portuguese_legion
+		x = 2
+		y = 1
+		relative_position_id = POR_o_sied
+		cost = 10
+		prerequisite = { focus = POR_o_sied }
+		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_ARMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_rede_militar"
+			add_to_variable = { POR_int_army_intel_factor = 0.20 tooltip = army_intel_factor_tt }
+			add_to_variable = { POR_int_enemy_operative_detection_chance_factor = 0.20 tooltip = enemy_operative_detection_chance_factor_tt }
+			add_to_variable = { POR_shadow_foreign_subversive_activites = -0.15 tooltip = foreign_subversive_activites_tt }
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_destacamento_de_accoes_especiais
+		icon = POR_knights_of_portugal
+		x = 2
+		y = 1
+		relative_position_id = POR_a_seccao_de_operacoes
+		cost = 10
+		prerequisite = { focus = POR_a_seccao_de_operacoes }
+		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_EQUIPMENT }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_destacamento_de_accoes_especiais"
+			add_tech_bonus = {
+				name = POR_o_destacamento_de_accoes_especiais
+				uses = 2
+				bonus = 0.25
+				category = CAT_special_forces_equipment
+				category = CAT_special_operations_doctrine
+			}
+			add_to_variable = { POR_military_special_forces_cap_flat = 4 tooltip = special_forces_cap_flat_tt }
+			add_to_variable = { POR_int_operative_slot = 1 tooltip = operative_slot_tt }
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_concessao_mineira
+		icon = POR_zambia
+		x = 2
+		y = 1
+		relative_position_id = POR_a_diplomacia_economica
+		cost = 10
+		prerequisite = { focus = POR_a_diplomacia_economica }
+		search_filters = { FOCUS_FILTER_RESOURCE FOCUS_FILTER_FOREIGN_INVESTMENTS FOCUS_FILTER_ECONOMY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_holds_a_network_tt
+				POR_holds_a_network = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_concessao_mineira"
+			random_other_country = {
+				limit = {
+					is_in_array = { POR_network_target_array = THIS.id }
+					any_owned_state = { free_building_slots = { building = offices size > 0 include_locked = yes } }
+				}
+				random_owned_state = {
+					limit = { free_building_slots = { building = offices size > 0 include_locked = yes } }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = offices level = 1 instant_build = yes }
+				}
+			}
+			add_to_variable = { POR_economy_local_resources_factor = 0.10 tooltip = local_resources_factor_tt }
+			add_to_variable = { POR_economy_resource_export_multiplier_modifier = 0.10 tooltip = resource_export_multiplier_modifier_tt }
+			set_temp_variable = { int_investment_change = 12 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -12 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_offices = no
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_pronunciamento_dirigido
+		icon = ohno_step_portugal
+		x = 0
+		y = 2
+		relative_position_id = POR_o_sied
+		cost = 10
+		prerequisite = { focus = POR_a_rede_civil }
+		prerequisite = { focus = POR_a_rede_militar }
+		prerequisite = { focus = POR_o_destacamento_de_accoes_especiais }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_ready_for_a_directed_rising_tt
+				POR_ready_for_a_directed_rising = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_pronunciamento_dirigido"
+			set_country_flag = POR_pronunciamento_dirigido
+			custom_effect_tooltip = POR_operation_pronunciamento_unlocked_tt
+			add_to_variable = { POR_shadow_influence_coup_modifier = 0.15 tooltip = influence_coup_modifier_tt }
+			add_to_variable = { POR_int_operation_risk = -0.10 tooltip = operation_risk_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_guerra_por_procuracao
+		icon = POR_protect_mozambique
+		x = -2
+		y = 1
+		relative_position_id = POR_o_pronunciamento_dirigido
+		cost = 10
+		prerequisite = { focus = POR_o_pronunciamento_dirigido }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_FOREIGN_POLICY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_guerra_por_procuracao"
+			set_country_flag = POR_guerra_por_procuracao
+			unlock_decision_tooltip = POR_atear_a_fogueira
+			add_to_variable = { POR_int_civilian_intel_factor = 0.10 tooltip = civilian_intel_factor_tt }
+			add_to_variable = { POR_shadow_foreign_subversive_activites = -0.10 tooltip = foreign_subversive_activites_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_acordo_de_defesa
+		icon = POR_Army_Emblem
+		x = 0
+		y = 1
+		relative_position_id = POR_a_concessao_mineira
+		cost = 10
+		prerequisite = { focus = POR_a_concessao_mineira }
+		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_ARMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_acordo_de_defesa"
+			every_other_country = {
+				limit = { is_in_array = { ROOT.POR_network_target_array = THIS.id } }
+				give_military_access = ROOT
+				add_opinion_modifier = { target = ROOT modifier = military_aid }
+			}
+			add_to_variable = { POR_shadow_send_volunteer_size = 1 tooltip = send_volunteer_size_tt }
+			add_to_variable = { POR_military_navy_max_range_factor = 0.10 tooltip = navy_max_range_factor_tt }
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_protectorado_economico
+		icon = the_pink_map
+		x = 4
+		y = 2
+		relative_position_id = POR_o_pronunciamento_dirigido
+		cost = 10
+		prerequisite = { focus = POR_o_acordo_de_defesa }
+		search_filters = { FOCUS_FILTER_TRADE FOCUS_FILTER_FOREIGN_INVESTMENTS FOCUS_FILTER_INFLUENCE FOCUS_FILTER_ECONOMY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_holds_a_client_tt
+				POR_holds_a_client = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_protectorado_economico"
+			set_country_flag = POR_protectorado_economico
+			add_to_variable = { POR_shadow_foreign_influence_modifier = 0.10 tooltip = foreign_influence_modifier_tt }
+			add_to_variable = { POR_shadow_subjects_autonomy_gain = -0.20 tooltip = subjects_autonomy_gain_tt }
+			add_to_variable = { POR_economy_trade_opinion_factor = 0.10 tooltip = trade_opinion_factor_tt }
+			set_temp_variable = { int_investment_change = 15 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_os_nacionais_em_perigo
+		icon = POR_protect_angola
+		x = 0
+		y = 3
+		relative_position_id = POR_o_pronunciamento_dirigido
+		cost = 10
+		prerequisite = { focus = POR_a_guerra_por_procuracao }
+		prerequisite = { focus = POR_o_protectorado_economico }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_FOREIGN_POLICY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_3_tt
+				POR_ideology_tier_3 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_os_nacionais_em_perigo"
+			set_country_flag = POR_nacionais_em_perigo
+			unlock_decision_tooltip = POR_evacuar_os_nossos
+			add_to_variable = { POR_political_war_support_factor = 0.10 tooltip = war_support_factor_tt }
+			add_war_support = 0.05
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_intervencao_directa
+		icon = POR_Imperio_Ultramarino
+		x = 4
+		y = 1
+		relative_position_id = POR_os_nacionais_em_perigo
+		cost = 10
+		prerequisite = { focus = POR_os_nacionais_em_perigo }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_WAR_SUPPORT }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_intervencao_directa"
+			add_to_variable = { POR_political_justify_war_goal_time = -0.25 tooltip = justify_war_goal_time_tt }
+			add_to_variable = { POR_political_war_support_factor = 0.10 tooltip = war_support_factor_tt }
+			add_war_support = 0.10
+			army_experience = 25
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_o_golpe_de_madrid
+		icon = remember_olivenca
+		x = -2
+		y = 1
+		relative_position_id = POR_os_nacionais_em_perigo
+		cost = 15
+		prerequisite = { focus = POR_os_nacionais_em_perigo }
+		allow_branch = {
+			has_game_rule = {
+				rule = allow_fictional_content
+				option = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = SPR
+			NOT = { is_in_faction_with = SPR }
+			custom_trigger_tooltip = {
+				tooltip = POR_madrid_is_ready_tt
+				POR_madrid_is_ready = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_golpe_de_madrid"
+			set_country_flag = POR_golpe_de_madrid
+			unlock_decision_tooltip = POR_o_golpe_de_madrid_decision
+			add_to_variable = { POR_shadow_influence_coup_modifier = 0.25 tooltip = influence_coup_modifier_tt }
+			set_temp_variable = { percent_change = 10 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = SPR.id }
+			change_influence_percentage = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
+		}
+	}
+
+	focus = {
+		id = POR_a_galiza
+		icon = the_kingdom_reunited
+		x = 0
+		y = 1
+		relative_position_id = POR_o_golpe_de_madrid
+		cost = 15
+		prerequisite = { focus = POR_o_golpe_de_madrid }
+		allow_branch = {
+			has_game_rule = {
+				rule = allow_fictional_content
+				option = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_INFLUENCE }
+
+		available = {
+			country_exists = SPR
+			custom_trigger_tooltip = {
+				tooltip = POR_galiza_is_ready_tt
+				POR_galiza_is_ready = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_galiza"
+			set_country_flag = POR_a_galiza
+			unlock_decision_tooltip = POR_reclamar_a_galiza
+			add_state_claim = 944
+			add_war_support = 0.05
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = { factor = 25 POR_ai_shadow_path = yes }
+			modifier = { factor = 0 POR_ai_not_shadow_path = yes }
 		}
 	}
 }

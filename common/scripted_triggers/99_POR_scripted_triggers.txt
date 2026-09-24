@@ -376,3 +376,58 @@ POR_costumes_path_2_open = {
 		}
 	}
 }
+
+# Intervention gates. Everything here is measured against the roster rather than a named
+# country, because the focus is not targeted and the roster changes with the map.
+POR_holds_a_network = {
+	any_other_country = {
+		is_in_array = { ROOT.POR_network_target_array = THIS.id }
+		check_variable = { POR_net@ROOT > 0.29 }
+	}
+}
+
+POR_holds_a_client = {
+	check_variable = { POR_shadow_clients^num > 0 }
+}
+
+# The directed rising needs a country we have worked properly: a network we can run an
+# operation through, both halves of it infiltrated, and enough of the politics bought.
+POR_ready_for_a_directed_rising = {
+	any_other_country = {
+		is_in_array = { ROOT.POR_network_target_array = THIS.id }
+		influence_higher_10 = yes
+		ROOT = {
+			network_strength = { target = PREV value > 39 }
+			has_operation_token = { tag = PREV token = token_civilian }
+			has_operation_token = { tag = PREV token = token_army }
+		}
+	}
+}
+
+# Madrid is a different order of problem: a network inside a NATO and EU member, a
+# government the country has stopped believing in, and a Portugal that can survive saying so.
+POR_madrid_is_ready = {
+	SPR = {
+		has_civil_war = no
+		NOT = { has_war_with = ROOT }
+		OR = {
+			has_idea = Massive_International_Sanctions
+			check_variable = { stability < 0.4 }
+		}
+	}
+	network_strength = { target = SPR value > 59 }
+	has_operation_token = { tag = SPR token = token_civilian }
+	has_operation_token = { tag = SPR token = token_army }
+	POR_ideology_tier_3 = yes
+	check_variable = { POR_shadow_clients^num > 1 }
+}
+
+POR_galiza_is_ready = {
+	OR = {
+		SPR = { has_civil_war = yes }
+		AND = {
+			has_country_flag = POR_madrid_fell
+			SPR = { has_government = ROOT }
+		}
+	}
+}

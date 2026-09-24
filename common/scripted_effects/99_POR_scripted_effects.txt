@@ -30,6 +30,7 @@ POR_shadow_startup = {
 	POR_watch_party_flip = yes
 
 	clear_array = POR_network_target_array
+	clear_array = POR_evacuation_array
 	if = { limit = { country_exists = AGL } add_to_array = { POR_network_target_array = AGL.id } }
 	if = { limit = { country_exists = UNI } add_to_array = { POR_network_target_array = UNI.id } }
 	if = { limit = { country_exists = MOZ } add_to_array = { POR_network_target_array = MOZ.id } }
@@ -2156,4 +2157,148 @@ POR_run_revolution = {
 	set_temp_variable = { POR_ideo_add = 15 }
 	POR_raise_ideological_development = yes
 	news_event = { id = portugal_news.8 hours = 6 }
+}
+
+# A landing to take the Portuguese nationals off the beach, which happens to leave a
+# Portuguese garrison on it. The state remembers who owned it, so the bill can arrive when
+# the fighting stops. Called from POR_evacuar_os_nossos with FROM as the host.
+POR_take_evacuation_state = {
+	FROM = {
+		random_owned_controlled_state = {
+			limit = {
+				is_capital = no
+				is_coastal = yes
+				NOT = { has_state_flag = POR_evacuation_state }
+			}
+			set_state_flag = POR_evacuation_state
+			set_variable = { POR_evacuation_owner = PREV.id }
+			ROOT = { transfer_state = PREV }
+		}
+		add_to_array = { ROOT.POR_evacuation_array = THIS.id }
+		add_opinion_modifier = { target = ROOT modifier = border_tensions }
+	}
+	set_temp_variable = { POR_heat_add = 10 }
+	POR_add_exposure = yes
+}
+
+# Weekly: the fighting has stopped somewhere we landed, so who keeps the beach comes due.
+# One at a time, and the claimant arrives on the event as FROM rather than in a variable
+# that a second landing could overwrite.
+POR_check_evacuations = {
+	if = {
+		limit = { check_variable = { POR_evacuation_array^num > 0 } }
+		random_scope_in_array = {
+			array = POR_evacuation_array
+			limit = {
+				OR = {
+					NOT = { exists = yes }
+					AND = { has_war = no has_civil_war = no }
+				}
+			}
+			ROOT = { remove_from_array = { POR_evacuation_array = PREV.id } }
+			if = {
+				limit = {
+					exists = yes
+					NOT = { has_country_flag = POR_shadow_client }
+					NOT = { is_subject_of = ROOT }
+				}
+				ROOT = { country_event = { id = portugal.42 days = 7 } }
+			}
+			else = {
+				ROOT = { country_event = { id = portugal.41 days = 7 } }
+			}
+		}
+	}
+}
+
+# Hand the beach back. FROM is the country asking for it.
+POR_return_evacuation_state = {
+	every_owned_state = {
+		limit = {
+			has_state_flag = POR_evacuation_state
+			check_variable = { POR_evacuation_owner = FROM.id }
+		}
+		clr_state_flag = POR_evacuation_state
+		clear_variable = POR_evacuation_owner
+		FROM = { transfer_state = PREV }
+	}
+	FROM = {
+		remove_opinion_modifier = { target = ROOT modifier = border_tensions }
+		add_opinion_modifier = { target = ROOT modifier = eased_border_tensions }
+	}
+	set_temp_variable = { POR_heat_add = -8 }
+	POR_add_exposure = yes
+}
+
+# Keep it. Everyone concerned understands what happened, including the people who signed the
+# evacuation request.
+POR_keep_evacuation_state = {
+	every_owned_state = {
+		limit = {
+			has_state_flag = POR_evacuation_state
+			check_variable = { POR_evacuation_owner = FROM.id }
+		}
+		clr_state_flag = POR_evacuation_state
+		clear_variable = POR_evacuation_owner
+		add_core_of = ROOT
+	}
+	FROM = {
+		add_opinion_modifier = { target = ROOT modifier = imminent_danger_to_national_security }
+		create_wargoal = { type = take_state_focus target = ROOT }
+	}
+	add_war_support = 0.05
+	set_temp_variable = { POR_heat_add = 15 }
+	POR_add_exposure = yes
+}
+
+# Madrid. The rising carries Portugal's own outlook, so there is a government for it to join.
+POR_run_madrid_coup = {
+	set_country_flag = POR_madrid_fell
+	set_temp_variable = { POR_madrid_size = 0.35 }
+	if = {
+		limit = { check_variable = { POR_ideological_development > 79 } }
+		set_temp_variable = { POR_madrid_size = 0.45 }
+	}
+	if = {
+		limit = { has_government = communism }
+		SPR = {
+			start_civil_war = {
+				ideology = communism
+				size = POR_madrid_size
+				set_country_flag = POR_shadow_client
+			}
+		}
+	}
+	else_if = {
+		limit = { has_government = nationalist }
+		SPR = {
+			start_civil_war = {
+				ideology = nationalist
+				size = POR_madrid_size
+				set_country_flag = POR_shadow_client
+			}
+		}
+	}
+	else_if = {
+		limit = { has_government = neutrality }
+		SPR = {
+			start_civil_war = {
+				ideology = neutrality
+				size = POR_madrid_size
+				set_country_flag = POR_shadow_client
+			}
+		}
+	}
+	else = {
+		SPR = {
+			start_civil_war = {
+				ideology = democratic
+				size = POR_madrid_size
+				set_country_flag = POR_shadow_client
+			}
+		}
+	}
+	set_temp_variable = { POR_heat_add = 30 }
+	POR_add_exposure = yes
+	news_event = { id = portugal_news.9 hours = 12 }
 }

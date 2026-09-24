@@ -416,3 +416,126 @@ news_event = {
 
 	option = { name = portugal_news.8.a }
 }
+
+# The war our marines landed in is over and the side we backed won, so nobody is going to
+# ask about the province they landed on.
+country_event = {
+	id = portugal.41
+	title = portugal.41.t
+	desc = portugal.41.d
+	picture = GFX_senegal_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.41.a
+		every_owned_state = {
+			limit = {
+				has_state_flag = POR_evacuation_state
+				check_variable = { POR_evacuation_owner = FROM.id }
+			}
+			clr_state_flag = POR_evacuation_state
+			clear_variable = POR_evacuation_owner
+			add_core_of = ROOT
+		}
+		add_political_power = 50
+	}
+}
+
+# The war is over, the side we backed did not win, and the government that did would like
+# its coastline back.
+country_event = {
+	id = portugal.42
+	title = portugal.42.t
+	desc = portugal.42.d
+	picture = GFX_african_refugee_camp
+
+	is_triggered_only = yes
+
+	option = {
+		name = portugal.42.a
+		ai_chance = {
+			base = 70
+			modifier = {
+				factor = 0.2
+				check_variable = { POR_shadow_exposure < 30 }
+			}
+		}
+		POR_return_evacuation_state = yes
+		add_political_power = 25
+	}
+
+	option = {
+		name = portugal.42.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				check_variable = { POR_shadow_exposure > 54 }
+			}
+		}
+		POR_keep_evacuation_state = yes
+	}
+}
+
+# The Portuguese Navy puts marines ashore in a country at war with itself.
+news_event = {
+	id = portugal_news.10
+	title = portugal_news.10.t
+	desc = portugal_news.10.d
+	picture = GFX_news_generic_soldiers
+
+	major = no
+	is_triggered_only = yes
+
+	option = { name = portugal_news.10.a }
+}
+
+# Madrid.
+news_event = {
+	id = portugal_news.9
+	title = portugal_news.9.t
+	desc = portugal_news.9.d
+	picture = GFX_news_election_rally
+
+	major = yes
+	is_triggered_only = yes
+
+	option = { name = portugal_news.9.a }
+}
+
+# Galicia.
+news_event = {
+	id = portugal_news.11
+	title = portugal_news.11.t
+	desc = portugal_news.11.d
+	picture = GFX_news_election_rally
+
+	major = yes
+	is_triggered_only = yes
+
+	option = { name = portugal_news.11.a }
+}
+
+# The client government is shown a file about what its neighbour is said to be planning.
+# FROM is Portugal.
+country_event = {
+	id = portugal.43
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		random_neighbor_country = {
+			limit = {
+				exists = yes
+				is_subject = no
+				has_war = no
+				NOT = { tag = FROM }
+				NOT = { is_in_faction_with = PREV }
+			}
+			add_opinion_modifier = { target = PREV modifier = border_tensions }
+			# PREV is the client here, and PREV from inside it is this neighbour.
+			PREV = { create_wargoal = { type = take_state_focus target = PREV } }
+		}
+	}
+}

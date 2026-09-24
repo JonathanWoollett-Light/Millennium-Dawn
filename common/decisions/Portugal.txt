@@ -572,3 +572,236 @@ POR_federacao_category = {
 		ai_will_do = { base = 5 }
 	}
 }
+
+POR_intervencao_category = {
+
+	# Two governments with a border and a grievance need a third party to make the
+	# grievance urgent. The arms go to the one we do not intend to keep.
+	POR_atear_a_fogueira = {
+		icon = GFX_decision_generic_civil_support
+
+		cost = 100
+		days_re_enable = 730
+		fixed_random_seed = no
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_network_target_array
+
+		target_root_trigger = {
+			has_country_flag = POR_guerra_por_procuracao
+			NOT = { has_country_flag = POR_stood_down }
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_war = no
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+				check_variable = { POR_net@ROOT > 0.399 }
+				any_neighbor_country = {
+					exists = yes
+					is_subject = no
+					has_war = no
+					NOT = { tag = ROOT }
+					NOT = { is_in_faction_with = PREV }
+				}
+			}
+		}
+
+		available = {
+			FROM = { influence_higher_10 = yes }
+			has_equipment = { infantry_weapons_1 > 499 }
+			custom_trigger_tooltip = {
+				tooltip = POR_atear_a_fogueira_tt
+				check_variable = { treasury > 3.9 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_atear_a_fogueira [FROM.GetName]"
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+			add_equipment_to_stockpile = {
+				type = infantry_weapons_1
+				amount = -500
+			}
+			FROM = {
+				add_war_support = 0.15
+				country_event = { id = portugal.43 hours = 6 }
+			}
+			custom_effect_tooltip = POR_atear_a_fogueira_effect_tt
+			set_temp_variable = { POR_heat_add = 8 }
+			POR_add_exposure = yes
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				check_variable = { POR_shadow_exposure > 54 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	# There are Portuguese passport holders in every one of these countries, and while
+	# somebody is shooting near them the law of the sea says a great deal about what a
+	# rescue may bring ashore with it.
+	POR_evacuar_os_nossos = {
+		icon = GFX_decision_generic_naval
+
+		cost = 75
+		days_re_enable = 365
+		fixed_random_seed = no
+
+		targets = { AGL UNI MOZ GUB VER SAO TIM CAB EGU }
+		targets_dynamic = yes
+		target_array = POR_network_target_array
+
+		target_root_trigger = {
+			has_country_flag = POR_nacionais_em_perigo
+			NOT = { has_country_flag = POR_stood_down }
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+				NOT = { is_in_array = { ROOT.POR_evacuation_array = THIS.id } }
+				OR = {
+					has_civil_war = yes
+					has_war = yes
+				}
+				any_owned_state = {
+					is_capital = no
+					is_coastal = yes
+					NOT = { has_state_flag = POR_evacuation_state }
+				}
+			}
+		}
+
+		available = {
+			FROM = { influence_higher_10 = yes }
+			custom_trigger_tooltip = {
+				tooltip = POR_evacuar_os_nossos_tt
+				check_variable = { treasury > 7.9 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_evacuar_os_nossos [FROM.GetName]"
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+			POR_take_evacuation_state = yes
+			news_event = { id = portugal_news.10 hours = 8 }
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				check_variable = { POR_shadow_exposure > 64 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	# Madrid. Eighteen months of work inside a NATO member, and the only reason it is
+	# conceivable is that the Spanish state has stopped being able to answer for itself.
+	POR_o_golpe_de_madrid_decision = {
+		icon = GFX_decision_generic_nationalism
+
+		cost = 250
+		days_remove = 180
+
+		visible = {
+			has_country_flag = POR_golpe_de_madrid
+			NOT = { has_country_flag = POR_madrid_fell }
+			country_exists = SPR
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_madrid_is_ready_tt
+				POR_madrid_is_ready = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_o_golpe_de_madrid_decision_tt
+				check_variable = { treasury > 19.9 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_o_golpe_de_madrid_decision"
+			set_temp_variable = { treasury_change = -20 }
+			modify_treasury_effect = yes
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove POR_o_golpe_de_madrid_decision"
+			if = {
+				limit = {
+					country_exists = SPR
+					SPR = { has_civil_war = no }
+				}
+				POR_run_madrid_coup = yes
+			}
+			else = { custom_effect_tooltip = POR_golpe_de_madrid_aborted_tt }
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	# Galicia speaks a language that is a dialect of Portuguese or a sister of it, depending
+	# on which university you ask, and this is the one week in five centuries when the
+	# question is being settled by anyone but philologists.
+	POR_reclamar_a_galiza = {
+		icon = GFX_decision_generic_form_nation
+
+		cost = 150
+		days_re_enable = 90
+
+		visible = {
+			has_country_flag = POR_a_galiza
+			country_exists = SPR
+			NOT = { owns_state = 944 }
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_galiza_is_ready_tt
+				POR_galiza_is_ready = yes
+			}
+			944 = { is_controlled_by = SPR }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision POR_reclamar_a_galiza"
+			944 = { add_core_of = ROOT }
+			transfer_state = 944
+			add_stability = -0.05
+			SPR = { add_opinion_modifier = { target = ROOT modifier = imminent_danger_to_national_security } }
+			set_temp_variable = { POR_heat_add = 20 }
+			POR_add_exposure = yes
+			news_event = { id = portugal_news.11 hours = 6 }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+}

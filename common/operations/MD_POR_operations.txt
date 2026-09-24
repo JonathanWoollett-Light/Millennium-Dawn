@@ -1,0 +1,115 @@
+# The directed rising. The pronunciamento decision buys a coup with money; this one is paid
+# for with people, and the people have to be inside the target's army and civil service
+# already, which is what the two infiltration tokens mean.
+POR_operation_pronunciamento = {
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = POR_operation_pronunciamento
+	desc = POR_operation_pronunciamento_desc
+	priority = 1
+
+	days = 60
+	network_strength = 40
+	operatives = 2
+
+	visible = {
+		num_of_operatives > 0
+		has_country_flag = POR_pronunciamento_dirigido
+		NOT = { has_country_flag = POR_stood_down }
+		NOT = { has_country_flag = POR_pronunciamento_running }
+		check_variable = { POR_shadow_clients^num < POR_ops_cap }
+		FROM = {
+			exists = yes
+			is_in_array = { ROOT.POR_network_target_array = THIS.id }
+		}
+	}
+
+	available = {
+		FROM = {
+			has_civil_war = no
+			is_subject = no
+			NOT = { has_war_with = ROOT }
+			NOT = { is_in_faction_with = ROOT }
+			NOT = { has_government = ROOT }
+			NOT = { has_country_flag = POR_client_cooldown@ROOT }
+			influence_higher_10 = yes
+			check_variable = { POR_net@ROOT > 0.499 }
+		}
+	}
+
+	equipment = {
+		infantry_weapons_type = 1000
+	}
+
+	required_tokens = { token_civilian token_army }
+
+	risk_chance = 0.35
+	experience = 4
+	outcome_extra_chance = 0.20
+	risk_modifiers = { operation_risk }
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_coup_cost }
+
+	on_start = { # SCOPE_OPERATION
+		ROOT = {
+			set_country_flag = { flag = POR_pronunciamento_running days = 90 value = 1 }
+			FROM = { POR_score_client = yes }
+			set_temp_variable = { POR_heat_add = 6 }
+			POR_add_exposure = yes
+		}
+	}
+
+	outcome_execute = { # SCOPE_OPERATION
+		ROOT = { POR_start_client_civil_war = yes }
+	}
+
+	outcome_extra_execute = { # SCOPE_OPERATION
+		ROOT = {
+			# A rising the garrison joined rather than fought costs us less of our own money.
+			set_temp_variable = { treasury_change = 4 }
+			modify_treasury_effect = yes
+			army_experience = 25
+		}
+	}
+
+	outcome_potential = {
+		custom_effect_tooltip = POR_operation_pronunciamento_outcome_tt
+	}
+
+	phases = { # infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = { has_war = no }
+			}
+		}
+	}
+	phases = { # infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { # exfiltration
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+
+	ai_will_do = {
+		base = 3
+		modifier = {
+			factor = 0
+			check_variable = { POR_shadow_exposure > 54 }
+		}
+	}
+}
