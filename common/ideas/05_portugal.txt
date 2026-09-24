@@ -1,0 +1,245 @@
+ideas = {
+	country = {
+		# Starting Spirits
+		POR_a_divida_publica_1 = {
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				interest_rate_multiplier_modifier = 1.5
+				consumer_goods_factor = 0.03
+				political_power_factor = -0.05
+			}
+		}
+
+		POR_a_divida_publica_2 = {
+			name = POR_a_divida_publica_1
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				interest_rate_multiplier_modifier = 1.0
+				consumer_goods_factor = 0.02
+				political_power_factor = -0.03
+			}
+		}
+
+		POR_a_divida_publica_3 = {
+			name = POR_a_divida_publica_1
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				interest_rate_multiplier_modifier = 0.5
+				consumer_goods_factor = 0.01
+			}
+		}
+
+		POR_a_economia_de_baixo_valor_1 = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				productivity_growth_modifier = -0.15
+				research_speed_factor = -0.06
+				civilian_factories_productivity = -0.05
+			}
+		}
+
+		POR_a_economia_de_baixo_valor_2 = {
+			name = POR_a_economia_de_baixo_valor_1
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				productivity_growth_modifier = -0.10
+				research_speed_factor = -0.04
+				civilian_factories_productivity = -0.03
+			}
+		}
+
+		POR_a_economia_de_baixo_valor_3 = {
+			name = POR_a_economia_de_baixo_valor_1
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				productivity_growth_modifier = -0.05
+				research_speed_factor = -0.02
+			}
+		}
+
+		POR_o_estado_pesado_1 = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_factor = -0.10
+				political_manipulation_corruption_factor = 0.10
+				civilian_factories_productivity = -0.05
+			}
+		}
+
+		POR_o_estado_pesado_2 = {
+			name = POR_o_estado_pesado_1
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_factor = -0.07
+				political_manipulation_corruption_factor = 0.07
+				civilian_factories_productivity = -0.03
+			}
+		}
+
+		POR_o_estado_pesado_3 = {
+			name = POR_o_estado_pesado_1
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_factor = -0.04
+				political_manipulation_corruption_factor = 0.04
+			}
+		}
+
+		POR_a_emigracao_1 = {
+			picture = Portugalia_Ideologia_2
+			allowed_civil_war = { always = yes }
+			modifier = {
+				monthly_population = -0.10
+				research_speed_factor = -0.03
+				foreign_influence_continent_modifier = 0.08
+			}
+		}
+
+		POR_a_emigracao_2 = {
+			name = POR_a_emigracao_1
+			picture = Portugalia_Ideologia_2
+			allowed_civil_war = { always = yes }
+			modifier = {
+				monthly_population = -0.05
+				research_speed_factor = -0.015
+				foreign_influence_continent_modifier = 0.05
+			}
+		}
+
+		# The end of the empire. Permanent, but swapped as Portugal builds a new one.
+		POR_o_fim_do_imperio = {
+			picture = por_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				foreign_influence_home_continent_modifier = -0.05
+				foreign_influence_continent_modifier = 0.15
+				send_volunteers_tension = -0.05
+			}
+		}
+
+		POR_o_imperio_informal_idea = {
+			picture = por_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				foreign_influence_modifier = 0.05
+				foreign_influence_continent_modifier = 0.20
+				send_volunteers_tension = -0.10
+			}
+		}
+
+		POR_o_quinto_imperio_idea = {
+			picture = por_the_fifth_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				foreign_influence_modifier = 0.10
+				foreign_influence_continent_modifier = 0.25
+				send_volunteers_tension = -0.15
+				subjects_autonomy_gain = -0.15
+			}
+		}
+
+		# The Portuguese Legion. Each tier makes an overseas deployment cheaper to field
+		# and teaches the officer corps more of what it learns there.
+		POR_idea_legiao_portuguesa_1 = {
+			picture = por_volunteers_in_the_war
+			allowed_civil_war = { always = yes }
+			modifier = {
+				send_volunteer_divisions_required = -0.5
+				send_volunteer_size = 1
+				terrain_trait_xp_gain_factor = 0.15
+			}
+		}
+
+		POR_idea_legiao_portuguesa_2 = {
+			name = POR_idea_legiao_portuguesa_1
+			picture = por_volunteers_in_the_war2
+			allowed_civil_war = { always = yes }
+			modifier = {
+				send_volunteer_divisions_required = -0.75
+				send_volunteer_size = 2
+				terrain_trait_xp_gain_factor = 0.30
+			}
+		}
+
+		POR_idea_legiao_portuguesa_3 = {
+			name = POR_idea_legiao_portuguesa_1
+			picture = por_volunteers_in_the_war3
+			allowed_civil_war = { always = yes }
+			modifier = {
+				send_volunteer_divisions_required = -0.75
+				send_volunteer_size = 3
+				air_volunteer_cap = 1
+				terrain_trait_xp_gain_factor = 0.50
+			}
+		}
+
+		# The client ladder. These sit on the country Portugal is cultivating, so the
+		# trade and industry terms are targeted back at Portugal.
+		POR_presenca_lusofona_1 = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				foreign_influence_defense_modifier = -0.03
+			}
+			targeted_modifier = {
+				tag = POR
+				extra_trade_to_target_factor = 0.15
+				trade_cost_for_target_factor = -0.15
+				trade_opinion_factor = 0.10
+			}
+		}
+
+		POR_presenca_lusofona_2 = {
+			name = POR_presenca_lusofona_1
+			picture = por_colonial_assimilation
+			allowed_civil_war = { always = yes }
+			modifier = {
+				foreign_influence_defense_modifier = -0.05
+				local_resources_factor = -0.15
+				resource_export_multiplier_modifier = -0.20
+			}
+			targeted_modifier = {
+				tag = POR
+				extra_trade_to_target_factor = 0.20
+				trade_cost_for_target_factor = -0.20
+				trade_opinion_factor = 0.15
+				cic_to_target_factor = 0.20
+			}
+		}
+
+		POR_presenca_lusofona_3 = {
+			name = POR_presenca_lusofona_1
+			picture = por_nation_in_arms
+			allowed_civil_war = { always = yes }
+			cancel = {
+				OR = {
+					has_war_with = POR
+					NOT = { country_exists = POR }
+				}
+			}
+			modifier = {
+				foreign_influence_defense_modifier = -0.08
+				local_resources_factor = -0.15
+				resource_export_multiplier_modifier = -0.20
+				experience_gain_army = 0.05
+			}
+			targeted_modifier = {
+				tag = POR
+				extra_trade_to_target_factor = 0.20
+				trade_cost_for_target_factor = -0.20
+				trade_opinion_factor = 0.15
+				cic_to_target_factor = 0.20
+				mic_to_target_factor = 0.10
+			}
+		}
+	}
+}

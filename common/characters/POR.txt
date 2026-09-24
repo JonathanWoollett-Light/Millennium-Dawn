@@ -164,7 +164,7 @@ characters = {
 		}
 		advisor = {
 			slot = navy_chief
-			idea_token = mendes_cabecadas
+			idea_token = antonio_da_silva_ribeiro
 			traits = {
 				navy_chief_naval_aviation_2
 			}

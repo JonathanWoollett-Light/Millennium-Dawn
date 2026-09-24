@@ -1,0 +1,77 @@
+POR_economy_modifier = {
+	icon = GFX_idea_por_ogme
+
+	consumer_goods_factor = POR_economy_consumer_goods_factor
+	industrial_capacity_factory = POR_economy_industrial_capacity_factory
+	civilian_factories_productivity = POR_economy_civilian_factories_productivity
+	production_speed_buildings_factor = POR_economy_production_speed_buildings_factor
+	productivity_growth_modifier = POR_economy_productivity_growth_modifier
+	research_speed_factor = POR_economy_research_speed_factor
+	interest_rate_multiplier_modifier = POR_economy_interest_rate_multiplier_modifier
+	return_on_investment_modifier = POR_economy_return_on_investment_modifier
+	local_resources_factor = POR_economy_local_resources_factor
+	monthly_population = POR_economy_monthly_population
+}
+
+POR_military_modifier = {
+	icon = GFX_idea_por_nation_in_arms
+
+	army_org_factor = POR_military_army_org_factor
+	army_morale_factor = POR_military_army_morale_factor
+	army_core_attack_factor = POR_military_army_core_attack_factor
+	army_core_defence_factor = POR_military_army_core_defence_factor
+	training_time_army_factor = POR_military_training_time_army_factor
+	experience_gain_army = POR_military_experience_gain_army
+	special_forces_cap_flat = POR_military_special_forces_cap_flat
+	navy_max_range_factor = POR_military_navy_max_range_factor
+	air_range_factor = POR_military_air_range_factor
+	max_command_power_mult = POR_military_max_command_power_mult
+}
+
+POR_political_modifier = {
+	icon = GFX_idea_por_estado_novo
+
+	political_power_factor = POR_political_political_power_factor
+	political_power_gain = POR_political_political_power_gain
+	stability_factor = POR_political_stability_factor
+	war_support_factor = POR_political_war_support_factor
+	drift_defence_factor = POR_political_drift_defence_factor
+	political_manipulation_corruption_factor = POR_political_corruption_factor
+}
+
+# The shadow network. Everything the Lusophone lane buys for reaching overseas.
+POR_shadow_network = {
+	icon = GFX_idea_por_colonial_army
+
+	foreign_influence_modifier = POR_shadow_foreign_influence_modifier
+	foreign_influence_continent_modifier = POR_shadow_foreign_influence_continent_modifier
+	influence_coup_modifier = POR_shadow_influence_coup_modifier
+	send_volunteer_size = POR_shadow_send_volunteer_size
+	send_volunteer_divisions_required = POR_shadow_send_volunteer_divisions_required
+	send_volunteers_tension = POR_shadow_send_volunteers_tension
+	subjects_autonomy_gain = POR_shadow_subjects_autonomy_gain
+	foreign_subversive_activites = POR_shadow_foreign_subversive_activites
+}
+
+# What the officer corps brings home from the overseas wars.
+POR_doutrina_ultramarina = {
+	icon = GFX_idea_por_volunteers_in_the_war3
+
+	terrain_trait_xp_gain_factor = POR_ttx_all
+	trait_ranger_xp_gain_factor = POR_ttx_ranger
+	trait_jungle_rat_xp_gain_factor = POR_ttx_jungle
+	trait_hill_fighter_xp_gain_factor = POR_ttx_hills
+	trait_naval_invader_xp_gain_factor = POR_ttx_marine
+	trait_commando_xp_gain_factor = POR_ttx_commando
+}
+
+# What Brussels does about it. Attached and removed by POR_update_exposure_tier.
+POR_eu_exposure_modifier = {
+	icon = GFX_idea_por_unstable_republic
+
+	trade_opinion_factor = POR_exposure_trade_opinion_factor
+	political_power_factor = POR_exposure_political_power_factor
+	foreign_influence_defense_modifier = POR_exposure_foreign_influence_defense_modifier
+	interest_rate_multiplier_modifier = POR_exposure_interest_rate_multiplier_modifier
+	stability_factor = POR_exposure_stability_factor
+}

@@ -1,0 +1,251 @@
+# Portuguese shadow operations.
+#
+# Invariant: a Portuguese client is never fascist. on_declare_war runs the jihadist
+# conversion hooks for any fascist civil war spawn (00_on_actions.txt:2354), so party
+# slots 10 and 11 are never installed by this file.
+
+POR_shadow_startup = {
+	set_variable = { POR_shadow_exposure = 0 }
+	set_variable = { POR_exposure_tier = 0 }
+	set_variable = { POR_exposure_breach_bonus = 0 }
+	set_variable = { POR_ops_cap = 2 }
+	set_variable = { POR_active_operations = 0 }
+
+	clear_array = POR_network_target_array
+	if = { limit = { country_exists = AGL } add_to_array = { POR_network_target_array = AGL.id } }
+	if = { limit = { country_exists = UNI } add_to_array = { POR_network_target_array = UNI.id } }
+	if = { limit = { country_exists = MOZ } add_to_array = { POR_network_target_array = MOZ.id } }
+	if = { limit = { country_exists = GUB } add_to_array = { POR_network_target_array = GUB.id } }
+	if = { limit = { country_exists = VER } add_to_array = { POR_network_target_array = VER.id } }
+	if = { limit = { country_exists = SAO } add_to_array = { POR_network_target_array = SAO.id } }
+	if = { limit = { country_exists = TIM } add_to_array = { POR_network_target_array = TIM.id } }
+
+	if = {
+		limit = { NOT = { has_dynamic_modifier = { modifier = POR_shadow_network } } }
+		add_dynamic_modifier = { modifier = POR_shadow_network }
+	}
+}
+
+# Scores one country Portugal is working on. Runs in that country's scope with ROOT = POR,
+# and writes its two results back as temp variables on ROOT.
+#
+# Underdog pays, pariah pays more and costs more. Backing the weak and the outlawed is how
+# a small country buys a large position, and the bill is exposure, not money.
+POR_score_client = {
+	set_temp_variable = { ROOT.POR_udg = 0 }
+	if = { limit = { has_idea = non_power } add_to_temp_variable = { ROOT.POR_udg = 3 } }
+	else_if = { limit = { has_idea = minor_power } add_to_temp_variable = { ROOT.POR_udg = 2 } }
+	else_if = { limit = { has_idea = regional_power } add_to_temp_variable = { ROOT.POR_udg = 1 } }
+
+	if = {
+		limit = { check_variable = { deployed_army_manpower_k < ROOT.deployed_army_manpower_k } }
+		add_to_temp_variable = { ROOT.POR_udg = 1 }
+	}
+	if = {
+		limit = { check_variable = { ROOT.gdp_total > gdp_total } }
+		add_to_temp_variable = { ROOT.POR_udg = 1 }
+	}
+	if = {
+		limit = { has_war = yes surrender_progress > 0.20 }
+		add_to_temp_variable = { ROOT.POR_udg = 1 }
+	}
+
+	set_temp_variable = { ROOT.POR_prh = 0 }
+	if = { limit = { has_idea = non_state_actor } add_to_temp_variable = { ROOT.POR_prh = 3 } }
+	else_if = { limit = { has_idea = lacks_international_recognition } add_to_temp_variable = { ROOT.POR_prh = 2 } }
+
+	if = { limit = { has_idea = Massive_International_Sanctions } add_to_temp_variable = { ROOT.POR_prh = 3 } }
+	else_if = { limit = { has_idea = international_sanctions } add_to_temp_variable = { ROOT.POR_prh = 2 } }
+	else_if = {
+		limit = { OR = { has_idea = Western_Sanctions has_idea = Reduced_Western_Sanctions } }
+		add_to_temp_variable = { ROOT.POR_prh = 1 }
+	}
+
+	if = {
+		limit = {
+			OR = {
+				has_idea = unsc_restricted_volunteers_too
+				has_dynamic_modifier = { modifier = united_nations_security_council_sanctions }
+			}
+		}
+		add_to_temp_variable = { ROOT.POR_prh = 2 }
+	}
+
+	ROOT = {
+		clamp_temp_variable = { var = POR_udg min = 0 max = 6 }
+		clamp_temp_variable = { var = POR_prh min = 0 max = 6 }
+
+		# Reward multiplier, 1.00 to 2.45.
+		set_temp_variable = { POR_reward_mult = POR_udg }
+		multiply_temp_variable = { POR_reward_mult = 0.10 }
+		set_temp_variable = { POR_prh_term = POR_prh }
+		multiply_temp_variable = { POR_prh_term = 0.10 }
+		add_to_temp_variable = { POR_reward_mult = POR_prh_term }
+		add_to_temp_variable = { POR_reward_mult = 1 }
+		if = {
+			limit = { has_completed_focus = POR_a_causa_dos_oprimidos }
+			add_to_temp_variable = { POR_reward_mult = 0.25 }
+		}
+		clamp_temp_variable = { var = POR_reward_mult min = 1 max = 2.45 }
+
+		# Exposure multiplier, 1.00 to 2.50. Only the pariah term feeds it: backing a losing
+		# side is not a scandal in Brussels, backing an outlawed one is.
+		set_temp_variable = { POR_heat_mult = POR_prh }
+		multiply_temp_variable = { POR_heat_mult = 0.25 }
+		add_to_temp_variable = { POR_heat_mult = 1 }
+	}
+}
+
+# Raises exposure by POR_heat_add, after scaling it by the target's pariah standing.
+# Expects POR_heat_add set, and runs in POR's scope with the target already scored.
+POR_add_exposure = {
+	multiply_temp_variable = { POR_heat_add = POR_heat_mult }
+	add_to_variable = { POR_shadow_exposure = POR_heat_add }
+	clamp_variable = { var = POR_shadow_exposure min = 0 max = 100 }
+}
+
+# Walks the exposure meter to its tier and applies what Brussels does about it.
+POR_update_exposure_tier = {
+	clamp_variable = { var = POR_shadow_exposure min = 0 max = 100 }
+
+	if = { limit = { check_variable = { POR_shadow_exposure > 74 } } set_variable = { POR_exposure_tier = 4 } }
+	else_if = { limit = { check_variable = { POR_shadow_exposure > 54 } } set_variable = { POR_exposure_tier = 3 } }
+	else_if = { limit = { check_variable = { POR_shadow_exposure > 34 } } set_variable = { POR_exposure_tier = 2 } }
+	else_if = { limit = { check_variable = { POR_shadow_exposure > 14 } } set_variable = { POR_exposure_tier = 1 } }
+	else = { set_variable = { POR_exposure_tier = 0 } }
+
+	if = {
+		limit = { check_variable = { POR_exposure_tier = 0 } }
+		set_variable = { POR_exposure_breach_bonus = 0 }
+		if = {
+			limit = { has_dynamic_modifier = { modifier = POR_eu_exposure_modifier } }
+			remove_dynamic_modifier = { modifier = POR_eu_exposure_modifier }
+		}
+	}
+	else = {
+		if = {
+			limit = { NOT = { has_dynamic_modifier = { modifier = POR_eu_exposure_modifier } } }
+			add_dynamic_modifier = { modifier = POR_eu_exposure_modifier }
+		}
+
+		set_variable = { POR_exposure_trade_opinion_factor = POR_exposure_tier }
+		multiply_variable = { POR_exposure_trade_opinion_factor = -0.05 }
+		set_variable = { POR_exposure_political_power_factor = POR_exposure_trade_opinion_factor }
+
+		set_variable = { POR_exposure_foreign_influence_defense_modifier = 0 }
+		if = {
+			limit = { check_variable = { POR_exposure_tier > 1 } }
+			set_variable = { POR_exposure_foreign_influence_defense_modifier = -0.05 }
+		}
+
+		set_variable = { POR_exposure_interest_rate_multiplier_modifier = 0 }
+		set_variable = { POR_exposure_stability_factor = 0 }
+		set_variable = { POR_exposure_breach_bonus = 0 }
+
+		if = {
+			limit = { check_variable = { POR_exposure_tier = 3 } }
+			set_variable = { POR_exposure_interest_rate_multiplier_modifier = 1.0 }
+			set_variable = { POR_exposure_breach_bonus = 4 }
+		}
+		else_if = {
+			limit = { check_variable = { POR_exposure_tier = 4 } }
+			set_variable = { POR_exposure_interest_rate_multiplier_modifier = 2.0 }
+			set_variable = { POR_exposure_stability_factor = -0.05 }
+			set_variable = { POR_exposure_breach_bonus = 6 }
+		}
+	}
+}
+
+# Weekly hygiene. Every derived counter is recomputed from the arrays rather than
+# decremented, so an annexed or recycled client cannot leave a counter stuck.
+POR_prune_shadow_arrays = {
+	clear_temp_array = POR_dropped_ids
+
+	if = {
+		limit = { check_variable = { POR_shadow_clients^num > 0 } }
+		for_each_scope_loop = {
+			array = POR_shadow_clients
+			if = {
+				limit = {
+					OR = {
+						NOT = { exists = yes }
+						NOT = { has_country_flag = POR_shadow_client }
+					}
+				}
+				add_to_temp_array = { PREV.POR_dropped_ids = THIS.id }
+			}
+		}
+		for_each_loop = {
+			array = POR_dropped_ids
+			value = v
+			remove_from_array = { POR_shadow_clients = v }
+		}
+	}
+
+	clear_temp_array = POR_dropped_ids
+
+	if = {
+		limit = { check_variable = { POR_lusophone_subjects^num > 0 } }
+		for_each_scope_loop = {
+			array = POR_lusophone_subjects
+			if = {
+				limit = {
+					OR = {
+						NOT = { exists = yes }
+						NOT = { is_subject_of = PREV }
+					}
+				}
+				add_to_temp_array = { PREV.POR_dropped_ids = THIS.id }
+			}
+		}
+		for_each_loop = {
+			array = POR_dropped_ids
+			value = v
+			remove_from_array = { POR_lusophone_subjects = v }
+		}
+	}
+
+	set_variable = { POR_active_operations = POR_shadow_clients^num }
+}
+
+# What the officer corps is learning right now. Recomputed weekly from live operations so
+# the doctrine fades when Portugal stops fighting other people's wars.
+POR_update_overseas_doctrine = {
+	if = {
+		limit = { NOT = { has_dynamic_modifier = { modifier = POR_doutrina_ultramarina } } }
+		add_dynamic_modifier = { modifier = POR_doutrina_ultramarina }
+	}
+
+	set_variable = { POR_ttx_all = POR_active_operations }
+	multiply_variable = { POR_ttx_all = 0.25 }
+	clamp_variable = { var = POR_ttx_all min = 0 max = 1 }
+
+	set_variable = { POR_ttx_jungle = 0 }
+	set_variable = { POR_ttx_ranger = 0 }
+	set_variable = { POR_ttx_hills = 0 }
+
+	# Where the wars are decides what the officers come home knowing. Guinea, Timor and
+	# Sao Tome are jungle end to end; Angola and Mozambique are forest.
+	for_each_scope_loop = {
+		array = POR_shadow_clients
+		if = {
+			limit = {
+				OR = {
+					original_tag = GUB
+					original_tag = TIM
+					original_tag = SAO
+				}
+			}
+			set_variable = { PREV.POR_ttx_jungle = 0.50 }
+		}
+		if = {
+			limit = {
+				OR = {
+					original_tag = AGL
+					original_tag = MOZ
+				}
+			}
+			set_variable = { PREV.POR_ttx_ranger = 0.50 }
+		}
+	}
+}

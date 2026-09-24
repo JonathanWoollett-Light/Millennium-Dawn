@@ -1,0 +1,19 @@
+on_actions = {
+	on_weekly_POR = {
+		effect = {
+			POR_prune_shadow_arrays = yes
+			POR_update_overseas_doctrine = yes
+
+			# Exposure only cools while nothing of ours is fighting overseas.
+			if = {
+				limit = {
+					check_variable = { POR_active_operations = 0 }
+					check_variable = { POR_shadow_exposure > 0 }
+				}
+				subtract_from_variable = { POR_shadow_exposure = 0.5 }
+			}
+
+			POR_update_exposure_tier = yes
+		}
+	}
+}

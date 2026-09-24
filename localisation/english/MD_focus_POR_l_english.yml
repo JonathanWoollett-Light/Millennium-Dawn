@@ -1,0 +1,41 @@
+﻿l_english:
+ portugal_focus: "Portuguese Focus Tree"
+
+ ### FOCUS TITLES REFERENCED BY THE STARTING SPIRITS ###
+ POR_o_euro_e_a_divida: "The Euro and the Debt"
+ POR_a_reestruturacao_da_divida: "Debt Restructuring"
+ POR_a_alternativa_soberana: "The Sovereign Alternative"
+ POR_o_regresso_aos_mercados: "Return to the Markets"
+ POR_educacao_para_todos: "Education for All"
+ POR_a_reindustrializacao: "Reindustrialization"
+ POR_portugal_2030: "Portugal 2030"
+ POR_reforma_do_estado: "Reform of the State"
+ POR_combate_a_corrupcao: "Fighting Corruption"
+ POR_o_tribunal_de_contas: "The Court of Auditors"
+ POR_o_recenseamento_da_diaspora: "The Diaspora Census"
+ POR_a_web_summit: "The Web Summit"
+ POR_a_realpolitik_lusofona: "Lusophone Realpolitik"
+
+ ### NATIONAL SPIRITS ###
+ POR_a_divida_publica_1: "The Public Debt"
+ POR_a_divida_publica_1_desc: "We joined the single currency on the strength of cheap credit, and we have spent a decade borrowing against a growth rate we never achieved. Every escudo of the old debt is now denominated in a currency we cannot devalue.\n§W--------------§!\nThis national spirit will §GImprove§! if we complete the §Y$POR_o_euro_e_a_divida$§! focus, and again with the §Y$POR_a_reestruturacao_da_divida$§! or §Y$POR_a_alternativa_soberana$§! focus. It will be §RRemoved§! if we complete the §Y$POR_o_regresso_aos_mercados$§! focus."
+ POR_a_economia_de_baixo_valor_1: "An Economy of Low Value"
+ POR_a_economia_de_baixo_valor_1_desc: "Textiles, footwear and assembly work built the republic we have, and none of it survives contact with cheaper labour elsewhere. Our firms compete on price because we have given them nothing else to compete on.\n§W--------------§!\nThis national spirit will §GImprove§! if we complete the §Y$POR_educacao_para_todos$§! focus, and again with the §Y$POR_a_reindustrializacao$§! focus. It will be §RRemoved§! if we complete the §Y$POR_portugal_2030$§! focus."
+ POR_o_estado_pesado_1: "The Heavy State"
+ POR_o_estado_pesado_1_desc: "Four ministries will read a permit before anyone may pour concrete, and each of them answers to a different party. The administration is not corrupt so much as it is slow, and slowness has a price that is paid in contracts awarded to whoever waited longest.\n§W--------------§!\nThis national spirit will §GImprove§! if we complete the §Y$POR_reforma_do_estado$§! focus, and again with the §Y$POR_combate_a_corrupcao$§! focus. It will be §RRemoved§! if we complete the §Y$POR_o_tribunal_de_contas$§! focus."
+ POR_a_emigracao_1: "A Nation That Leaves"
+ POR_a_emigracao_1_desc: "There are Portuguese communities in Paris, Toronto, Caracas and Johannesburg larger than most of our districts. They send money home and they do not come back, and the villages they left are older every year. What we lose in people we keep in reach.\n§W--------------§!\nThis national spirit will §GImprove§! if we complete the §Y$POR_o_recenseamento_da_diaspora$§! focus. It will be §RRemoved§! if we complete the §Y$POR_a_web_summit$§! focus."
+ POR_o_fim_do_imperio: "The End of Empire"
+ POR_o_fim_do_imperio_desc: "For five hundred years this was a small country with a very long reach, and for twenty-six years it has been a small country. The language remains, the companies remain, the families remain. Only the authority is gone.\n§W--------------§!\nThis national spirit will be §RRemoved§! and replaced by the §YInformal Empire§! if we complete the §Y$POR_a_realpolitik_lusofona$§! focus."
+ POR_o_imperio_informal_idea: "The Informal Empire"
+ POR_o_imperio_informal_idea_desc: "We no longer govern anything overseas. We do not need to. A shared language, a shared church, a shared officer class and the banks that clear their trade will carry an instruction further than a governor ever did."
+ POR_o_quinto_imperio_idea: "The Fifth Empire"
+ POR_o_quinto_imperio_idea_desc: "Vieira promised a fifth empire after Assyria, Persia, Greece and Rome, and Pessoa promised it again in verse. Neither of them expected it to be assembled out of mining concessions, military missions and a currency board, but it is being assembled."
+
+ ### THE PORTUGUESE LEGION ###
+ POR_idea_legiao_portuguesa_1: "The Portuguese Legion"
+ POR_idea_legiao_portuguesa_1_desc: "A standing pool of officers and volunteers, kept apart from the regular establishment and paid from a budget line nobody reads aloud. They train for somewhere hot, far away, and legally ambiguous."
+
+ ### THE CLIENT LADDER ###
+ POR_presenca_lusofona_1: "Portuguese Presence"
+ POR_presenca_lusofona_1_desc: "Portuguese firms hold the shipping agency, the telephone concession and the cement works. Portuguese officers sit in on the planning. Nothing about this arrangement appears in a treaty, and everything about it appears in the trade figures."
