@@ -15153,6 +15153,7 @@ defined_text = {
 # Conservatism
 defined_text = {
 	name = conservatism_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.conservatism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date < 2017.1.1 } localization_key = USoE.conservatism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date > 2017.1.1 } localization_key = USoE.conservatism_2017_desc }
 	text = { trigger = { original_tag = ADO date < 2011.2.22 } localization_key = ADO.conservatism_desc }
@@ -15288,6 +15289,7 @@ defined_text = {
 # Liberalism
 defined_text = {
 	name = liberalism_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.liberalism_desc }
 	text = { trigger = { original_tag = BAN } localization_key = BAN.liberalism_desc }
 	text = { trigger = { original_tag = BOL } localization_key = BOL.liberalism_desc }
 	text = { trigger = { original_tag = SAU } localization_key = SAU.liberalism_desc }
@@ -15450,6 +15452,7 @@ defined_text = {
 # Socialism
 defined_text = {
 	name = socialism_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.socialism_desc }
 	text = { trigger = { original_tag = BAN } localization_key = BAN.socialism_desc }
 	text = { trigger = { original_tag = BOL date < 2005.12.18 } localization_key = BOL.socialism_desc }
 	text = { trigger = { original_tag = BOL date > 2005.12.18 } localization_key = BOL.socialism_un_desc }
@@ -15595,6 +15598,7 @@ defined_text = {
 # Communist
 defined_text = {
 	name = communist_state_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.communist_state_desc }
 	text = { trigger = { original_tag = BAN } localization_key = BAN.communist_state_desc }
 	text = { trigger = { original_tag = BOL } localization_key = BOL.communist_state_desc }
 	text = { trigger = { original_tag = SAU } localization_key = SAU.communist_state_desc }
@@ -15710,6 +15714,7 @@ defined_text = {
 # Left-Wing Radicals
 defined_text = {
 	name = anarchist_communism_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.anarchist_communism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date < 2017.1.1 } localization_key = USoE.anarchist_communism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date > 2017.1.1 } localization_key = USoE.anarchist_communism_2017_desc }
 	text = { trigger = { original_tag = BOL } localization_key = BOL.anarchist_communism_desc }
@@ -16128,6 +16133,7 @@ defined_text = {
 # Non-Aligned Conservatives
 defined_text = {
 	name = Neutral_conservatism_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.Neutral_conservatism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date < 2017.1.1 } localization_key = USoE.Neutral_conservatism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date > 2017.1.1 } localization_key = USoE.Neutral_conservatism_2017_desc }
 	text = { trigger = { original_tag = ABK } localization_key = ABK.Neutral_conservatism_desc }
@@ -16345,6 +16351,7 @@ defined_text = {
 # Non-Aligned Socialist Democrats
 defined_text = {
 	name = neutral_Social_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.neutral_Social_desc }
 	text = { trigger = { original_tag = BAN } localization_key = BAN.neutral_Social_desc }
 	text = { trigger = { original_tag = BOL } localization_key = BOL.neutral_Social_desc }
 	text = { trigger = { original_tag = SAU } localization_key = SAU.neutral_Social_desc }
@@ -16488,6 +16495,7 @@ defined_text = {
 # Libertarian
 defined_text = {
 	name = Neutral_Libertarian_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.Neutral_Libertarian_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date < 2017.1.1 } localization_key = USoE.Neutral_Libertarian_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date > 2017.1.1 } localization_key = USoE.Neutral_Libertarian_2017_desc }
 	text = { trigger = { original_tag = ARM has_country_flag = ARM_fashinyan_priskokal } localization_key = ARM.Neutral_Libertarian_alt_desc }
@@ -16650,6 +16658,7 @@ defined_text = {
 # Non-Aligned Communism
 defined_text = {
 	name = Neutral_Communism_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.Neutral_Communism_desc }
 	text = { trigger = { original_tag = BAN } localization_key = BAN.Neutral_Communism_desc }
 	text = { trigger = { original_tag = BOL } localization_key = BOL.Neutral_Communism_desc }
 	text = { trigger = { original_tag = SAU } localization_key = SAU.Neutral_Communism_desc }
@@ -16738,6 +16747,7 @@ defined_text = {
 # Greens
 defined_text = {
 	name = Neutral_green_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.Neutral_green_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date < 2017.1.1 } localization_key = USoE.Neutral_green_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date > 2017.1.1 } localization_key = USoE.Neutral_green_2017_desc }
 	text = { trigger = { original_tag = ADO } localization_key = ADO.Neutral_green_desc }
@@ -16891,6 +16901,7 @@ defined_text = {
 # Right Wing Populists
 defined_text = {
 	name = Nat_Populism_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.Nat_Populism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date < 2017.1.1 } localization_key = USoE.Nat_Populism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date > 2017.1.1 } localization_key = USoE.Nat_Populism_2017_desc }
 	text = { trigger = { original_tag = BOL } localization_key = BOL.Nat_Populism_desc }
@@ -17016,6 +17027,7 @@ defined_text = {
 # Fascists
 defined_text = {
 	name = Nat_Fascism_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.Nat_Fascism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date < 2017.1.1 } localization_key = USoE.Nat_Fascism_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties date > 2017.1.1 } localization_key = USoE.Nat_Fascism_2017_desc }
 	text = { trigger = { original_tag = BOL } localization_key = BOL.Nat_Fascism_desc }
@@ -17116,6 +17128,7 @@ defined_text = {
 # Military Junta (dictatorship)
 defined_text = {
 	name = Nat_Autocracy_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.Nat_Autocracy_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties } localization_key = USoE.Nat_Autocracy_desc }
 	text = { trigger = { original_tag = AFG } localization_key = AFG.Nat_Autocracy_desc }
 	text = { trigger = { original_tag = AFR } localization_key = AFR.Nat_Autocracy_desc }
@@ -17238,6 +17251,7 @@ defined_text = {
 # Monarchists
 defined_text = {
 	name = Monarchist_L_desc
+	text = { trigger = { original_tag = POR } localization_key = POR.Monarchist_desc }
 	text = { trigger = { has_country_flag = USoE_political_parties } localization_key = USoE.Monarchist_desc }
 	text = { trigger = { original_tag = ABK } localization_key = ABK.Monarchist_desc }
 	text = { trigger = { original_tag = ALB } localization_key = ALB.Monarchist_desc }
