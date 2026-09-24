@@ -21,6 +21,10 @@
  POR_road_national_tt: "The §Ynational right§! is in government"
  POR_a_causa_real_tt: "Monarchist support is above §Y15%%§!"
 
+ ### CHARACTERS ###
+ POR_jorge_silva_carvalho: "Jorge Silva Carvalho"
+ POR_carlos_alberto_lopes: "Carlos Alberto Lopes"
+
  ### THE PARTY ROADS ###
  POR_o_ciclo_politico: "The Political Cycle"
  POR_o_ciclo_politico_desc: "Two parties have alternated in government since the revolution, and the country has learned to read an election as a change of personnel rather than of direction. Whoever holds the Assembly now can do rather more than that."
@@ -130,6 +134,20 @@
  POR_o_pronunciamento_local_desc: "The colonels we have been paying will move against their government. Everything we have built in that country is spent at once, and for forty-five days it is still possible for someone in the capital to notice."
  POR_o_pronunciamento_local_tt: "Costs §Y6.00§! billion"
  POR_pronunciamento_aborted_tt: "The rising did §Rnot§! take place. Events overtook it."
+
+ ### THE TIMELINE ###
+ portugal.6.t: "The Men from the Troika"
+ portugal.6.d: "The rates we borrow at have passed the point where borrowing is possible, and three institutions have arrived in Lisbon with a programme already written. The money is real. So is the list of what we will do to get it: wages, pensions, the health service, the labour code, and a schedule of privatisations somebody else drew up.\n\nThe alternative is to find the money ourselves, from a market that has already decided what it thinks of us."
+ portugal.6.a: "Sign the memorandum"
+ portugal.6.b: "We will manage alone"
+ portugal.11.t: "Timor Is Independent"
+ portugal.11.d: "At midnight the flag went up in Dili and a country we governed for four hundred years, abandoned in 1975 and occupied for twenty-four, became independent. Portuguese is one of its two official languages, largely because the generation that fought the occupation chose it as the language the occupiers could not read.\n\nWe owe them something. What we do about it is a question of how we intend to be owed things by other people."
+ portugal.11.a: "The obligation does not end with the flag"
+ portugal.11.b: "They are a country now"
+ portugal.13.t: "The Colonels in Sao Tome"
+ portugal.13.d: "The army has taken the presidential palace while the president was abroad, and the officers holding it have issued the usual list of grievances about pay, corruption and the oil contracts. Nigeria is already offering to mediate.\n\nWe are the former metropole, we are owed a hearing, and nobody else in that palace speaks to Lisbon before they speak to anyone."
+ portugal.13.a: "Mediate, and be seen to"
+ portugal.13.b: "Deal with whoever holds the palace"
 
  ### EVENTS ###
  portugal.20.t: "Disquiet in the Officer Corps"

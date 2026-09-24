@@ -7,24 +7,6 @@ POR_ai_alt_path = {
 	}
 }
 
-POR_ai_historical_path = {
-	OR = {
-		has_global_flag = POR_HISTORICAL_FOCUS_PATH
-		AND = {
-			is_historical_focus_on = yes
-			NOT = { POR_ai_alt_path = yes }
-		}
-	}
-}
-
-POR_ai_not_historical_path = {
-	POR_ai_alt_path = yes
-}
-
-POR_ai_lusophone_path = {
-	has_global_flag = POR_LUSOPHONE_FOCUS_PATH
-}
-
 POR_ai_not_lusophone_path = {
 	NOT = { has_global_flag = POR_LUSOPHONE_FOCUS_PATH }
 	OR = {
@@ -33,10 +15,6 @@ POR_ai_not_lusophone_path = {
 		has_global_flag = POR_IMPERIAL_FOCUS_PATH
 		POR_ai_not_shadow_path = yes
 	}
-}
-
-POR_ai_imperial_path = {
-	has_global_flag = POR_IMPERIAL_FOCUS_PATH
 }
 
 POR_ai_not_imperial_path = {

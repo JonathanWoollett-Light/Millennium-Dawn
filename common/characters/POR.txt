@@ -243,4 +243,50 @@ characters = {
 			}
 		}
 	}
+
+	POR_jorge_silva_carvalho = {
+		name = "Jorge Silva Carvalho"
+		portraits = {
+			army = {
+				small = "gfx/leaders/generic_politicians/small/white_010_small.dds"
+				large = "gfx/leaders/generic_politicians/white_010.dds"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = POR_jorge_silva_carvalho
+			allowed = {
+				original_tag = POR
+				has_dlc = "La Resistance"
+			}
+			available = {
+				has_intelligence_agency = yes
+			}
+			traits = {
+				head_of_intelligence
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+
+	POR_carlos_alberto_lopes = {
+		name = "Carlos Alberto Lopes"
+		portraits = {
+			army = {
+				small = "gfx/leaders/generic_generals/europe/small/europe_general_5_small.dds"
+				large = "gfx/leaders/generic_generals/europe/europe_general_5.dds"
+			}
+		}
+		corps_commander = {
+			traits = { jungle_rat trait_engineer }
+			skill = 4
+			attack_skill = 4
+			defense_skill = 5
+			planning_skill = 4
+			logistics_skill = 5
+		}
+	}
 }

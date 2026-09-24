@@ -217,8 +217,6 @@ POR_prune_shadow_arrays = {
 # the instigator. No capital or states are passed, so the engine splits the country itself
 # and there is no state-ownership geometry to maintain.
 POR_start_client_civil_war = {
-	set_temp_variable = { POR_client_parent_temp = FROM.id }
-
 	FROM = {
 		POR_score_client = yes
 
@@ -413,7 +411,6 @@ POR_install_client_politics = {
 
 		set_country_flag = POR_client_pending_puppet
 		set_variable = { POR_client_overlord_id = ROOT.id }
-		set_variable = { POR_client_parent_id = ROOT.POR_client_parent_temp }
 
 		country_event = { id = portugal.30 hours = 6 }
 	}

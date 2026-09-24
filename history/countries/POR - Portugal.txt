@@ -628,6 +628,8 @@ capital = 96
 	recruit_character = POR_antonio_da_silva_ribeiro
 	recruit_character = POR_antonio_maria_mendes_calado
 	recruit_character = POR_henrique_gouveia_e_melo
+	recruit_character = POR_jorge_silva_carvalho
+	recruit_character = POR_carlos_alberto_lopes
 
 	set_variable = { overall_productivity = 783 }
 

@@ -391,6 +391,7 @@ trigger_year_2001_events = {
 	UZB = { country_event = { id = tajik_lore.8 days = 55 random_hours = 10 } }
 }
 trigger_year_2002_events = {
+	POR = { country_event = { id = portugal.11 days = 53 } }
 	USA = { USA_corporate_history_2002 = yes }
 	CAN = { CAN_corporate_history_2002 = yes }
 	FRA = { FRA_corporate_history_2002 = yes }
@@ -509,6 +510,7 @@ trigger_year_2002_events = {
 	UZB = { country_event = { id = tajik_lore.9 days = 270 } }
 }
 trigger_year_2003_events = {
+	POR = { country_event = { id = portugal.13 days = 196 } }
 	USA = { USA_corporate_history_2003 = yes }
 	CAN = { CAN_corporate_history_2003 = yes }
 	CHI = { CHI_corporate_history_2003 = yes }
@@ -1449,6 +1451,7 @@ trigger_year_2010_events = {
 	USA = { news_event = { id = pmc_events.7 days = 90 random_days = 180 } }
 }
 trigger_year_2011_events = {
+	POR = { country_event = { id = portugal.6 days = 96 } }
 	USA = { USA_corporate_history_2011 = yes }
 	AST = {
 		country_event = { id = indo_cattle_drama.1 days = 153 }

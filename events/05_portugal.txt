@@ -199,6 +199,7 @@ country_event = {
 	# Remain sovereign
 	option = {
 		name = portugal.60.b
+		log = "[GetDateText]: [This.GetName]: portugal.60.b executed"
 
 		set_country_flag = POR_federacao_decided
 
@@ -249,4 +250,142 @@ news_event = {
 	is_triggered_only = yes
 
 	option = { name = portugal_news.6.a }
+}
+
+# 2011. The Troika arrives.
+country_event = {
+	id = portugal.6
+	title = portugal.6.t
+	desc = portugal.6.d
+	picture = GFX_SAO_Election
+
+	is_triggered_only = yes
+
+	trigger = { original_tag = POR }
+
+	# Take the money and the conditions
+	option = {
+		name = portugal.6.a
+		log = "[GetDateText]: [This.GetName]: portugal.6.a executed"
+
+		set_temp_variable = { treasury_change = 40 }
+		modify_treasury_effect = yes
+		set_temp_variable = { debt_change = 40 }
+		modify_debt_effect = yes
+		add_stability = -0.10
+
+		ai_chance = { base = 80 }
+	}
+
+	# We will manage alone
+	option = {
+		name = portugal.6.b
+		log = "[GetDateText]: [This.GetName]: portugal.6.b executed"
+
+		add_to_variable = { POR_economy_interest_rate_multiplier_modifier = 1.5 tooltip = interest_rate_multiplier_modifier_tt }
+		add_stability = 0.05
+		add_war_support = 0.05
+
+		ai_chance = { base = 20 }
+	}
+}
+
+# 2002. East Timor becomes independent.
+country_event = {
+	id = portugal.11
+	title = portugal.11.t
+	desc = portugal.11.d
+	picture = GFX_SAO_Election
+
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = POR
+		country_exists = TIM
+	}
+
+	# The obligation does not end with the flag
+	option = {
+		name = portugal.11.a
+		log = "[GetDateText]: [This.GetName]: portugal.11.a executed"
+
+		set_temp_variable = { treasury_change = -2 }
+		modify_treasury_effect = yes
+		set_temp_variable = { percent_change = 12 }
+		set_temp_variable = { tag_index = ROOT.id }
+		set_temp_variable = { influence_target = TIM.id }
+		change_influence_percentage = yes
+		if = {
+			limit = { NOT = { is_in_array = { POR_network_target_array = TIM.id } } }
+			add_to_array = { POR_network_target_array = TIM.id }
+		}
+		TIM = {
+			add_opinion_modifier = { target = ROOT modifier = portuguese_speaking }
+		}
+
+		ai_chance = { base = 80 }
+	}
+
+	# They are a country now
+	option = {
+		name = portugal.11.b
+		log = "[GetDateText]: [This.GetName]: portugal.11.b executed"
+
+		add_political_power = 25
+
+		ai_chance = { base = 20 }
+	}
+}
+
+# 2003. The junta in Sao Tome.
+country_event = {
+	id = portugal.13
+	title = portugal.13.t
+	desc = portugal.13.d
+	picture = GFX_SAO_coup
+
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = POR
+		country_exists = SAO
+	}
+
+	# Mediate, and be seen to
+	option = {
+		name = portugal.13.a
+		log = "[GetDateText]: [This.GetName]: portugal.13.a executed"
+
+		set_temp_variable = { percent_change = 6 }
+		set_temp_variable = { tag_index = ROOT.id }
+		set_temp_variable = { influence_target = SAO.id }
+		change_influence_percentage = yes
+		add_political_power = 25
+
+		ai_chance = { base = 70 }
+	}
+
+	# Deal with whoever holds the palace
+	option = {
+		name = portugal.13.b
+		log = "[GetDateText]: [This.GetName]: portugal.13.b executed"
+
+		trigger = { has_country_flag = POR_shadow_doors_open }
+
+		SAO = {
+			add_to_variable = { POR_net@ROOT = 0.30 }
+			clamp_variable = { var = POR_net@ROOT min = 0 max = 1 }
+		}
+		set_temp_variable = { POR_heat_add = 4 }
+		set_temp_variable = { POR_heat_mult = 1 }
+		POR_add_exposure = yes
+
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 3
+				has_global_flag = POR_IMPERIAL_FOCUS_PATH
+			}
+		}
+	}
 }
