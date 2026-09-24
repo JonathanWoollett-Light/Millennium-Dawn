@@ -135,3 +135,201 @@ POR_banking_path_2_open = {
 		}
 	}
 }
+
+POR_industrial_path_1_open = {
+	OR = {
+		check_variable = { POR_industrial_path = 0 }
+		check_variable = { POR_industrial_path = 1 }
+		AND = {
+			check_variable = { POR_industrial_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_industrial_path_2_open = {
+	OR = {
+		check_variable = { POR_industrial_path = 0 }
+		check_variable = { POR_industrial_path = 2 }
+		AND = {
+			check_variable = { POR_industrial_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_energy_path_1_open = {
+	OR = {
+		check_variable = { POR_energy_path = 0 }
+		check_variable = { POR_energy_path = 1 }
+		AND = {
+			check_variable = { POR_energy_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_energy_path_2_open = {
+	OR = {
+		check_variable = { POR_energy_path = 0 }
+		check_variable = { POR_energy_path = 2 }
+		AND = {
+			check_variable = { POR_energy_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_obras_path_1_open = {
+	OR = {
+		check_variable = { POR_obras_path = 0 }
+		check_variable = { POR_obras_path = 1 }
+		AND = {
+			check_variable = { POR_obras_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_obras_path_2_open = {
+	OR = {
+		check_variable = { POR_obras_path = 0 }
+		check_variable = { POR_obras_path = 2 }
+		AND = {
+			check_variable = { POR_obras_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_labour_path_1_open = {
+	OR = {
+		check_variable = { POR_labour_path = 0 }
+		check_variable = { POR_labour_path = 1 }
+		AND = {
+			check_variable = { POR_labour_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_labour_path_2_open = {
+	OR = {
+		check_variable = { POR_labour_path = 0 }
+		check_variable = { POR_labour_path = 2 }
+		AND = {
+			check_variable = { POR_labour_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_health_path_1_open = {
+	OR = {
+		check_variable = { POR_health_path = 0 }
+		check_variable = { POR_health_path = 1 }
+		AND = {
+			check_variable = { POR_health_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_health_path_2_open = {
+	OR = {
+		check_variable = { POR_health_path = 0 }
+		check_variable = { POR_health_path = 2 }
+		AND = {
+			check_variable = { POR_health_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_education_path_1_open = {
+	OR = {
+		check_variable = { POR_education_path = 0 }
+		check_variable = { POR_education_path = 1 }
+		AND = {
+			check_variable = { POR_education_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_education_path_2_open = {
+	OR = {
+		check_variable = { POR_education_path = 0 }
+		check_variable = { POR_education_path = 2 }
+		AND = {
+			check_variable = { POR_education_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_housing_path_1_open = {
+	OR = {
+		check_variable = { POR_housing_path = 0 }
+		check_variable = { POR_housing_path = 1 }
+		AND = {
+			check_variable = { POR_housing_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_housing_path_2_open = {
+	OR = {
+		check_variable = { POR_housing_path = 0 }
+		check_variable = { POR_housing_path = 2 }
+		AND = {
+			check_variable = { POR_housing_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_social_path_1_open = {
+	OR = {
+		check_variable = { POR_social_path = 0 }
+		check_variable = { POR_social_path = 1 }
+		AND = {
+			check_variable = { POR_social_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_social_path_2_open = {
+	OR = {
+		check_variable = { POR_social_path = 0 }
+		check_variable = { POR_social_path = 2 }
+		AND = {
+			check_variable = { POR_social_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}
+
+POR_costumes_path_1_open = {
+	OR = {
+		check_variable = { POR_costumes_path = 0 }
+		check_variable = { POR_costumes_path = 1 }
+		AND = {
+			check_variable = { POR_costumes_path = 2 }
+			POR_bloc_left_has_majority = yes
+		}
+	}
+}
+
+POR_costumes_path_2_open = {
+	OR = {
+		check_variable = { POR_costumes_path = 0 }
+		check_variable = { POR_costumes_path = 2 }
+		AND = {
+			check_variable = { POR_costumes_path = 1 }
+			POR_bloc_right_has_majority = yes
+		}
+	}
+}

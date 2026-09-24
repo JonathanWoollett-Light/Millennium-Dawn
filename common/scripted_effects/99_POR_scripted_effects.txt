@@ -19,6 +19,13 @@ POR_shadow_startup = {
 	set_variable = { POR_social_path = 0 }
 	set_variable = { POR_deficit_path = 0 }
 	set_variable = { POR_banking_path = 0 }
+	set_variable = { POR_energy_path = 0 }
+	set_variable = { POR_obras_path = 0 }
+	set_variable = { POR_labour_path = 0 }
+	set_variable = { POR_health_path = 0 }
+	set_variable = { POR_education_path = 0 }
+	set_variable = { POR_housing_path = 0 }
+	set_variable = { POR_costumes_path = 0 }
 	POR_update_blocs = yes
 	POR_watch_party_flip = yes
 
@@ -957,6 +964,13 @@ POR_abandon_banking_path_1 = {
 		}
 
 		set_variable = { POR_banking_path = 0 }
+	set_variable = { POR_energy_path = 0 }
+	set_variable = { POR_obras_path = 0 }
+	set_variable = { POR_labour_path = 0 }
+	set_variable = { POR_health_path = 0 }
+	set_variable = { POR_education_path = 0 }
+	set_variable = { POR_housing_path = 0 }
+	set_variable = { POR_costumes_path = 0 }
 		set_temp_variable = { POR_ideo_add = 6 }
 		POR_raise_ideological_development = yes
 	}
@@ -990,6 +1004,699 @@ POR_abandon_banking_path_2 = {
 		}
 
 		set_variable = { POR_banking_path = 0 }
+	set_variable = { POR_energy_path = 0 }
+	set_variable = { POR_obras_path = 0 }
+	set_variable = { POR_labour_path = 0 }
+	set_variable = { POR_health_path = 0 }
+	set_variable = { POR_education_path = 0 }
+	set_variable = { POR_housing_path = 0 }
+	set_variable = { POR_costumes_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_industrial_path_1 = {
+	if = {
+		limit = { check_variable = { POR_industrial_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_industrial_path_1_tt
+
+		remove_ideas = { POR_parpublica_idea POR_efacec_idea POR_tap_nacional_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_a_parpublica }
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_efacec }
+			set_temp_variable = { temp_opinion = -5 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_tap_nacional }
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_a_tap_nacional }
+			uncomplete_national_focus = { focus = POR_a_tap_nacional refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_efacec }
+			uncomplete_national_focus = { focus = POR_a_efacec refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_parpublica }
+			uncomplete_national_focus = { focus = POR_a_parpublica refund_political_power = no }
+		}
+
+		set_variable = { POR_industrial_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+# Selling the portfolio pays once. Re-nationalising hands the asset back, so the sale
+# proceeds and the foreign stake go with it, or a player could flip for the money.
+POR_abandon_industrial_path_2 = {
+	if = {
+		limit = { check_variable = { POR_industrial_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_industrial_path_2_tt
+
+		remove_ideas = { POR_privatizacoes_idea POR_ctt_ana_idea POR_fim_parpublica_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_o_programa_de_privatizacoes }
+			set_temp_variable = { treasury_change = -12 }
+			modify_treasury_effect = yes
+			set_temp_variable = { int_investment_change = -6 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_os_ctt_e_a_ana }
+			set_temp_variable = { treasury_change = -10 }
+			modify_treasury_effect = yes
+			set_temp_variable = { int_investment_change = -5 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_fim_da_parpublica }
+			set_temp_variable = { treasury_change = -15 }
+			modify_treasury_effect = yes
+			set_temp_variable = { int_investment_change = -8 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_o_fim_da_parpublica }
+			uncomplete_national_focus = { focus = POR_o_fim_da_parpublica refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_os_ctt_e_a_ana }
+			uncomplete_national_focus = { focus = POR_os_ctt_e_a_ana refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_programa_de_privatizacoes }
+			uncomplete_national_focus = { focus = POR_o_programa_de_privatizacoes refund_political_power = no }
+		}
+
+		set_variable = { POR_industrial_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+# Power stations already built stay built: the country flags mean re-taking the focus
+# never re-grants them, so only the ideas and the law step unwind.
+POR_abandon_energy_path_1 = {
+	if = {
+		limit = { check_variable = { POR_energy_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_energy_path_1_tt
+
+		remove_ideas = { POR_aposta_eolica_idea POR_fim_do_carvao_idea POR_hidrogenio_idea }
+
+		if = {
+			limit = {
+				has_completed_focus = POR_o_fim_do_carvao
+				has_idea = full_environmental_protections
+			}
+			swap_ideas = { remove_idea = full_environmental_protections add_idea = partial_environmental_protections }
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_o_hidrogenio_de_sines }
+			uncomplete_national_focus = { focus = POR_o_hidrogenio_de_sines refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_fim_do_carvao }
+			uncomplete_national_focus = { focus = POR_o_fim_do_carvao refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_aposta_eolica }
+			uncomplete_national_focus = { focus = POR_a_aposta_eolica refund_political_power = no }
+		}
+
+		set_variable = { POR_energy_path = 0 }
+	set_variable = { POR_obras_path = 0 }
+	set_variable = { POR_labour_path = 0 }
+	set_variable = { POR_health_path = 0 }
+	set_variable = { POR_education_path = 0 }
+	set_variable = { POR_housing_path = 0 }
+	set_variable = { POR_costumes_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_energy_path_2 = {
+	if = {
+		limit = { check_variable = { POR_energy_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_energy_path_2_tt
+
+		remove_ideas = { POR_ciclo_combinado_idea POR_alqueva_idea POR_central_nuclear_idea }
+
+		if = {
+			limit = {
+				has_completed_focus = POR_a_central_nuclear
+				has_idea = nuclear_energy
+			}
+			swap_ideas = { remove_idea = nuclear_energy add_idea = non_nuclear_power }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_ciclo_combinado }
+			set_temp_variable = { temp_opinion = -10 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_barragem_do_alqueva }
+			set_temp_variable = { temp_opinion = -10 }
+			change_landowners_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_a_central_nuclear }
+			uncomplete_national_focus = { focus = POR_a_central_nuclear refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_barragem_do_alqueva }
+			uncomplete_national_focus = { focus = POR_a_barragem_do_alqueva refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_ciclo_combinado }
+			uncomplete_national_focus = { focus = POR_o_ciclo_combinado refund_political_power = no }
+		}
+
+		set_variable = { POR_energy_path = 0 }
+	set_variable = { POR_obras_path = 0 }
+	set_variable = { POR_labour_path = 0 }
+	set_variable = { POR_health_path = 0 }
+	set_variable = { POR_education_path = 0 }
+	set_variable = { POR_housing_path = 0 }
+	set_variable = { POR_costumes_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_obras_path_1 = {
+	if = {
+		limit = { check_variable = { POR_obras_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_obras_path_1_tt
+
+		remove_ideas = { POR_alta_velocidade_idea POR_novo_aeroporto_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_a_alta_velocidade }
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_o_novo_aeroporto }
+			uncomplete_national_focus = { focus = POR_o_novo_aeroporto refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_alta_velocidade }
+			uncomplete_national_focus = { focus = POR_a_alta_velocidade refund_political_power = no }
+		}
+
+		set_variable = { POR_obras_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_obras_path_2 = {
+	if = {
+		limit = { check_variable = { POR_obras_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_obras_path_2_tt
+
+		remove_ideas = { POR_renegociacao_ppp_idea POR_cancelamento_tgv_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_a_renegociacao_das_ppp }
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = -5 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_cancelamento_do_tgv }
+			set_temp_variable = { treasury_change = -10 }
+			modify_treasury_effect = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = {
+				has_completed_focus = POR_a_renegociacao_das_ppp
+				has_idea = standard_maintenance
+			}
+			swap_ideas = { remove_idea = standard_maintenance add_idea = extensive_maintenance }
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_o_cancelamento_do_tgv }
+			uncomplete_national_focus = { focus = POR_o_cancelamento_do_tgv refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_renegociacao_das_ppp }
+			uncomplete_national_focus = { focus = POR_a_renegociacao_das_ppp refund_political_power = no }
+		}
+
+		set_variable = { POR_obras_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_labour_path_1 = {
+	if = {
+		limit = { check_variable = { POR_labour_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_labour_path_1_tt
+
+		remove_ideas = { POR_codigo_2009_idea POR_salario_minimo_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_o_salario_minimo }
+			set_temp_variable = { pop_change = -2 }
+			modify_population_tax_rate_effect = yes
+			set_temp_variable = { temp_opinion = -15 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = 15 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_codigo_do_trabalho_de_2009 }
+			set_temp_variable = { temp_opinion = -15 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = {
+				has_completed_focus = POR_o_codigo_do_trabalho_de_2009
+				has_idea = comprehensive_regulations
+			}
+			swap_ideas = { remove_idea = comprehensive_regulations add_idea = strong_regulations }
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_o_salario_minimo }
+			uncomplete_national_focus = { focus = POR_o_salario_minimo refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_codigo_do_trabalho_de_2009 }
+			uncomplete_national_focus = { focus = POR_o_codigo_do_trabalho_de_2009 refund_political_power = no }
+		}
+
+		set_variable = { POR_labour_path = 0 }
+	set_variable = { POR_health_path = 0 }
+	set_variable = { POR_education_path = 0 }
+	set_variable = { POR_housing_path = 0 }
+	set_variable = { POR_costumes_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+# Two law steps on one ladder: the deepest unwinds first, and the second re-tests has_idea
+# because the first swap is what feeds it.
+POR_abandon_labour_path_2 = {
+	if = {
+		limit = { check_variable = { POR_labour_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_labour_path_2_tt
+
+		if = {
+			limit = {
+				has_completed_focus = POR_a_lei_23_2012
+				has_idea = light_regulations
+			}
+			swap_ideas = { remove_idea = light_regulations add_idea = standard_regulations }
+		}
+		if = {
+			limit = {
+				has_completed_focus = POR_o_codigo_do_trabalho_de_2003
+				has_idea = standard_regulations
+			}
+			swap_ideas = { remove_idea = standard_regulations add_idea = strong_regulations }
+		}
+
+		remove_ideas = { POR_codigo_2003_idea POR_lei_23_2012_idea }
+
+		if = {
+			limit = { has_completed_focus = POR_o_codigo_do_trabalho_de_2003 }
+			set_temp_variable = { temp_opinion = 15 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_lei_23_2012 }
+			set_temp_variable = { temp_opinion = 20 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = -15 }
+			change_small_medium_business_owners_opinion = yes
+		}
+
+		if = {
+			limit = { has_completed_focus = POR_a_lei_23_2012 }
+			uncomplete_national_focus = { focus = POR_a_lei_23_2012 refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_codigo_do_trabalho_de_2003 }
+			uncomplete_national_focus = { focus = POR_o_codigo_do_trabalho_de_2003 refund_political_power = no }
+		}
+
+		set_variable = { POR_labour_path = 0 }
+	set_variable = { POR_health_path = 0 }
+	set_variable = { POR_education_path = 0 }
+	set_variable = { POR_housing_path = 0 }
+	set_variable = { POR_costumes_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_health_path_1 = {
+	if = {
+		limit = { check_variable = { POR_health_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_health_path_1_tt
+
+		remove_ideas = { POR_lei_de_bases_da_saude_idea POR_fim_das_parcerias_idea }
+		if = {
+			limit = {
+				has_completed_focus = POR_o_fim_das_parcerias
+				has_idea = fully_nationalized_healthcare
+			}
+			swap_ideas = { remove_idea = fully_nationalized_healthcare add_idea = partially_nationalized_healthcare }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_fim_das_parcerias }
+			set_temp_variable = { temp_opinion = -5 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_fim_das_parcerias }
+			uncomplete_national_focus = { focus = POR_o_fim_das_parcerias refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_lei_de_bases_da_saude }
+			uncomplete_national_focus = { focus = POR_a_lei_de_bases_da_saude refund_political_power = no }
+		}
+		set_variable = { POR_health_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_health_path_2 = {
+	if = {
+		limit = { check_variable = { POR_health_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_health_path_2_tt
+
+		remove_ideas = { POR_lei_de_bases_de_2002_idea POR_parcerias_publico_privadas_idea }
+		if = {
+			limit = { has_completed_focus = POR_a_lei_de_bases_de_2002 }
+			increase_healthcare_budget = yes
+		}
+		if = {
+			limit = {
+				has_completed_focus = POR_as_parcerias_publico_privadas
+				has_idea = partially_privatized_healthcare
+			}
+			swap_ideas = { remove_idea = partially_privatized_healthcare add_idea = partially_nationalized_healthcare }
+		}
+		if = {
+			limit = { has_completed_focus = POR_as_parcerias_publico_privadas }
+			set_temp_variable = { temp_opinion = -4 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_as_parcerias_publico_privadas }
+			uncomplete_national_focus = { focus = POR_as_parcerias_publico_privadas refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_lei_de_bases_de_2002 }
+			uncomplete_national_focus = { focus = POR_a_lei_de_bases_de_2002 refund_political_power = no }
+		}
+		set_variable = { POR_health_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_education_path_1 = {
+	if = {
+		limit = { check_variable = { POR_education_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_education_path_1_tt
+
+		remove_ideas = { POR_escolaridade_obrigatoria_idea POR_plano_tecnologico_idea }
+		if = {
+			limit = { has_completed_focus = POR_o_plano_tecnologico_da_educacao }
+			set_temp_variable = { temp_opinion = -3 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_plano_tecnologico_da_educacao }
+			uncomplete_national_focus = { focus = POR_o_plano_tecnologico_da_educacao refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_escolaridade_obrigatoria }
+			uncomplete_national_focus = { focus = POR_a_escolaridade_obrigatoria refund_political_power = no }
+		}
+		set_variable = { POR_education_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_education_path_2 = {
+	if = {
+		limit = { check_variable = { POR_education_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_education_path_2_tt
+
+		remove_ideas = { POR_contratos_de_associacao_idea POR_rigor_curricular_idea }
+		if = {
+			limit = { has_completed_focus = POR_os_contratos_de_associacao }
+			increase_education_budget = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_rigor_curricular }
+			set_temp_variable = { temp_opinion = 5 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_rigor_curricular }
+			uncomplete_national_focus = { focus = POR_o_rigor_curricular refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_os_contratos_de_associacao }
+			uncomplete_national_focus = { focus = POR_os_contratos_de_associacao refund_political_power = no }
+		}
+		set_variable = { POR_education_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_housing_path_1 = {
+	if = {
+		limit = { check_variable = { POR_housing_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_housing_path_1_tt
+
+		remove_ideas = { POR_lei_de_bases_da_habitacao_idea POR_arrendamento_forcado_idea }
+		if = {
+			limit = { has_completed_focus = POR_o_arrendamento_forcado }
+			set_temp_variable = { temp_opinion = 10 }
+			change_landowners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_arrendamento_forcado }
+			set_temp_variable = { temp_opinion = -6 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_arrendamento_forcado }
+			uncomplete_national_focus = { focus = POR_o_arrendamento_forcado refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_lei_de_bases_da_habitacao }
+			uncomplete_national_focus = { focus = POR_a_lei_de_bases_da_habitacao refund_political_power = no }
+		}
+		set_variable = { POR_housing_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_housing_path_2 = {
+	if = {
+		limit = { check_variable = { POR_housing_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_housing_path_2_tt
+
+		remove_ideas = { POR_nrau_idea POR_alojamento_local_idea }
+		if = {
+			limit = { has_completed_focus = POR_o_novo_regime_do_arrendamento }
+			set_temp_variable = { temp_opinion = -6 }
+			change_landowners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_alojamento_local }
+			set_temp_variable = { temp_opinion = -5 }
+			change_small_medium_business_owners_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_alojamento_local }
+			uncomplete_national_focus = { focus = POR_o_alojamento_local refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_novo_regime_do_arrendamento }
+			uncomplete_national_focus = { focus = POR_o_novo_regime_do_arrendamento refund_political_power = no }
+		}
+		set_variable = { POR_housing_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_social_path_1 = {
+	if = {
+		limit = { check_variable = { POR_social_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_social_path_1_tt
+
+		remove_ideas = { POR_rsi_idea POR_fim_do_factor_idea }
+		if = {
+			limit = { has_completed_focus = POR_o_fim_do_factor_de_sustentabilidade }
+			decrease_social_spending = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_rendimento_social_de_insercao }
+			set_temp_variable = { temp_opinion = -5 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_fim_do_factor_de_sustentabilidade }
+			set_temp_variable = { temp_opinion = -8 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_fim_do_factor_de_sustentabilidade }
+			uncomplete_national_focus = { focus = POR_o_fim_do_factor_de_sustentabilidade refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_rendimento_social_de_insercao }
+			uncomplete_national_focus = { focus = POR_o_rendimento_social_de_insercao refund_political_power = no }
+		}
+		set_variable = { POR_social_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_social_path_2 = {
+	if = {
+		limit = { check_variable = { POR_social_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_social_path_2_tt
+
+		remove_ideas = { POR_factor_sustentabilidade_idea POR_condicao_de_recursos_idea }
+		if = {
+			limit = { has_completed_focus = POR_o_factor_de_sustentabilidade }
+			increase_social_spending = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_factor_de_sustentabilidade }
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_condicao_de_recursos }
+			set_temp_variable = { temp_opinion = 6 }
+			change_labour_unions_opinion = yes
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_condicao_de_recursos }
+			uncomplete_national_focus = { focus = POR_a_condicao_de_recursos refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_factor_de_sustentabilidade }
+			uncomplete_national_focus = { focus = POR_o_factor_de_sustentabilidade refund_political_power = no }
+		}
+		set_variable = { POR_social_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_costumes_path_1 = {
+	if = {
+		limit = { check_variable = { POR_costumes_path = 1 } }
+
+		custom_effect_tooltip = POR_abandon_costumes_path_1_tt
+
+		remove_ideas = { POR_referendo_de_2007_idea POR_casamento_igualitario_idea }
+		if = {
+			limit = { has_completed_focus = POR_o_casamento_igualitario }
+			uncomplete_national_focus = { focus = POR_o_casamento_igualitario refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_o_referendo_de_2007 }
+			uncomplete_national_focus = { focus = POR_o_referendo_de_2007 refund_political_power = no }
+		}
+		set_variable = { POR_costumes_path = 0 }
+		set_temp_variable = { POR_ideo_add = 6 }
+		POR_raise_ideological_development = yes
+	}
+}
+
+POR_abandon_costumes_path_2 = {
+	if = {
+		limit = { check_variable = { POR_costumes_path = 2 } }
+
+		custom_effect_tooltip = POR_abandon_costumes_path_2_tt
+
+		remove_ideas = { POR_concordata_idea POR_defesa_da_vida_idea }
+		if = {
+			limit = { has_completed_focus = POR_a_defesa_da_vida }
+			uncomplete_national_focus = { focus = POR_a_defesa_da_vida refund_political_power = no }
+		}
+		if = {
+			limit = { has_completed_focus = POR_a_concordata_de_2004 }
+			uncomplete_national_focus = { focus = POR_a_concordata_de_2004 refund_political_power = no }
+		}
+		set_variable = { POR_costumes_path = 0 }
 		set_temp_variable = { POR_ideo_add = 6 }
 		POR_raise_ideological_development = yes
 	}

@@ -411,6 +411,436 @@ ideas = {
 				foreign_influence_defense_modifier = -0.05
 			}
 		}
+
+		# State holdings, or the sale of them.
+		POR_parpublica_idea = {
+			picture = por_colonial_assimilation
+			allowed_civil_war = { always = yes }
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		POR_efacec_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				civilian_factories_productivity = 0.04
+				return_on_investment_modifier = -0.03
+			}
+		}
+
+		POR_tap_nacional_idea = {
+			picture = por_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				foreign_influence_continent_modifier = 0.05
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		POR_privatizacoes_idea = {
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.08
+				consumer_goods_factor = -0.02
+			}
+		}
+
+		POR_ctt_ana_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.05
+				civilian_factories_productivity = -0.02
+			}
+		}
+
+		POR_fim_parpublica_idea = {
+			picture = por_the_fifth_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.08
+				foreign_influence_defense_modifier = -0.05
+			}
+		}
+
+		# Energy.
+		POR_aposta_eolica_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				renewable_energy_gain_multiplier = 0.10
+				energy_use_multiplier = -0.03
+			}
+		}
+
+		POR_fim_do_carvao_idea = {
+			picture = por_nation_in_arms
+			allowed_civil_war = { always = yes }
+			modifier = {
+				renewable_energy_gain_multiplier = 0.10
+				fossil_pp_energy_generation_modifier = -0.25
+			}
+		}
+
+		POR_hidrogenio_idea = {
+			picture = por_the_fifth_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				renewable_energy_gain_multiplier = 0.15
+				research_speed_factor = 0.03
+			}
+		}
+
+		POR_ciclo_combinado_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				fossil_pp_energy_generation_modifier = 0.15
+				energy_gain_multiplier = 0.05
+			}
+		}
+
+		POR_alqueva_idea = {
+			picture = por_colonial_army
+			allowed_civil_war = { always = yes }
+			modifier = {
+				hydroelectric_power_generation_modifier = 0.15
+				agricolture_productivity_modifier = 0.10
+			}
+		}
+
+		POR_central_nuclear_idea = {
+			picture = por_the_fifth_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				nuclear_energy_generation_modifier = 0.20
+				stability_factor = -0.03
+			}
+		}
+
+		# Public works, and the cancellation of them.
+		POR_alta_velocidade_idea = {
+			picture = por_nation_in_arms
+			allowed_civil_war = { always = yes }
+			modifier = {
+				production_speed_infrastructure_factor = 0.10
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		POR_novo_aeroporto_idea = {
+			picture = por_the_fifth_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				trade_opinion_factor = 0.10
+				foreign_influence_continent_modifier = 0.05
+			}
+		}
+
+		POR_renegociacao_ppp_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_manipulation_corruption_factor = -0.08
+				infrastructure_cost_multiplier_modifier = -0.10
+			}
+		}
+
+		POR_cancelamento_tgv_idea = {
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				interest_rate_multiplier_modifier = -0.25
+				production_speed_infrastructure_factor = -0.05
+			}
+		}
+
+		# Labour law.
+		POR_codigo_2009_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				stability_factor = 0.04
+				production_speed_buildings_factor = -0.03
+			}
+		}
+
+		POR_salario_minimo_idea = {
+			picture = por_colonial_army
+			allowed_civil_war = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.03
+				stability_factor = 0.04
+				civilian_factories_productivity = -0.03
+			}
+		}
+
+		POR_codigo_2003_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				civilian_factories_productivity = 0.04
+				stability_factor = -0.03
+			}
+		}
+
+		POR_lei_23_2012_idea = {
+			picture = por_camisas_azuis
+			allowed_civil_war = { always = yes }
+			modifier = {
+				civilian_factories_productivity = 0.06
+				productivity_growth_modifier = 0.05
+				stability_factor = -0.06
+			}
+		}
+
+		# Social policy.
+		POR_sector_solidario_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				social_cost_multiplier_modifier = -0.08
+				stability_factor = 0.02
+			}
+		}
+
+		POR_unidades_de_saude_familiar_idea = {
+			picture = por_nation_in_arms
+			allowed_civil_war = { always = yes }
+			modifier = {
+				health_cost_multiplier_modifier = -0.05
+				monthly_population = 0.02
+			}
+		}
+
+		POR_lei_de_bases_da_saude_idea = {
+			picture = por_colonial_assimilation
+			allowed_civil_war = { always = yes }
+			modifier = {
+				expected_healthcare_modifier = -0.05
+				stability_factor = 0.03
+			}
+		}
+
+		POR_fim_das_parcerias_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				health_cost_multiplier_modifier = 0.08
+				stability_factor = 0.04
+				monthly_population = 0.02
+			}
+		}
+
+		POR_lei_de_bases_de_2002_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				health_cost_multiplier_modifier = -0.10
+				stability_factor = -0.02
+			}
+		}
+
+		POR_parcerias_publico_privadas_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				health_cost_multiplier_modifier = -0.05
+				return_on_investment_modifier = 0.03
+			}
+		}
+
+		POR_o_pisa_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				research_speed_factor = 0.02
+			}
+		}
+
+		POR_escolaridade_obrigatoria_idea = {
+			picture = por_nation_in_arms
+			allowed_civil_war = { always = yes }
+			modifier = {
+				research_speed_factor = 0.04
+				education_cost_multiplier_modifier = 0.08
+			}
+		}
+
+		POR_plano_tecnologico_idea = {
+			picture = por_the_fifth_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				research_speed_factor = 0.04
+				productivity_growth_modifier = 0.05
+			}
+		}
+
+		POR_contratos_de_associacao_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				education_cost_multiplier_modifier = -0.10
+				research_speed_factor = -0.02
+			}
+		}
+
+		POR_rigor_curricular_idea = {
+			picture = por_camisas_azuis
+			allowed_civil_war = { always = yes }
+			modifier = {
+				research_speed_factor = 0.03
+				stability_factor = -0.02
+			}
+		}
+
+		POR_parque_habitacional_idea = {
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				monthly_population = -0.03
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		POR_lei_de_bases_da_habitacao_idea = {
+			picture = por_colonial_army
+			allowed_civil_war = { always = yes }
+			modifier = {
+				stability_factor = 0.03
+				consumer_goods_factor = -0.02
+			}
+		}
+
+		POR_arrendamento_forcado_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				monthly_population = 0.05
+				return_on_investment_modifier = -0.15
+				stability_factor = -0.05
+			}
+		}
+
+		POR_nrau_idea = {
+			picture = por_unstable_republic
+			allowed_civil_war = { always = yes }
+			modifier = {
+				return_on_investment_modifier = 0.06
+				stability_factor = -0.03
+			}
+		}
+
+		POR_alojamento_local_idea = {
+			picture = por_the_fifth_empire
+			allowed_civil_war = { always = yes }
+			modifier = {
+				trade_opinion_factor = 0.10
+				consumer_goods_factor = 0.03
+			}
+		}
+
+		POR_o_ias_idea = {
+			picture = por_ogme
+			allowed_civil_war = { always = yes }
+			modifier = {
+				social_cost_multiplier_modifier = -0.05
+			}
+		}
+
+		POR_rsi_idea = {
+			picture = por_colonial_army
+			allowed_civil_war = { always = yes }
+			modifier = {
+				stability_factor = 0.04
+				social_cost_multiplier_modifier = 0.06
+			}
+		}
+
+		POR_fim_do_factor_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				stability_factor = 0.06
+				social_cost_multiplier_modifier = 0.15
+			}
+		}
+
+		POR_factor_sustentabilidade_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				social_cost_multiplier_modifier = -0.15
+				stability_factor = -0.04
+			}
+		}
+
+		POR_condicao_de_recursos_idea = {
+			picture = por_estado_novo
+			allowed_civil_war = { always = yes }
+			modifier = {
+				social_cost_multiplier_modifier = -0.08
+				stability_factor = -0.03
+			}
+		}
+
+		POR_liberdade_de_voto_idea = {
+			picture = por_monarchist_uprising
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_gain = 0.05
+			}
+		}
+
+		POR_referendo_de_2007_idea = {
+			picture = por_nation_in_arms
+			allowed_civil_war = { always = yes }
+			modifier = {
+				monthly_population = 0.02
+				stability_factor = -0.02
+			}
+		}
+
+		POR_casamento_igualitario_idea = {
+			picture = por_iberian_workers_united
+			allowed_civil_war = { always = yes }
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = -0.02
+			}
+		}
+
+		POR_concordata_idea = {
+			picture = por_monarchist_uprising
+			allowed_civil_war = { always = yes }
+			modifier = {
+				stability_factor = 0.04
+				political_power_gain = 0.03
+			}
+		}
+
+		POR_defesa_da_vida_idea = {
+			picture = por_camisas_azuis
+			allowed_civil_war = { always = yes }
+			modifier = {
+				monthly_population = 0.04
+				stability_factor = -0.03
+			}
+		}
+
+		POR_descriminalizacao_idea = {
+			picture = por_colonial_assimilation
+			allowed_civil_war = { always = yes }
+			modifier = {
+				health_cost_multiplier_modifier = -0.05
+				stability_factor = 0.03
+				political_manipulation_corruption_factor = -0.05
+			}
+		}
 	}
 
 	hidden_ideas = {

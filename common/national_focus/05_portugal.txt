@@ -191,7 +191,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_programa_de_convergencia
 		icon = iberian_summit
-		x = 45
+		x = 91
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_ECONOMY }
@@ -391,7 +391,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_comunidade_lusofona
 		icon = POR_Imperio_Ultramarino
-		x = 107
+		x = 153
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_INFLUENCE }
@@ -944,7 +944,7 @@ focus_tree = {
 	focus = {
 		id = POR_as_forcas_armadas
 		icon = Portuguese_Army
-		x = 61
+		x = 107
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_MILITARY_LAWS }
@@ -1157,7 +1157,7 @@ focus_tree = {
 	focus = {
 		id = POR_o_mar_portugues
 		icon = Portuguese_Navy
-		x = 73
+		x = 119
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_NAVY }
@@ -1292,7 +1292,7 @@ focus_tree = {
 	focus = {
 		id = POR_a_forca_aerea
 		icon = Portuguese_Air_Force
-		x = 87
+		x = 133
 		y = 0
 		cost = 7
 		search_filters = { FOCUS_FILTER_AIRCRAFT }
@@ -2740,6 +2740,1812 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus POR_a_supervisao_bancaria"
 			decrease_corruption = yes
 			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -0.25 tooltip = interest_rate_multiplier_modifier_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	##################################
+	### INDUSTRIAL POLICY
+	##################################
+
+	focus = {
+		id = POR_a_politica_industrial
+		icon = estado_novo
+		x = 12
+		y = 1
+		relative_position_id = POR_a_politica_economica
+		cost = 7
+		prerequisite = { focus = POR_a_politica_economica }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ECONOMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_politica_industrial"
+			add_political_power = 25
+			add_to_variable = { POR_economy_production_speed_buildings_factor = 0.05 tooltip = production_speed_buildings_factor_tt }
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_parpublica
+		icon = POR_autonomy
+		x = -2
+		y = 1
+		relative_position_id = POR_a_politica_industrial
+		cost = 7
+		prerequisite = { focus = POR_a_politica_industrial }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_INDUSTRY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_industrial_path_1_open_tt
+				POR_industrial_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_parpublica"
+			POR_abandon_industrial_path_2 = yes
+			set_variable = { POR_industrial_path = 1 }
+			add_ideas = POR_parpublica_idea
+			set_temp_variable = { temp_opinion = -10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_efacec
+		icon = POR_matters_of_realm
+		x = 0
+		y = 1
+		relative_position_id = POR_a_parpublica
+		cost = 7
+		prerequisite = { focus = POR_a_parpublica }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_industrial_path_1_held_tt
+				check_variable = { POR_industrial_path = 1 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_efacec"
+			add_ideas = POR_efacec_idea
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+			set_temp_variable = { temp_opinion = 5 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_tap_nacional
+		icon = POR_Imperio_Ultramarino
+		x = 0
+		y = 1
+		relative_position_id = POR_a_efacec
+		cost = 10
+		prerequisite = { focus = POR_a_efacec }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_industrial_path_1_held_tt
+				check_variable = { POR_industrial_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_tap_nacional"
+			add_ideas = POR_tap_nacional_idea
+			set_temp_variable = { treasury_change = -15 }
+			modify_treasury_effect = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_programa_de_privatizacoes
+		icon = POR_ban_republic
+		x = 2
+		y = 1
+		relative_position_id = POR_a_politica_industrial
+		cost = 7
+		prerequisite = { focus = POR_a_politica_industrial }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_FOREIGN_INVESTMENTS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_industrial_path_2_open_tt
+				POR_industrial_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_programa_de_privatizacoes"
+			POR_abandon_industrial_path_1 = yes
+			set_variable = { POR_industrial_path = 2 }
+			add_ideas = POR_privatizacoes_idea
+			set_temp_variable = { treasury_change = 12 }
+			modify_treasury_effect = yes
+			set_temp_variable = { int_investment_change = 6 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_os_ctt_e_a_ana
+		icon = POR_pink_map
+		x = 0
+		y = 1
+		relative_position_id = POR_o_programa_de_privatizacoes
+		cost = 7
+		prerequisite = { focus = POR_o_programa_de_privatizacoes }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_FOREIGN_INVESTMENTS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_industrial_path_2_held_tt
+				check_variable = { POR_industrial_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_os_ctt_e_a_ana"
+			add_ideas = POR_ctt_ana_idea
+			set_temp_variable = { treasury_change = 10 }
+			modify_treasury_effect = yes
+			set_temp_variable = { int_investment_change = 5 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_fim_da_parpublica
+		icon = POR_the_tarrafal
+		x = 0
+		y = 1
+		relative_position_id = POR_os_ctt_e_a_ana
+		cost = 10
+		prerequisite = { focus = POR_os_ctt_e_a_ana }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_FOREIGN_INVESTMENTS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_industrial_path_2_held_tt
+				check_variable = { POR_industrial_path = 2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_fim_da_parpublica"
+			add_ideas = POR_fim_parpublica_idea
+			set_temp_variable = { treasury_change = 15 }
+			modify_treasury_effect = yes
+			set_temp_variable = { int_investment_change = 8 }
+			modify_international_investment_effect = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_concorrencia
+		icon = POR_the_moderating_power
+		x = 0
+		y = 4
+		relative_position_id = POR_a_politica_industrial
+		cost = 7
+		prerequisite = { focus = POR_a_efacec focus = POR_os_ctt_e_a_ana }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_CORRUPTION }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_concorrencia"
+			decrease_corruption = yes
+			add_to_variable = { POR_economy_civilian_factories_productivity = 0.03 tooltip = civilian_factories_productivity_tt }
+			add_to_variable = { POR_economy_return_on_investment_modifier = 0.03 tooltip = return_on_investment_modifier_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_aposta_eolica
+		icon = POR_knights_of_portugal
+		x = -2
+		y = 1
+		relative_position_id = POR_a_concorrencia
+		cost = 7
+		prerequisite = { focus = POR_a_concorrencia }
+		search_filters = { FOCUS_FILTER_RENEWABLE_ENERGY_INFRASTRUCTURE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_energy_path_1_open_tt
+				POR_energy_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_aposta_eolica"
+			POR_abandon_energy_path_2 = yes
+			set_variable = { POR_energy_path = 1 }
+			add_ideas = POR_aposta_eolica_idea
+			if = {
+				limit = { NOT = { has_country_flag = POR_eolica_built } }
+				set_country_flag = POR_eolica_built
+				1056 = { one_state_renewable_energy_infra = yes }
+				1055 = { one_state_renewable_energy_infra = yes }
+			}
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_fim_do_carvao
+		icon = POR_zambia
+		x = 0
+		y = 1
+		relative_position_id = POR_a_aposta_eolica
+		cost = 7
+		prerequisite = { focus = POR_a_aposta_eolica }
+		search_filters = { FOCUS_FILTER_RENEWABLE_ENERGY_INFRASTRUCTURE FOCUS_FILTER_ENVIRONMENT FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_energy_path_1_held_tt
+				check_variable = { POR_energy_path = 1 }
+			}
+			date > 2018.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_fim_do_carvao"
+			add_ideas = POR_fim_do_carvao_idea
+			if = {
+				limit = { NOT = { has_country_flag = POR_carvao_fechado } }
+				set_country_flag = POR_carvao_fechado
+				1056 = { one_state_renewable_energy_infra = yes }
+			}
+			if = {
+				limit = { has_idea = partial_environmental_protections }
+				swap_ideas = { remove_idea = partial_environmental_protections add_idea = full_environmental_protections }
+			}
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_hidrogenio_de_sines
+		icon = the_fifth_empire
+		x = 0
+		y = 1
+		relative_position_id = POR_o_fim_do_carvao
+		cost = 10
+		prerequisite = { focus = POR_o_fim_do_carvao }
+		search_filters = { FOCUS_FILTER_RENEWABLE_ENERGY_INFRASTRUCTURE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_energy_path_1_held_tt
+				check_variable = { POR_energy_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_3_tt
+				POR_ideology_tier_3 = yes
+			}
+			date > 2020.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_hidrogenio_de_sines"
+			add_ideas = POR_hidrogenio_idea
+			if = {
+				limit = { NOT = { has_country_flag = POR_hidrogenio_built } }
+				set_country_flag = POR_hidrogenio_built
+				1056 = { three_state_renewable_energy_infra = yes }
+			}
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_ciclo_combinado
+		icon = POR_burden_empire
+		x = 2
+		y = 1
+		relative_position_id = POR_a_concorrencia
+		cost = 7
+		prerequisite = { focus = POR_a_concorrencia }
+		search_filters = { FOCUS_FILTER_POWER_INFRASTRUCTURE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_energy_path_2_open_tt
+				POR_energy_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_ciclo_combinado"
+			POR_abandon_energy_path_1 = yes
+			set_variable = { POR_energy_path = 2 }
+			add_ideas = POR_ciclo_combinado_idea
+			if = {
+				limit = { NOT = { has_country_flag = POR_ciclo_built } }
+				set_country_flag = POR_ciclo_built
+				96 = { one_state_fossil_fuel_powerplant = yes }
+			}
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_barragem_do_alqueva
+		icon = POR_protect_mozambique
+		x = 0
+		y = 1
+		relative_position_id = POR_o_ciclo_combinado
+		cost = 7
+		prerequisite = { focus = POR_o_ciclo_combinado }
+		search_filters = { FOCUS_FILTER_POWER_INFRASTRUCTURE FOCUS_FILTER_RESOURCE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_energy_path_2_held_tt
+				check_variable = { POR_energy_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_barragem_do_alqueva"
+			add_ideas = POR_alqueva_idea
+			if = {
+				limit = { NOT = { has_country_flag = POR_alqueva_built } }
+				set_country_flag = POR_alqueva_built
+				1056 = {
+					set_temp_variable = { electric_addition = 0.52 }
+					set_temp_variable = { storage_addition = 0.4 }
+					add_hydroelectric_energy_production_effect = yes
+				}
+			}
+			set_temp_variable = { temp_opinion = 10 }
+			change_landowners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_central_nuclear
+		icon = POR_flag_of_kongo
+		x = 0
+		y = 1
+		relative_position_id = POR_a_barragem_do_alqueva
+		cost = 10
+		prerequisite = { focus = POR_a_barragem_do_alqueva }
+		search_filters = { FOCUS_FILTER_POWER_INFRASTRUCTURE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_energy_path_2_held_tt
+				check_variable = { POR_energy_path = 2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_3_tt
+				POR_ideology_tier_3 = yes
+			}
+			has_tech = reactor1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_central_nuclear"
+			add_ideas = POR_central_nuclear_idea
+			if = {
+				limit = { has_idea = non_nuclear_power }
+				swap_ideas = { remove_idea = non_nuclear_power add_idea = nuclear_energy }
+			}
+			if = {
+				limit = { NOT = { has_country_flag = POR_reactor_built } }
+				set_country_flag = POR_reactor_built
+				one_random_nuclear_reactor = yes
+			}
+			set_temp_variable = { POR_ideo_add = 6 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_erse
+		icon = POR_royal_edicts
+		x = 0
+		y = 4
+		relative_position_id = POR_a_concorrencia
+		cost = 7
+		prerequisite = { focus = POR_o_fim_do_carvao focus = POR_a_barragem_do_alqueva }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_CORRUPTION }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_erse"
+			decrease_corruption = yes
+			add_to_variable = { POR_economy_consumer_goods_factor = -0.03 tooltip = consumer_goods_factor_tt }
+			add_political_power = 50
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	##################################
+	### PUBLIC WORKS AND LABOUR
+	##################################
+
+	focus = {
+		id = POR_a_alta_velocidade
+		icon = POR_pink_map
+		x = -2
+		y = 1
+		relative_position_id = POR_a_erse
+		cost = 7
+		prerequisite = { focus = POR_a_erse }
+		search_filters = { FOCUS_FILTER_INFRASTRUCTURE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_obras_path_1_open_tt
+				POR_obras_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_alta_velocidade"
+			POR_abandon_obras_path_2 = yes
+			set_variable = { POR_obras_path = 1 }
+			add_ideas = POR_alta_velocidade_idea
+			if = {
+				limit = { NOT = { has_country_flag = POR_tgv_built } }
+				set_country_flag = POR_tgv_built
+				three_random_infrastructure = yes
+				96 = { one_state_rail_terminal = yes }
+			}
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_novo_aeroporto
+		icon = POR_zambia
+		x = 0
+		y = 1
+		relative_position_id = POR_a_alta_velocidade
+		cost = 10
+		prerequisite = { focus = POR_a_alta_velocidade }
+		search_filters = { FOCUS_FILTER_INFRASTRUCTURE FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_obras_path_1_held_tt
+				check_variable = { POR_obras_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+			date > 2008.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_novo_aeroporto"
+			add_ideas = POR_novo_aeroporto_idea
+			set_temp_variable = { treasury_change = -20 }
+			modify_treasury_effect = yes
+			if = {
+				limit = { NOT = { has_country_flag = POR_aeroporto_built } }
+				set_country_flag = POR_aeroporto_built
+				three_random_infrastructure = yes
+			}
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_renegociacao_das_ppp
+		icon = POR_burden_empire
+		x = 2
+		y = 1
+		relative_position_id = POR_a_erse
+		cost = 7
+		prerequisite = { focus = POR_a_erse }
+		search_filters = { FOCUS_FILTER_INFRASTRUCTURE FOCUS_FILTER_ECONOMY FOCUS_FILTER_CORRUPTION }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_obras_path_2_open_tt
+				POR_obras_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_renegociacao_das_ppp"
+			POR_abandon_obras_path_1 = yes
+			set_variable = { POR_obras_path = 2 }
+			add_ideas = POR_renegociacao_ppp_idea
+			if = {
+				limit = { has_idea = extensive_maintenance }
+				swap_ideas = { remove_idea = extensive_maintenance add_idea = standard_maintenance }
+			}
+			set_temp_variable = { treasury_change = 6 }
+			modify_treasury_effect = yes
+			decrease_corruption = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = 5 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_cancelamento_do_tgv
+		icon = ohno_step_portugal
+		x = 0
+		y = 1
+		relative_position_id = POR_a_renegociacao_das_ppp
+		cost = 10
+		prerequisite = { focus = POR_a_renegociacao_das_ppp }
+		search_filters = { FOCUS_FILTER_INFRASTRUCTURE FOCUS_FILTER_ECONOMY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_obras_path_2_held_tt
+				check_variable = { POR_obras_path = 2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+			date > 2011.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_cancelamento_do_tgv"
+			add_ideas = POR_cancelamento_tgv_idea
+			set_temp_variable = { treasury_change = 10 }
+			modify_treasury_effect = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_porto_de_sines
+		icon = Portuguese_Navy
+		x = 0
+		y = 3
+		relative_position_id = POR_a_erse
+		cost = 7
+		prerequisite = { focus = POR_a_alta_velocidade focus = POR_a_renegociacao_das_ppp }
+		search_filters = { FOCUS_FILTER_INFRASTRUCTURE FOCUS_FILTER_EXPENDITURE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_porto_de_sines"
+			1056 = { one_state_dockyard = yes }
+			add_to_variable = { POR_economy_local_resources_factor = 0.05 tooltip = local_resources_factor_tt }
+			add_to_variable = { POR_economy_production_speed_buildings_factor = 0.03 tooltip = production_speed_buildings_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_codigo_do_trabalho_de_2009
+		icon = portugal_flag_people
+		x = -2
+		y = 1
+		relative_position_id = POR_o_porto_de_sines
+		cost = 7
+		prerequisite = { focus = POR_o_porto_de_sines }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ECONOMY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_labour_path_1_open_tt
+				POR_labour_path_1_open = yes
+			}
+			date > 2009.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_codigo_do_trabalho_de_2009"
+			POR_abandon_labour_path_2 = yes
+			set_variable = { POR_labour_path = 1 }
+			add_ideas = POR_codigo_2009_idea
+			if = {
+				limit = { has_idea = strong_regulations }
+				swap_ideas = { remove_idea = strong_regulations add_idea = comprehensive_regulations }
+			}
+			set_temp_variable = { temp_opinion = 15 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_salario_minimo
+		icon = POR_portuguese_youth
+		x = 0
+		y = 1
+		relative_position_id = POR_o_codigo_do_trabalho_de_2009
+		cost = 10
+		prerequisite = { focus = POR_o_codigo_do_trabalho_de_2009 }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_labour_path_1_held_tt
+				check_variable = { POR_labour_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+			date > 2015.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_salario_minimo"
+			add_ideas = POR_salario_minimo_idea
+			set_temp_variable = { pop_change = 2 }
+			modify_population_tax_rate_effect = yes
+			set_temp_variable = { temp_opinion = 15 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = -15 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_codigo_do_trabalho_de_2003
+		icon = POR_ban_republic
+		x = 2
+		y = 1
+		relative_position_id = POR_o_porto_de_sines
+		cost = 7
+		prerequisite = { focus = POR_o_porto_de_sines }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ECONOMY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_labour_path_2_open_tt
+				POR_labour_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_codigo_do_trabalho_de_2003"
+			POR_abandon_labour_path_1 = yes
+			set_variable = { POR_labour_path = 2 }
+			add_ideas = POR_codigo_2003_idea
+			if = {
+				limit = { has_idea = strong_regulations }
+				swap_ideas = { remove_idea = strong_regulations add_idea = standard_regulations }
+			}
+			set_temp_variable = { temp_opinion = -15 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_lei_23_2012
+		icon = por_salazar
+		x = 0
+		y = 1
+		relative_position_id = POR_o_codigo_do_trabalho_de_2003
+		cost = 10
+		prerequisite = { focus = POR_o_codigo_do_trabalho_de_2003 }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ECONOMY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_labour_path_2_held_tt
+				check_variable = { POR_labour_path = 2 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+			date > 2012.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_lei_23_2012"
+			add_ideas = POR_lei_23_2012_idea
+			if = {
+				limit = { has_idea = standard_regulations }
+				swap_ideas = { remove_idea = standard_regulations add_idea = light_regulations }
+			}
+			set_temp_variable = { temp_opinion = -20 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = 15 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 6 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_concertacao_social
+		icon = POR_the_moderating_power
+		x = 0
+		y = 3
+		relative_position_id = POR_o_porto_de_sines
+		cost = 7
+		prerequisite = { focus = POR_o_codigo_do_trabalho_de_2009 focus = POR_o_codigo_do_trabalho_de_2003 }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_centre_majority_tt
+				POR_bloc_centre_has_majority = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_concertacao_social"
+			add_political_power = 50
+			add_to_variable = { POR_political_stability_factor = 0.03 tooltip = stability_factor_tt }
+			set_temp_variable = { temp_opinion = 10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_small_medium_business_owners_opinion = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	##################################
+	### SOCIAL POLICY
+	##################################
+
+	focus = {
+		id = POR_a_politica_social
+		icon = portugal_flag_people
+		x = 26
+		y = 1
+		relative_position_id = POR_o_programa_de_governo
+		cost = 5
+		prerequisite = { focus = POR_o_programa_de_governo }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_politica_social"
+			add_political_power = 25
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_pacto_de_cooperacao
+		icon = POR_matters_of_realm
+		x = 0
+		y = 1
+		relative_position_id = POR_a_politica_social
+		cost = 5
+		prerequisite = { focus = POR_a_politica_social }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNAL_AFFAIRS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_pacto_de_cooperacao"
+			add_ideas = POR_sector_solidario_idea
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_sistema_de_saude
+		icon = POR_portuguese_youth
+		x = -6
+		y = 1
+		relative_position_id = POR_o_pacto_de_cooperacao
+		cost = 5
+		prerequisite = { focus = POR_o_pacto_de_cooperacao }
+		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_STABILITY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_sistema_de_saude"
+			add_ideas = POR_unidades_de_saude_familiar_idea
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_lei_de_bases_da_saude
+		icon = POR_autonomy
+		x = -2
+		y = 1
+		relative_position_id = POR_o_sistema_de_saude
+		cost = 7
+		prerequisite = { focus = POR_o_sistema_de_saude }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_health_path_1_open_tt
+				POR_health_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_lei_de_bases_da_saude"
+			POR_abandon_health_path_2 = yes
+			set_variable = { POR_health_path = 1 }
+			add_ideas = POR_lei_de_bases_da_saude_idea
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_fim_das_parcerias
+		icon = POR_the_moderating_power
+		x = 0
+		y = 1
+		relative_position_id = POR_a_lei_de_bases_da_saude
+		cost = 10
+		prerequisite = { focus = POR_a_lei_de_bases_da_saude }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_health_path_1_held_tt
+				check_variable = { POR_health_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_2_tt
+				POR_ideology_tier_2 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_fim_das_parcerias"
+			add_ideas = POR_fim_das_parcerias_idea
+			medium_expenditure = yes
+			if = {
+				limit = { has_idea = partially_privatized_healthcare }
+				swap_ideas = { remove_idea = partially_privatized_healthcare add_idea = partially_nationalized_healthcare }
+			}
+			else_if = {
+				limit = { has_idea = partially_nationalized_healthcare }
+				swap_ideas = { remove_idea = partially_nationalized_healthcare add_idea = fully_nationalized_healthcare }
+			}
+			set_temp_variable = { temp_opinion = 5 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_lei_de_bases_de_2002
+		icon = POR_ban_republic
+		x = 2
+		y = 1
+		relative_position_id = POR_o_sistema_de_saude
+		cost = 7
+		prerequisite = { focus = POR_o_sistema_de_saude }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_health_path_2_open_tt
+				POR_health_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_lei_de_bases_de_2002"
+			POR_abandon_health_path_1 = yes
+			set_variable = { POR_health_path = 2 }
+			add_ideas = POR_lei_de_bases_de_2002_idea
+			decrease_healthcare_budget = yes
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_as_parcerias_publico_privadas
+		icon = POR_pink_map
+		x = 0
+		y = 1
+		relative_position_id = POR_a_lei_de_bases_de_2002
+		cost = 5
+		prerequisite = { focus = POR_a_lei_de_bases_de_2002 }
+		search_filters = { FOCUS_FILTER_FOREIGN_INVESTMENTS FOCUS_FILTER_INDUSTRY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_health_path_2_held_tt
+				check_variable = { POR_health_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_as_parcerias_publico_privadas"
+			add_ideas = POR_parcerias_publico_privadas_idea
+			if = {
+				limit = { has_idea = partially_nationalized_healthcare }
+				swap_ideas = { remove_idea = partially_nationalized_healthcare add_idea = partially_privatized_healthcare }
+			}
+			set_temp_variable = { temp_opinion = 4 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_sistema_educativo
+		icon = POR_knights_of_portugal
+		x = 0
+		y = 1
+		relative_position_id = POR_o_pacto_de_cooperacao
+		cost = 5
+		prerequisite = { focus = POR_o_pacto_de_cooperacao }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INTERNAL_AFFAIRS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_sistema_educativo"
+			add_ideas = POR_o_pisa_idea
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_escolaridade_obrigatoria
+		icon = POR_portuguese_youth
+		x = -2
+		y = 1
+		relative_position_id = POR_o_sistema_educativo
+		cost = 7
+		prerequisite = { focus = POR_o_sistema_educativo }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_education_path_1_open_tt
+				POR_education_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_escolaridade_obrigatoria"
+			POR_abandon_education_path_2 = yes
+			set_variable = { POR_education_path = 1 }
+			add_ideas = POR_escolaridade_obrigatoria_idea
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_plano_tecnologico_da_educacao
+		icon = POR_royal_edicts
+		x = 0
+		y = 1
+		relative_position_id = POR_a_escolaridade_obrigatoria
+		cost = 5
+		prerequisite = { focus = POR_a_escolaridade_obrigatoria }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_education_path_1_held_tt
+				check_variable = { POR_education_path = 1 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_plano_tecnologico_da_educacao"
+			add_ideas = POR_plano_tecnologico_idea
+			medium_expenditure = yes
+			set_temp_variable = { temp_opinion = 3 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_os_contratos_de_associacao
+		icon = estado_novo
+		x = 2
+		y = 1
+		relative_position_id = POR_o_sistema_educativo
+		cost = 7
+		prerequisite = { focus = POR_o_sistema_educativo }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ECONOMY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_education_path_2_open_tt
+				POR_education_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_os_contratos_de_associacao"
+			POR_abandon_education_path_1 = yes
+			set_variable = { POR_education_path = 2 }
+			add_ideas = POR_contratos_de_associacao_idea
+			decrease_education_budget = yes
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_rigor_curricular
+		icon = POR_matters_of_realm
+		x = 0
+		y = 1
+		relative_position_id = POR_os_contratos_de_associacao
+		cost = 5
+		prerequisite = { focus = POR_os_contratos_de_associacao }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INTERNAL_AFFAIRS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_education_path_2_held_tt
+				check_variable = { POR_education_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_rigor_curricular"
+			add_ideas = POR_rigor_curricular_idea
+			set_temp_variable = { temp_opinion = -5 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_questao_da_habitacao
+		icon = POR_autonomy
+		x = 6
+		y = 1
+		relative_position_id = POR_o_pacto_de_cooperacao
+		cost = 5
+		prerequisite = { focus = POR_o_pacto_de_cooperacao }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_STABILITY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_questao_da_habitacao"
+			add_ideas = POR_parque_habitacional_idea
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_lei_de_bases_da_habitacao
+		icon = portugal_flag_people
+		x = -2
+		y = 1
+		relative_position_id = POR_a_questao_da_habitacao
+		cost = 7
+		prerequisite = { focus = POR_a_questao_da_habitacao }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_housing_path_1_open_tt
+				POR_housing_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_lei_de_bases_da_habitacao"
+			POR_abandon_housing_path_2 = yes
+			set_variable = { POR_housing_path = 1 }
+			add_ideas = POR_lei_de_bases_da_habitacao_idea
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_arrendamento_forcado
+		icon = por_iberian_workers_united
+		x = 0
+		y = 1
+		relative_position_id = POR_a_lei_de_bases_da_habitacao
+		cost = 10
+		prerequisite = { focus = POR_a_lei_de_bases_da_habitacao }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_housing_path_1_held_tt
+				check_variable = { POR_housing_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_3_tt
+				POR_ideology_tier_3 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_arrendamento_forcado"
+			add_ideas = POR_arrendamento_forcado_idea
+			set_temp_variable = { temp_opinion = -10 }
+			change_landowners_opinion = yes
+			set_temp_variable = { temp_opinion = 6 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 6 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_novo_regime_do_arrendamento
+		icon = POR_ban_republic
+		x = 2
+		y = 1
+		relative_position_id = POR_a_questao_da_habitacao
+		cost = 7
+		prerequisite = { focus = POR_a_questao_da_habitacao }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_housing_path_2_open_tt
+				POR_housing_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_novo_regime_do_arrendamento"
+			POR_abandon_housing_path_1 = yes
+			set_variable = { POR_housing_path = 2 }
+			add_ideas = POR_nrau_idea
+			set_temp_variable = { temp_opinion = 6 }
+			change_landowners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_alojamento_local
+		icon = POR_pink_map
+		x = 0
+		y = 1
+		relative_position_id = POR_o_novo_regime_do_arrendamento
+		cost = 5
+		prerequisite = { focus = POR_o_novo_regime_do_arrendamento }
+		search_filters = { FOCUS_FILTER_TRADE FOCUS_FILTER_FOREIGN_INVESTMENTS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_housing_path_2_held_tt
+				check_variable = { POR_housing_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_alojamento_local"
+			add_ideas = POR_alojamento_local_idea
+			set_temp_variable = { temp_opinion = 5 }
+			change_small_medium_business_owners_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_seguranca_social
+		icon = POR_burden_empire
+		x = 12
+		y = 1
+		relative_position_id = POR_o_pacto_de_cooperacao
+		cost = 5
+		prerequisite = { focus = POR_o_pacto_de_cooperacao }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_INTERNAL_AFFAIRS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_seguranca_social"
+			add_ideas = POR_o_ias_idea
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_rendimento_social_de_insercao
+		icon = POR_protect_mozambique
+		x = -2
+		y = 1
+		relative_position_id = POR_a_seguranca_social
+		cost = 7
+		prerequisite = { focus = POR_a_seguranca_social }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_social_path_1_open_tt
+				POR_social_path_1_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_rendimento_social_de_insercao"
+			POR_abandon_social_path_2 = yes
+			set_variable = { POR_social_path = 1 }
+			add_ideas = POR_rsi_idea
+			set_temp_variable = { temp_opinion = 5 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_fim_do_factor_de_sustentabilidade
+		icon = por_iberian_workers_united
+		x = 0
+		y = 1
+		relative_position_id = POR_o_rendimento_social_de_insercao
+		cost = 10
+		prerequisite = { focus = POR_o_rendimento_social_de_insercao }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_EXPENDITURE }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_social_path_1_held_tt
+				check_variable = { POR_social_path = 1 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_ideology_tier_3_tt
+				POR_ideology_tier_3 = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_fim_do_factor_de_sustentabilidade"
+			add_ideas = POR_fim_do_factor_idea
+			large_expenditure = yes
+			increase_social_spending = yes
+			set_temp_variable = { temp_opinion = 8 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 6 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_o_factor_de_sustentabilidade
+		icon = por_salazar
+		x = 2
+		y = 1
+		relative_position_id = POR_a_seguranca_social
+		cost = 7
+		prerequisite = { focus = POR_a_seguranca_social }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_social_path_2_open_tt
+				POR_social_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_factor_de_sustentabilidade"
+			POR_abandon_social_path_1 = yes
+			set_variable = { POR_social_path = 2 }
+			add_ideas = POR_factor_sustentabilidade_idea
+			decrease_social_spending = yes
+			add_stability = -0.05
+			set_temp_variable = { temp_opinion = -10 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_condicao_de_recursos
+		icon = POR_the_tarrafal
+		x = 0
+		y = 1
+		relative_position_id = POR_o_factor_de_sustentabilidade
+		cost = 5
+		prerequisite = { focus = POR_o_factor_de_sustentabilidade }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_CORRUPTION }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_social_path_2_held_tt
+				check_variable = { POR_social_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_condicao_de_recursos"
+			add_ideas = POR_condicao_de_recursos_idea
+			set_temp_variable = { temp_opinion = -6 }
+			change_labour_unions_opinion = yes
+			set_temp_variable = { POR_ideo_add = 2 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_as_questoes_de_costumes
+		icon = por_concordat
+		x = 18
+		y = 1
+		relative_position_id = POR_o_pacto_de_cooperacao
+		cost = 5
+		prerequisite = { focus = POR_o_pacto_de_cooperacao }
+		search_filters = { FOCUS_FILTER_SOCIAL_CONSERVATISM FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_as_questoes_de_costumes"
+			add_political_power = 50
+			add_ideas = POR_liberdade_de_voto_idea
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_referendo_de_2007
+		icon = POR_the_moderating_power
+		x = -2
+		y = 1
+		relative_position_id = POR_as_questoes_de_costumes
+		cost = 7
+		prerequisite = { focus = POR_as_questoes_de_costumes }
+		search_filters = { FOCUS_FILTER_SOCIAL_CONSERVATISM FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_left_majority_tt
+				POR_bloc_left_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_costumes_path_1_open_tt
+				POR_costumes_path_1_open = yes
+			}
+			date > 2006.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_referendo_de_2007"
+			POR_abandon_costumes_path_2 = yes
+			set_variable = { POR_costumes_path = 1 }
+			add_ideas = POR_referendo_de_2007_idea
+			set_temp_variable = { POR_ideo_add = 5 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_casamento_igualitario
+		icon = portugal_flag_people
+		x = 0
+		y = 1
+		relative_position_id = POR_o_referendo_de_2007
+		cost = 5
+		prerequisite = { focus = POR_o_referendo_de_2007 }
+		search_filters = { FOCUS_FILTER_SOCIAL_CONSERVATISM FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_costumes_path_1_held_tt
+				check_variable = { POR_costumes_path = 1 }
+			}
+			date > 2009.1.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_casamento_igualitario"
+			add_ideas = POR_casamento_igualitario_idea
+			set_temp_variable = { POR_ideo_add = 4 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_concordata_de_2004
+		icon = por_concordat
+		x = 2
+		y = 1
+		relative_position_id = POR_as_questoes_de_costumes
+		cost = 7
+		prerequisite = { focus = POR_as_questoes_de_costumes }
+		search_filters = { FOCUS_FILTER_SOCIAL_CONSERVATISM FOCUS_FILTER_FOREIGN_POLICY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_bloc_right_majority_tt
+				POR_bloc_right_has_majority = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = POR_costumes_path_2_open_tt
+				POR_costumes_path_2_open = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_concordata_de_2004"
+			POR_abandon_costumes_path_1 = yes
+			set_variable = { POR_costumes_path = 2 }
+			add_ideas = POR_concordata_idea
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_defesa_da_vida
+		icon = POR_matters_of_realm
+		x = 0
+		y = 1
+		relative_position_id = POR_a_concordata_de_2004
+		cost = 5
+		prerequisite = { focus = POR_a_concordata_de_2004 }
+		search_filters = { FOCUS_FILTER_SOCIAL_CONSERVATISM FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_costumes_path_2_held_tt
+				check_variable = { POR_costumes_path = 2 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_defesa_da_vida"
+			add_ideas = POR_defesa_da_vida_idea
+			set_temp_variable = { POR_ideo_add = 3 }
+			POR_raise_ideological_development = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_descriminalizacao
+		icon = POR_autonomy
+		x = 3
+		y = 2
+		relative_position_id = POR_a_politica_social
+		cost = 7
+		prerequisite = { focus = POR_a_politica_social }
+		search_filters = { FOCUS_FILTER_SOCIAL_CONSERVATISM FOCUS_FILTER_STABILITY }
+
+		available = {
+			date > 2000.7.1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_descriminalizacao"
+			add_ideas = POR_descriminalizacao_idea
+			increase_healthcare_budget = yes
+			add_stability = 0.02
+			decrease_corruption = yes
+			set_temp_variable = { POR_ideo_add = 10 }
+			POR_raise_ideological_development = yes
 		}
 
 		ai_will_do = { base = 10 }
