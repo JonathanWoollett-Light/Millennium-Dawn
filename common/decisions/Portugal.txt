@@ -302,10 +302,6 @@ POR_shadow_ops_category = {
 		ai_will_do = {
 			base = 3
 			modifier = {
-				factor = 4
-				has_global_flag = POR_IMPERIAL_FOCUS_PATH
-			}
-			modifier = {
 				factor = 0
 				check_variable = { POR_shadow_exposure > 54 }
 			}
@@ -384,9 +380,12 @@ POR_escola_ultramar_category = {
 		}
 
 		available = {
-			OR = {
-				check_variable = { POR_active_operations > 0 }
-				check_variable = { POR_intervention_count > 0 }
+			custom_trigger_tooltip = {
+				tooltip = POR_estagio_needs_a_war_tt
+				OR = {
+					check_variable = { POR_active_operations > 0 }
+					check_variable = { POR_intervention_count > 0 }
+				}
 			}
 			any_army_leader = {
 				is_field_marshal = no
@@ -445,9 +444,12 @@ POR_escola_ultramar_category = {
 		}
 
 		available = {
-			OR = {
-				check_variable = { POR_active_operations > 0 }
-				check_variable = { POR_intervention_count > 0 }
+			custom_trigger_tooltip = {
+				tooltip = POR_estagio_needs_a_war_tt
+				OR = {
+					check_variable = { POR_active_operations > 0 }
+					check_variable = { POR_intervention_count > 0 }
+				}
 			}
 			any_army_leader = {
 				is_field_marshal = no

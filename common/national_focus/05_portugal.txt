@@ -1,0 +1,740 @@
+focus_tree = {
+	id = portugal_focus
+
+	country = {
+		base = 0
+		modifier = {
+			add = 20
+			original_tag = POR
+		}
+	}
+
+	# European Union Shared trees
+	shared_focus = USoE001
+	shared_focus = POTEF001
+
+	continuous_focus_position = { x = 2350 y = 1500 }
+
+	shortcut = {
+		name = political_shortcut_title
+		target = POR_a_terceira_republica
+		scroll_wheel_factor = 0.80
+	}
+	shortcut = {
+		name = economy_shortcut_title
+		target = POR_o_programa_de_convergencia
+		scroll_wheel_factor = 0.80
+	}
+	shortcut = {
+		name = diplomacy_shortcut_title
+		target = POR_a_comunidade_lusofona
+		scroll_wheel_factor = 0.80
+	}
+
+	##################################
+	### POLITICS - A TERCEIRA REPUBLICA
+	##################################
+
+	focus = {
+		id = POR_a_terceira_republica
+		icon = flag_portugal
+		x = 4
+		y = 0
+		cost = 7
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_terceira_republica"
+			add_political_power = 50
+			add_stability = 0.03
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_reforma_do_estado
+		icon = POR_matters_of_realm
+		x = -2
+		y = 1
+		relative_position_id = POR_a_terceira_republica
+		cost = 5
+		prerequisite = { focus = POR_a_terceira_republica }
+		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_reforma_do_estado"
+			increase_centralization = yes
+			swap_ideas = {
+				remove_idea = POR_o_estado_pesado_1
+				add_idea = POR_o_estado_pesado_2
+			}
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_combate_a_corrupcao
+		icon = POR_the_moderating_power
+		x = 0
+		y = 1
+		relative_position_id = POR_reforma_do_estado
+		cost = 5
+		prerequisite = { focus = POR_reforma_do_estado }
+		search_filters = { FOCUS_FILTER_CORRUPTION FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_combate_a_corrupcao"
+			decrease_corruption = yes
+			swap_ideas = {
+				remove_idea = POR_o_estado_pesado_2
+				add_idea = POR_o_estado_pesado_3
+			}
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_tribunal_de_contas
+		icon = POR_royal_edicts
+		x = 0
+		y = 1
+		relative_position_id = POR_combate_a_corrupcao
+		cost = 7
+		prerequisite = { focus = POR_combate_a_corrupcao }
+		search_filters = { FOCUS_FILTER_CORRUPTION FOCUS_FILTER_POLITICAL }
+
+		available = {
+			OR = {
+				has_idea = corruption_level_01
+				has_idea = corruption_level_02
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_tribunal_de_contas"
+			remove_ideas = POR_o_estado_pesado_3
+			add_political_power = 75
+			add_to_variable = { POR_political_political_power_factor = 0.05 tooltip = political_power_factor_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_educacao_para_todos
+		icon = POR_portuguese_youth
+		x = 2
+		y = 1
+		relative_position_id = POR_a_terceira_republica
+		cost = 5
+		prerequisite = { focus = POR_a_terceira_republica }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_educacao_para_todos"
+			increase_education_budget = yes
+			swap_ideas = {
+				remove_idea = POR_a_economia_de_baixo_valor_1
+				add_idea = POR_a_economia_de_baixo_valor_2
+			}
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_recenseamento_da_diaspora
+		icon = portugal_flag_people
+		x = 0
+		y = 1
+		relative_position_id = POR_educacao_para_todos
+		cost = 5
+		prerequisite = { focus = POR_educacao_para_todos }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_recenseamento_da_diaspora"
+			swap_ideas = {
+				remove_idea = POR_a_emigracao_1
+				add_idea = POR_a_emigracao_2
+			}
+			set_temp_variable = { percent_change = 2 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = BRA.id }
+			change_influence_percentage = yes
+			set_temp_variable = { percent_change = 2 }
+			set_temp_variable = { tag_index = ROOT.id }
+			set_temp_variable = { influence_target = VER.id }
+			change_influence_percentage = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	##################################
+	### ECONOMY - O PROGRAMA DE CONVERGENCIA
+	##################################
+
+	focus = {
+		id = POR_o_programa_de_convergencia
+		icon = iberian_summit
+		x = 36
+		y = 0
+		cost = 7
+		search_filters = { FOCUS_FILTER_ECONOMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_programa_de_convergencia"
+			add_to_variable = { POR_economy_productivity_growth_modifier = 0.10 tooltip = productivity_growth_modifier_tt }
+			add_political_power = 25
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_euro_e_a_divida
+		icon = POR_burden_empire
+		x = -1
+		y = 1
+		relative_position_id = POR_o_programa_de_convergencia
+		cost = 5
+		prerequisite = { focus = POR_o_programa_de_convergencia }
+		search_filters = { FOCUS_FILTER_ECONOMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_euro_e_a_divida"
+			swap_ideas = {
+				remove_idea = POR_a_divida_publica_1
+				add_idea = POR_a_divida_publica_2
+			}
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_reestruturacao_da_divida
+		icon = POR_autonomy
+		x = -1
+		y = 1
+		relative_position_id = POR_o_euro_e_a_divida
+		cost = 7
+		prerequisite = { focus = POR_o_euro_e_a_divida }
+		mutually_exclusive = { focus = POR_a_alternativa_soberana }
+		search_filters = { FOCUS_FILTER_ECONOMY FOCUS_FILTER_EXPENDITURE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_reestruturacao_da_divida"
+			swap_ideas = {
+				remove_idea = POR_a_divida_publica_2
+				add_idea = POR_a_divida_publica_3
+			}
+			set_temp_variable = { debt_change = -12 }
+			modify_debt_effect = yes
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_alternativa_soberana
+		icon = POR_ban_republic
+		x = 1
+		y = 1
+		relative_position_id = POR_o_euro_e_a_divida
+		cost = 7
+		prerequisite = { focus = POR_o_euro_e_a_divida }
+		mutually_exclusive = { focus = POR_a_reestruturacao_da_divida }
+		search_filters = { FOCUS_FILTER_ECONOMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_alternativa_soberana"
+			swap_ideas = {
+				remove_idea = POR_a_divida_publica_2
+				add_idea = POR_a_divida_publica_3
+			}
+			disable_debt_rate_payments = yes
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = 1 tooltip = interest_rate_multiplier_modifier_tt }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	focus = {
+		id = POR_o_regresso_aos_mercados
+		icon = POR_Imperio_Ultramarino
+		x = 0
+		y = 1
+		relative_position_id = POR_o_euro_e_a_divida
+		cost = 10
+		prerequisite = { focus = POR_a_reestruturacao_da_divida focus = POR_a_alternativa_soberana }
+		search_filters = { FOCUS_FILTER_ECONOMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_regresso_aos_mercados"
+			remove_ideas = POR_a_divida_publica_3
+			add_to_variable = { POR_economy_interest_rate_multiplier_modifier = -1 tooltip = interest_rate_multiplier_modifier_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_reindustrializacao
+		icon = POR_knights_of_portugal
+		x = 2
+		y = 1
+		relative_position_id = POR_o_programa_de_convergencia
+		cost = 5
+		prerequisite = { focus = POR_o_programa_de_convergencia }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_EXPENDITURE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_reindustrializacao"
+			one_random_industrial_complex = yes
+			swap_ideas = {
+				remove_idea = POR_a_economia_de_baixo_valor_2
+				add_idea = POR_a_economia_de_baixo_valor_3
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_industrial_complex = no
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_web_summit
+		icon = POR_pink_map
+		x = 1
+		y = 1
+		relative_position_id = POR_a_reindustrializacao
+		cost = 5
+		prerequisite = { focus = POR_a_reindustrializacao }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_ECONOMY }
+
+		available = { date > 2016.1.1 }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_web_summit"
+			remove_ideas = POR_a_emigracao_2
+			add_to_variable = { POR_economy_research_speed_factor = 0.03 tooltip = research_speed_factor_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_portugal_2030
+		icon = the_kingdom_reunited
+		x = -1
+		y = 1
+		relative_position_id = POR_a_reindustrializacao
+		cost = 10
+		prerequisite = { focus = POR_a_reindustrializacao }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_EXPENDITURE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_portugal_2030"
+			remove_ideas = POR_a_economia_de_baixo_valor_3
+			one_random_industrial_complex = yes
+			add_to_variable = { POR_economy_productivity_growth_modifier = 0.10 tooltip = productivity_growth_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_industrial_complex = no
+			}
+		}
+	}
+
+	##################################
+	### THE LUSOPHONE WORLD AND THE SHADOW WAR
+	##################################
+
+	focus = {
+		id = POR_a_comunidade_lusofona
+		icon = POR_Imperio_Ultramarino
+		x = 124
+		y = 0
+		cost = 7
+		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_INFLUENCE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_comunidade_lusofona"
+			custom_effect_tooltip = {
+				localization_key = adds_dynamic_modifier_tt
+				MODIFIER = POR_shadow_network
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = POR_shadow_network } } }
+					add_dynamic_modifier = { modifier = POR_shadow_network }
+				}
+			}
+			add_to_variable = { POR_shadow_foreign_influence_continent_modifier = 0.05 tooltip = foreign_influence_continent_modifier_tt }
+			add_political_power = 25
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_instituto_camoes
+		icon = POR_portuguese_youth
+		x = -2
+		y = 1
+		relative_position_id = POR_a_comunidade_lusofona
+		cost = 5
+		prerequisite = { focus = POR_a_comunidade_lusofona }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_FOREIGN_POLICY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_instituto_camoes"
+			set_country_flag = POR_instituto_camoes
+			add_to_variable = { POR_shadow_foreign_influence_modifier = 0.05 tooltip = foreign_influence_modifier_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	# Everything below this point is the shadow war.
+	focus = {
+		id = POR_a_realpolitik_lusofona
+		icon = POR_Kingdom_Emblem
+		x = 1
+		y = 1
+		relative_position_id = POR_a_comunidade_lusofona
+		cost = 7
+		prerequisite = { focus = POR_a_comunidade_lusofona }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_FOREIGN_POLICY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_realpolitik_lusofona"
+			set_country_flag = POR_shadow_doors_open
+			swap_ideas = {
+				remove_idea = POR_o_fim_do_imperio
+				add_idea = POR_o_imperio_informal_idea
+			}
+			unlock_decision_category_tooltip = POR_shadow_ops_category
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	focus = {
+		id = POR_os_amigos_do_regime
+		icon = por_concordat
+		x = -1
+		y = 1
+		relative_position_id = POR_a_realpolitik_lusofona
+		cost = 5
+		prerequisite = { focus = POR_a_realpolitik_lusofona }
+		search_filters = { FOCUS_FILTER_INFLUENCE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_os_amigos_do_regime"
+			set_country_flag = POR_os_amigos_do_regime
+			add_to_variable = { POR_shadow_foreign_influence_modifier = 0.05 tooltip = foreign_influence_modifier_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_rede_de_oficiais
+		icon = POR_Army_Emblem
+		x = 1
+		y = 1
+		relative_position_id = POR_a_realpolitik_lusofona
+		cost = 5
+		prerequisite = { focus = POR_a_realpolitik_lusofona }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_ARMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_rede_de_oficiais"
+			set_country_flag = POR_comprar_os_generais_unlocked
+			unlock_decision_tooltip = POR_comprar_os_generais
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_via_discreta
+		icon = limited_self_rule
+		x = -1
+		y = 1
+		relative_position_id = POR_a_rede_de_oficiais
+		cost = 5
+		prerequisite = { focus = POR_a_rede_de_oficiais }
+		prerequisite = { focus = POR_os_amigos_do_regime }
+		mutually_exclusive = { focus = POR_a_via_aberta }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_FOREIGN_POLICY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_via_discreta"
+			set_country_flag = POR_via_discreta
+			add_to_variable = { POR_political_drift_defence_factor = 0.10 tooltip = drift_defence_factor_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_via_aberta
+		icon = the_pink_map
+		x = 1
+		y = 1
+		relative_position_id = POR_a_rede_de_oficiais
+		cost = 5
+		prerequisite = { focus = POR_a_rede_de_oficiais }
+		prerequisite = { focus = POR_os_amigos_do_regime }
+		mutually_exclusive = { focus = POR_a_via_discreta }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_WAR_SUPPORT }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_via_aberta"
+			set_country_flag = POR_via_aberta
+			add_war_support = 0.05
+			add_to_variable = { POR_shadow_send_volunteer_size = 1 tooltip = send_volunteer_size_tt }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	focus = {
+		id = POR_a_legiao_portuguesa
+		icon = portuguese_legion
+		x = 0
+		y = 1
+		relative_position_id = POR_a_rede_de_oficiais
+		cost = 7
+		prerequisite = { focus = POR_a_via_discreta focus = POR_a_via_aberta }
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_legiao_portuguesa"
+			add_ideas = POR_idea_legiao_portuguesa_1
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_o_pronunciamento
+		icon = POR_protect_angola
+		x = -2
+		y = 1
+		relative_position_id = POR_a_legiao_portuguesa
+		cost = 7
+		prerequisite = { focus = POR_a_legiao_portuguesa }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_pronunciamento"
+			set_country_flag = POR_pronunciamento_unlocked
+			unlock_decision_tooltip = POR_o_pronunciamento_local
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	focus = {
+		id = POR_a_escola_de_guerra_de_africa
+		icon = Portuguese_Army
+		x = 0
+		y = 1
+		relative_position_id = POR_a_legiao_portuguesa
+		cost = 5
+		prerequisite = { focus = POR_a_legiao_portuguesa }
+		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_ARMY_XP }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_escola_de_guerra_de_africa"
+			set_country_flag = POR_escola_ultramar_aberta
+			swap_ideas = {
+				remove_idea = POR_idea_legiao_portuguesa_1
+				add_idea = POR_idea_legiao_portuguesa_2
+			}
+			add_to_variable = { POR_military_special_forces_cap_flat = 6 tooltip = special_forces_cap_flat_tt }
+			unlock_decision_category_tooltip = POR_escola_ultramar_category
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_projeccao_de_forcas
+		icon = Portuguese_Air_Force
+		x = 0
+		y = 1
+		relative_position_id = POR_a_escola_de_guerra_de_africa
+		cost = 7
+		prerequisite = { focus = POR_a_escola_de_guerra_de_africa }
+		search_filters = { FOCUS_FILTER_ARMY FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_projeccao_de_forcas"
+			swap_ideas = {
+				remove_idea = POR_idea_legiao_portuguesa_2
+				add_idea = POR_idea_legiao_portuguesa_3
+			}
+			increase_intervention_law_effect = yes
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_segunda_vaga
+		icon = POR_protect_mozambique
+		x = -2
+		y = 1
+		relative_position_id = POR_a_escola_de_guerra_de_africa
+		cost = 7
+		prerequisite = { focus = POR_o_pronunciamento }
+		search_filters = { FOCUS_FILTER_INSURGENCY FOCUS_FILTER_INFLUENCE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_segunda_vaga"
+			set_variable = { POR_ops_cap = 3 }
+			custom_effect_tooltip = POR_a_segunda_vaga_tt
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_questao_europeia
+		icon = iberian_summit
+		x = 3
+		y = 1
+		relative_position_id = POR_a_realpolitik_lusofona
+		cost = 5
+		prerequisite = { focus = POR_a_realpolitik_lusofona }
+		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_questao_europeia"
+			add_political_power = 50
+			add_to_variable = { POR_political_drift_defence_factor = 0.05 tooltip = drift_defence_factor_tt }
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_permanecer_na_europa
+		icon = POR_autonomy
+		x = -1
+		y = 1
+		relative_position_id = POR_a_questao_europeia
+		cost = 7
+		prerequisite = { focus = POR_a_questao_europeia }
+		mutually_exclusive = { focus = POR_a_saida_atlantica }
+		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_POLITICAL }
+
+		available = { has_idea = EU_member }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_permanecer_na_europa"
+			set_country_flag = POR_stood_down
+			set_variable = { POR_shadow_exposure = 0 }
+			POR_update_exposure_tier = yes
+			add_stability = 0.10
+			custom_effect_tooltip = POR_permanecer_na_europa_tt
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	focus = {
+		id = POR_a_saida_atlantica
+		icon = ohno_step_portugal
+		x = 1
+		y = 1
+		relative_position_id = POR_a_questao_europeia
+		cost = 10
+		prerequisite = { focus = POR_a_questao_europeia }
+		mutually_exclusive = { focus = POR_permanecer_na_europa }
+		search_filters = { FOCUS_FILTER_FOREIGN_POLICY FOCUS_FILTER_POLITICAL }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_a_saida_atlantica_tt
+				check_variable = { POR_shadow_exposure > 34 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_a_saida_atlantica"
+			set_variable = { POR_shadow_exposure = 0 }
+			POR_update_exposure_tier = yes
+			if = {
+				limit = { has_idea = NATO_member }
+				NATO_leave = yes
+			}
+			set_intervention_to_lvl_5 = yes
+			add_war_support = 0.05
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	focus = {
+		id = POR_o_imperio_informal
+		icon = the_fifth_empire
+		x = -1
+		y = 2
+		relative_position_id = POR_a_escola_de_guerra_de_africa
+		cost = 10
+		prerequisite = { focus = POR_a_segunda_vaga }
+		prerequisite = { focus = POR_a_projeccao_de_forcas }
+		search_filters = { FOCUS_FILTER_INFLUENCE FOCUS_FILTER_FOREIGN_POLICY }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_o_imperio_informal_tt
+				check_variable = { POR_lusophone_subjects^num > 0 }
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus POR_o_imperio_informal"
+			swap_ideas = {
+				remove_idea = POR_o_imperio_informal_idea
+				add_idea = POR_o_quinto_imperio_idea
+			}
+			add_political_power = 100
+		}
+
+		ai_will_do = { base = 10 }
+	}
+}

@@ -100,6 +100,12 @@ country_event = {
 		remove_from_array = { POR_shadow_clients = FROM.id }
 		set_variable = { POR_active_operations = POR_shadow_clients^num }
 
+		# The autonomy terms replace the informal arrangement. Leaving both in place would
+		# charge the client twice for the same trade.
+		FROM = {
+			remove_ideas = { POR_presenca_lusofona_1 POR_presenca_lusofona_2 POR_presenca_lusofona_3 }
+		}
+
 		set_temp_variable = { POR_heat_add = 6 }
 		FROM = { POR_score_client = yes }
 		POR_add_exposure = yes

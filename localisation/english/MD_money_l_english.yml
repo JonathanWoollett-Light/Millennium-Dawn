@@ -1,4 +1,8 @@
 ﻿l_english:
+ additional_income_POR_ultramar_TT: "$$[?POR_ultramar_income|+3] from §YOverseas Administration§!\n"
+ additional_income_POR_lusofonia_TT: "$$[?POR_lusofonia_income|+3] from §YLusophone Commerce§!\n"
+ additional_expense_POR_ultramar_TT: "$$[?POR_ultramar_expense|-3] from §YOverseas Commitments§!\n"
+ additional_expense_POR_legiao_TT: "$$[?POR_legiao_expense|-3] from §YThe Portuguese Legion§!\n"
  flat_productivity_change_effect_TT: "§YProductivity§!: [?temp_productivity_change|+3]\n"
  active_economic_project: "Economic Project Active"
 

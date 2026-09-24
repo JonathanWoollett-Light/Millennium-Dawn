@@ -242,4 +242,34 @@ ideas = {
 			}
 		}
 	}
+
+	hidden_ideas = {
+		POR_ultramar_income_money = {
+			allowed_civil_war = { always = yes }
+			modifier = {
+				custom_modifier_tooltip = additional_income_POR_ultramar_TT
+			}
+		}
+
+		POR_ultramar_expense_money = {
+			allowed_civil_war = { always = yes }
+			modifier = {
+				custom_modifier_tooltip = additional_expense_POR_ultramar_TT
+			}
+		}
+
+		POR_lusofonia_money = {
+			allowed_civil_war = { always = yes }
+			modifier = {
+				custom_modifier_tooltip = additional_income_POR_lusofonia_TT
+			}
+		}
+
+		POR_legiao_money = {
+			allowed_civil_war = { always = yes }
+			modifier = {
+				custom_modifier_tooltip = additional_expense_POR_legiao_TT
+			}
+		}
+	}
 }

@@ -43,7 +43,16 @@ on_actions = {
 		effect = {
 			POR_prune_shadow_arrays = yes
 			POR_update_intervention_load = yes
+
+			# Walk every country we are working on up or down the ladder to match the
+			# network we actually hold there.
+			for_each_scope_loop = {
+				array = POR_network_target_array
+				POR_apply_client_tier = yes
+			}
+
 			POR_update_overseas_doctrine = yes
+			POR_update_money_ideas = yes
 
 			# Exposure only cools while nothing of ours is fighting overseas.
 			if = {

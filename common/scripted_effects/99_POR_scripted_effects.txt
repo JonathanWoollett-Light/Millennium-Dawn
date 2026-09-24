@@ -429,6 +429,112 @@ POR_client_core_repair = {
 	un_recog_setup_check = yes
 }
 
+# The money lines only appear while they are actually paying or costing something.
+POR_update_money_ideas = {
+	if = {
+		limit = {
+			check_variable = { POR_lusophone_subjects^num > 0 }
+			NOT = { has_idea = POR_ultramar_income_money }
+		}
+		add_ideas = POR_ultramar_income_money
+	}
+	else_if = {
+		limit = {
+			check_variable = { POR_lusophone_subjects^num < 1 }
+			has_idea = POR_ultramar_income_money
+		}
+		remove_ideas = POR_ultramar_income_money
+	}
+
+	if = {
+		limit = {
+			OR = {
+				check_variable = { POR_active_operations > 0 }
+				check_variable = { POR_lusophone_subjects^num > 0 }
+			}
+			NOT = { has_idea = POR_ultramar_expense_money }
+		}
+		add_ideas = POR_ultramar_expense_money
+	}
+	else_if = {
+		limit = {
+			check_variable = { POR_active_operations < 1 }
+			check_variable = { POR_lusophone_subjects^num < 1 }
+			has_idea = POR_ultramar_expense_money
+		}
+		remove_ideas = POR_ultramar_expense_money
+	}
+
+	if = {
+		limit = {
+			has_completed_focus = POR_o_instituto_camoes
+			NOT = { has_idea = POR_lusofonia_money }
+		}
+		add_ideas = POR_lusofonia_money
+	}
+
+	if = {
+		limit = {
+			check_variable = { POR_intervention_count > 0 }
+			NOT = { has_idea = POR_legiao_money }
+		}
+		add_ideas = POR_legiao_money
+	}
+	else_if = {
+		limit = {
+			check_variable = { POR_intervention_count < 1 }
+			has_idea = POR_legiao_money
+		}
+		remove_ideas = POR_legiao_money
+	}
+}
+
+# The ladder. What a country gives us long before it is ours: first a trading position,
+# then the industry, then the officers. Reconciled weekly rather than bought with a
+# decision, so the benefit always matches the network we actually hold there.
+POR_apply_client_tier = {
+	set_temp_variable = { POR_tier_wanted = 0 }
+	if = { limit = { check_variable = { POR_net@ROOT > 0.699 } } set_temp_variable = { POR_tier_wanted = 3 } }
+	else_if = { limit = { check_variable = { POR_net@ROOT > 0.399 } } set_temp_variable = { POR_tier_wanted = 2 } }
+	else_if = { limit = { check_variable = { POR_net@ROOT > 0.199 } } set_temp_variable = { POR_tier_wanted = 1 } }
+
+	if = {
+		limit = {
+			check_variable = { POR_tier_wanted = 0 }
+			OR = {
+				has_idea = POR_presenca_lusofona_1
+				has_idea = POR_presenca_lusofona_2
+				has_idea = POR_presenca_lusofona_3
+			}
+		}
+		remove_ideas = { POR_presenca_lusofona_1 POR_presenca_lusofona_2 POR_presenca_lusofona_3 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { POR_tier_wanted = 1 }
+			NOT = { has_idea = POR_presenca_lusofona_1 }
+		}
+		remove_ideas = { POR_presenca_lusofona_2 POR_presenca_lusofona_3 }
+		add_ideas = POR_presenca_lusofona_1
+	}
+	else_if = {
+		limit = {
+			check_variable = { POR_tier_wanted = 2 }
+			NOT = { has_idea = POR_presenca_lusofona_2 }
+		}
+		remove_ideas = { POR_presenca_lusofona_1 POR_presenca_lusofona_3 }
+		add_ideas = POR_presenca_lusofona_2
+	}
+	else_if = {
+		limit = {
+			check_variable = { POR_tier_wanted = 3 }
+			NOT = { has_idea = POR_presenca_lusofona_3 }
+		}
+		remove_ideas = { POR_presenca_lusofona_1 POR_presenca_lusofona_2 }
+		add_ideas = POR_presenca_lusofona_3
+	}
+}
+
 # The price of distance. Every theatre Portuguese troops are standing in has to be fuelled
 # and supplied from Lisbon, and a good share of what is landed is stolen, sold or written
 # off long before it reaches the firing line. The first intervention already hurts; the
