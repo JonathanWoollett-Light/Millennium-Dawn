@@ -20,7 +20,7 @@
  POR_road_psd_tt: "The £POR_western_conservative PSD is in government"
  POR_road_left_tt: "The £POR_anarchist_communism CDU or £POR_non_aligned_socialist_democrat Bloco de Esquerda is in government"
  POR_road_national_tt: "The £POR_Nat_Populism PNR or £POR_nationalist_monarchist Braganca is in government"
- POR_a_causa_real_tt: "The £POR_nationalist_monarchist Braganca polls above §Y15%%§!"
+ POR_a_causa_real_tt: "The £POR_nationalist_monarchist Braganca polls above §Y15%§!"
 
  ### POLITICS OF THE PUBLIC ARGUMENT ###
  POR_ideologia_modifier: "Ideological Development"
@@ -587,9 +587,9 @@
  POR_a_questao_ideologica_desc: "A quarter of a century after the revolution the parties agree on the constitution, the currency, the alliance and the budget. What is left to argue about is everything else, and the country is about to find out how much that is."
  POR_ideological_development_up_tt: "£drift_defence_texticon  §YIdeological Development§!: §G+[?POR_ideo_add]§!"
  POR_ideological_development_down_tt: "£drift_defence_texticon  §YIdeological Development§!: §R-[?POR_ideo_sub]§!"
- POR_ruling_party_has_support_tt: "[Root.GetRulingParty] polls above §Y15%%§!"
+ POR_ruling_party_has_support_tt: "[Root.GetRulingParty] polls above §Y15%§!"
  POR_has_an_opposition_tt: "Some party outside the government has support worth taking"
- POR_revolt_has_support_tt: "An outlook outside the government holds more than §Y34%%§! of the country"
+ POR_revolt_has_support_tt: "An outlook outside the government holds more than §Y34%§! of the country"
  POR_the_left_governs_tt: "The £POR_anarchist_communism CDU, £POR_non_aligned_socialist_democrat Bloco de Esquerda, £POR_non_aligned_communism PCTP or £POR_emerging_communism POUS is in government"
  POR_the_atlanticists_govern_tt: "The £POR_western_conservative PSD, £POR_western_liberal Nos Cidadaos or £POR_western_social_democrat PS is in government"
  POR_the_national_right_governs_tt: "The £POR_non_aligned_conservative CDS-PP, £POR_Nat_Populism PNR, £POR_Nat_Autocracy Exercito Portugues or £POR_nationalist_monarchist Braganca is in government"
@@ -699,9 +699,9 @@
  POR_a_intervencao: "Intervention"
  POR_a_intervencao_desc: "A country of ten million with a diplomatic service, a language spoken by two hundred and eighty million, and no instrument between a démarche and a war. This branch builds the instruments."
  POR_needs_POR_a_realpolitik_lusofona_tt: "We have adopted §YLusophone Realpolitik§!"
- POR_holds_a_network_tt: "We hold a §Ynetwork§! worth more than §Y30%%§! in some Lusophone state"
+ POR_holds_a_network_tt: "We hold a §Ynetwork§! worth more than §Y30%§! in some Lusophone state"
  POR_holds_a_client_tt: "We are running at least one §Yclient§!"
- POR_ready_for_a_directed_rising_tt: "Somewhere in the Lusophone world we hold §Y40§! network strength, both §Ycivilian§! and §Yarmy§! infiltration, and more than §Y10%%§! influence"
+ POR_ready_for_a_directed_rising_tt: "Somewhere in the Lusophone world we hold §Y40§! network strength, both §Ycivilian§! and §Yarmy§! infiltration, and more than §Y10%§! influence"
  POR_madrid_is_ready_tt: "Spain is §Yisolated or unstable§!, we hold §Y60§! network strength there with §Yboth§! infiltrations, our §Yideological development§! is above §Y60§!, and we are already running §Ytwo clients§!"
  POR_galiza_is_ready_tt: "Spain is §Yat war with itself§!, or the government we installed sits in Madrid"
 
@@ -816,7 +816,7 @@
  POR_o_memorando_de_luena_desc: "Savimbi is killed in the bush in February and the war is over by April, on terms written in six weeks by men who had been shooting at each other for twenty-seven years. Whoever brokered it owns a share of the peace."
  POR_o_memorando_de_luena_effect_tt: "Portugal is the §Yguarantor§! of the Angolan settlement, and is owed by whichever side kept its army"
  POR_lundas_tt: "We hold a §Ynetwork§! inside UNITA"
- POR_luena_tt: "We hold a §Ynetwork above 40%%§! in §Yeither§! Angolan camp"
+ POR_luena_tt: "We hold a §Ynetwork above 40%§! in §Yeither§! Angolan camp"
 
  ### GUINEA-BISSAU ###
  POR_a_embaixada_em_bissau: "The Embassy in Bissau"
@@ -826,8 +826,8 @@
  POR_a_reforma_do_sector_de_seguranca: "Security Sector Reform"
  POR_a_reforma_do_sector_de_seguranca_desc: "A European mission to pension off the general staff and professionalise what is left. It is the correct policy, it is what the country asked for, and every man it retires becomes available to whoever is paying."
  POR_a_reforma_do_sector_de_seguranca_effect_tt: "Portugal §Yrebuilds§! the Bissau officer corps, and knows where every one of them sleeps"
- POR_bissau_network_tt: "We hold a §Ynetwork above 30%%§! in Guinea-Bissau"
- POR_bissau_reform_tt: "We are the §Ylargest foreign influence§! in Guinea-Bissau, above §Y30%%§!"
+ POR_bissau_network_tt: "We hold a §Ynetwork above 30%§! in Guinea-Bissau"
+ POR_bissau_reform_tt: "We are the §Ylargest foreign influence§! in Guinea-Bissau, above §Y30%§!"
 
  ### MOZAMBIQUE ###
  POR_a_barragem_de_cahora_bassa: "Cahora Bassa"
@@ -836,8 +836,8 @@
  POR_a_cooperacao_tecnico_militar_desc: "Portuguese instructors at Boane and Mozambican officers at Pedroucos, under an agreement signed so quietly that the parliament in Lisbon was told afterwards."
  POR_o_gas_do_rovuma: "The Rovuma Gas"
  POR_o_gas_do_rovuma_desc: "The largest gas find in a generation, offshore of the poorest province in the country, and an insurgency ashore that started the year the platforms were ordered. Nobody involved thinks those two facts are unrelated."
- POR_maputo_network_tt: "We hold a §Ynetwork above 30%%§! in Mozambique"
- POR_rovuma_tt: "We are the §Ylargest foreign influence§! in Mozambique, above §Y30%%§!"
+ POR_maputo_network_tt: "We hold a §Ynetwork above 30%§! in Mozambique"
+ POR_rovuma_tt: "We are the §Ylargest foreign influence§! in Mozambique, above §Y30%§!"
 
  ### EAST TIMOR ###
  POR_o_portugues_em_timor: "Portuguese in Timor"
@@ -846,8 +846,8 @@
  POR_a_guarda_em_dili_desc: "The army dismisses a third of itself, the third that was dismissed goes to the hills with its weapons, and Dili burns. Portuguese gendarmes land within a fortnight and stay for six years."
  POR_o_mar_de_timor: "The Timor Sea"
  POR_o_mar_de_timor_desc: "A maritime boundary drawn to favour Canberra, a gas field worth more than the country's entire economy, and a conciliation at The Hague that nobody expected the small side to win."
- POR_dili_network_tt: "We hold a §Ynetwork above 30%%§! in East Timor"
- POR_timor_sea_tt: "We are the §Ylargest foreign influence§! in East Timor, above §Y30%%§!"
+ POR_dili_network_tt: "We hold a §Ynetwork above 30%§! in East Timor"
+ POR_timor_sea_tt: "We are the §Ylargest foreign influence§! in East Timor, above §Y30%§!"
 
  ### EQUATORIAL GUINEA ###
  POR_a_lusofonia_de_malabo: "The Lusophony of Malabo"
@@ -857,8 +857,8 @@
  POR_o_dossie_de_black_beach: "The Black Beach File"
  POR_o_dossie_de_black_beach_desc: "Sixty-four mercenaries arrested in Harare on their way to overthrow Obiang, financed from London, and a trial that named everyone except the people who paid. The file is still open and Lisbon has a copy."
  POR_o_dossie_de_black_beach_effect_tt: "Portugal holds the §Ynames§! of everyone who has tried this before, and what they got wrong"
- POR_malabo_network_tt: "We hold a §Ynetwork above 30%%§! in Equatorial Guinea"
- POR_black_beach_tt: "We are the §Ylargest foreign influence§! in Equatorial Guinea, above §Y30%%§!"
+ POR_malabo_network_tt: "We hold a §Ynetwork above 30%§! in Equatorial Guinea"
+ POR_black_beach_tt: "We are the §Ylargest foreign influence§! in Equatorial Guinea, above §Y30%§!"
 
  ### CABINDA ###
  POR_o_tratado_de_simulambuco: "The Treaty of Simulambuco"
@@ -867,7 +867,7 @@
  POR_a_flec_de_cabinda_desc: "A separatist front split into factions, an enclave producing most of Angola's oil, and a Portuguese-speaking exile leadership in Paris and Lisbon that has been waiting thirty years for a telephone call."
  POR_a_republica_de_cabinda: "The Republic of Cabinda"
  POR_a_republica_de_cabinda_desc: "Sixty thousand barrels a day, seven hundred thousand people, and a border with Angola that only exists on the maps Portugal drew. It is declared on a morning when Luanda is looking somewhere else."
- POR_flec_tt: "We hold a §Ynetwork above 30%%§! in Angola"
+ POR_flec_tt: "We hold a §Ynetwork above 30%§! in Angola"
  POR_cabinda_ready_tt: "Angola is §Yat war with itself§! or §Ylosing§! a war"
 
  ### CAPE VERDE ###
@@ -878,8 +878,8 @@
  POR_o_estado_associado: "The Associated State"
  POR_o_estado_associado_desc: "A currency issued against Portuguese reserves, a diaspora larger than the resident population, and a free movement arrangement. At some point somebody is going to ask what the difference is."
  POR_o_estado_associado_effect_tt: "Cape Verde becomes an §Yassociated state§! in everything but the word"
- POR_praia_network_tt: "We hold a §Ynetwork above 30%%§! in Cape Verde"
- POR_praia_associated_tt: "We are the §Ylargest foreign influence§! in Cape Verde, above §Y50%%§!"
+ POR_praia_network_tt: "We hold a §Ynetwork above 30%§! in Cape Verde"
+ POR_praia_associated_tt: "We are the §Ylargest foreign influence§! in Cape Verde, above §Y50%§!"
 
  ### SAO TOME ###
  POR_a_zona_de_desenvolvimento_conjunto: "The Joint Development Zone"
@@ -888,23 +888,15 @@
  POR_o_dezasseis_de_julho_desc: "The president is abroad, a major with veterans of the Buffalo Battalion behind him takes the radio station, and a week later everybody agrees it did not really happen. Somebody made the telephone calls that ended it."
  POR_a_estacao_naval_do_golfo: "The Gulf Naval Station"
  POR_a_estacao_naval_do_golfo_desc: "One island in the middle of the Gulf of Guinea, at the point where every tanker leaving West Africa has to pass. Every navy in the world has asked about it. One of them speaks the language."
- POR_sao_tome_network_tt: "We hold a §Ynetwork above 30%%§! in Sao Tome"
- POR_gulf_station_tt: "We are the §Ylargest foreign influence§! in Sao Tome, above §Y50%%§!"
+ POR_sao_tome_network_tt: "We hold a §Ynetwork above 30%§! in Sao Tome"
+ POR_gulf_station_tt: "We are the §Ylargest foreign influence§! in Sao Tome, above §Y50%§!"
  ### BACKING A SIDE ###
  POR_commit_to_a_side_tt: "Portugal is §Ycommitted§!. If this side wins we take an §Ginfluence share, a network and a trading position§! in whatever it becomes; if it loses we are §Rthe power that backed the losers§!"
  portugal.70.t: "Our Side Won"
  portugal.70.d: "The war we were careful never to admit being in has ended in favour of the people we were careful never to admit paying. The new government's first foreign visit is to Lisbon, its finance ministry is advised by people we seconded, and the concessions signed under the old one are being reviewed in our favour.\n\n\n\nNobody is going to write any of that down."
-
-
-
-Nobody is going to write any of that down."
  portugal.70.a: "The correct investment"
  portugal.71.t: "We Backed the Losers"
  portugal.71.d: "The side we supplied has been destroyed and the side we supplied against is in the capital, going through the filing cabinets. Some of what they will find has our letterhead on it.\n\n\n\nEvery position we held in that country is now held by whoever paid for the winners."
-
-
-
-Every position we held in that country is now held by whoever paid for the winners."
  portugal.71.a: "Deniability was always the weaker half of the plan"
  ### THE RAID AND THE SIDE ###
  POR_operation_falsa_bandeira: "False Flag"
@@ -934,7 +926,7 @@ Every position we held in that country is now held by whoever paid for the winne
  POR_no_treaty_signed_tt: "We are §Ynot§! bound to this country by treaty"
  POR_not_yet_committed_tt: "We have §Ynot yet§! taken a side in this war"
  POR_tratado_effect_tt: "Signs a §Gstanding treaty§!. Our network there deepens and our trade improves, and the §RDirected Rising can never be run against them§!"
- POR_prioridade_effect_tt: "Names this country a §Rpriority§!. The rising needs only §Y20%%§! influence, a §Y55%%§! network and a §Y10%%§! officer corps there instead of the full bar - and they will work out what for"
+ POR_prioridade_effect_tt: "Names this country a §Rpriority§!. The rising needs only §Y20%§! influence, a §Y55%§! network and a §Y10%§! officer corps there instead of the full bar - and they will work out what for"
  POR_o_reconhecimento_de_luanda: "Recognise Luanda"
  POR_o_reconhecimento_de_luanda_desc: "The MPLA has the seat at the United Nations, the oil revenue and the diplomatic recognition of everyone who matters. Backing it is the respectable choice and the one that pays least, because a government that is going to win anyway owes its friends nothing.\n\n\n\nThe window closes when the war does."
  POR_o_apoio_a_unita: "Support UNITA"
