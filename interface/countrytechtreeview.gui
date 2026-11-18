@@ -2866,7 +2866,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year3"
-				position = { x = 100 y = 0 }
+				position = { x = 83 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "1955"
@@ -2877,7 +2877,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year4"
-				position = { x = 430 y = 0 }
+				position = { x = 363 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "1965"
@@ -2888,7 +2888,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year5"
-				position = { x = 710 y = 0 }
+				position = { x = 503 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "1975"
@@ -2899,7 +2899,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year6"
-				position = { x = 990 y = 0 }
+				position = { x = 643 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "1985"
@@ -2910,7 +2910,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year7"
-				position = { x = 1270 y = 0 }
+				position = { x = 783 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "1995"
@@ -2921,7 +2921,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year8"
-				position = { x = 1550 y = 0 }
+				position = { x = 923 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2005"
@@ -2932,7 +2932,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year9"
-				position = { x = 1830 y = 0 }
+				position = { x = 1063 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2015"
@@ -2943,7 +2943,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year10"
-				position = { x = 2110 y = 0 }
+				position = { x = 1203 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2025"
@@ -2954,7 +2954,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year11"
-				position = { x = 2390 y = 0 }
+				position = { x = 1343 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2035"
@@ -2965,7 +2965,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year12"
-				position = { x = 2670 y = 0 }
+				position = { x = 1483 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2045"
@@ -2976,7 +2976,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year13"
-				position = { x = 2950 y = 0 }
+				position = { x = 1623 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2055"
@@ -2987,7 +2987,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year14"
-				position = { x = 3230 y = 0 }
+				position = { x = 1763 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2065"
@@ -2998,7 +2998,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year15"
-				position = { x = 3510 y = 0 }
+				position = { x = 1903 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2075"
@@ -3009,7 +3009,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "airtech_year16"
-				position = { x = 3790 y = 0 }
+				position = { x = 2043 y = 0 }
 				font = "hoi_36header"
 				borderSize = { x = 0 y = 4 }
 				text = "2085"
@@ -3057,7 +3057,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "plane_subtitle_plane_avionics"
-				position = { x = 650 y = 550 }
+				position = { x = 370 y = 690 }
 				font = "hoi_33"
 				borderSize = { x = 0 y = 4 }
 				text = "AIR_TITLE_PLANE_AVIONICS"
@@ -3069,7 +3069,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "plane_subtitle_plane_engines"
-				position = { x = 570 y = 900 }
+				position = { x = 360 y = 1040 }
 				font = "hoi_33"
 				borderSize = { x = 0 y = 4 }
 				text = "AIR_TITLE_PLANE_ENGINE"
@@ -3081,7 +3081,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "plane_subtitle_plane_wingforms"
-				position = { x = 310 y = 1110 }
+				position = { x = 205 y = 1250 }
 				font = "hoi_33"
 				borderSize = { x = 0 y = 4 }
 				text = "AIR_TITLE_PLANE_WINGFORM"
@@ -3093,7 +3093,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "plane_subtitle_plane_navweaps"
-				position = { x = 270 y = 1450 }
+				position = { x = 200 y = 1660 }
 				font = "hoi_33"
 				borderSize = { x = 0 y = 4 }
 				text = "AIR_TITLE_PLANE_NAVWEAP"
@@ -3105,7 +3105,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "plane_subtitle_plane_agweaps"
-				position = { x = 285 y = 1590 }
+				position = { x = 215 y = 1800 }
 				font = "hoi_33"
 				borderSize = { x = 0 y = 4 }
 				text = "AIR_TITLE_PLANE_AGWEAP"
@@ -3117,7 +3117,7 @@ guiTypes = {
 			}
 			instantTextBoxType = {
 				name = "plane_subtitle_plane_aaweaps"
-				position = { x = 285 y = 1800 }
+				position = { x = 215 y = 2010 }
 				font = "hoi_33"
 				borderSize = { x = 0 y = 4 }
 				text = "AIR_TITLE_PLANE_AAWEAP"
@@ -3138,28 +3138,28 @@ guiTypes = {
 
 			gridboxtype = {
 				name = "early_weapons_tree"
-				position = { x = 150 y = 400 }
+				position = { x = 150 y = 470 }
 				size = { width = 400 height = 1000 }
 				slotsize = { width = 70 height = 70 }
 				format = "LEFT"
 			}
 			gridboxtype = {
 				name = "tech_air_anti_ship_drone_1_tree"
-				position = { x = 150 y = 400 }
+				position = { x = 150 y = 470 }
 				size = { width = 400 height = 1000 }
 				slotsize = { width = 70 height = 70 }
 				format = "LEFT"
 			}
 			gridboxtype = {
 				name = "air_tech_pdl_1_tree"
-				position = { x = 150 y = 400 }
+				position = { x = 150 y = 470 }
 				size = { width = 400 height = 1000 }
 				slotsize = { width = 70 height = 70 }
 				format = "LEFT"
 			}
 			gridboxtype = {
 				name = "air_tech_railgun_cannons_1_tree"
-				position = { x = 10 y = 400 }
+				position = { x = 150 y = 470 }
 				size = { width = 400 height = 1000 }
 				slotsize = { width = 70 height = 70 }
 				format = "LEFT"
